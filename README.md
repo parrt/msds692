@@ -13,7 +13,10 @@ This course is part of the [MS in Analytics program at the University of San Fra
 
 **SPATIAL COORDINATES.** 101 Howard. Both sections Rm 527 on the fifth floor.
 
-**TEMPORAL COORDINATES.** Section 01: Mon/Wed 10-12AM, Section 02: Mon/Wed 1-3PM. Wed Aug 24 - Wed Oct 12.
+**TEMPORAL COORDINATES.** Wed Aug 24 - Wed Oct 12.
+
+ * Section 01: Mon/Wed 10-12AM
+ * Section 02: Mon/Wed 1-3PM 
 
 **INSTRUCTION FORMAT**. Class runs for 2 hours, 2 days. Instructor-student interaction during lecture is encouraged and we'll mix in mini-exercises / labs during class. All programming will be done in the Python programming language, unless otherwise specified.
 
@@ -45,3 +48,12 @@ This class is pass/fail and we expect most people to pass, but those getting bel
 
 # Syllabus
 
+* How the web functions, including servers, sockets, and network topology
+* Master useful unix commands for extracting web content: wget, grep, awk, cut, paste, join, sed
+* Regular expressions for filtering and manipulating string data
+* Use HTMLParser and Beautiful Soup to extract data from HTML web pages
+* Pull data from REST API with urllib2; e.g., services of companies such as Zillow, Twitter, Facebook, LinkedIn, Crunchbase, Google Maps, etc...
+* Use Selenium to extract data from JavaScript-based non-HTML web pages	
+* Process unstructured textual data into TFIDF features
+* Use Apache Drill to extract data from flat files using SQL queries
+* Persist data structures using pickle and other file formats
