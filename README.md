@@ -44,7 +44,7 @@ If you ever have questions about what constitutes plagiarism, cheating, or acade
 
 All projects are graded in binary fashion: They either work or they do not. Each project has a hard deadline and only those projects working correctly before the deadline get credit (100%).  My grading script pulls from github at the deadline. If you miss the deadline, you can still get 80% for the project if you complete it correctly by end of last class period.
 
-This class is pass/fail and we expect most people to pass, but those getting below 80% raw average score are in the danger zone.
+**Grading standards**. I consider an **A** grade to be above and beyond what most students have achieved. A **B** grade is an average grade for a student or what you could call "competence" in a business setting. A **C** grade means that you either did not or could not put forth the effort to achieve competence. Below **C** implies you did very little work or had great difficulty with the class compared to other students.
 
 # Syllabus
 
