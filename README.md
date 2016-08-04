@@ -48,12 +48,49 @@ This class is pass/fail and we expect most people to pass, but those getting bel
 
 # Syllabus
 
-* How the web functions, including servers, sockets, and network topology
-* Master useful unix commands for extracting web content: wget, grep, awk, cut, paste, join, sed
-* Regular expressions for filtering and manipulating string data
-* Use HTMLParser and Beautiful Soup to extract data from HTML web pages
-* Pull data from REST API with urllib2; e.g., services of companies such as Zillow, Twitter, Facebook, LinkedIn, Crunchbase, Google Maps, etc...
+## Data formats
+
+* text; ascii, unicode
+* delimited data; tsv, csv
+* log files
+* PDF
+* HTML
+* xml
+* json
+* Excel
+* word
+
+## How the web works
+
+* networks
+* sockets
+* servers / clients
+* DNS
+* email
+* HTTP
+* logging in/out
+* URLs
+* browsers
+
+## Data sources
+
+* files
+* web pages
+  * html
+  * javascript
 * Use Selenium to extract data from JavaScript-based non-HTML web pages	
-* Process unstructured textual data into TFIDF features
+* Pull data from REST API with urllib2; e.g., services of companies such as Zillow, Twitter, Facebook, LinkedIn, Crunchbase, Google Maps, etc...
+* Excel
+
+## Feature extraction
+
+* regex
+* Unix commands for extracting web content: wget, grep, awk, cut, paste, join, sed
 * Use Apache Drill to extract data from flat files using SQL queries
-* Persist data structures using pickle and other file formats
+* Beautiful Soup
+* pdf2text
+* Process unstructured textual data into TFIDF features
+
+## Misc
+
+* Running shell commands from Python
