@@ -35,5 +35,5 @@ application = linkedin.LinkedInApplication(authentication)
 _wait_for_user_to_enter_browser(application)
 print token # set in do_GET
 
-print application.get_connections()
-print application.get_profile()
+print application.search_profile(selectors=[{'people': ['first-name', 'last-name']}], params={'keywords': 'apple microsoft'})
+#print application.get_profile(selectors=["parrt"])
