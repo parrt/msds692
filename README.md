@@ -48,18 +48,6 @@ All projects are graded in binary fashion: They either work or they do not. Each
 
 # Syllabus
 
-## Data formats
-
-* text; ascii, unicode
-* delimited data; tsv, csv
-* log files
-* PDF
-* HTML
-* xml
-* json
-* Excel
-* word
-
 ## How the web works
 
 * networks
@@ -79,8 +67,20 @@ All projects are graded in binary fashion: They either work or they do not. Each
   * html
   * javascript
 * Use Selenium to extract data from JavaScript-based non-HTML web pages	
-* Pull data from REST API with urllib2; e.g., services of companies such as Zillow, Twitter, Facebook, LinkedIn, Crunchbase, Google Maps, etc...
+* Pull data from REST API with urllib2; e.g., services of companies such as Zillow, Twitter, Facebook, Crunchbase, Google Maps, etc...
 * Excel
+
+## Data formats
+
+* text; ascii, unicode
+* delimited data; tsv, csv
+* log files
+* PDF
+* HTML
+* xml
+* json
+* Excel
+* word
 
 ## Feature extraction
 
