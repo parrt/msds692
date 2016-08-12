@@ -69,13 +69,18 @@ ACCESS_TOKEN = json_dict['access_token']
 # Ok, now we can pull data
 # https://developers.facebook.com/docs/graph-api/using-graph-api/
 
-PROFILE_URL = "https://graph.facebook.com/me" \
-              "?access_token=%s"
+FEED_URL = "https://graph.facebook.com/%s/feed?access_token=%s"
 
-PROFILE_URL = PROFILE_URL % ACCESS_TOKEN
-# print PROFILE_URL
+who = "whitehouse"
 
-response = urllib2.urlopen(PROFILE_URL)
+FEED_URL = FEED_URL % (who, ACCESS_TOKEN)
+
+response = urllib2.urlopen(FEED_URL)
 jsondata = response.read()
 json_dict = json.loads(jsondata)
-print json_dict['name']
+
+for story in json_dict['data']:
+    if "message" in story:
+        print "http://www.facebook.com/"+story['id']
+        print story["message"][0:80]
+        print
