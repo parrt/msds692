@@ -71,7 +71,7 @@ ACCESS_TOKEN = json_dict['access_token']
 
 FEED_URL = "https://graph.facebook.com/%s/feed?access_token=%s"
 
-who = "whitehouse"
+who = "whitehouse" # works for pages (like msnbc) but not users
 
 FEED_URL = FEED_URL % (who, ACCESS_TOKEN)
 
