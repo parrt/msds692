@@ -112,7 +112,7 @@ def readcsv(data):
 
 From within the chrome browser, the real XML data from the AAPL history looks like this (although I may have added an XML viewer plug into the browser):
  
-<img src="figures/dataxml.png" width=170>
+<img src="figures/dataxml.png" width=300>
 
 ### Generating JSON
 
