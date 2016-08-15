@@ -2,7 +2,9 @@
 
 ## Goal
 
-The goal of this lab is to study the most common text-based data formats: `csv`, `xml`, `json`, and `html`. Parsing data files can be tricky, but generating them is easy. In this first homework, you will therefore be generating data in multiple formats but using standard Python libraries to read that data back in. The exception is that you will be parsing comma-separated value (CSV) files the hard way. The basic idea is that you will be able to read in some data in csv format and pass it around a pipeline of data conversions, ultimately getting it back to the original format:
+The goal of this  homework is to study the most common text-based data formats: `csv`, `xml`, `json`, and `html`. Parsing data files can be tricky, but generating them is easy. In this first homework, you will therefore be generating data in multiple formats but using standard Python libraries to read that data back in. The exception is that you will be parsing comma-separated value (CSV) files the hard way. 
+
+The basic idea is that you will be able to read in some data in csv format and pass it  along a pipeline of data conversions, ultimately getting it back to the original format:
 
 <img src=figures/pipeline.png width=500>
 
@@ -18,7 +20,9 @@ $ diff data.csv samedata.csv | wc
        0       0       0
 ```
 
-The last line just checks to make sure that there is no difference between the original file and the data after it's been pushed through the pipeline.
+The last  command just checks to make sure that there is no difference between the original file and the data after it's been pushed through the pipeline.
+
+You will work in git repo *userid*-pipeline.
 
 ## Description
 
@@ -51,11 +55,15 @@ The data follows the header row, with one record per line. The key element of th
 
 ### Parsing simple CSV files
 
+It's often best to start with a tiny input example before tackling the overall problem. I made a small CSV file:
+ 
 ```csv
 when,a,b
 2016-08-12,1.2,3
 2016-08-13,3.99003,4.3
 ```
+
+To parse that, we read the file and convert it to a list of lines and then we split each line on commas. That gives us a list of lists. Of course, the first line of the file is special; it is the header row. Let's get that first task out of the way then by completing the following code in `csv.py`:
 
 ```python
 import sys
@@ -71,8 +79,36 @@ def getdata():
 
 def readcsv(data):
     """
-    Read CSV with header from data string and return a list of lists
+    Read CSV with header from data string and return a header list
+    containing a list of names and also return the list of lists
+    containing the data.
     """
+    ...
+    return headers, data
+```
+
+Here is a sample Python script that prints out the results of our `readcsv` function:
+
+```python
+headers, data = csv.readcsv(csv.getdata())
+print headers
+print data
+```
+
+Running with my simple test file, we'd generate this output:
+
+```bash
+$ python test_readcsv.py < testdata.csv
+['when', 'a', 'b']
+[['2016-08-12', '1.2', '3'], ['2016-08-13', '3.99003', '4.3']]
+```
+
+Or, if you want to go back to csv format, you could use the following Python code:
+
+```python
+print "headers =", ','.join(headers)
+for row in data:
+    print ','.join(row)
 ```
 
 ###  Generating HTML
