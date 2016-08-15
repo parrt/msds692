@@ -1,10 +1,8 @@
 # register via mashery: http://developer.trulia.com/member/register
 # get API key http://developer.trulia.com/apps/register
 
-import urllib
 import urllib2
 import sys
-import json
 
 # https://untangle.readthedocs.io/en/latest/
 # https://github.com/stchris/untangle

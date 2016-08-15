@@ -2,7 +2,23 @@
 
 ## Goal
 
-The goal of this lab is to study the most common text-based data formats. Parsing data files can be tricky, but generating them is easy. In this first homework, you will therefore be generating data in multiple formats but using standard Python libraries to read that data back in.
+The goal of this lab is to study the most common text-based data formats: `csv`, `xml`, `json`, and `html`. Parsing data files can be tricky, but generating them is easy. In this first homework, you will therefore be generating data in multiple formats but using standard Python libraries to read that data back in. The exception is that you will be parsing comma-separated value (CSV) files the hard way. The basic idea is that you will be able to read in some data in csv format and pass it around a pipeline of data conversions, ultimately getting it back to the original format:
+
+<img src=figures/pipeline.png width=500>
+
+From the commandline, it will look like this:
+
+```bash
+$ cat data.csv | \
+  python csv2xml.py | \
+  python xml2csv.py | \
+  python csv2json.py | \
+  python json2csv.py > samedata.csv
+$ diff data.csv samedata.csv | wc
+       0       0       0
+```
+
+The last line just checks to make sure that there is no difference between the original file and the data after it's been pushed through the pipeline.
 
 ## Description
 
@@ -41,6 +57,24 @@ when,a,b
 2016-08-13,3.99003,4.3
 ```
 
+```python
+import sys
+
+def getdata():
+    if len(sys.argv)==1: # if no file given, read from stdin
+        data = sys.stdin.read()
+    else:
+        f = open(sys.argv[1], "r")
+        data = f.read()
+        f.close()
+    return data.strip()
+
+def readcsv(data):
+    """
+    Read CSV with header from data string and return a list of lists
+    """
+```
+
 ###  Generating HTML
 
 ```html
@@ -63,14 +97,17 @@ when,a,b
 
 ```xml
 <?xml version="1.0"?>
-<history>
-  <record>
-    <when>2016-08-12</when><a>1.2</a><b>3.0</b>
-  </record>
-  <record>
-    <when>2016-08-13</when><a>3.99003</a><b>4.3</b>
-  </record>
-</history>
+<file>
+  <headers>when,a,b</headers>
+  <data>
+    <record>
+      <when>2016-08-12</when><a>1.2</a><b>3.0</b>
+    </record>
+    <record>
+      <when>2016-08-13</when><a>3.99003</a><b>4.3</b>
+    </record>
+  </data>
+</file>
 ```
 
 From within the chrome browser, the real XML data from the AAPL history looks like this (although I may have added an XML viewer plug into the browser):
@@ -79,17 +116,42 @@ From within the chrome browser, the real XML data from the AAPL history looks li
 
 ### Generating JSON
 
+```bash
+$ python csv2json.py < testdata.csv > /tmp/t.json
+```
+
 ```json
 {
-  "history":[
-    "record":{
-      "when":"2016-08-12", "a":"1.2", "b":"3.0"
-    }
-    "record":{
+  "headers":["when", "a", "b"],
+  "data":[
+    {
+      "when":"2016-08-12", "a":"1.2", "b":"3"
+    },
+    {
       "when":"2016-08-13", "a":"3.99003", "b":"4.3"
+    },
+    {
+      "when":""
     }
   ]
 }
 ```
 
+### Reading JSON data
+
+```bash
+$ python json2csv.py < /tmp/t.json
+```
+
+### Reading XML Data
+
+## fsdf
+
 ## Deliverables
+
+* csv.py
+* csv2html.py
+* csv2json.py
+* csv2xml.py
+* json2csv.py
+* xml2csv.py
