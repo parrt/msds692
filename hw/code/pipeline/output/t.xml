@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<file>
+  <headers>when,a,b</headers>
+  <data>
+    <record>
+      <when>2016-08-12</when><a>1.2</a><b>3</b>
+    </record>
+    <record>
+      <when>2016-08-13</when><a>3.99003</a><b>4.3</b>
+    </record>
+  </data>
+</file>

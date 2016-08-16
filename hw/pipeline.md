@@ -295,25 +295,11 @@ $ diff /tmp/t.json /tmp/t2.json
 
 Each of the five translators will be tested automatically. Any programming errors or invalid output will result in a zero for that particular test. Each of the translators gets 20% of the score.  Note, however, that if your CSV `readcsv()` function doesn't work, your csv2*.py scripts will not work either so make sure you get that working correctly first.
 
-I provide a [test shell script]() that you can use to test your data format generation:
+I provide a [test shell script](https://github.com/parrt/msan692/blob/master/hw/code/pipeline/testcsv.sh) that you can use to test your data format generation. It should not generate any out what, indicating there is no difference between your output and the [stripped output](https://github.com/parrt/msan692/tree/master/hw/code/pipeline/stripped-output) I get. You can run it with something like
 
 ```bash
-#!/bin/bash
-
-# test.sh t.csv stripped-output
-# test.sh AAPL.csv stripped-output
-CSV=$1
-NAME=$(basename -s '.csv' $CSV)
-echo $NAME
-SOLUTION_DIR=$2
-
-# Get all html on on one line and remove whitespace
-python csv2html.py $CSV | tr -d '\n' | tr -d '\t' | tr -d ' ' > /tmp/$NAME.html
-diff /tmp/$NAME.html $SOLUTION_DIR/$NAME.html
-
-python csv2xml.py $CSV  | tr -d '\n' | tr -d '\t' | tr -d ' ' > /tmp/$NAME.xml
-diff /tmp/$NAME.xml $SOLUTION_DIR/$NAME.xml
-
-python csv2json.py $CSV | tr -d '\n' | tr -d '\t' | tr -d ' ' > /tmp/$NAME.json
-diff /tmp/$NAME.json $SOLUTION_DIR/$NAME.json
+$ ./test.sh t.csv stripped-output
+$ ./test.sh AAPL.csv stripped-output
 ```
+
+The second argument is the directory containing the correct output.
