@@ -22,6 +22,22 @@ $ diff data.csv samedata.csv | wc
 
 The last  command just checks to make sure that there is no difference between the original file and the data after it's been pushed through the pipeline.
 
+Because these programs read and write to standard input and standard output, we can mix and match them from the commandline to translate from one format to the other. For example, here's how to translate xml to json:
+
+```bash
+$ cat data.xml | \
+  python xml2csv.py | \
+  python csv2json.py > data.json
+```
+
+The programs also know how to read from a file if one is specified:
+
+```bash
+$ python xml2csv.py data.xml | python csv2json.py > data.json
+```
+
+It's also good idea to learn how to generate HTML for display in a browser, so we will create a CSV to HTML translator as well.
+
 You will work in git repo *userid*-pipeline.
 
 ## Description
@@ -55,7 +71,7 @@ The data follows the header row, with one record per line. The key element of th
 
 ### Parsing simple CSV files
 
-It's often best to start with a tiny input example before tackling the overall problem. I made a small CSV file:
+It's often best to start with a tiny input example before tackling a bigger data set. I made a small CSV file:
  
 ```csv
 when,a,b
@@ -63,7 +79,7 @@ when,a,b
 2016-08-13,3.99003,4.3
 ```
 
-To parse that, we read the file and convert it to a list of lines and then we split each line on commas. That gives us a list of lists. Of course, the first line of the file is special; it is the header row. Let's get that first task out of the way then by completing the following code in `csv.py`:
+To parse that, we read the file and convert it to a list of lines and then we split each line on commas. That gives us a list of lists. Of course, the first line of the file is special; it is the header row. Let's get this first task out of the way then by completing the following code in `csv.py` (a library used by the other files):
 
 ```python
 import sys
@@ -87,7 +103,7 @@ def readcsv(data):
     return headers, data
 ```
 
-Here is a sample Python script that prints out the results of our `readcsv` function:
+Here is a sample Python test script that prints out the results of our `readcsv` function:
 
 ```python
 headers, data = csv.readcsv(csv.getdata())
@@ -113,6 +129,10 @@ for row in data:
 
 ###  Generating HTML
 
+Now that we have `csv.py`, we can use it to read in CSV and dump some sample output in HTML format. This is useful for viewing large tables because the browser knows how to scroll. It's also an opportunity to learn some more HTML.
+
+From our sample test data file, you need to generate the following HTML:
+
 ```html
 <html>
 <body>
@@ -125,11 +145,28 @@ for row in data:
 </html>
 ```
 
+which looks like this in a browser:
+
 <img src="figures/testdatahtml.png" width=170>
+
+Of course our real data set is much bigger and the first part of it looks like this:
 
 <img src="figures/datahtml.png" width=450>
 
+In file `csv2html.py`, write a small script that reads in the CSV using `getdata()` and then prints out an HTML `table`.  As you did with your search engine project, you can use templates or just slap together strings in order to create the HTML.
+
+The program should read from standard input or from a filename parameter to the script (this is handled automatically for you by `getdata()`:
+
+```bash
+$ python csv2html.py < testdata.csv > /tmp/t.html
+$ python csv2html.py testdata.csv > /tmp/t.html
+```
+
 ### Generating XML
+
+One of the most common data formats you will run into is XML (HTML is like a specific kind of XML). There are begin and end tags that must match up. XML files also tend to start with information about the version: `<?xml version="1.0"?>`, so please put that in as well.
+
+For the test file, the output should look like the following.
 
 ```xml
 <?xml version="1.0"?>
@@ -146,15 +183,24 @@ for row in data:
 </file>
 ```
 
+**For testing purposes, you must follow the order shown in that XML. The records must be in the order of the rows found in the CSV and the tag names/data must follow the columns found in the CSV.**
+
 From within the chrome browser, the real XML data from the AAPL history looks like this (although I may have added an XML viewer plug into the browser):
  
 <img src="figures/dataxml.png" width=300>
 
-### Generating JSON
+In file `csv2xml.py`, write a small script that reads in the CSV using `getdata()` and then prints out the data in XML. It also must specifically use the tags I have above: `file`, `headers`, `data`, `record`. Note that the `when` tag and the others within a record are not hardcoded: they depend on the headers from the CSV input
+
+The program should read from standard input or from a filename parameter to the script (this is handled automatically for you by `getdata()`:
 
 ```bash
-$ python csv2json.py < testdata.csv > /tmp/t.json
+$ python csv2xml.py < testdata.csv > /tmp/t.xml
+$ python csv2xml.py testdata.csv > /tmp/t.xml
 ```
+
+### Generating JSON
+
+JSON, a format typically used for the transmission of JavaScript data objects, is also extremely popular. It is very similar to XML in that each data element is identified specifically. Naturally, JSON syntax looks quite different from XML but at an abstract level there very similar.
 
 ```json
 {
@@ -173,21 +219,101 @@ $ python csv2json.py < testdata.csv > /tmp/t.json
 }
 ```
 
-### Reading JSON data
+**For testing purposes, you must follow the order shown in that JSON. The records must be in the order of the rows found in the CSV and the key names/data must follow the columns found in the CSV.**
+
+In file `csv2json.py`, write a small script that reads in the CSV using `getdata()` and then prints out the data in JSON. It also must specifically use the keys I have above: `headers`, `data`. Note that the `when` key and the others within a record are not hardcoded: they depend on the headers from the CSV input.
+
+The program should read from standard input or from a filename parameter to the script (this is handled automatically for you by `getdata()`:
 
 ```bash
-$ python json2csv.py < /tmp/t.json
+$ python csv2json.py < testdata.csv > /tmp/t.json
+$ python csv2json.py testdata.csv > /tmp/t.json
 ```
 
 ### Reading XML Data
 
-## fsdf
+Parsing XML is beyond the scope of this class, but we still need to know how to use libraries that read this XML in. We're going to make a program that reads in XML and spits out CSV:
+ 
+```bash
+$ python xml2csv.py < /tmp/t.xml
+```
+
+There are a number of XML libraries for Python, but the simplest one to use is [untangle](https://github.com/stchris/untangle). From some text, you can get a tree representation of the XML like this:
+
+```python
+xml = untangle.parse(xmltxt)
+```
+
+At this point, we need to know about the actual structure of the XML before we can pull data out. The root of the structure is the `file` tag so `xml.file` will get us that node in the tree. From there, you need to iterate over the `record` elements underneath the `data` tag. Pull out the individual values by their name such as `Date`. Note that the order of the XML tags in an individual record is not specified. He careful how you fill in the CSV "table" for output.
+
+You can check your work with:
+ 
+```bash
+$ python xml2csv.py /tmp/t.xml | python csv2xml.py > /tmp/t2.xml
+$ diff /tmp/t.xml /tmp/t2.xml
+```
+
+### Reading JSON data
+
+Parsing JSON is beyond the scope of this class, but we still need to know how to use libraries that read this JSON in. We're going to make a program that reads in JSON and spits out CSV:
+ 
+```bash
+$ python json2csv.py < /tmp/t.json
+```
+
+The standard `json` Python library works well. You can get a (possibly nested) dictionary from some JSON text with this:
+
+```python
+data = json.loads(jsontxt)
+```
+
+As with XML, we need to know the structure of the JSON "object" in order to pull data out of it. For example, you can pull out the headers like this:
+
+```python
+headers = data['headers']
+```
+
+Using the debugger, you can examine the various components of the `data` `dict`. I highly recommend you do that to orient yourself with the structure of the object.
+ 
+You can check your work with:
+ 
+```bash
+$ python json2csv.py /tmp/t.json | python csv2json.py > /tmp/t2.json
+$ diff /tmp/t.json /tmp/t2.json
+```
 
 ## Deliverables
 
 * csv.py
 * csv2html.py
-* csv2json.py
 * csv2xml.py
+* csv2json.py
 * json2csv.py
 * xml2csv.py
+
+## Evaluation
+
+Each of the five translators will be tested automatically. Any programming errors or invalid output will result in a zero for that particular test. Each of the translators gets 20% of the score.  Note, however, that if your CSV `readcsv()` function doesn't work, your csv2*.py scripts will not work either so make sure you get that working correctly first.
+
+I provide a [test shell script]() that you can use to test your data format generation:
+
+```bash
+#!/bin/bash
+
+# test.sh t.csv stripped-output
+# test.sh AAPL.csv stripped-output
+CSV=$1
+NAME=$(basename -s '.csv' $CSV)
+echo $NAME
+SOLUTION_DIR=$2
+
+# Get all html on on one line and remove whitespace
+python csv2html.py $CSV | tr -d '\n' | tr -d '\t' | tr -d ' ' > /tmp/$NAME.html
+diff /tmp/$NAME.html $SOLUTION_DIR/$NAME.html
+
+python csv2xml.py $CSV  | tr -d '\n' | tr -d '\t' | tr -d ' ' > /tmp/$NAME.xml
+diff /tmp/$NAME.xml $SOLUTION_DIR/$NAME.xml
+
+python csv2json.py $CSV | tr -d '\n' | tr -d '\t' | tr -d ' ' > /tmp/$NAME.json
+diff /tmp/$NAME.json $SOLUTION_DIR/$NAME.json
+```
