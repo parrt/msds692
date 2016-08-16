@@ -2,7 +2,7 @@
 
 ## Goal
 
-The goal of this  homework is to study the most common text-based data formats: `csv`, `xml`, `json`, and `html`. Parsing data files can be tricky, but generating them is easy. In this first homework, you will therefore be generating data in multiple formats but using standard Python libraries to read that data back in. The exception is that you will be parsing comma-separated value (CSV) files the hard way. 
+The goal of this  homework is to study the most common text-based data formats: `csv`, `xml`, `json`, and `html`. Parsing data files can be tricky, but generating them is easy and teaches you to speak in those languages. In this first homework, you will therefore be generating data in multiple formats but using standard Python libraries to read that data back in. The exception is that you will be parsing comma-separated value (CSV) files the hard way. 
 
 The basic idea is that you will be able to read in some data in csv format and pass it  along a pipeline of data conversions, ultimately getting it back to the original format:
 
@@ -189,6 +189,8 @@ From within the chrome browser, the real XML data from the AAPL history looks li
  
 <img src="figures/dataxml.png" width=300>
 
+*Please note that `Adj Close` is the proper name of the header, what you see in the `headers` tag. But, XML does not allow spaces in the name of the tag and so you must convert spaces to `_` characters as you see in the XML above.*
+
 In file `csv2xml.py`, write a small script that reads in the CSV using `getdata()` and then prints out the data in XML. It also must specifically use the tags I have above: `file`, `headers`, `data`, `record`. Note that the `when` tag and the others within a record are not hardcoded: they depend on the headers from the CSV input
 
 The program should read from standard input or from a filename parameter to the script (this is handled automatically for you by `getdata()`:
@@ -232,7 +234,7 @@ $ python csv2json.py testdata.csv > /tmp/t.json
 
 ### Reading XML Data
 
-Parsing XML is beyond the scope of this class, but we still need to know how to use libraries that read this XML in. We're going to make a program that reads in XML and spits out CSV:
+Parsing XML is beyond the scope of this class, but we still need to know how to use libraries that read this XML in. We're going to make a program called `xml2csv.py` that reads in XML and spits out CSV:
  
 ```bash
 $ python xml2csv.py < /tmp/t.xml
@@ -244,7 +246,9 @@ There are a number of XML libraries for Python, but the simplest one to use is [
 xml = untangle.parse(xmltxt)
 ```
 
-At this point, we need to know about the actual structure of the XML before we can pull data out. The root of the structure is the `file` tag so `xml.file` will get us that node in the tree. From there, you need to iterate over the `record` elements underneath the `data` tag. Pull out the individual values by their name such as `Date`. Note that the order of the XML tags in an individual record is not specified. He careful how you fill in the CSV "table" for output.
+At this point, we need to know about the actual structure of the XML before we can pull data out. The root of the structure is the `file` tag so `xml.file` will get us that node in the tree. From there, you need to iterate over the `record` elements underneath the `data` tag. Pull out the individual values by their name such as `Date`. Note that the order of the XML tags in an individual record is not specified and so it might be different than the order of the header names. Be careful how you fill in the CSV "table" for output.
+
+Notice that there are no spaces in the tag names but the `headers` tag includes the real header names like `Adj Close`. You will have to take this into consideration when looking for tags in the XML.
 
 You can check your work with:
  
@@ -255,7 +259,7 @@ $ diff /tmp/t.xml /tmp/t2.xml
 
 ### Reading JSON data
 
-Parsing JSON is beyond the scope of this class, but we still need to know how to use libraries that read this JSON in. We're going to make a program that reads in JSON and spits out CSV:
+Parsing JSON is beyond the scope of this class, but we still need to know how to use libraries that read this JSON in. We're going to make a program called `xml2json.py` that reads in JSON and spits out CSV:
  
 ```bash
 $ python json2csv.py < /tmp/t.json
@@ -295,11 +299,15 @@ $ diff /tmp/t.json /tmp/t2.json
 
 Each of the five translators will be tested automatically. Any programming errors or invalid output will result in a zero for that particular test. Each of the translators gets 20% of the score.  Note, however, that if your CSV `readcsv()` function doesn't work, your csv2*.py scripts will not work either so make sure you get that working correctly first.
 
-I provide a [test shell script](https://github.com/parrt/msan692/blob/master/hw/code/pipeline/testcsv.sh) that you can use to test your data format generation. It should not generate any out what, indicating there is no difference between your output and the [stripped output](https://github.com/parrt/msan692/tree/master/hw/code/pipeline/stripped-output) I get. You can run it with something like
+I provide a [test shell script](https://github.com/parrt/msan692/blob/master/hw/code/pipeline/testcsv.sh) that you can use to test your data format generation. It should not generate any output, indicating there is no difference between your output and the [stripped output](https://github.com/parrt/msan692/tree/master/hw/code/pipeline/stripped-output) I get.  Your project will be graded by running the following samples and likely some others:
 
 ```bash
-$ ./test.sh t.csv stripped-output
-$ ./test.sh AAPL.csv stripped-output
+$ ./testcsv.sh t.csv stripped-output
+$ ./testcsv.sh AAPL.csv stripped-output
+$ ./testxml.sh t.xml t.csv
+$ ./testjson.sh t.json t.csv
+$ ./testxml.sh AAPL.xml AAPL.csv
+$ ./testjson.sh AAPL.json AAPL.csv 
 ```
 
-The second argument is the directory containing the correct output.
+The `stripped-output` argument is the directory containing the correct (stripped) output for `html`, `xml`, and `json`. The output you should get from just running your programs is in [this directory](https://github.com/parrt/msan692/tree/master/hw/code/pipeline/output).
