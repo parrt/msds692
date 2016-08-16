@@ -36,11 +36,11 @@ If you ever have questions about what constitutes plagiarism, cheating, or acade
 
 | Artifact | Grade Weight | Due date |
 |--------|--------|--------|
-|[?]()| 12%|  |
-|[?]()| 12%|  |
-|[?]()| 12%|  |
-|Exam 1| 6%| Monday, Sept 19 |
-|Exam 2| 11%| Wed, Oct 12 |
+|[Data pipeline](https://github.com/parrt/msan692/blob/master/hw/pipeline.md)| 10%|  |
+|[?]()| 10%|  |
+|[Group project]()| 20%|  |
+|Exam 1| 10%| Monday, Sept 19 |
+|Exam 2| 10%| Wed, Oct 12 |
 
 All projects are graded in binary fashion: They either work or they do not. Each project has a hard deadline and only those projects working correctly before the deadline get credit (100%).  My grading script pulls from github at the deadline. If you miss the deadline, you can still get 80% for the project if you complete it correctly by end of last class period.
 
