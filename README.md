@@ -36,17 +36,30 @@ If you ever have questions about what constitutes plagiarism, cheating, or acade
 
 | Artifact | Grade Weight | Due date |
 |--------|--------|--------|
-|[Data pipeline](https://github.com/parrt/msan692/blob/master/hw/pipeline.md)| 10%|  |
-|[?]()| 10%|  |
-|[Group project]()| 20%|  |
+|[Data pipeline](https://github.com/parrt/msan692/blob/master/hw/pipeline.md)| 15%| Wed, Sep 7 |
+|[?]()| 15%| Mon, Sep 19 |
+|[TFIDF document summarization](https://github.com/parrt/msan692/blob/master/hw/tfidf.md)| 15%| |
+|[Group project](https://github.com/parrt/msan692/blob/master/hw/group.md)| 30%| Fri, Oct 14 |
 |Exam 1| 10%| Monday, Sept 19 |
-|Exam 2| 10%| Wed, Oct 12 |
+|Exam 2| 15%| Wed, Oct 12 |
 
 All projects are graded in binary fashion: They either work or they do not. Each project has a hard deadline and only those projects working correctly before the deadline get credit (100%).  My grading script pulls from github at the deadline. If you miss the deadline, you can still get 80% for the project if you complete it correctly by end of last class period.
 
 **Grading standards**. I consider an **A** grade to be above and beyond what most students have achieved. A **B** grade is an average grade for a student or what you could call "competence" in a business setting. A **C** grade means that you either did not or could not put forth the effort to achieve competence. Below **C** implies you did very little work or had great difficulty with the class compared to other students.
 
 # Syllabus
+
+## Data formats
+
+* text; ascii, unicode
+* delimited data; tsv, csv
+* log files
+* PDF
+* HTML
+* xml
+* json
+* Excel
+* word
 
 ## How the web works
 
@@ -69,18 +82,6 @@ All projects are graded in binary fashion: They either work or they do not. Each
 * Use Selenium to extract data from JavaScript-based non-HTML web pages	
 * Pull data from REST API with urllib2; e.g., services of companies such as Zillow, Twitter, Facebook, Crunchbase, Google Maps, etc...
 * Excel
-
-## Data formats
-
-* text; ascii, unicode
-* delimited data; tsv, csv
-* log files
-* PDF
-* HTML
-* xml
-* json
-* Excel
-* word
 
 ## Feature extraction
 
