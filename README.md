@@ -37,7 +37,7 @@ If you ever have questions about what constitutes plagiarism, cheating, or acade
 | Artifact | Grade Weight | Due date |
 |--------|--------|--------|
 |[Data pipeline](https://github.com/parrt/msan692/blob/master/hw/pipeline.md)| 15%| Wed, Sep 7 |
-|[?]()| 15%| Mon, Sep 19 |
+|[Building web servers](https://github.com/parrt/msan692/blob/master/hw/server.md)| 15%| Mon, Sep 19 |
 |[TFIDF document summarization](https://github.com/parrt/msan692/blob/master/hw/tfidf.md)| 15%| |
 |[Group project](https://github.com/parrt/msan692/blob/master/hw/group.md)| 30%| Fri, Oct 14 |
 |Exam 1| 10%| Monday, Sept 19 |
