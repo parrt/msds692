@@ -111,9 +111,28 @@ def history(ticker):
 app.run() # kickstart your flask server
 ```
 
+Run your server then verify that when you go to URL `http://localhost:5000/history/AAPL` you get AAPL's history.
+
+### Python anywhere
+
+Now you have your server working, it's time to deploy it to a publicly visible website. Once you have created an account at Python anywhere, Go to your dashboard and then to the `Web` tab and create a Flask app with python 2.7.  He will ask you where you want your code to live. **Use all of the default values (`/home/parrt/mysite/flask_app.py`).**  I was unable to get it to run with anything but the default configuration. By default, it creates a simple hello world flask application like we did above.
+
+Once the web application has started, you can go to URL `http://userid.pythonanywhere.com` and it should give you the simple hello world output in your browser.
+
+Now,  replace the code in `flask_app.py` at Python anywhere with your `history.py` code. Look under the `Files` tab of your dashboard to find the files. **Do not copy the final line that starts up the server:**
+
+```python
+app.run() # kickstart your flask server
+```
+
+Apparently Python anywhere will do that for us. If you have this code in there, your website will not work.
+
+Now go back into your web app configuration and tell it to reload. Then go back to URL `http://userid.pythonanywhere.com/history/APPL` and it should give you your stock data.
+
 ## Deliverables
 
 *  history.py
+*  A running website `http://userid.pythonanywhere.com/history/ticker` during the grading period.
 
 ## Evaluation
 
