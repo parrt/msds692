@@ -58,7 +58,7 @@ All projects are graded in binary fashion: They either work or they do not. Each
 * HTML
 * xml
 * json
-* Excel
+* [Excel](notes/excel.md)
 * word
 
 ## How the web works
