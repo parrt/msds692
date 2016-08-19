@@ -1,0 +1,22 @@
+import sys
+import re
+
+filename = sys.argv[1]
+f = open(filename, "r")
+lines = f.readlines()
+f.close()
+
+records = []
+for line in lines:
+    ip = re.findall('^.*? ', line)
+    ip = ip[0].strip()
+    # print ip
+    date_brackets = re.findall('\\[.*\\]', line)
+    date = date_brackets[0]
+    # print date
+    quoted_strings = re.findall('".*?"', line)
+    # print quoted_strings
+    records.append( [ip,date]+quoted_strings )
+
+for r in records:
+    print r

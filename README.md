@@ -56,7 +56,7 @@ All projects are graded in binary fashion: They either work or they do not. Each
 	* delimited data; tsv, csv
 	* xml
 	* json
-* log files
+* [Parsing log files](notes/logs.md)
 * [PDF using pdf2txt.py](notes/pdf.md)
 * [HTML](notes/html.md)
 * [Excel](notes/excel.md)
