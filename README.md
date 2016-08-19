@@ -52,7 +52,7 @@ All projects are graded in binary fashion: They either work or they do not. Each
 ## Data formats
 
 * text; ascii, unicode
-* [Data pipeline project](https://github.com/parrt/msan692/blob/master/hw/pipeline.md) (Converting stock history from Yahoo finance to various formats)
+* [Data pipeline project](https://github.com/parrt/msan692/blob/master/hw/pipeline.md) (Converting stock history from Yahoo finance to various formats) (**project**)
 	* reading delimited data; tsv, csv
 	*  reading/generating XML (we'll load complicated XML in [TFIDF project](https://github.com/parrt/msan692/blob/master/hw/tfidf.md))
 	* reading/generating json
@@ -72,6 +72,7 @@ All projects are graded in binary fashion: They either work or they do not. Each
 * logging in/out
 * URLs
 * browsers
+* [Building web servers](https://github.com/parrt/msan692/blob/master/hw/server.md) (**project**)
 
 ## Data sources
 
@@ -96,9 +97,8 @@ All projects are graded in binary fashion: They either work or they do not. Each
 * regex
 * Unix commands for extracting web content: wget, grep, awk, cut, paste, join, sed
 * Use Apache Drill to extract data from flat files using SQL queries
-* Beautiful Soup
-* Process unstructured textual data into TFIDF features
 * k-means for compression, color selection
+* [TFIDF document summarization](https://github.com/parrt/msan692/blob/master/hw/tfidf.md) (**project**)
 
 ## Misc
 
