@@ -85,13 +85,11 @@ All projects are graded in binary fashion: They either work or they do not. Each
  * [yahoo finance stock history](notes/code/yahoo/history.py), [yahoo finance stock quote](notes/code/yahoo/quote.py)
  * [youtube](notes/code/youtube/search.py)
  * [zillow](notes/code/zillow/pull.py)
-
-e.g., services of companies such as Zillow, Twitter, Facebook, Crunchbase, Google Maps, etc...
 * web pages
   * html
   * javascript
-* Use Selenium to extract data from JavaScript-based non-HTML web pages	
 * Web crawling
+* Use Selenium to extract data from JavaScript-based non-HTML web pages	
 
 ## Feature extraction
 
