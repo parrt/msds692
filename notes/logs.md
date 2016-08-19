@@ -91,4 +91,4 @@ Now the output looks like much cleaner:
 ...
 ```
 
-Here is the [full source code](/code/logs/load.py) for this example.
+Here is the [full source code](code/logs/load.py) for this example.
