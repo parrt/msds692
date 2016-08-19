@@ -13,8 +13,10 @@ for line in lines:
     # print ip
     date_brackets = re.findall('\\[.*\\]', line)
     date = date_brackets[0]
+    date = date[1:len(date)-1]
     # print date
     quoted_strings = re.findall('".*?"', line)
+    quoted_strings = [s[1:len(s)-1] for s in quoted_strings]
     # print quoted_strings
     records.append( [ip,date]+quoted_strings )
 

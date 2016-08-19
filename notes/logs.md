@@ -41,7 +41,7 @@ The easiest thing to do is probably use regular expressions to grab chunks of te
 
 Here is what the regular expression visualizer shows for the quoted-string  grabber:
 
-<img src=figures/pythex.png width=700>
+<img src=figures/pythex.png width=600>
 
 Notice how it shows multiple things being selected, because multiple substrings match.
 
@@ -65,6 +65,30 @@ Once we have these individual elements, we can pack them together as a single li
 
 ```python
 records.append( [ip,date]+quoted_strings )
+```
+
+The records look like:
+
+```bash
+$ python load.py ~/github/msan501/data/access.log
+['64.221.136.91', '[02/Sep/2003:00:00:09 -0700]', '"GET / HTTP/1.1"', '"-"', '"Mozilla/4.0 (compatible; MSIE 6.0; Windows 98; Win 9x 4.90; Q312461)"']
+['64.221.136.91', '[02/Sep/2003:00:00:10 -0700]', '"GET /images/shim.gif HTTP/1.1"', '"http://www.antlr.org/"', '"Mozilla/4.0 (compatible; MSIE 6.0; Windows 98; Win 9x 4.90; Q312461)"']
+...
+```
+
+That's pretty good but it seems like we should remove the square brackets and the quotes around those strings. We can do that with some simple string splicing:
+
+```python
+date = date[1:len(date)-1] # strip first and last character
+quoted_strings = [s[1:len(s)-1] for s in quoted_strings]
+```
+
+Now the output looks like much cleaner: 
+ 
+```
+['64.221.136.91', '02/Sep/2003:00:00:09 -0700', 'GET / HTTP/1.1', '-', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows 98; Win 9x 4.90; Q312461)']
+['64.221.136.91', '02/Sep/2003:00:00:10 -0700', 'GET /images/shim.gif HTTP/1.1', 'http://www.antlr.org/', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows 98; Win 9x 4.90; Q312461)']
+...
 ```
 
 Here is the [full source code](/code/logs/load.py) for this example.
