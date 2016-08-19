@@ -52,14 +52,15 @@ All projects are graded in binary fashion: They either work or they do not. Each
 ## Data formats
 
 * text; ascii, unicode
-* delimited data; tsv, csv
+* [Data pipeline project](https://github.com/parrt/msan692/blob/master/hw/pipeline.md)
+	* delimited data; tsv, csv
+	* xml
+	* json
 * log files
 * [PDF using pdf2txt.py](notes/pdf.md)
 * [HTML](notes/html.md)
-* xml
-* json
 * [Excel](notes/excel.md)
-* word
+* Word
 
 ## How the web works
 

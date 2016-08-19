@@ -1,5 +1,6 @@
-"Read Excel table from CSV file argument into list of lists"
+"Read Excel table from CSV file argument into a numpy array"
 import numpy as np
+
 import sys
 import csv
 
@@ -10,9 +11,6 @@ with open(table_file, "rb") as csvfile:
     for row in f:
         data.append(row)
 
-for row in data:
-    print row
-
-# my_data = np.genfromtxt(sys.argv[1], delimiter=',', skip_header=True)
-# print type(my_data)
-# print my_data
+data = np.array(data)
+print type(data)
+print data
