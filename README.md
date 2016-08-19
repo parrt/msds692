@@ -54,7 +54,7 @@ All projects are graded in binary fashion: They either work or they do not. Each
 * text; ascii, unicode
 * delimited data; tsv, csv
 * log files
-* PDF
+* [PDF using pdf2txt.py](notes/pdf.md)
 * HTML
 * xml
 * json
@@ -76,12 +76,12 @@ All projects are graded in binary fashion: They either work or they do not. Each
 ## Data sources
 
 * files
+* Pull data from REST API with urllib2; e.g., services of companies such as Zillow, Twitter, Facebook, Crunchbase, Google Maps, etc...
 * web pages
   * html
   * javascript
 * Use Selenium to extract data from JavaScript-based non-HTML web pages	
-* Pull data from REST API with urllib2; e.g., services of companies such as Zillow, Twitter, Facebook, Crunchbase, Google Maps, etc...
-* Excel
+* Web crawling
 
 ## Feature extraction
 
@@ -89,9 +89,10 @@ All projects are graded in binary fashion: They either work or they do not. Each
 * Unix commands for extracting web content: wget, grep, awk, cut, paste, join, sed
 * Use Apache Drill to extract data from flat files using SQL queries
 * Beautiful Soup
-* pdf2text
 * Process unstructured textual data into TFIDF features
+* k-means for compression, color selection
 
 ## Misc
 
 * Running shell commands from Python
+* JavaScript for heat maps
