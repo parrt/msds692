@@ -53,9 +53,9 @@ All projects are graded in binary fashion: They either work or they do not. Each
 
 * text; ascii, unicode
 * [Data pipeline project](https://github.com/parrt/msan692/blob/master/hw/pipeline.md)
-	* delimited data; tsv, csv
-	* XML (we'll load more complicated XML in [TFIDF project](https://github.com/parrt/msan692/blob/master/hw/tfidf.md)
-	* json
+	* reading delimited data; tsv, csv
+	*  reading/generating XML (we'll load complicated XML in [TFIDF project](https://github.com/parrt/msan692/blob/master/hw/tfidf.md))
+	* reading/generating json
 * [Parsing log files](notes/logs.md)
 * [PDF using pdf2txt.py](notes/pdf.md)
 * [HTML](notes/html.md)
