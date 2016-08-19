@@ -12,7 +12,6 @@ f = open(filename, "r")
 html = f.read()
 text = html2text(html)
 f.close()
-print text
 
 """
 If we tried to print now, we have an ASCII issue:
@@ -26,4 +25,4 @@ UnicodeEncodeError: 'ascii' codec can't encode character u'\x92' in position 918
 """
 
 text = text.encode('ascii', 'ignore')
-# print text
+print text

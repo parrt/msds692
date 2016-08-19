@@ -39,7 +39,7 @@ def html2text(html_text):
     return html_text
 ```
 
-## Non-ASCII characters
+## Stripping non-ASCII characters
 
 Our script will now read a file in HTML format and dump it to standard output. Unfortunately, UTF-8 rears its ugly head and we see the following error.
 
@@ -57,6 +57,28 @@ print text
 ```
 
 Which will strip out those non-ASCII characters. 
+
+Now, we get the right output:
+
+```bash
+$ python ipo-text.py ~/github/msan692/data/TeslaIPO.html
+ S-1
+ 1
+ ds1.htm
+ REGISTRATION STATEMENT ON FORM S-1
+ 
+ 
+ Registration Statement on Form S-1 
+ 
+ 
+ Table of Contents 
+ As filed with the Securities and Exchange Commission on January 29, 2010  
+ Registration No. 333-                 
+             UNITED STATES    SECURITIES AND EXCHANGE COMMISSION    Washington, D.C. 20549            FORM S-1  
+   REGISTRATION STATEMENT    UNDER    THE SECURITIES ACT OF 1933            Tesla Motors, Inc.    (Exact name of Registrant as
+specified in its charter)              
+...
+```
 
 ## Stripping non-ASCII characters
 
