@@ -12,7 +12,7 @@ If you use `cat` or `more` from the commandline, you will see some funny charact
 
 **Second issue**. You will also see a weird `<A8>` character, which is ASCII code 168 (or A8 in hexadecimal). It turns out it's weirder than you think and is actually a two-byte character `U+00AE` encoding the registered trademark symbol &#x00AE;.  From experience with these data formats, it means that Excel is saving things using a [UTF-8](https://en.wikipedia.org/wiki/UTF-8) text encoding. Encoding is essentially ASCII but anything above code 127 gets encoded with 2 bytes not 1. So, we also need to fix that by stripping those out. 
 
-We can accomplish that the first command in the following script and the second command flips carriage return and newlines:
+We can accomplish that the first [iconv](https://www.gnu.org/software/libiconv/) command in the following script and the second command flips carriage return and newlines:
 
 ```bash
 $ iconv -c -f utf-8 -t ascii ~/data/SampleSuperstoreSales.csv > /tmp/t.csv
