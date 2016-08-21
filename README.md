@@ -50,7 +50,7 @@ All projects are graded in binary fashion: They either work or they do not, even
 
 ## Data formats
 
-* text; ascii, unicode
+* [representing text in a computer](notes/text.md); see also [7-bit ascii codes](http://www.asciitable.com/), [unicode vs ascii in python](https://docs.python.org/2/howto/unicode.html)
 * [Data pipeline project](https://github.com/parrt/msan692/blob/master/hw/pipeline.md) (Converting stock history from Yahoo finance to various formats) (**project**)
 	* reading delimited data; tsv, csv
 	*  reading/generating XML (we'll load complicated XML in [TFIDF project](https://github.com/parrt/msan692/blob/master/hw/tfidf.md))
