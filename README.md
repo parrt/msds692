@@ -40,10 +40,9 @@ If you ever have questions about what constitutes plagiarism, cheating, or acade
 |[Building web servers](https://github.com/parrt/msan692/blob/master/hw/server.md)| 15%| Fri, Sep 16 midnight |
 |[TFIDF document summarization](https://github.com/parrt/msan692/blob/master/hw/tfidf.md)| 15%| Mon, Sep 26 before class|
 |[Group project](https://github.com/parrt/msan692/blob/master/hw/group.md)| 30%| Fri, Oct 14 midnight |
-|Exam 1| 10%| Monday, Sept 19 |
-|Exam 2| 15%| Wed, Oct 12 |
+|Exam| 25%| Wed, Oct 12 |
 
-All projects are graded in binary fashion: They either work or they do not. Each project has a hard deadline and only those projects working correctly before the deadline get credit (100%).  My grading script pulls from github at the deadline. If you miss the deadline, you can still get 80% for the project if you complete it correctly by end of last class period.
+All projects are graded in binary fashion: They either work or they do not, even if you just misspelled a function name. Each project has a hard deadline and only those projects working correctly before the deadline get credit (100%).  My grading script pulls from github at the deadline. If you miss the deadline, you can still get 80% for the project if you complete it correctly by end of last class period.
 
 **Grading standards**. I consider an **A** grade to be above and beyond what most students have achieved. A **B** grade is an average grade for a student or what you could call "competence" in a business setting. A **C** grade means that you either did not or could not put forth the effort to achieve competence. Below **C** implies you did very little work or had great difficulty with the class compared to other students.
 
@@ -96,7 +95,6 @@ All projects are graded in binary fashion: They either work or they do not. Each
 
 * regex
 * Unix commands for extracting web content: wget, grep, awk, cut, paste, join, sed
-* Use Apache Drill to extract data from flat files using SQL queries
 * k-means for compression, color selection
 * [TFIDF document summarization](https://github.com/parrt/msan692/blob/master/hw/tfidf.md) (**project**)
 
