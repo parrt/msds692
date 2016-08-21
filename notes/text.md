@@ -16,6 +16,7 @@ To represent Unicode we have to use 16-bit not 8-bit characters. Rats. Oh well, 
 
 So, regular Python string `"abc"` takes three bytes but if we represented as a Unicode string, it takes 3 x 2 bytes = 6 bytes.  We can verify this char size with the `getsizeof` function:
  ```python
+
 >>> from sys import getsizeof
 >>> getsizeof('')   # 37 bytes of overhead for a string object
 37
