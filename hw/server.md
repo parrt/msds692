@@ -16,6 +16,8 @@ where `userid` is the user name you used when creating an account at Python anyw
 
 Your server is like a proxy for Yahoo finance.
 
+You will work in git repo *userid*-web.
+
 ## Description
 
 ### Hello Flask

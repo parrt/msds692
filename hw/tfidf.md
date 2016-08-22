@@ -6,6 +6,8 @@ The goal of this homework is to learn a core technique used in text analysis cal
 
 As a practical matter, you will learn how to process some real XML files (Reuters articles) in Python.
 
+You will work in git repo *userid*-tfidf.
+
 ## Description
 
 ### Reading in Reuters' XML
