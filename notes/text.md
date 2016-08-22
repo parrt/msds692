@@ -84,7 +84,7 @@ Note `\xAB` notation still works in Unicode strings.
 
 ## Text file encoding
 
-*Now, let's make a distinction between strings and memory and text files stored on the disk.*
+*Now, let's make a distinction between strings in memory and text files stored on the disk.*
 
 Storing a regular Python string with eight bit characters and will file is straightforward. Every character in the string is written to the file as a byte. Compression algorithms can reduce that space requirement but, for an uncompressed format, it's very tight.
 
