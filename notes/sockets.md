@@ -1,0 +1,174 @@
+#  Network sockets
+
+## Goals
+
+A program running on a computer can access any of the files on the disk (with sufficient permissions), but  how does the program access data on a different computer? We do it all time with the web. A web browser shows a file that actually comes from a different computer.
+
+These notes explain enough about how networks and network communication work so that we can  successfully:
+
+* pull data from network sources
+* create web servers that provide data services
+
+**Q.** What exactly is the web?  What are the components?
+
+## From pipes to sockets
+
+Separate processes on the same computer may share data and synchronize via _pipes_.  For example,
+
+```bash
+$ ls | grep Aug
+```
+
+pipes the output of `ls` to the input of `grep` using the UNIX `pipe()` function that sets up a one-way data flow from one process to another.
+
+But, what about connecting processes on separate computers? Python provides access to OS _sockets_ that allow two or more processes on the same or different computers to send/receive data. The good news is that we can treat sockets just like files or any other stream of data from a programming perspective. Of course, we still have to keep in mind that it is across a slow link on a network versus in memory on the same machine. (Unless we are connected to a socket on the same machine.)
+
+## Background
+
+### IP
+
+First, we need to talk about the IP protocol, which is really the lowest level abstraction above the hardware (at leased from my point of view).  *Please distinguish IP protocol from ethernet, wireless, or any other physical networking mechanism.* This is a data protocol that sits on top of some physical network.
+
+IP is an addressing and fragmentation protocol.  It breaks all communications into _packets_, chunks of data up to 65536 bytes long.  Packets are individually _routed_ from source to destination.  IP is allowed to drop packets; i.e., it is an unreliable protocol.  There are no acknowledgements and no retransmissions.  There is no flow-control saying "you're sending data to fast!"
+
+One way to think of IP communication is by analogy to communications via a letter. You write the letter (this is the data you are sending); put the letter inside an envelope (the IP packet); address the envelope (using an IP address); put your return address on the envelope (your local IP address); and then you send the letter.  Like a real letter, you have no way of knowing whether an IP packet was received. If you send a second letter one day after the first, the second one may be received before the first. Or, the second one may never be received.
+
+### IP Addresses
+
+IP uses _IP addresses_ to define source/target.  IPs are 32 bit numbers represented as 4 8-bit numbers separated by periods.  When you try to visit `www.cnn.com` in your browser, the computer must first translate `www.cnn.com` to an IP address.  Then the browser can make a connection to the web server on the target machine identified by the IP address.  You can think of this as the "phone number" of a machine.  Special IPs:
+
+* Behind firewalls, people often use 192.168.x.y and use NAT (_network address translation_) in their firewall to translate an outside address (a real IP) to the special IPs behind the wall. In this case there is an external or public IP address and a private IP address. My `varmint.cs.usfca.edu` machine has public IP 138.202.170.154 but internal IP 10.10.10.51 or something like that.
+* 127.0.0.1 is "localhost"
+
+A good security feature to hide your machines from outside.  For example, all machines from within IBM's firewall probably look like the exact same IP address to the outside world (for example, in web server log files).  That is one reason you cannot use an IP address to identify "sessions" for a web server application.
+
+### DNS -- Domain Name Service
+
+DNS is a distributed database that maps domain names to IP addresses using a series of distributed DNS servers. Example query using UNIX tool:
+
+```bash
+$ nslookup www.usfca.edu
+Server:		208.67.222.222
+Address:	208.67.222.222#53
+
+Non-authoritative answer:
+Name:	www.usfca.edu
+Address: 69.90.186.72
+```
+
+It is distributed so there isn't a single point of failure. A single server would also get absolutely pounded by requests from the net and would be extremely expensive to maintain.
+
+If we didn't have DNS, we would all have to memorize a constantly shifting set of IP addresses.  This reminds me of the state of the world before smart phones where you had to remember people's phone numbers.
+
+### TCP
+
+TCP (_Transmission Control Protocol_) is another protocol, a reliable but slower one, sitting on top of IP.  Believe it or not it comes from the 1970s. TCP provides reliable, stream-oriented connections; can treat the connection like a stream/file rather than packets.  Packets are ordered into the proper sequence at the target machine via use of _sequence numbers_.  TCP automatically deals with lost packets before delivering a complete "file" to a recipient.  Control-flow prevents buffer overflows etc...
+
+TCP is like a phone connection versus the simple "fire and forget" letter stateless style of IP.  TCP sockets are open for the duration of a communication (i.e., until you close the connection).
+
+## What is a socket?
+
+If the IP address is like an office building main phone number, sockets are like the extension numbers for offices.  So the IP and socket, often called the port, uniquely identify an "office" (server process).  You will see unique identifiers like `192.168.2.100:80` where 80 is the port.  
+
+Just like in an office, it is possible no process is listening at a port.  That is, there is no server waiting for requests at that port.
+
+Ports run from 1..65535.  1..1024 require root privileges to use and ports 1..255 are reserved for common, publicly-defined server ports like:
+
+* 80: HTTP
+* 110: POP
+* 25: SMTP
+* 22: SSH
+
+Continuing the office analogy further, just because you can open a connection to a port doesn't mean you can speak the right language.  Processes at ports all speak a specific, predefined, agreed-upon protocol like HTTP. To effectively communicate you need to know both the address and the protocol.
+
+You can use `telnet` to connect to ports to manually speak the protocol.  The most successful and long-lived protocols are simple and text based.
+
+### Sending mail the hard way
+
+To send a piece of email, you need a mail client (even if it's telnet) that connects to an *SMTP* (Simple Mail Transfer Protocol by Jonathan B. Postel, 1982) and provides a packet of email with a target email address `user@domain.com`.
+
+When sending mail, you also must contact an SMTP server such as our outgoing mail server smtp.usfca.edu:
+
+```
+~/tmp $ telnet smtp.usfca.edu 25
+Trying 138.202.192.18...
+Connected to smtp.usfca.edu.
+Escape character is '^]'.
+220 smtp.usfca.edu ESMTP Postfix
+...
+```
+
+The protocol is just `HELO`, `MAIL FROM`, `RCPT TO`, `DATA`, then the email message text following by a `.` on a line by itself.
+
+```
+$ telnet smtp.usfca.edu 25
+Trying 138.202.192.18...
+Connected to smtp.usfca.edu.
+Escape character is '^]'.
+220 smtp.usfca.edu ESMTP Postfix
+HELO cs.usfca.edu   
+250 smtp.usfca.edu
+MAIL FROM: <parrt@cs.usfca.edu>
+250 Ok
+RCPT TO: <support@antlr.org>
+250 Ok
+DATA
+354 End data with <CR><LF>.<CR><LF>
+This is a test
+so nothing really
+.
+250 Ok: queued as 1A0C183F
+QUIT
+221 Bye
+Connection closed by foreign host.
+```
+
+## Sockets and Client/Server Programming
+
+You can use Python to communicate with remote processes using a client/server model. A server listens for connection requests from clients across the network or even from the same machine. Clients know how to connect to the server via an IP address and port number. Upon connection, the server reads the request sent by the client and responds appropriately. In this way, applications can be broken down into specific tasks that are accomplished in separate locations.
+
+The data that is sent back and forth over a socket can be anything you like in text or binary. Normally, the client sends a request for information or processing to the server, which performs a task or sends data back.
+
+The IP and port number of the server are generally well-known and advertised so the client knows where to find the service.
+
+### Creating a server program
+
+```python
+import socket
+
+# Create a serve socket
+serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+serversocket.bind(('127.0.0.1', 8000)) # wait at port 8000
+# Start listening for connections from client
+serversocket.listen(5) # 5 is number of clients that can queue up before failure
+
+# Wait for connection
+(clientsocket, address) = serversocket.accept()
+
+# Send a welcome
+clientsocket.send("hello\n")
+
+# Get up to 1000 bytes
+data = clientsocket.recv(1000)
+print data
+
+# Echo it back to client
+clientsocket.send(data)
+
+clientsocket.close()
+```
+
+### Creating a client program
+
+For our purposes, we can simply use `telnet` as our client program. When we need to communicate with a remote server as a client, it will always be a web server. In that case we get to use a much higher level library, `urllib2`, without worrying about these low-level details. To make this work, start up the server from the previous section and then do this from the commandline:
+
+```bash
+$ telnet 127.0.0.1 8000
+Trying 127.0.0.1...
+Connected to localhost.
+Escape character is '^]'.
+hello         <--- handshake hello message from server
+hi back atcha <--- what I type
+hi back atcha <--- echoed back from the server
+Connection closed by foreign host.
+```

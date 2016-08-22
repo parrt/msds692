@@ -39,8 +39,8 @@ If you ever have questions about what constitutes plagiarism, cheating, or acade
 |[Data pipeline](https://github.com/parrt/msan692/blob/master/hw/pipeline.md)| 15%| Mon, Sep 5 before class |
 |[Building web servers](https://github.com/parrt/msan692/blob/master/hw/server.md)| 15%| Fri, Sep 16 midnight |
 |[TFIDF document summarization](https://github.com/parrt/msan692/blob/master/hw/tfidf.md)| 15%| Mon, Sep 26 before class|
-|[Group project](https://github.com/parrt/msan692/blob/master/hw/group.md)| 30%| Fri, Oct 14 midnight |
-|Exam| 25%| Wed, Oct 12 |
+|[Group project](https://github.com/parrt/msan692/blob/master/hw/group.md)| 30%| Wed, Oct 12 midnight |
+|Exam| 25%| 10AM-12PM Fri, Oct 14 |
 
 All projects are graded in binary fashion: They either work or they do not, even if you just misspelled a function name. Each project has a hard deadline and only those projects working correctly before the deadline get credit (100%).  My grading script pulls from github at the deadline. If you miss the deadline, you can still get 80% for the project if you complete it correctly by end of last class period.
 
@@ -62,15 +62,9 @@ All projects are graded in binary fashion: They either work or they do not, even
 
 ## How the web works
 
-* networks
-* sockets
-* servers / clients
-* DNS
-* email
-* HTTP
-* logging in/out
-* URLs
-* browsers
+* [Network sockets, client/server architecture](notes/sockets.md), DNS, email
+* [HTTP](notes/http.md)
+* [Cookies](notes/cookies), logging in/out
 * [Building web servers](https://github.com/parrt/msan692/blob/master/hw/server.md) (**project**)
 
 ## Data sources
