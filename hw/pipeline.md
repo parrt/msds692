@@ -183,7 +183,7 @@ For the test file, the output should look like the following.
 </file>
 ```
 
-**For testing purposes, you must follow the order shown in that XML. The records must be in the order of the rows found in the CSV and the tag names/data must follow the columns found in the CSV.**
+**For evaluation purposes, you must follow the order shown in that XML. The records must be in the order of the rows found in the CSV and the order of the tag names must follow the columns found in the CSV.**
 
 From within the chrome browser, the real XML data from the AAPL history looks like this (although I may have added an XML viewer plug into the browser):
  
@@ -199,6 +199,8 @@ The program should read from standard input or from a filename parameter to the 
 $ python csv2xml.py < testdata.csv > /tmp/t.xml
 $ python csv2xml.py testdata.csv > /tmp/t.xml
 ```
+
+The header names could have spaces in them, which makes them not legal XML tag names.  Header names like `Adj Close` should be converted to use underscores: `Adj_Close` in the generated XML.
 
 ### Generating JSON
 
@@ -221,7 +223,7 @@ JSON, a format typically used for the transmission of JavaScript data objects, i
 }
 ```
 
-**For testing purposes, you must follow the order shown in that JSON. The records must be in the order of the rows found in the CSV and the key names/data must follow the columns found in the CSV.**
+**For evaluation purposes, you must follow the order shown in that JSON. The records must be in the order of the rows found in the CSV and the order of the key names/data must follow the columns found in the CSV.**
 
 In file `csv2json.py`, write a small script that reads in the CSV using `getdata()` and then prints out the data in JSON. It also must specifically use the keys I have above: `headers`, `data`. Note that the `when` key and the others within a record are not hardcoded: they depend on the headers from the CSV input.
 
@@ -246,7 +248,7 @@ There are a number of XML libraries for Python, but the simplest one to use is [
 xml = untangle.parse(xmltxt)
 ```
 
-At this point, we need to know about the actual structure of the XML before we can pull data out. The root of the structure is the `file` tag so `xml.file` will get us that node in the tree. From there, you need to iterate over the `record` elements underneath the `data` tag. Pull out the individual values by their name such as `Date`. Note that the order of the XML tags in an individual record is not specified and so it might be different than the order of the header names. Be careful how you fill in the CSV "table" for output.
+At this point, we need to know about the actual structure of the XML before we can pull data out. The root of the structure is the `file` tag so `xml.file` will get us that node in the tree. From there, you need to iterate over the `record` elements underneath the `data` tag. Pull out the individual values by their name such as `Date`.  Be careful how you fill in the CSV "table" for output: the order of the columns must be the order given in the headers tag.
 
 Notice that there are no spaces in the tag names but the `headers` tag includes the real header names like `Adj Close`. You will have to take this into consideration when looking for tags in the XML.
 
