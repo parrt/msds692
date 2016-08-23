@@ -301,15 +301,24 @@ $ diff /tmp/t.json /tmp/t2.json
 
 Each of the five translators will be tested automatically. Any programming errors or invalid output will result in a zero for that particular test. Each of the translators gets 20% of the score.  Note, however, that if your CSV `readcsv()` function doesn't work, your csv2*.py scripts will not work either so make sure you get that working correctly first.
 
-I provide a [test shell script](https://github.com/parrt/msan692/blob/master/hw/code/pipeline/testcsv.sh) that you can use to test your data format generation. It should not generate any output, indicating there is no difference between your output and the [stripped output](https://github.com/parrt/msan692/tree/master/hw/code/pipeline/stripped-output) I get.  Your project will be graded by running the following samples and likely some others:
+You will find some [sample input](https://github.com/parrt/msan692/blob/master/hw/code/pipeline/data) and [expected output](https://github.com/parrt/msan692/blob/master/hw/code/pipeline/data) in this course repository.
+
+I provide a [test shell script](https://github.com/parrt/msan692/blob/master/hw/code/pipeline/testdata.sh) that you can use to test your data format generation.  Your project will be graded by running the following samples and likely some others:
 
 ```bash
-$ ./testcsv.sh t.csv stripped-output
-$ ./testcsv.sh AAPL.csv stripped-output
-$ ./testxml.sh t.xml t.csv
-$ ./testjson.sh t.json t.csv
-$ ./testxml.sh AAPL.xml AAPL.csv
-$ ./testjson.sh AAPL.json AAPL.csv 
+$ ./testdata.sh data output
+Test AAPL
+   csv2html: output/AAPL.html and /tmp/AAPL.html same
+   csv2xml: output/AAPL.xml and /tmp/AAPL.xml same
+   csv2json: output/AAPL.json and /tmp/AAPL.json same
+   xml2csv: data/AAPL.csv and /tmp/AAPL.csv same
+   json2csv: data/AAPL.csv and /tmp/AAPL.csv same
+Test t
+   csv2html: output/t.html and /tmp/t.html same
+   csv2xml: output/t.xml and /tmp/t.xml same
+   csv2json: output/t.json and /tmp/t.json same
+   xml2csv: data/t.csv and /tmp/t.csv same
+   json2csv: data/t.csv and /tmp/t.csv same
 ```
 
 The `stripped-output` argument is the directory containing the correct (stripped) output for `html`, `xml`, and `json`. The output you should get from just running your programs is in [this directory](https://github.com/parrt/msan692/tree/master/hw/code/pipeline/output).
