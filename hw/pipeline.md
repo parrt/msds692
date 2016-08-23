@@ -313,12 +313,16 @@ Test AAPL
    csv2json: output/AAPL.json and /tmp/AAPL.json same
    xml2csv: data/AAPL.csv and /tmp/AAPL.csv same
    json2csv: data/AAPL.csv and /tmp/AAPL.csv same
+   xml2csv|csv2xml: output/AAPL.xml and /tmp/AAPL.xml same
+   json2csv|csv2json: output/AAPL.json and /tmp/AAPL.json same
 Test t
    csv2html: output/t.html and /tmp/t.html same
    csv2xml: output/t.xml and /tmp/t.xml same
    csv2json: output/t.json and /tmp/t.json same
    xml2csv: data/t.csv and /tmp/t.csv same
    json2csv: data/t.csv and /tmp/t.csv same
+   xml2csv|csv2xml: output/t.xml and /tmp/t.xml same
+   json2csv|csv2json: output/t.json and /tmp/t.json same
 ```
 
 The `stripped-output` argument is the directory containing the correct (stripped) output for `html`, `xml`, and `json`. The output you should get from just running your programs is in [this directory](https://github.com/parrt/msan692/tree/master/hw/code/pipeline/output).
