@@ -258,7 +258,7 @@ $ diff /tmp/t.xml /tmp/t2.xml
 
 ### Reading JSON data
 
-Parsing JSON is beyond the scope of this class, but we still need to know how to use libraries that read this JSON in. We're going to make a program called `xml2json.py` that reads in JSON and spits out CSV:
+Parsing JSON is beyond the scope of this class, but we still need to know how to use libraries that read this JSON in. We're going to make a program called `json2csv.py` that reads in JSON and spits out CSV:
  
 ```bash
 $ python json2csv.py < /tmp/t.json
