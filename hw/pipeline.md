@@ -215,7 +215,7 @@ JSON, a format typically used for the transmission of JavaScript data objects, i
     },
     {
       "when":"2016-08-13", "a":"3.99003", "b":"4.3"
-    },
+    }
   ]
 }
 ```
