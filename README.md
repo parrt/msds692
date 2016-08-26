@@ -80,7 +80,7 @@ All projects are graded in binary fashion: They either work or they do not, even
  * [yahoo finance stock history](notes/code/yahoo/history.py), [yahoo finance stock quote](notes/code/yahoo/quote.py)
  * [youtube](notes/code/youtube/search.py)
  * [zillow](notes/code/zillow/pull.py)
-* web pages
+* [web pages](notes/scraping.md)
   * html
   * javascript
 * Web crawling
