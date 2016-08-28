@@ -13,6 +13,6 @@ with open(table_file, "rb") as csvfile:
 for row in data:
     print row
 
-# my_data = np.genfromtxt(sys.argv[1], delimiter=',', skip_header=True)
-# print type(my_data)
-# print my_data
+data = np.array(data)
+print type(data)
+print data
