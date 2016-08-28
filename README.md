@@ -56,8 +56,8 @@ All projects are graded in binary fashion: They either work or they do not, even
 	*  reading/generating XML (we'll load complicated XML in [TFIDF project](https://github.com/parrt/msan692/blob/master/hw/tfidf.md))
 	* reading/generating json
 * [PDF using pdf2txt.py](notes/pdf.md) (Parsing documents from Eisenhower's presidential library)
-* [HTML](notes/html.md) (Parsing Tesla's IPO prospectus)
 * [Excel](notes/excel.md) (Saving as CSV, stripping non-ASCII stuff, loading into Python)
+* [HTML](notes/html.md) (Parsing Tesla's IPO prospectus)
 * [Parsing web access log files](notes/logs.md)
 
 ## How the web works
