@@ -2,7 +2,7 @@
 
 Data of interest that we want to process in Python often comes in the form of an Excel spreadsheet. kept the easiest way to get access to it is to export the data in CSV format.
 
-Let's get some data. Download [Sample Superstore Sales .xls file](https://community.tableau.com/docs/DOC-1236) or [my local copy](data/SampleSuperstoreSales.xls) and open it in Excel. Select `File>Save As...` menu option and then "Comma separated values (.csv)" from the `Format:` drop-down menu. Set the filename to `SampleSuperstoreSales.csv` or similiar. That will warn you that the data cannot be saved as CSV without losing some information. Don't worry about that because it's only formatting and not data information that you will lose. Say "Save Active Sheet". Then it will helpfully give you a second warning. Tell it to continue.
+Let's get some data. Download [Sample Superstore Sales .xls file](https://community.tableau.com/docs/DOC-1236) or [my local copy](../data/SampleSuperstoreSales.xls) and open it in Excel. Select `File>Save As...` menu option and then "Comma separated values (.csv)" from the `Format:` drop-down menu. Set the filename to `SampleSuperstoreSales.csv` or similiar. That will warn you that the data cannot be saved as CSV without losing some information. Don't worry about that because it's only formatting and not data information that you will lose. Say "Save Active Sheet". Then it will helpfully give you a second warning. Tell it to continue.
 
 If you use `cat` or `more` from the commandline, you will see some funny characters in the output and it will be all on one line:
 
@@ -77,4 +77,4 @@ print data
  ['7914' '56581' '2/8/09' ..., 'Medium Box' '0.65' '2/11/09']]
 ```
 
-**Exercise**: 
+**Exercise**: Using
