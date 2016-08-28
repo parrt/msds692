@@ -1,5 +1,7 @@
 import sys
 from bs4 import BeautifulSoup # needs: pip install beautifulsoup4
+from collections import defaultdict, Counter
+import re
 
 def html2text(html_text):
     html_text = html_text.replace('&nbsp;', ' ') # replace html space specifier with space char
@@ -25,4 +27,15 @@ UnicodeEncodeError: 'ascii' codec can't encode character u'\x92' in position 918
 """
 
 text = text.encode('ascii', 'ignore')
-print text
+# print text
+
+text = re.sub("[\\n ]+", ' ', text)
+words = text.strip().split(' ')
+print len(set(words)), "unique words"
+hist = defaultdict(int)
+for w in words:
+    hist[w] += 1
+
+print hist.items()
+
+print Counter(words)

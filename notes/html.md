@@ -80,6 +80,14 @@ specified in its charter)
 ...
 ```
 
+**Exercise**
+
+* Print out the number of unique words in the document. For Tesla's IPO, I get 12884 unique words.
+* Create a histogram using a dictionary that maps words to the word count. I use `defaultdict(int)` to define my histogram; very convenient. Print out the list of items and you will see things like `[('', 29449), ('considered,', 1), ('Leasehold', 2), ...`.
+* Get rid of the blank strings by collapsing spaces and new lines into a single space using: `re.sub("[\\n ]+", ' ', text)`. I then get: `[('considered,', 1), ('S-8', 1), ('S-1', 5), ...`.
+* Now, create the histogram the easy way using `Counter`. If you print that object, it will show you `Counter({'the': 6483, 'of': 5788, 'and': 4274, ...`.
+
+
 ## Stripping non-ASCII characters
 
 If there are characters within the file that are non-ASCII and larger than 255, the file will have a two byte character. Here's a simple version of the problem in `/tmp/foo.html`:
