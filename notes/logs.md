@@ -92,3 +92,22 @@ Now the output looks like much cleaner:
 ```
 
 Here is the [full source code](code/logs/load.py) for this example.
+
+**Exercise**:
+
+* Compute and dump a histogram of IP addresses, the first column.
+* Compute a histogram of the requested files from the `GET` string. Pull it using `split()` from strings like `GET / HTTP/1.1` and `GET /images/shim.gif`. What is the most requested "page"?
+* From the command line, try the following which also gives you a histogram of the IP addresses.
+
+```bash
+$ cut -d ' ' -f 1 access.log |sort |uniq -c |sort -r -n
+1122 80.58.4.237
+ 363 216.181.179.247
+ 149 130.239.30.142
+ 111 159.149.157.151
+ 110 207.245.217.212
+ 103 12.210.67.206
+  98 212.121.135.226
+  90 61.97.229.58
+...
+```
