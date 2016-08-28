@@ -77,4 +77,4 @@ print data
  ['7914' '56581' '2/8/09' ..., 'Medium Box' '0.65' '2/11/09']]
 ```
 
-**Exercise**: Using
+**Exercise**: Extract the quantity and unit price columns and multiply them together to get the sale value. My solution uses a list comprehension across the list of lists, one per column I need. Then I create a numpy array of those and simply multiply them with `*`.
