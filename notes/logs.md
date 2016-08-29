@@ -33,7 +33,7 @@ Instead we get three strings
 
 Ok, so we cannot treat this as a simple space separated file and need to do some parsing. 
 
-The easiest thing to do is probably use regular expressions to grab chunks of text that follow patterns of interest. The most important tool when using regular expressions is [pythex](http://pythex.org/) because it lets you visualize what portion of a string a regular expression matches. We will need three regular expressions, One to grab the IP address, such as `64.221.136.91`, one to grab the date field, such as `[02/Sep/2003:00:00:09 -0700]`, and one to grab the quoted strings. Here are the Python strings holding regular expressions that will get us what we want:
+The easiest thing to do is probably use regular expressions to grab chunks of text that follow patterns of interest. The most important tool when using regular expressions is [pythex](http://pythex.org/) or [regex101](https://regex101.com/https://regex101.com/) because they lets you visualize what portion of a string a regular expression matches. We will need three regular expressions, One to grab the IP address, such as `64.221.136.91`, one to grab the date field, such as `[02/Sep/2003:00:00:09 -0700]`, and one to grab the quoted strings. Here are the Python strings holding regular expressions that will get us what we want:
 
 * `'^.*? '` Match non-greedily anything up to and including a space char from the start of the string.
 * `'\\[.*?\\]'` Match anything in between square brackets; as a regular expression, that is actually just `\[.*\]` but we need to escape the escape character in Python.
