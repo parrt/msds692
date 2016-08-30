@@ -2,9 +2,9 @@
 
 ## Goals
 
-A program running on a computer can access any of the files on the disk (with sufficient permissions), but  how does the program access data on a different computer? We do it all time with the web. A web browser shows a file that actually comes from a different computer.
+A program running on a computer can access any of the files on the disk (with sufficient permissions), but how does the program access data on a different computer? We do it all time with the web. A web browser shows a file that actually comes from a different computer.
 
-These notes explain enough about how networks and network communication work so that we can  successfully:
+These notes explain the background we need to understand how networks and network communication work so that, later, we can successfully:
 
 * pull data from network sources
 * create web servers that provide data services
@@ -27,7 +27,7 @@ But, what about connecting processes on separate computers? Python provides acce
 
 ### IP
 
-First, we need to talk about the IP protocol, which is really the lowest level abstraction above the hardware (at leased from my point of view).  *Please distinguish IP protocol from ethernet, wireless, or any other physical networking mechanism.* This is a data protocol that sits on top of some physical network.
+First, we need to talk about the IP protocol, which is really the lowest level abstraction above the hardware (at least from my point of view).  *Please distinguish IP protocol from ethernet, wireless, or any other physical networking mechanism.* This is a data protocol that sits on top of some physical network.
 
 IP is an addressing and fragmentation protocol.  It breaks all communications into _packets_, chunks of data up to 65536 bytes long.  Packets are individually _routed_ from source to destination.  IP is allowed to drop packets; i.e., it is an unreliable protocol.  There are no acknowledgements and no retransmissions.  There is no flow-control saying "you're sending data to fast!"
 
@@ -40,7 +40,7 @@ IP uses _IP addresses_ to define source/target.  IPs are 32 bit numbers represen
 * Behind firewalls, people often use 192.168.x.y and use NAT (_network address translation_) in their firewall to translate an outside address (a real IP) to the special IPs behind the wall. In this case there is an external or public IP address and a private IP address. My `varmint.cs.usfca.edu` machine has public IP 138.202.170.154 but internal IP 10.10.10.51 or something like that.
 * 127.0.0.1 is "localhost"
 
-A good security feature to hide your machines from outside.  For example, all machines from within IBM's firewall probably look like the exact same IP address to the outside world (for example, in web server log files).  That is one reason you cannot use an IP address to identify "sessions" for a web server application.
+A good security feature is to hide your machines from outside.  For example, all machines from within IBM's firewall probably look like the exact same IP address to the outside world (for example, in web server log files).  That is one reason you cannot use an IP address to identify "sessions" for a web server application.
 
 ### DNS -- Domain Name Service
 
@@ -48,19 +48,21 @@ DNS is a distributed database that maps domain names to IP addresses using a ser
 
 ```bash
 $ nslookup www.usfca.edu
-Server:		208.67.222.222
-Address:	208.67.222.222#53
+Server:		138.202.170.254
+Address:	138.202.170.254#53
 
 Non-authoritative answer:
 Name:	www.usfca.edu
-Address: 69.90.186.72
+Address: 104.239.221.147
 ```
 
-It is distributed so there isn't a single point of failure. A single server would also get absolutely pounded by requests from the net and would be extremely expensive to maintain.
+**Exercise**: use `gethostbyname` from the Python `socket` package to look up `www.usfca.edu`'s IP address. The IP address should be the same you get from the commandline with `nslookup`.  Use `gethostname()` to determine your laptop's hostname. Confirm it's the same as what `hostname` from the commandline prints.
 
-If we didn't have DNS, we would all have to memorize a constantly shifting set of IP addresses.  This reminds me of the state of the world before smart phones where you had to remember people's phone numbers.
+DNS lookup is distributed so there isn't a single point of failure. A single server would also get absolutely pounded by requests from the net and would be extremely expensive to maintain. There are caches etc. that reduce the load on the DNS servers.
 
-### TCP
+If we didn't have DNS, we would all have to memorize a constantly shifting set of IP addresses.  This reminds me of the state of the world before smart phones where you had to remember lots of phone numbers.
+
+### TCP/IP
 
 TCP (_Transmission Control Protocol_) is another protocol, a reliable but slower one, sitting on top of IP.  Believe it or not it comes from the 1970s. TCP provides reliable, stream-oriented connections; can treat the connection like a stream/file rather than packets.  Packets are ordered into the proper sequence at the target machine via use of _sequence numbers_.  TCP automatically deals with lost packets before delivering a complete "file" to a recipient.  Control-flow prevents buffer overflows etc...
 
@@ -68,9 +70,7 @@ TCP is like a phone connection versus the simple "fire and forget" letter statel
 
 ## What is a socket?
 
-If the IP address is like an office building main phone number, sockets are like the extension numbers for offices.  So the IP and socket, often called the port, uniquely identify an "office" (server process).  You will see unique identifiers like `192.168.2.100:80` where 80 is the port.  
-
-Just like in an office, it is possible no process is listening at a port.  That is, there is no server waiting for requests at that port.
+If the IP address is like an office building's main phone number, sockets are like the extension numbers for offices.  So the IP and socket, often called the port, uniquely identify an "office" (server process).  You will see unique identifiers like `192.168.2.100:80` where 80 is the port.  We open sockets to these ports in order to communicate with servers.
 
 Ports run from 1..65535.  1..1024 require root privileges to use and ports 1..255 are reserved for common, publicly-defined server ports like:
 
@@ -79,9 +79,34 @@ Ports run from 1..65535.  1..1024 require root privileges to use and ports 1..25
 * 25: SMTP
 * 22: SSH
 
+You can use `telnet` to connect to ports to manually speak the protocol.  The most successful and long-lived protocols are simple and text based. For example, here is how I connect to port 80, the Web server, at the University:
+
+```bash
+$ telnet www.usfca.edu 80
+Trying 104.239.221.147...
+Connected to www.usfca.edu.
+Escape character is '^]'.
+```
+
+To escape/quit, use control-] and then `quit`.
+
+Just like in an office, it is possible no process is listening at a port.  That is, there is no server waiting for requests at that port.
+
+```bash
+$ telnet www.usfca.edu 81
+Trying 104.239.221.147...
+telnet: connect to address 104.239.221.147: Connection refused
+telnet: Unable to connect to remote host
+```
+
+**Exercise**: use the `telnet` program from the commandline to connect to the following ports:
+
+* www.usfca.edu:80
+* stargate.cs.usfca.edu:22
+
 Continuing the office analogy further, just because you can open a connection to a port doesn't mean you can speak the right language.  Processes at ports all speak a specific, predefined, agreed-upon protocol like HTTP. To effectively communicate you need to know both the address and the protocol.
 
-You can use `telnet` to connect to ports to manually speak the protocol.  The most successful and long-lived protocols are simple and text based.
+**Exercise**: Use `telnet` to open a socket to `www.usfca.edu:80` and type `hi` or some other text after connecting. The server should respond with `Client sent a bad request.`
 
 ### Sending mail the hard way
 
@@ -106,19 +131,23 @@ Trying 138.202.192.18...
 Connected to smtp.usfca.edu.
 Escape character is '^]'.
 220 smtp.usfca.edu ESMTP Postfix
-HELO cs.usfca.edu   
+HELO cs.usfca.edu                        <--
 250 smtp.usfca.edu
-MAIL FROM: <parrt@cs.usfca.edu>
+MAIL FROM: <parrt@cs.usfca.edu>          <--
 250 Ok
-RCPT TO: <support@antlr.org>
+RCPT TO: <support@antlr.org>             <--
 250 Ok
-DATA
+DATA                                     <--
 354 End data with <CR><LF>.<CR><LF>
-This is a test
-so nothing really
-.
+This is a test                           <--
+so nothing really                        <--
+.                                        <--
 250 Ok: queued as 1A0C183F
-QUIT
+QUIT                                     <--
 221 Bye
 Connection closed by foreign host.
 ```
+
+You have to type lines marked with `<--`.
+
+**Exercise**: Try to send mail to the person sitting next to you in class using the SMTP protocol and connecting to `smtp.usfca.edu:25`.
