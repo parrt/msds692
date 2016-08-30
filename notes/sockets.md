@@ -42,6 +42,8 @@ IP uses _IP addresses_ to define source/target.  IPs are 32 bit numbers represen
 
 A good security feature is to hide your machines from outside.  For example, all machines from within IBM's firewall probably look like the exact same IP address to the outside world (for example, in web server log files).  That is one reason you cannot use an IP address to identify "sessions" for a web server application.
 
+**Exercise**: Use package `socket` and `socket.gethostbyname(socket.gethostname())` to figure out what your IP address is. If this pops up with 127.0.0.1 ("localhost") then you will need to go to your laptop network configurationto find your IP address.
+
 ### DNS -- Domain Name Service
 
 DNS is a distributed database that maps domain names to IP addresses using a series of distributed DNS servers. Example query using UNIX tool:

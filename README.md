@@ -65,6 +65,7 @@ All projects are graded in binary fashion: They either work or they do not, even
 * [Network sockets](notes/sockets.md), DNS, email
 * [client/server architecture](notes/client-server.md)
 * [HTTP](notes/http.md)
+* [flask](notes/flask.md)
 * [Cookies](notes/cookies), logging in/out
 * [Building web servers](https://github.com/parrt/msan692/blob/master/hw/server.md) (**project**)
 

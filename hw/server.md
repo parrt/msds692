@@ -20,54 +20,6 @@ You will work in git repo *userid*-web.
 
 ## Description
 
-### Hello Flask
-
-To get the hang of Flask, let's use a basic hello world.  Put the following Python code into `hello.py`.
- 
-```python
-from flask import Flask
-app = Flask(__name__)
-
-@app.route("/")
-def hello():
-    return "Hello MSAN692!"
-
-app.run()
-```
-
-Run that from the commandline or from PyCharm.  You will see the following output at the beginning:
-
-```
-$ python hello.py
- * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
-```
-
-Now go to URL `http://127.0.0.1:5000` in your favorite browser (or click on that link if you are in PyCharm) and it should show text `Hello MSAN692!` in the browser.
-
-Now, alter the URL that your server listens to by making this change:
-
-```python
-@app.route("/hello")
-```
-
-If you go to URL `http://127.0.0.1:5000/hello`, you should get the same output we saw before. If you don't have `/hello`, you will get a "Not Found" error.
-
-We can also use part of the URL as kind of a parameter. Make the following change:
-
-```python
-@app.route("/hello/<name>")
-def hello(name):
-    return "Hello %s!" % name
-```
-
-Restart your server and then URL `http://127.0.0.1:5000/hello/parrt` should give output `Hello parrt!` in your browser. try it with different names after the `/hello/`.
-
-*If you get error "address in use" or something like that, that means that you have a previous version of the program running somewhere.*
-
-## Stock history server
- 
-Now that you have the basic Flask mechanism figured out, let's build a real server. 
-
 ###  A basic stock history table
 
 First, get the `readcsv` function from your previous project into your new file `server.py`:
@@ -106,7 +58,7 @@ Your main program for the `server.py` script looks like the following.
 ```python
 app = Flask(__name__)
 
-@app.route(...)
+@app.route(...) <-- fill this in too
 def history(ticker):
     """
     In response to url /history/ticker, get data from Yahoo finance on
@@ -121,15 +73,23 @@ Run your server then verify that when you go to URL `http://localhost:5000/histo
 
 ### POST and forms
 
-Now, at a new method and `route` for a landing page that answers to URL `/`. For the local host, that would look like: `http://127.0.0.1:5000/`. That method should serve a static file using `send_static_file()`. Please call that file `index.html`, which must be stored in a directory called `static` underneath your project directory.
+Now, add a new method and `route` for a landing page that answers to URL `/`. For the local host, that would look like: `http://127.0.0.1:5000/`. That method should serve a static file using `send_static_file()`. Please call that file `index.html`, which must be stored in a directory called `static` underneath your project directory.
 
-Create a form in `index.html` so that it looks like this:
+Create an html `form` in `index.html` so that it looks like this:
 
 <img src=figures/stock-form.png width=350>
 
-The target of the form submission should be URL `/history` and use POST not GET.  Then create a method and route to handle that URL. In response to a POST, the method should pull out the `ticker` form value and do the same functionality as your previous `history` function.
+The target of the form submission should be URL `/history` and **use POST not GET**. Then create a method and route to handle that URL:
 
-You can test this also from the commandline:
+```python
+@app.route(...) <-- fill this in
+def post_history():
+    ...
+```
+
+In response to a POST, the method should pull out the `ticker` form value and do the same functionality as your previous `history` function. You can search for [How to obtain values of request variables using Python and Flask](https://www.google.com/#q=How+to+obtain+values+of+request+variables+using+Python+and+Flask), to get some help.
+
+You can test this from the commandline:
 
 ```bash
 $ curl --data "ticker=TSLA" http://parrt.pythonanyw.com/history
@@ -183,4 +143,4 @@ Now go back into your web app configuration and tell it to reload. Then go back 
 
 ## Evaluation
 
-We will run your server locally and then use `wget` or `curl` from the commandline to pull data from your `server.py` at 127.0.0.1. We will also check that your website lives at `userid.pythonanywhere.com` and gives the same results.
+We will run your server locally and then use `wget` or `curl` from the commandline to pull data from your `server.py` at 127.0.0.1. We will also check that your website lives at `userid.pythonanywhere.com` and that it gives the same results.
