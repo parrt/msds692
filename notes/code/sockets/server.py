@@ -2,7 +2,9 @@ import socket
 
 # Create a serve socket
 serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-serversocket.bind(('127.0.0.1', 8000)) # wait at port 8000
+ip = socket.gethostbyname(socket.gethostname())
+print "server listening at "+ip+":8000"
+serversocket.bind((ip, 8000)) # wait at port 8000
 # Start listening for connections from client
 serversocket.listen(5) # 5 is number of clients that can queue up before failure
 
