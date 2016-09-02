@@ -3,7 +3,7 @@ from flask import request
 
 app = Flask(__name__)
 
-@app.route("/track")
+@app.route("/track.gif")
 def hello():
     page = request.args.get('page', default='')
     if len(page)>0:
