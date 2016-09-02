@@ -66,6 +66,7 @@ All projects are graded in binary fashion: They either work or they do not, even
 * [client/server architecture](notes/client-server.md)
 * [HTTP](notes/http.md)
 * [flask](notes/flask.md)
+* [Web analytics](notes/webanalytics.md)
 * [Cookies](notes/cookies), logging in/out
 * [Building web servers](https://github.com/parrt/msan692/blob/master/hw/server.md) (**project**)
 
