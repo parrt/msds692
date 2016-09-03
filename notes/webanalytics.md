@@ -74,7 +74,8 @@ Here's a simple [example](alertjs.html) that pops up a dialog box when you visit
   </script>
 </body>
 </html>
-``` 
+```
+
 Here's a web page that contains no HTML as static data. Instead a JavaScript program creates the HTML on-the-fly in the browser. I.e., no HTML body tags (other than the JavaScript) is sent from the server.
 
 ```html
