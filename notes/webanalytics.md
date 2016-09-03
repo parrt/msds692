@@ -64,6 +64,8 @@ Any page on the Internet that references this image would notify my antlr.org se
 
 Modern tracking mechanisms use more than simple `img` tags--they use JavaScript code. JavaScript is an object-oriented programming language (that has similar syntax to Java but is oh so very different in semantics) that executes within your browser. Unlike Python, which we can run from the commandline or from within the development environment, JavaScript is typically stored as part of an HTML page and sent from a server back to a browser. The browser displays the HTML page and executes the JavaScript code.
 
+**Exercise**. Try to get the following two simple JavaScript-based pages working in your browser. Play around with the JavaScript, such as changing the string in the `alert` function call.
+
 Here's a simple [example](alertjs.html) that pops up a dialog box when you visit the page but doesn't show anything in the page itself.
 
 ```html
@@ -154,4 +156,89 @@ def hello():
     return app.send_static_file('images/shim.gif')
 
 app.run()
+```
+
+Ok, in a nutshell, web tracking works when a website developer includes a bit of JavaScript code from a tracking company, such as Woopra. The snippet of code contacts the tracking company upon each page view in a browser. Website owners can then go to the dashboard at the tracking company and look at a summary.
+
+## Homebrew web analytics
+
+**Exercise**. Let's build our own web analytics server. We need a server that answers:
+
+* `http://127.0.0.1:5000/track.gif?page=...` Any page with an image reference to this URL will notify our server.
+* `http://127.0.0.1:5000/dashboard` If we go to this URL in a browser, we should see a histogram of the page views.
+
+(Our flask servers by default pop up at URL `http://127.0.0.1:5000`.)
+
+For the purposes of this exercise, you can use this [directory of files](https://github.com/parrt/msan692/tree/master/notes/code/webanalytics/static). Put `static` in the same directory as your Python code.  For example, the `static/index.html` file looks like:
+
+```html
+<html>
+<body>
+A fake home page with <a href="anotherpage.html">link to some other page</a>.
+
+<img src="http://127.0.0.1:5000/track.gif?page=index.html">
+</body>
+</html>
+```
+
+The `img` tag on the bottom will notify our server that somebody has accessed `index.html`.  Recall that the browser makes another socket connection to some remote server for each image tag.
+
+Here is a starter kit for your `server.py` file:
+
+```python
+from flask import Flask
+from flask import request
+
+app = Flask(__name__)
+
+@app.route("/track.gif")
+def track():
+    # get the 'page' request argument (google it)
+    page = ...
+    if len(page)>0:
+        print "Visit to page "+page
+    # return the result of calling app.send_static_file on 'images/shim.gif'
+
+app.run()
+```
+
+Once you think you have your server going, start it up and then have your browser open the local file `static/index.html`. You should see `Visit to page index.html` as output from the running server. Tried a few times and click on the link to `anotherpage.html`. You should see different output in the server console.
+
+Now, add a `dashboard` function to your server that is triggered when someone visits URL `http://127.0.0.1:5000/dashboard`.
+
+```
+@app.route("/dashboard")
+def dashboard():
+    ...
+```
+
+To keep track of the page views, use a `Counter` object that we used previously to keep track of a word histogram:
+
+```python
+pageviews = Counter()
+```
+
+You will have to modify `track()` so that it updates `pageviews`. The `dashboard()` function can then create and return an HTML table **string** that shows the histogram:
+
+<img src=figures/dashboard.png width=150>
+
+The HTML looks like:
+
+```html
+<table>
+<tr><th>Count</th><th>Page name</th></tr>
+<tr><td>3</td><td>index.html</td></tr>
+<tr><td>6</td><td>anotherpage.html</td></tr>
+</table>
+```
+
+If you want, you can `pip install html` and then use the `HTML` object to create the HTML table. For example, here is how I started creating my HTML page using the package:
+
+```python
+page = HTML()
+t = page.table()
+r = t.tr
+r.th("Count")
+r.th("Page name")
+...
 ```
