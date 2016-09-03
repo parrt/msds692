@@ -142,22 +142,6 @@ I also use Google analytics, which has different looking code but same mechanism
 
 The URL buried in there is the contact address: `www.google-analytics.com/analytics.js`. The JavaScript adds lots of parameters that get sent to the target URL. These identify the page name and lots of information about the browser, operating system, etc. of the user.
 
-```python
-from flask import Flask
-from flask import request
-
-app = Flask(__name__)
-
-@app.route("/track")
-def hello():
-    page = request.args.get('page', default='')
-    if len(page)>0:
-        print "Visit to page "+page
-    return app.send_static_file('images/shim.gif')
-
-app.run()
-```
-
 Ok, in a nutshell, web tracking works when a website developer includes a bit of JavaScript code from a tracking company, such as Woopra. The snippet of code contacts the tracking company upon each page view in a browser. Website owners can then go to the dashboard at the tracking company and look at a summary.
 
 ## Homebrew web analytics
