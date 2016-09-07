@@ -231,10 +231,4 @@ r.th("Page name")
 
 If you are a more advanced programmer, you can improve the functionality of the server by adding parameters to the tracking `img` tag that include the referring page automatically, instead of manually as it's done now. You can look up on the web how to get access to the page, the browser, the language, even the size of the user screen. All of this can be passed as arguments to the image reference. Your tracking function must then record this in addition to the page name. Your `Counter` object used previously, that tracked page name to count, is still useful but you should add another `Counter` for each parameter you pass, such as user agent (browser). Then you should modify your dashboard to include that information as well.
 
-Next, you can set the `SERVER_NAME` property so flask opens at your specific IP not 127.0.0.1:
-
-```python
-app.config['SERVER_NAME'] = ...
-```
-
-Then modify the HTML files so they reference your IP. Give them to another person and have them load the files in their browser. You should see their requests and your dashboard should reflect that.
+Next, you can set the `host` parameter on `run()` so flask opens at your specific IP not 127.0.0.1. Then modify the HTML files so they reference your IP. Give them to another person and have them load the files in their browser. You should see their requests and your dashboard should reflect that.
