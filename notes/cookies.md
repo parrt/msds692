@@ -72,6 +72,13 @@ connection=close
 cache-control=max-age=60, private
 ```
 
+<img src=figures/chrome-cookies.png width=300>
+
+<img src=figures/chrome-cookies2.png width=350>
+
+<img src=figures/chrome-devtools-cookies.png width=300>
+
+
 # How ad companies track you
 
 The browser will send cookies to the server even for images, not just webpages. Ad companies embed images in websites and therefore can send you a cookie that your browser dutifully stores. For example, here is the cookie ad traffic I got when I *opened an email* from `opentable.com`:
@@ -102,79 +109,34 @@ This technology is not all bad. Obviously, Google analytics requires a tiny litt
 
 # Accessing cookies in Python
 
+
 ## Set cookies
 
-To send cookie back to the browser from a Java servlet:
+To [Send cookies in flask](http://flask.pocoo.org/snippets/30/):
 
-1. set type of response to `text/html`
-1. create `Cookie` object
-1. `setMaxAge(interval-in-sec)` on cookie:
-  * positive=num secs to live
-  * negative = kill with browser
-  * 0 = kill now
-1. add cookie to `response`
-
-```java
-/** Set a cookie by name */
-public static void setCookieValue(HttpServletResponse response,
-								  String name,
-								  String value)
-{
-	// Set-Cookie:user=parrt;Path=/;Expires=Thu, 25-Dec-2014 20:13:16 GMT
-	Cookie c = new Cookie(name,value);
-	c.setMaxAge( 3 * 30 * 24 * 60 * 60 ); // 3 months
-	c.setPath( "/" );
-	response.addCookie( c );
-}
+```python
+@app.route('/set_cookie')
+def cookie_insertion():
+    redirect_to_index = redirect('/index')
+    response = current_app.make_response(redirect_to_index )  
+    response.set_cookie('cookie_name',value='values')
+    return response
 ```
 
 ## Fetch cookies
 
-The API provides only a method to get all cookies.  Have to search for
-correct one:
+[Flask cookie tutorial](http://www.tutorialspoint.com/flask/flask_cookies.htm)
 
-```java
-/** Find a cookie by name; return first found */
-public static Cookie getCookie(HttpServletRequest request, String name) {
-    Cookie[] allCookies;
-
-    if ( name==null ) {
-        throw new IllegalArgumentException("cookie name is null");
-    }
-
-    allCookies = request.getCookies();
-    if (allCookies != null) {
-        for (int i=0; i < allCookies.length; i++) {
-            Cookie candidate = allCookies[i];
-            if (name.equals(candidate.getName()) ) {
-                return candidate;
-            }
-        }
-    }
-    return null;
-}
+```python
+@app.route('/getcookie')
+def getcookie():
+   name = request.cookies.get('userID')
+   return '<h1>welcome '+name+'</h1>'
 ```
-
-
-```java
-response.setContentType("text/html");
-String user = request.getParameter("user");
-setCookieValue(response, "user", ...);
-```
-
-See [CookieServlet.java](https://raw.githubusercontent.com/parrt/cs601/master/lectures/code/cookies/CookieServlet.java).
-
-http://localhost:8080/cookies
-http://localhost:8080/cookies?user=tombu
 
 ## Kill cookie
 
-```java
-private void killCookie(HttpServletResponse response, String name) {
-    Cookie c = new Cookie(name,"false");
-    c.setMaxAge( 0 ); // An age of 0 is defined to mean "delete cookie"
-    c.setPath( "/" ); // for all subdirs
-    response.addCookie( c );
-}
-```
 
+```python
+resp.set_cookie(name, expires=0)
+```
