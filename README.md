@@ -67,7 +67,7 @@ All projects are graded in binary fashion: They either work or they do not, even
 * [HTTP](notes/http.md)
 * [flask](notes/flask.md)
 * [Web analytics](notes/webanalytics.md)
-* [Cookies](notes/cookies), logging in/out
+* [Cookies](notes/cookies.md), logging in/out
 * [Building web servers](https://github.com/parrt/msan692/blob/master/hw/server.md) (**project**)
 
 ## Data sources
