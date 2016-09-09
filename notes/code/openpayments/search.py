@@ -17,21 +17,3 @@ jsondata = response.read()              # read all data
 data = json.loads(jsondata)             # dictionary version
 
 print json.dumps(data, indent=4)
-
-# def spaces(n): return " " * n
-#
-# def nestedjson(data):
-#     indent = 0
-#     if isinstance(data, list):
-#         print spaces(indent)+"["
-#         indent += 4
-#         for it in items[1]:
-#             nestedjson
-#         print spaces(indent)+"]"
-#         nestedjson(items[1])
-#     if isinstance(data, dict):
-#         for items in data.items():
-#         else:
-#             print str(items[0]) + ":" + str(items[1])
-#
-# nestedjson(data)
