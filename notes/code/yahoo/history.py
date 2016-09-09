@@ -1,7 +1,7 @@
-HistoryURL = "http://ichart.finance.yahoo.com/table.csv?s=%s"
-
 import sys
 import urllib2
+
+HistoryURL = "http://ichart.finance.yahoo.com/table.csv?s=%s"
 
 ticker = sys.argv[1]  # AAPL
 response = urllib2.urlopen(HistoryURL % ticker)

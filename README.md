@@ -73,13 +73,15 @@ All projects are graded in binary fashion: They either work or they do not, even
 ## Data sources
 
 * files
-* Pull data from REST API with urllib2
- * [openpayments](notes/code/openpayments/search.py)
+* [Pulling data from (open) REST APIs](notes/openapi.md)
+ * yahoo
+ * openpayments.us
+ * IMDB movie data
+
+* APIs requiring authentication/identification
  * [facebook](notes/code/facebook/feed.py)
- * [imdb lookup](notes/code/imdb/lookup.py), [imdb search](notes/code/imdb/search.py)
  * [linkedin](notes/code/linkedin/test.py)
  * [trulia](notes/code/trulia/pull.py)
- * [yahoo finance stock history](notes/code/yahoo/history.py), [yahoo finance stock quote](notes/code/yahoo/quote.py)
  * [youtube](notes/code/youtube/search.py)
  * [zillow](notes/code/zillow/pull.py)
 * [web pages](notes/scraping.md)
