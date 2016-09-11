@@ -6,7 +6,7 @@ We have already seen how to use `urlib2` to fetch a webpage:
 webpage = urllib2.urlopen(URL).read()
 ```
 
-If the URL is to a page that gives you HTML, we would say that we are fetching a webpage. On the other hand, if the URL is returning data in some form, we say that we are accessing a *REST* api.
+If the URL is to a page that gives you HTML, we would say that we are fetching a webpage. On the other hand, if the URL is returning data in some form, we would say that we are accessing a *REST* api.
  
 *REST* is an acronym for REpresentational State Transfer and is a very handy way to make something trivial sound very complicated.  Anytime you see the word REST, just think "webpage that gives me data not HTML." There is a massive industry and giant following behind this term but I cannot see anything beyond "fetch data from webpage".
 
@@ -55,7 +55,9 @@ for row in csvdata.strip().split("\n"):
 QuoteURL = "http://finance.yahoo.com/d/quotes.csv?s=%s&f=%s"
 ```
 
-The data you get back is in CSV format. For stock ticker `TSLA`, you would see data:
+where `s` is the ticker name and `f` is the set of fields you want. Use `f=ab` for "bid, ask fields".
+
+The data you get back is in CSV format. For stock ticker `TSLA`, you would see two requested fields (close to these values):
 
 ```
 103.520,103.510
@@ -65,7 +67,7 @@ The data you get back is in CSV format. For stock ticker `TSLA`, you would see d
 
 Now, let's look at a website that will give us JSON data: [www.openpayments.us](http://www.openpayments.us).
  
-There is a data API available at URL template:
+There is a REST data API available at URL template:
 
 ```
 URL = "http://openpayments.us/data?query=%s"
@@ -94,9 +96,9 @@ Because `&` is the separator between parameters, it is also invalid in a paramet
 'john%26chan'
 ```
 
-The conversion uses the ASCII character code (in 2-digit hexadecimal) for space and ampersand.
+The conversion uses the ASCII character code (in 2-digit hexadecimal) for space and ampersand. Sometimes you will see the space converted to a `+`, which also works: `John+Chan`.
 
-This website gives you JSON, which is very easy to load and using the default `json` package:
+This website gives you JSON, which is very easy to load in using the default `json` package:
 
 ```python
 data = json.loads(jsondata)
@@ -106,6 +108,26 @@ Dump the JSON using `json.dumps()`.
 
 ## Pulling movie data from IMDB
 
-[imdb lookup](notes/code/imdb/lookup.py)
+Let's try to pull down some more interesting data using the [OMDb API](http://www.omdbapi.com/):
 
-[imdb search](notes/code/imdb/search.py)
+> The OMDb API is a free web service to obtain movie information, all content and images on the site are contributed and maintained by our users.
+
+Let's also learn a more convenient way to specify URL parameters (with a dictionary).
+
+```python
+URL = "http://www.omdbapi.com/?"
+
+query = {
+	's' : 'cats',
+	'r' : 'json'
+}
+
+# urlencode converts the dictionary to a list of x=y pairs
+query_url = URL + urllib.urlencode(query)
+```
+
+**Exercise**: Use this code as a starting point and extract data from the movie database. You can change the search string to anything you want. To print out the `query_url` so you can see how it encodes the dictionary as GET arguments on the URL.
+
+**Exercise**:  Write a small Python script using base URL `http://www.omdbapi.com` and parameters `t` (movie title) and `y` (movie year) to look up some of your favorite movies. The default output should come back in JSON. 
+
+Now, change your program so that it requests data back in XML format. Replace the json conversion code with code that [untangle](https://untangle.readthedocs.io/en/latest/)'s the XML to print out the title and the plot. All of the REST parameters are explained in the [API document](http://www.omdbapi.com/).  Recall that untangle let you refer to children of x with x.childname. Attributes of a specific node are stored in a dictionary so x's attributes are x['attributename']. You will have to look at the structure of the XML to figure out how to dig down into the tree.

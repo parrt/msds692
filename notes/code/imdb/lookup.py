@@ -7,6 +7,7 @@
 import urllib
 import urllib2
 import json
+import untangle
  
 URL = "http://www.omdbapi.com/?"
  
@@ -14,15 +15,20 @@ movie_title = "Star Wars"
 movie_year = "1977"
  
 query = {
-	'i' : '', 
 	't' : movie_title,
-	'y' : movie_year
+	'y' : movie_year,
+	'r' : 'xml'
 }
  
 query_url = URL + urllib.urlencode(query)
 response = urllib2.urlopen(query_url)
-jsondata = response.read()
+data = response.read()
 
-json_data = json.loads(jsondata)
- 
-print json.dumps(json_data, indent=4)
+if 'r' in query and query['r']=='xml':
+    print data
+    xml = untangle.parse(data)
+    print xml.root.movie['title']
+    print xml.root.movie['plot']
+else:
+    json_data = json.loads(data)
+    print json.dumps(json_data, indent=4)

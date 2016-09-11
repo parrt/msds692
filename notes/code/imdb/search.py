@@ -10,6 +10,7 @@ URL = "http://www.omdbapi.com/?"
 
 query = {
 	's' : 'cats',
+	'r' : 'json'
 }
 
 query_url = URL + urllib.urlencode(query)
