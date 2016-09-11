@@ -12,9 +12,9 @@ The cookie mechanism relies on a simple agreement between client and server. The
 
 A *cookie* is a named piece of data (string) associated with a specific website/URL that is saved by the browser and is sent back to that same server with every page request. The server can use that as a key to retrieve data associated with that user.
 
-Your browser keeps a dictionary of cookies for each server.  If you have 3 browsers, each would keep a separate dictionary. That's why logging in to Amazon with Chrome doesn't log you in if you switch to Firefox.
+Your browser keeps a dictionary of cookies for each server.  If you have 3 browsers, each would keep a separate dictionary. That's why logging in to Amazon with Chrome doesn't log you inWhen looking at the server in Firefox.
 
-If you erase your cookies for that domain, the server will no longer recognize you. Naturally, the server will try to send you cookies again. It is up to the browser to follow the agreement to keep sending cookies and to save data.
+If you erase your browser cookies for that domain, the server will no longer recognize you. Naturally, the server will try to send you cookies again. It is up to the browser to follow the agreement to keep sending cookies and to save data.
 
 Can I, as a server, ask for another server's cookies (such as amazon.com's)? No! Security breach! If another server can get my server's cookies, the other server/person can log in as me on my server. Heck, my cookies might even store credit card numbers (bad idea). It is up to the browser to enforce this policy. Naturally, it could send every cookie or even every document on your computer via headers to a server! In essence, we are trusting browser implementors.
 
@@ -22,7 +22,7 @@ A server can specify the lifetime of cookies in terms of seconds to live or that
 
 # Sample HTTP traffic with cookies
 
-My first request to `cnn.com` results in a cookie coming back from cnn:
+My first request to `nytimes.com` results in a cookie coming back from cnn:
 
 BROWSER SENDS:
 
@@ -34,7 +34,7 @@ accept=*/*
 
 ```
 
-HEADERS FROM REMOTE SERVER (sets cookie with name `CG` to `US:CA:San+Francisco`):
+HEADERS FROM REMOTE SERVER (sets cookie with name `RMID ` to `007f0102269d57d2fadd0006 `):
 
 ```
 HTTP/1.1 200 OK
@@ -51,7 +51,7 @@ X-Cache: hit
 X-PageType: homepage
 nnCoection: close
 X-Frame-Options: DENY
-Set-Cookie: RMID=007f0102269d57d2fadd0006;Path=/; <--------------- COOKIE!Domain=.nytimes.com;Expires=Sat, 09 Sep 2017 18:09:32 UTC
+Set-Cookie: RMID=007f0102269d57d2fadd0006;Path=/; <--------------- COOKIE!Domain=nytimes.com;Expires=Sat, 09 Sep 2017 18:09:32 UTC
 
 ```
 
@@ -60,9 +60,9 @@ In the second HTTP request, we see that my browser is sending the cookie back to
 BROWSER SENDS (sends cookie back to the server):
 
 ```
-GET www.amazon.com/robots.txt HTTP/1.1
-cookie=CG=RMID=007f0102269d57d2fadd0006           <--------------- COOKIE!
-host=www.cnn.com
+GET robots.txt HTTP/1.1
+Host: www.cnn.com
+cookie=RMID=007f0102269d57d2fadd0006           <--------------- COOKIE!
 connection=Close
 accept=*/*
 
@@ -77,10 +77,16 @@ accept=*/*
 
 The browser will send cookies to remote servers even for images, not just webpages. Ad companies embed images in websites and therefore can send you a cookie that your browser dutifully stores. For example, here is the cookie ad traffic for realmedia.com that I got when I *opened an email* from `opentable.com`:
 
+BROWSER:
+
 ```
-BROWSER: GET http://oascnx18015.247realmedia.com/RealMedia/ads/adstream_nx.ads/www.opentable.opt/email-reminder/m-4/4234234@x26 HTTP/1.1
+GET http://oascnx18015.247realmedia.com/RealMedia/ads/adstream_nx.ads/www.opentable.opt/email-reminder/m-4/4234234@x26 HTTP/1.1
 ...
+```
+
 REMOTE SERVER HEADERS:
+
+```
 	set-cookie=NSC_d18efmoy_qppm_iuuq=ffffffff09499e4a423660;path=/;httponly
 	cache-control=no-cache,no-store,private
 	pragma=no-cache
@@ -142,7 +148,7 @@ Try doing the same thing in the browser using the developer tools to see the coo
  
 ## Fetch cookies
 
-Once a server has sent cookies to a browser, the browser will send those back to the server upon each request. In order to get those cookies, the flask "view" function can simply pull them out from the dictionary. Very handy.
+Once a server has sent cookies to a browser, the browser will send those back to the server upon each request. In order to get those cookies, the flask "view" function can simply pull them out from the dictionary sent to the server by the browser. Very handy.
 
 [Flask cookie tutorial](http://www.tutorialspoint.com/flask/flask_cookies.htm)
 
@@ -153,14 +159,16 @@ def getcookie():
    return '<h1>Welcome ID '+name+'</h1>'
 ```
 
-**Exercise**: Upgrade the server from the previous section that set cookies to include this code to fetch the cookie. Now go to the browser in the following sequence to set and get cookies:
+Please make the distinction in your head between GET URL parameters and cookies. GET parameters come in to the server as `?x=y` on the URL itself whereas cookies come in as part of the GET headers, not the URL.
+
+**Exercise**: Upgrade the server from the previous section that sets cookies to include this code to fetch the cookie. Now open pages in the browser in the following sequence to set and get cookies:
 
 ```
 http://127.0.0.1:5000/setcookie
 http://127.0.0.1:5000/getcookie
 ```
 
-You should see `Welcome ID 212392932` in the browser. The key thing to note here is that there is no visible setting and getting of cookies in the URL or the displayed page. The displayed page magically knows the ID.
+You should see `Welcome ID 212392932` in the browser. The key thing to note here is that there is no visible setting and getting of cookies in the URL or the displayed page. The displayed page magically knows the ID Because the cookies go back and forth as headers of the protocol, not the URL.
 
 ## Kill cookie
 
@@ -172,9 +180,9 @@ response.set_cookie(name, expires=0)
 
 ## Redirecting the browser
 
-It's very common for a server to redirect the browser. The user goes to a specific page in their browser, but the server can send a response back to the browser that forces it to flip to a different page.
+It's very common for a server to redirect the browser. The user goes to a specific page in their browser, but the server can send a response back to the browser that forces it to flip to a different page. (This is like giving a forwarding address to your mailman. Any mail gets redirected to the address you specified.)
 
-**Exercise**: Using the following code, create a flask server that redirects `/` to `/homepage`:
+**Exercise**: Using the following code, create a flask server that redirects URL `/` to `/homepage`:
  
 ```python
 @app.route('/')
@@ -193,7 +201,7 @@ Go to the browser at http://127.0.0.1:5000/ and you will see the server get to r
 127.0.0.1 - - [09/Sep/2016 11:52:08] "GET /homepage HTTP/1.1" 200 -
 ```
 
-Your browser should show "Home page" in big letters.
+Your browser should show "Home page" in big letters and have URL `/homepage` in the URL text field.
 
 ## A login/logout server
 
@@ -239,6 +247,8 @@ passwords = {"parrt":"foo", "maryk":"bar"}
 
 You can add whatever users you want there.
 
+Here's the outline of your function that you should fill in:
+
 ```python
 @app.route("/login")
 def login():
@@ -265,7 +275,7 @@ If you restart your server and turn on the developer tools then go to `http://12
 
 Now, right-click on the cookie and tell it to delete. Refresh the browser, and it should then show you're not logged in on the homepage.
 
-Finally, we need a way to log you out more gracefully than having to manually delete cookies.
+Finally, we need a way to log you out more gracefully than having to manually delete cookies. Fill in and add the following function to your server.
 
 ```python
 @app.route("/logout")
