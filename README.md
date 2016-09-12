@@ -62,12 +62,12 @@ All projects are graded in binary fashion: They either work or they do not, even
 
 ## How the web works
 
-* [Network sockets](notes/sockets.md), DNS, email
-* [client/server architecture](notes/client-server.md)
-* [HTTP](notes/http.md)
-* [flask](notes/flask.md)
-* [Web analytics](notes/webanalytics.md)
-* [Cookies](notes/cookies.md), logging in/out
+* [Network sockets](https://github.com/parrt/msan692/blob/master/notes/sockets.md), DNS, email
+* [client/server architecture](https://github.com/parrt/msan692/blob/master/notes/client-server.md)
+* [HTTP](https://github.com/parrt/msan692/blob/master/notes/http.md)
+* [flask](https://github.com/parrt/msan692/blob/master/notes/flask.md)
+* [Web analytics](https://github.com/parrt/msan692/blob/master/notes/webanalytics.md)
+* [Cookies](https://github.com/parrt/msan692/blob/master/notes/cookies.md), logging in/out
 * [Building web servers](https://github.com/parrt/msan692/blob/master/hw/server.md) (**project**)
 
 ## Data sources
