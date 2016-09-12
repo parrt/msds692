@@ -280,7 +280,7 @@ Finally, we need a way to log you out more gracefully than having to manually de
 ```python
 @app.route("/logout")
 def logout():
-    # delete 'ID' cookie and redirect to '//
+    # delete 'ID' cookie and redirect to '/'
     response = ...
     response.set_cookie(...)
     return response
