@@ -34,7 +34,7 @@ def readcsv(data):
     ... same code from a previous project ...
 ```
 
-You also need a function that uses `urllib` (not `urllib2` because that does not work at Python anywhere apparently) to fetch stock history from Yahoo finance:
+You also need a function that uses `urllib` (not `urllib2` because that does not work at Python anywhere apparently; or at least you have to login via bash console and install) to fetch stock history from Yahoo finance:
 
 ```python
 def gethistory(ticker):
@@ -92,7 +92,7 @@ In response to a POST, the method should pull out the `ticker` form value and do
 You can test this from the commandline:
 
 ```bash
-$ curl --data "ticker=TSLA" http://parrt.pythonanyw.com/history
+$ curl --data "ticker=TSLA" http://parrt.pythonanywhere.com/history
     <html>
     <body>
     <table>
