@@ -89,7 +89,7 @@ def post_history():
 
 In response to a POST, the method should pull out the `ticker` form value and do the same functionality as your previous `history` function. You can search for [How to obtain values of request variables using Python and Flask](https://www.google.com/#q=How+to+obtain+values+of+request+variables+using+Python+and+Flask), to get some help.
 
-You can test this from the commandline:
+You can test POST from the commandline with `curl` and `--data` option:
 
 ```bash
 $ curl --data "ticker=TSLA" http://parrt.pythonanywhere.com/history
@@ -144,3 +144,19 @@ Now go back into your web app configuration and tell it to reload. Then go back 
 ## Evaluation
 
 We will run your server locally and then use `wget` or `curl` from the commandline to pull data from your `server.py` at 127.0.0.1. We will also check that your website lives at `userid.pythonanywhere.com` and that it gives the same results.
+
+For convenience, here is a [testing script](https://github.com/parrt/msan692/blob/master/hw/code/web/testserver.sh) and output:
+
+```bash
+$ ./testserver.sh output
+Testing TSLA
+output/TSLA.html and /tmp/TSLA.html same
+output/TSLA.html and /tmp/post-TSLA.html same
+output/TSLA.json and /tmp/TSLA.json same
+Testing VBK
+output/VBK.html and /tmp/VBK.html same
+output/VBK.html and /tmp/post-VBK.html same
+output/VBK.json and /tmp/VBK.json same
+```
+
+Note that the [sample html/json output](https://github.com/parrt/msan692/tree/master/hw/code/web/output) will differ from fresh fetches as stock data gets updated everyday. I will test with fresh data.
