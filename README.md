@@ -50,15 +50,15 @@ All projects are graded in binary fashion: They either work or they do not, even
 
 ## Data formats
 
-* [representing text in a computer](notes/text.md); see also [7-bit ascii codes](http://www.asciitable.com/), [unicode vs ascii in python](https://docs.python.org/2/howto/unicode.html)
+* [representing text in a computer](https://github.com/parrt/msan692/blob/master/notes/text.md); see also [7-bit ascii codes](http://www.asciitable.com/), [unicode vs ascii in python](https://docs.python.org/2/howto/unicode.html)
 * [Data pipeline project](https://github.com/parrt/msan692/blob/master/hw/pipeline.md) (Converting stock history from Yahoo finance to various formats) (**project**)
 	* reading delimited data; tsv, csv
 	*  reading/generating XML (we'll load complicated XML in [TFIDF project](https://github.com/parrt/msan692/blob/master/hw/tfidf.md))
 	* reading/generating json
-* [PDF using pdf2txt.py](notes/pdf.md) (Parsing documents from Eisenhower's presidential library)
-* [Excel](notes/excel.md) (Saving as CSV, stripping non-ASCII stuff, loading into Python)
-* [HTML](notes/html.md) (Parsing Tesla's IPO prospectus)
-* [Parsing web access log files](notes/logs.md)
+* [PDF using pdf2txt.py](https://github.com/parrt/msan692/blob/master/notes/pdf.md) (Parsing documents from Eisenhower's presidential library)
+* [Excel](https://github.com/parrt/msan692/blob/master/notes/excel.md) (Saving as CSV, stripping non-ASCII stuff, loading into Python)
+* [HTML](https://github.com/parrt/msan692/blob/master/notes/html.md) (Parsing Tesla's IPO prospectus)
+* [Parsing web access log files](https://github.com/parrt/msan692/blob/master/notes/logs.md)
 
 ## How the web works
 
@@ -73,7 +73,7 @@ All projects are graded in binary fashion: They either work or they do not, even
 ## Data sources
 
 * files
-* [Pulling data from (open) REST APIs](notes/openapi.md)
+* [Pulling data from (open) REST APIs](https://github.com/parrt/msan692/blob/master/notes/openapi.md)
  * yahoo
  * openpayments.us
  * IMDB movie data
