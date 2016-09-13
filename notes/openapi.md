@@ -131,3 +131,111 @@ query_url = URL + urllib.urlencode(query)
 **Exercise**:  Write a small Python script using base URL `http://www.omdbapi.com` and parameters `t` (movie title) and `y` (movie year) to look up some of your favorite movies. The default output should come back in JSON. 
 
 Now, change your program so that it requests data back in XML format. Replace the json conversion code with code that [untangle](https://untangle.readthedocs.io/en/latest/)'s the XML to print out the title and the plot. All of the REST parameters are explained in the [API document](http://www.omdbapi.com/).  Recall that untangle let you refer to children of x with x.childname. Attributes of a specific node are stored in a dictionary so x's attributes are x['attributename']. You will have to look at the structure of the XML to figure out how to dig down into the tree.
+
+## CURLing for it
+
+Now that we've done at the hard way in Python, let's repeat the exercises from above using one-liners on the shell. The `curl` program is your friend and can do all sorts of amazing things. Here are the 4 GETs using curl:
+
+```bash
+curl "http://ichart.finance.yahoo.com/table.csv?s=TSLA"
+curl "http://openpayments.us/data?query=John+Chan"
+curl "http://www.omdbapi.com/?s=cats&r=json"
+curl "http://www.omdbapi.com/?t=Star+Wars"
+```
+
+curl writes the output to standard out so you can redirect into a file.
+
+Next, let's look at how we might process JSON using the command line. 1st, install [jq](https://stedolan.github.io/jq/):
+
+```bash
+$ brew install jq
+```
+
+```bash
+$ curl -s "http://www.omdbapi.com/?s=cats" | jq
+{
+  "Search": [
+    {
+      "Title": "Cats & Dogs",
+      "Year": "2001",
+      "imdbID": "tt0239395",
+      "Type": "movie",
+      "Poster": "http://ia.media-imdb.com/images/M/MV5BMjExMjIwNzE4OV5BMl5BanBnXkFtZTYwNTY0MDI5._V1_SX300.jpg"
+    },
+...
+```
+
+Given that output, let's use `jq` to extract the list of IDs:
+
+```bash
+$ curl -s "http://www.omdbapi.com/?s=cats" | jq '.Search[].imdbID'
+"tt0239395"
+"tt0117979"
+"tt1287468"
+"tt1426378"
+"tt0118829"
+"tt1223236"
+"tt0465315"
+"tt0217990"
+"tt2345459"
+"tt0285371"
+```
+
+We can get rid of those pesky quotes with `tr`:
+ 
+```bash
+curl -s "http://www.omdbapi.com/?s=cats" | jq '.Search[].imdbID' | tr -d '"'
+tt0239395
+tt0117979
+tt1287468
+tt1426378
+tt0118829
+tt1223236
+tt0465315
+tt0217990
+tt2345459
+tt0285371
+```
+
+Why would I want to do that? so I can use a for loop in the shell to go fetch all of those. First, let's get those into a variable:
+
+```bash
+$ ids=$(curl -s "http://www.omdbapi.com/?s=cats" | jq '.Search[].imdbID' | tr -d '"')
+```
+
+Then we can loop over these IDs to individually get their records and write them to files:
+
+```bash
+$ for id in $ids
+do
+	curl -s "http://www.omdbapi.com/?i=$id" > /tmp/$id.json
+done
+```
+
+That writes out a bunch of files, which we can look at again with `jq` four nice formatting:
+
+```bash
+$ jq < /tmp/tt0117979.json 
+{
+  "Title": "The Truth About Cats & Dogs",
+  "Year": "1996",
+  "Rated": "PG-13",
+  "Released": "26 Apr 1996",
+  "Runtime": "97 min",
+  "Genre": "Comedy, Romance",
+  "Director": "Michael Lehmann",
+  "Writer": "Audrey Wells",
+  "Actors": "Uma Thurman, Janeane Garofalo, Ben Chaplin, Jamie Foxx",
+  "Plot": "A successful veternarian & radio show host with low self-esteem asks her model friend to impersonate her when a handsome man wants to see her.",
+  "Language": "English",
+  "Country": "USA",
+  "Awards": "1 nomination.",
+  "Poster": "http://ia.media-imdb.com/images/M/MV5BMTYxNjIyMjkxNl5BMl5BanBnXkFtZTYwMDAzOTg4._V1_SX300.jpg",
+  "Metascore": "64",
+  "imdbRating": "6.3",
+  "imdbVotes": "22,358",
+  "imdbID": "tt0117979",
+  "Type": "movie",
+  "Response": "True"
+}
+```
