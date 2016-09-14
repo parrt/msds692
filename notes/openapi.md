@@ -89,7 +89,6 @@ Because `&` is the separator between parameters, it is also invalid in a paramet
 
 ```python
 >>> import urllib
->>> query = urllib.quote("name=john chan")
 >>> urllib.quote("john chan")
 'john%20chan'
 >>> urllib.quote("john&chan")
