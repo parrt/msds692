@@ -77,13 +77,11 @@ All projects are graded in binary fashion: They either work or they do not, even
  * yahoo
  * openpayments.us
  * IMDB movie data
-
-* APIs requiring authentication/identification
- * [facebook](notes/code/facebook/feed.py)
- * [linkedin](notes/code/linkedin/test.py)
- * [trulia](notes/code/trulia/pull.py)
- * [youtube](notes/code/youtube/search.py)
- * [zillow](notes/code/zillow/pull.py)
+* Pull data from sites requiring an ID
+ * [Zillow](https://github.com/parrt/msan692/blob/master/notes/zillow.md)
+ * [Youtube](https://github.com/parrt/msan692/blob/master/notes/youtube.md)
+* [APIs requiring authentication/identification](https://github.com/parrt/msan692/blob/master/notes/authapi.md)
+ * [Facebook](https://github.com/parrt/msan692/blob/master/notes/facebook.md)
 * [web pages](notes/scraping.md)
   * html
   * javascript
