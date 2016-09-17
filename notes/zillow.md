@@ -1,112 +1,162 @@
-# REGISTER: https://www.zillow.com/user/Register.htm
-# API REGISTER: https://www.zillow.com/webservice/Registration.htm
-# API DOC: http://www.zillow.com/howto/api/APIOverview.htm
+# Zillow
 
-# Run with args: yourzipid "190 7th St APT 4" "San Francisco, CA"
+Most sites nowadays require you to register in order to access their data spigot, but some of them don't require authentication. You just need to have your secret ID in order to communicate with them. Zillow is such a site and is straightforward to pull data from, so it is how we will start with the more complicated APIs.
+
+In order to pull data from the real estate website [Zillow](http://www.zillow.com), you must:
+
+1. [Create an account](https://www.zillow.com/user/Register.htm)
+2. [Get a ZWSID (Zillow web services ID)](https://www.zillow.com/webservice/Registration.htm)
+
+(*Warning, I'm having trouble with their website redirecting me back to the homepage instead of navigating around or even letting me login. ugh*)
+
+You are limited to 1000 queries per day per API; be careful not to put a request in a loop and then let it run like crazy.
+
+Familiarize yourself with the [API](http://www.zillow.com/howto/api/APIOverview.htm). We are going to use a number of different base URLs to pull some data.
+
+## First contact
+
+To verify that we can communicate with the Zillow server, let's look up a specific property by ID (in file `zestimate.py`) using the [GetZestimate](http://www.zillow.com/howto/api/GetZestimate.htm) API. The URL is of the form
+
+```python
+QuoteURL = "http://www.zillow.com/webservice/GetZestimate.htm?zws-id=%s&zpid=%s"
+```
+
+You have to pass your ID and the property ID.
+
+**Exercise**: Enter the following code to verify that you can access their API.
+
+```python
 import sys
 import untangle
 import urllib2
-import urllib
 
-KEY=sys.argv[1]
-addr=urllib.quote(sys.argv[2])
-citystatezip=urllib.quote(sys.argv[3])
+KEY = sys.argv[1]  # your zillow api key/id as argument to script
 
-# Find a house
-SearchURL=\
-    "http://www.zillow.com/webservice/GetSearchResults.htm?zws-id=%s&address=%s&citystatezip=%s"
-
-URL = SearchURL % (KEY, addr, citystatezip)
-response = urllib2.urlopen(URL)
-xmldata = response.read()
-#print xmldata
-
-testxml = """<?xml version="1.0" encoding="utf-8"?>
-<SearchResults:searchresults xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SearchResults="http://www.zillow.com/static/xsd/SearchResults.xsd" xsi:schemaLocation="http://www.zillow.com/static/xsd/SearchResults.xsd http://www.zillowstatic.com/vstatic/7b56836/static/xsd/SearchResults.xsd">
-    <request>
-    <address>690 S Van Ness Ave</address>
-    <citystatezip>San Francisco, CA</citystatezip>
-    </request>
-    <message>
-    <text>Request successfully processed</text>
-    <code>0</code>
-    </message>
-    <response>
-        <results>
-            <result>
-                <zpid>96040316</zpid>
-"""
-
-xml = untangle.parse(xmldata)
-zpid = xml.SearchResults_searchresults.response.results.result.zpid.cdata
-
-# Find out how much it's worth
-
-QuoteURL =\
-    "http://www.zillow.com/webservice/GetZestimate.htm?zws-id=%s&zpid=%s"
+# Find out how much property 64969892 is worth
+zpid = '64969892'
+QuoteURL = "http://www.zillow.com/webservice/GetZestimate.htm?zws-id=%s&zpid=%s"
 URL = QuoteURL % (KEY, zpid)
 response = urllib2.urlopen(URL)
-xmldata = response.read()              # read all data
-#print xmldata
+xmldata = response.read()  # read all data
+print xmldata
+```
 
-testxml = """<?xml version="1.0" encoding="utf-8"?>
-<Zestimate:zestimate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Zestimate="http://www.zillow.com/static/xsd/Zestimate.xsd" xsi:schemaLocation="http://www.zillow.com/static/xsd/Zestimate.xsd http://www.zillowstatic.com/vstatic/7b56836/static/xsd/Zestimate.xsd">
-<response>
-    <zpid>48749425</zpid>
+That will give us XML data back that looks like:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<Zestimate:zestimate ...>
+  ...
+  <message>
+    <text>Request successfully processed</text>
+    <code>0</code>
+  </message>
+  <response>
+    <zpid>64969892</zpid>
     <links>
-        <homedetails>
-        http://www.zillow.com/homedetails/2114-Bigelow-Ave-N-Seattle-WA-98109/48749425_zpid/
-        </homedetails>
-        <graphsanddata>
-        http://www.zillow.com/homedetails/2114-Bigelow-Ave-N-Seattle-WA-98109/48749425_zpid/#charts-and-data
-        </graphsanddata>
-        <mapthishome>http://www.zillow.com/homes/48749425_zpid/</mapthishome>
-        <comparables>http://www.zillow.com/homes/comps/48749425_zpid/</comparables>
+      ...
     </links>
     <address>
-        <street>2114 Bigelow Ave N</street>
-        <zipcode>98109</zipcode>
-        <city>Seattle</city>
-        <state>WA</state>
-        <latitude>47.637933</latitude>
-        <longitude>-122.347938</longitude>
+      <street>140 S Van Ness Ave UNIT 1015</street>
+      <zipcode>94103</zipcode>
+      <city>San Francisco</city>
+      <state>CA</state>
+      <latitude>37.771585</latitude>
+      <longitude>-122.418825</longitude>
     </address>
     <zestimate>
-        <amount currency="USD">1621376</amount>
-        <last-updated>08/10/2016</last-updated>
-        <oneWeekChange deprecated="true"/>
-        <valueChange duration="30" currency="USD">-8021</valueChange>
-        <valuationRange>
-        <low currency="USD">1540307</low>
-        <high currency="USD">1702445</high>
-        </valuationRange>
-        <percentile>97</percentile>
-    </zestimate>
-    <localRealEstate>
-    <region name="East Queen Anne" id="271856" type="neighborhood">
-    <zindexValue>742,400</zindexValue>
-    <links>
-    <overview>
-    http://www.zillow.com/local-info/WA-Seattle/East-Queen-Anne/r_271856/
-    </overview>
-    <forSaleByOwner>
-    http://www.zillow.com/east-queen-anne-seattle-wa/fsbo/
-    </forSaleByOwner>
-    <forSale>http://www.zillow.com/east-queen-anne-seattle-wa/</forSale>
-    </links>
-    </region>
-    </localRealEstate>
-    <regions>
-    <zipcode-id>99569</zipcode-id>
-    <city-id>16037</city-id>
-    <county-id>207</county-id>
-    <state-id>59</state-id>
-    </regions>
-</response>
-</Zestimate:zestimate>
-"""
+      <amount currency="USD">725896</amount>
+...      
+```
 
-xml = untangle.parse(xmldata)
-print "URL", xml.Zestimate_zestimate.response.links.homedetails.cdata
-print "Value $%s" % xml.Zestimate_zestimate.response.zestimate.amount.cdata
+BTW, the XML comes back with no new lines, but we can use `xmllint` to format the output nicely like that:
 
+```bash
+$ python zestimate.py | xmllint --format
+...
+```
+
+In order to get the estimate, we have to navigate the XML tree using `untangle` and grab the `zestimate` node:
+
+```python
+zestimate = xml.Zestimate_zestimate.response.zestimate.amount.cdata
+```
+
+**Exercise**: Use untangle to also print out the URL of the property. The link is under the `links` tag. You should get a price and link something like this:
+
+```
+725896
+http://www.zillow.com/homedetails/140-S-Van-Ness-Ave-UNIT-1015-San-Francisco-CA-94103/64969892_zpid/
+```
+
+## Searching for a property
+
+What do we do if we don't know the property ID? We have to use the [GetSearchResults](http://www.zillow.com/howto/api/GetSearchResults.htm) API.  Picking an address at random, 190 7th St APT 4 SF CA, let's see if we can find it using their API.  The URL we need is:
+
+```python
+SearchURL = "http://www.zillow.com/webservice/GetSearchResults.htm?zws-id=%s&address=%s&citystatezip=%s"
+```
+
+Where those arguments are passed into your script like this:
+
+```bash
+$ python search.py yourzipid "190 7th St APT 4" "San Francisco, CA" | xmllint --format
+<?xml version="1.0" encoding="utf-8"?>
+<SearchResults:searchresults ...>
+  <request>
+    <address>190 7th St APT 4</address>
+    <citystatezip>San Francisco, CA</citystatezip>
+  </request>
+  <message>
+    <text>Request successfully processed</text>
+    <code>0</code>
+  </message>
+  <response>
+    <results>
+      <result>
+        <zpid>80734051</zpid>
+...
+```
+
+**Exercise**: Using the code from your previous exercise as a base, create a new `search.py` file that searches for a property by address and prints out the `zpid` node (80734051, in this case).
+
+**Exercise**: Alter your script so that it handles the situation where you have entered an invalid address. The XML you get back looks like:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<SearchResults:searchresults ...>
+  <request>
+    <address>190 7th St APT 47732498232</address>
+    <citystatezip>San Francisco, CA</citystatezip>
+  </request>
+  <message>
+    <text>Error: no exact match found for input address</text>
+    <code>508</code>
+  </message>
+...
+```
+
+If there is no error you get `<code>0</code>` in the message, whereas here you can see we get nonzero 508.  First look for the error code. If it is zero then proceed as before. It is nonzero, simply print the text of the error message. If you try to access results, you will get a Python error when you try to untangle the XML.
+
+## Historical price chart
+
+**Exercise**: Using the [GetChart](http://www.zillow.com/howto/api/GetChart.htm) API, print out a link to a chart containing data for a specific property, such as property ID 64969892. The XML you get back looks like:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<Chart:chart ...>
+  <request>
+  ...
+  </request>
+  <message>
+    <text>Request successfully processed</text>
+    <code>0</code>
+  </message>
+  <response>
+    <url>http://www.zillow.com/app?chartDuration=10years&amp;chartType=partner&amp;height=250&amp;page=webservice%2FGetChart&amp;service=chart&amp;showPercent=true&amp;width=500&amp;zpid=64969892</url>
+    <graphsanddata>http://www.zillow.com/homedetails/140-S-Van-Ness-Ave-UNIT-1015-San-Francisco-CA-94103/64969892_zpid/#charts-and-data</graphsanddata>
+  </response>
+  ...
+```
+
+You want to print out the `url` tag in `response` tag. Then click on it and you will see a nice chart.
