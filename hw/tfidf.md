@@ -181,7 +181,7 @@ This works great but can we do better?
 
 ### TFIDF
 
-The most common word mechanism is simple and pretty effective but not as good as we can do.  We need to penalize words that are not only common in that article but common across articles. E.g., `said` and `price` probably don't help to summarize an article as they are very common words.
+Our "most common word" mechanism is simple and pretty effective but not as good as we can do.  We need to penalize words that are not only common in that article but common across articles. E.g., `said` and `price` probably don't help to summarize an article as they are very common words.
 
 We need to use TFIDF on a corpus of articles from which we can compute the term frequency across articles.  Here is how we will execute our program (`tfidf.py`):
 
@@ -258,6 +258,25 @@ Notice that `said` has dropped out and `price` has dropped significantly. Hooray
 For file `33212newsML.xml`, I get the following final output:
 
 ```
+eoe 0.490
+unilev 0.428
+option 0.340
+royal 0.314
+dutch 0.279
+amsterdam 0.217
+aex 0.153
+spark 0.099
+exceed 0.098
+netherland 0.096
+```
+
+Notice that `trade` has dropped out and `option` has dropped a bit in importance. `eoe` (European Option Exchange) jumps to the top as it is fairly unique to this article probably.
+
+### Experiment
+
+To show how amazing TFIDF is, try an experiment where your `tokenize()` does not remove stopwords. The TFIDF output is still the same, at least in terms of word order, though the scores will change. kept for example, if you run it again on `33212newsML.xml` without removing stop words, you will see scores:
+
+```
 eoe 0.488
 unilev 0.427
 option 0.338
@@ -270,19 +289,15 @@ exceed 0.098
 netherland 0.096
 ```
 
-Notice that `trade` has dropped out and `option` has dropped a bit in importance. `eoe` (European Option Exchange) jumps to the top as it is fairly unique to this article probably.
-
-### Experiment
-
-To show how amazing TFIDF is, try an experiment where your `tokenize()` does not remove stopwords. The TFIDF output is still the same, at least in terms of word order, though the scores will change.
+This shows that removing stop words is a waste of time as we get essentially the same results. For our purposes, however, let's leave in the stop word removal as we can then simply call our previous `tokenize` function.
 
 ## Deliverables
 
 * common.py
-* tfidf.py
+* tfidf.py (Print scores with **three decimals of precision**)
 
 ## Evaluation
 
 We will test your two Python scripts from the command line using a number of sample files and then use `diff` to compare your output with ours. Any difference in order or counts for TFIDF scores are treated as a 0 for that test. 50% of your grade comes from each script.
 
-I'll try to get a script together for you soon.
+Test your code to make sure you get the same answers I do in the samples above. Because it takes so long to execute, we will test your code for grading purposes on a smaller set.
