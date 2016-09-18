@@ -90,7 +90,7 @@ All projects are graded in binary fashion: They either work or they do not, even
 
 ## Feature extraction
 
-* [Computing TFIDF](https://github.com/parrt/msan692/blob/master/hw/tfidf.pdf)
+* [Computing TFIDF](https://github.com/parrt/msan692/blob/master/notes/tfidf.pdf)
 * [TFIDF document summarization](https://github.com/parrt/msan692/blob/master/hw/tfidf.md) (**project**)
 * regex
 * Unix commands for extracting web content: wget, grep, awk, cut, paste, join, sed
