@@ -12,7 +12,7 @@ You will work in git repo *userid*-tfidf.
 
 ### Reading in Reuters' XML
 
-As a first step, let's grab text from a Reuters article in XML format. The articles look like this fictitious file contents:
+As a first step, let's grab text from a Reuters article in XML format. Download the 31M compressed reuters corpus (385M uncompressed) from the files area of Canvas for this class.  This data should not be made public so just uncompress on your disk but please don't post the articles anywhere.  The articles look like this fictitious file contents:
 
 ```xml
 <?xml version="1.0" encoding="iso-8859-1" ?>
@@ -36,7 +36,9 @@ As a first step, let's grab text from a Reuters article in XML format. The artic
 </newsitem>
 ```        
 
-Unlike in previous labs where we used the simple `untangle`, this time we will use `ElementTree`. (A [good tutorial on XML in Python](http://eli.thegreenplace.net/2012/03/15/processing-xml-in-python-with-elementtree/)). Given a filename, use `ElementTree()` to read in the XML. From this XML tree, you can ask it to find the `title` tag. Then use XPath notation with `tree.iterfind()` to grab all of the tags underneath the `<text>` tag. In our case, these will be `<p>` tags. When you are packing the text together, make sure to put a space in between the elements you join. Otherwise, you might end up putting two words together forming a new nonsense word. 
+Unlike in previous labs where we used the simple `untangle`, this time we will use `ElementTree`. (A [good tutorial on XML in Python](http://eli.thegreenplace.net/2012/03/15/processing-xml-in-python-with-elementtree/)). Given a filename, read in the xml as a string, then use `ET.fromstring()` and `ElementTree()` to parse the XML text. From this XML tree, you can ask it to find the `title` tag. Then use XPath notation with `tree.iterfind()` to grab all of the tags underneath the `<text>` tag. In our case, these will be `<p>` tags so use XPath `.//text/*`. It means "*from the current node, find all text tag descendants then all of their children.*"
+
+When you are packing the text together, make sure to put a space in between the elements you join. Otherwise, you might end up putting two words together forming a new nonsense word. 
 
 In a file called `common.py`, create this function:
 
@@ -56,9 +58,9 @@ Now that we have some raw text without all of the XML, let's learn how to proper
 
 1. Convert everything to lowercase
 2.  Strip punctuation, numbers, and `\r`, `\n`\, `\t`
-3.  Tokenize using NLTK's `word_tokenize` function
+3.  Tokenize using NLTK's `word_tokenize` function (You need to run `nltk.download()` to get the english tokenizer installed. It'll pop up a dialog box--select `all` and hit `download`)
 4.  Drop words less than length 3
-5.  Removes stop words using SciKit-Learn's `ENGLISH_STOP_WORDS` set.
+5.  Removes stop words using SciKit-Learn's `ENGLISH_STOP_WORDS` set. 
 
 In `common.py`, break this down into the two separate functions shown here:
 
@@ -83,7 +85,7 @@ def stemwords(words):
 
 ### Sample application
 
-Our sample application will be summarizing a file, which is specified as a commandline argument via `sys.argv[1]`. Use the functions above to read in the XML, tokenize it, stem it, and then show the most common 10 words with their word count.  Use a `Counter` object to get the counts and wrap your main script stuff so that it only executes if we run `common.py` (rather than import)
+Our sample application for tokenization will be summarizing a file, which is specified as a commandline argument via `sys.argv[1]`. Use the functions above to read in the XML, tokenize it, stem it, and then show the most common 10 words with their word count.  Use a `Counter` object to get the counts and wrap your main script stuff so that it only executes if we run `common.py` (as opposed to importing it):
 
 ```python
 if __name__=="__main__":
@@ -99,7 +101,7 @@ Then you can walk the `counts` and print them out. Note that when you iterate th
 **Sample output.** For file `33313newsML.xml` in our `reuters-vol1-disk1-subset` data directory, we would get the following output (top 10 most common stemmed words):
 
 ```
-$ python common.py ~/data/reuters-vol1-disk1-subset/33212newsML.xml
+$ python common.py ~/data/reuters-vol1-disk1-subset/33313newsML.xml
 gener 19
 transmiss 14
 power 14
@@ -160,19 +162,19 @@ hard 2
 ```
 
 
-For file `33212newsML.xml`, I get the following final output:
+For file `131705newsML.xml`, I get the following final output:
 
 ```
-option 4
-unilev 3
-royal 3
-dutch 3
-eoe 3
-share 2
-trade 2
-amsterdam 2
-price 2
-exceed 1
+seita 4
+share 3
+cancer 2
+go 2
+franc 2
+fell 2
+link 2
+tobacco 2
+cigarett 2
+ad 1
 ```
 
 This works great but can we do better? 
@@ -202,11 +204,17 @@ cost 0.162
 leay 0.143
 ```
 
-where the output shows three decimals of precision.
+where the output shows **three decimals of precision**.
 
 We'll use `scikit-learn` to compute TFIDF for us.  There are lots of examples on the web how to use the `TfidfVectorizer` but the parameters I use are:
 
 ```python
+def tokenizer(text):
+    call tokenize() from common.py
+    call stemwords() from common.py
+    ...
+    return ... # list of tokens (words)
+    
 tfidf = TfidfVectorizer(input='filename', # argument to transform() is list of files
                         analyzer='word',
                         preprocessor=gettext, # convert xml to text
@@ -214,7 +222,18 @@ tfidf = TfidfVectorizer(input='filename', # argument to transform() is list of f
                         stop_words='english') # strip out stop words
 ```                        
 
-Function `gettext` is the imported function from `common.py` and `tokenizer` is the name of a function I define that calls `tokenize`  and `stemwords` from `common.py`.
+Function `gettext` is the imported function from `common.py`.
+
+To make things interesting, the 54,078-file corpus is "dirty". Some files are blank, such as `13445newsML.xml`. Alter your `gettext()` so it is tolerant of empty files. You can test for empty strings or "catch an xml parsing exception" via:
+
+```python
+try:
+    tree = ...
+except ET.ParseError:
+    return ''
+```
+
+Some files might have non-ascii char so you need tell `TfidfVectorizer()` to not puke (raise an exception) upon decoding error characters. See the [doc](http://scikit-learn.org/dev/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html#sklearn.feature_extraction.text.CountVectorizer).
 
 Once you create that object, you can call functions `fit` and `transform` or together as `fit_transform`. That will return to you a sparse matrix (not sure why) containing the  index of the various words from the argument to `transform` plus the TFIDF scores:
 
@@ -226,7 +245,7 @@ Once you create that object, you can call functions `fit` and `transform` or tog
   ...
 ```
 
-Calling `nonzero` on that matrix gives you the word indexes as (0,word-index-we-want). So just walk those indexes and collect tuples with the feature names (the words) and the TFIDF.  Then sort them in reverse order according to the second element of the tuple, the TFIDF score. Print these out using three decimals precision for the TFIDF.
+Calling `nonzero` on that matrix gives you the word indexes as the 2nd element of tuples like: (0,*word-index-we-want*). So just walk those indexes and collect tuples with the feature names (the words) and the TFIDF.  Then sort them in reverse order according to the second element of the tuple, the TFIDF score. Print these out using three decimals precision for the TFIDF.
 
 For file `33312newsML.xml`, I get the following final output:
 
@@ -262,6 +281,10 @@ netherland 0.096
 
 Notice that `trade` has dropped out and `option` has dropped a bit in importance. `eoe` (European Option Exchange) jumps to the top as it is fairly unique to this article probably.
 
+### Experiment
+
+To show how amazing TFIDF is, try an experiment where your `tokenize()` does not remove stopwords. The TFIDF output is still the same, at least in terms of word order, though the scores will change.
+
 ## Deliverables
 
 * common.py
@@ -270,3 +293,5 @@ Notice that `trade` has dropped out and `option` has dropped a bit in importance
 ## Evaluation
 
 We will test your two Python scripts from the command line using a number of sample files and then use `diff` to compare your output with ours. Any difference in order or counts for TFIDF scores are treated as a 0 for that test. 50% of your grade comes from each script.
+
+I'll try to get a script together for you soon.
