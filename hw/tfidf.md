@@ -12,7 +12,7 @@ You will work in git repo *userid*-tfidf.
 
 ### Reading in Reuters' XML
 
-As a first step, let's grab text from a Reuters article in XML format. Download the 31M compressed reuters corpus (385M uncompressed) from the files area of Canvas for this class.  This data should not be made public so just uncompress on your disk but please don't post the articles anywhere.  The articles look like this fictitious file contents:
+As a first step, let's grab text from a Reuters article in XML format. Download the 3.8M compressed reuters corpus (44M uncompressed, 9164 files) from the files area of Canvas for this class.  This data should not be made public so just uncompress on your disk but please don't post the articles anywhere.  The articles look like this fictitious file contents:
 
 ```xml
 <?xml version="1.0" encoding="iso-8859-1" ?>
@@ -224,15 +224,6 @@ tfidf = TfidfVectorizer(input='filename', # argument to transform() is list of f
 
 Function `gettext` is the imported function from `common.py`.
 
-To make things interesting, the 54,078-file corpus is "dirty". Some files are blank, such as `13445newsML.xml`. Alter your `gettext()` so it is tolerant of empty files. You can test for empty strings or "catch an xml parsing exception" via:
-
-```python
-try:
-    tree = ...
-except ET.ParseError:
-    return ''
-```
-
 Some files might have non-ascii char so you need tell `TfidfVectorizer()` to not puke (raise an exception) upon decoding error characters. See the [doc](http://scikit-learn.org/dev/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html#sklearn.feature_extraction.text.CountVectorizer).
 
 Once you create that object, you can call functions `fit` and `transform` or together as `fit_transform`. That will return to you a sparse matrix (not sure why) containing the  index of the various words from the argument to `transform` plus the TFIDF scores:
@@ -267,13 +258,13 @@ Notice that `said` has dropped out and `price` has dropped significantly. Hooray
 For file `33212newsML.xml`, I get the following final output:
 
 ```
-eoe 0.490
-unilev 0.428
-option 0.340
-royal 0.314
-dutch 0.279
+eoe 0.488
+unilev 0.427
+option 0.338
+royal 0.313
+dutch 0.278
 amsterdam 0.217
-aex 0.153
+aex 0.152
 spark 0.099
 exceed 0.098
 netherland 0.096
