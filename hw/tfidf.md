@@ -61,6 +61,7 @@ Now that we have some raw text without all of the XML, let's learn how to proper
 3.  Tokenize using NLTK's `word_tokenize` function (You need to run `nltk.download()` to get the english tokenizer installed. It'll pop up a dialog box--select `all` and hit `download`)
 4.  Drop words less than length 3
 5.  Removes stop words using SciKit-Learn's `ENGLISH_STOP_WORDS` set. 
+6.  Stem the words to help normalize the text.
 
 In `common.py`, break this down into the two separate functions shown here:
 
