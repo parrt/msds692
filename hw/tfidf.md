@@ -275,7 +275,7 @@ Notice that `trade` has dropped out and `option` has dropped a bit in importance
 
 ### Experiment
 
-To show how amazing TFIDF is, try an experiment where your `tokenize()` does not remove stopwords. The TFIDF output is still the same, at least in terms of word order, though the scores will change. kept for example, if you run it again on `33212newsML.xml` without removing stop words, you will see scores:
+To show how amazing TFIDF is, try an experiment where your `tokenize()` does not remove stopwords and remove parameter `stop_words` from the `TfidfVectorizer` object. The TFIDF output is still the same, at least in terms of word order, though the scores will change. kept for example, if you run it again on `33212newsML.xml` without removing stop words, you will see scores:
 
 ```
 eoe 0.488
