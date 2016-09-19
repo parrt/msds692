@@ -100,7 +100,7 @@ SearchURL = "http://www.zillow.com/webservice/GetSearchResults.htm?zws-id=%s&add
 Where those arguments are passed into your script like this:
 
 ```bash
-$ python search.py yourzipid "190 7th St APT 4" "San Francisco, CA" | xmllint --format
+$ python search.py yourzipid "190 7th St APT 4" "San Francisco, CA" | xmllint --format -
 <?xml version="1.0" encoding="utf-8"?>
 <SearchResults:searchresults ...>
   <request>
