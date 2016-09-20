@@ -86,7 +86,7 @@ def stemwords(words):
 
 ### Sample application
 
-Our sample application for tokenization will be summarizing a file, which is specified as a commandline argument via `sys.argv[1]`. Use the functions above to read in the XML, tokenize it, stem it, and then show the most common 10 words with their word count.  Use a `Counter` object to get the counts and wrap your main script stuff so that it only executes if we run `common.py` (as opposed to importing it):
+Our sample application for tokenization will be summarizing a file, which is specified as a commandline argument via `sys.argv[1]`. Use the functions above to read in the XML, tokenize it, stem it, and then show the 10 most common words with their word count.  Use a `Counter` object to get the counts and wrap your main script stuff so that it only executes if we run `common.py` (as opposed to importing it):
 
 ```python
 if __name__=="__main__":
@@ -97,9 +97,9 @@ if __name__=="__main__":
     ...
 ```
 
-Then you can walk the `counts` and print them out. Note that when you iterate through them they come out with most common first. Very convenient.
+Then you can walk the `counts` and print the most common 10 words out. Note that when you iterate through them they come out with most common first. Very convenient.
 
-**Sample output.** For file `33313newsML.xml` in our `reuters-vol1-disk1-subset` data directory, we would get the following output (top 10 most common stemmed words):
+**Sample output.** For file `33313newsML.xml` in our `reuters-vol1-disk1-subset` data directory, we would get the following output:
 
 ```
 $ python common.py ~/data/reuters-vol1-disk1-subset/33313newsML.xml
@@ -205,7 +205,7 @@ cost 0.162
 leay 0.143
 ```
 
-where the output shows **three decimals of precision**.
+where the output shows **three decimals of precision**.  Print only those words, scoring >= 0.09.
 
 We'll use `scikit-learn` to compute TFIDF for us.  There are lots of examples on the web how to use the `TfidfVectorizer` but the parameters I use are:
 
@@ -299,6 +299,6 @@ This shows that removing stop words is a waste of time as we get essentially the
 
 ## Evaluation
 
-We will test your two Python scripts from the command line using a number of sample files and then use `diff` to compare your output with ours. Any difference in order or counts for TFIDF scores are treated as a 0 for that test. 50% of your grade comes from each script.
+We will test your two Python scripts from the command line using a number of sample files and then compare some or all of the words in your output with ours. Any difference in counts or TFIDF scores are treated as a 0 for that test. 50% of your grade comes from each script.
 
 Test your code to make sure you get the same answers I do in the samples above. Because it takes so long to execute, we will test your code for grading purposes on a smaller set.
