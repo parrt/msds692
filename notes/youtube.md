@@ -18,4 +18,21 @@ $ pip install --upgrade google-api-python-client
 
 ## First contact
 
+```python
+# code from https://developers.google.com/youtube/v3/DEVELOPER_KEY = sys.argv[1]
+YOUTUBE_API_SERVICE_NAME = "youtube"
+YOUTUBE_API_VERSION = "v3"
+
+code_samples/python    #search_by_keyword
+youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, developerKey=DEVELOPER_KEY)
+
+# Call the search.list method to retrieve results matching the specified
+# query term.
+search_response = youtube.search().list(
+    q="cats&dogs",
+    part="id,snippet",
+    maxResults=20,
+    type="video"
+).execute()
+```
 
