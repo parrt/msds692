@@ -5,9 +5,12 @@
 # Install library: pip install --upgrade google-api-python-client
 
 import sys
+import urllib
 from googleapiclient.discovery import build
 
 DEVELOPER_KEY = sys.argv[1]
+QUERY = sys.argv[2] # e.g., "cats and dogs"
+QUERY = urllib.quote(QUERY)
 YOUTUBE_API_SERVICE_NAME = "youtube"
 YOUTUBE_API_VERSION = "v3"
 
@@ -17,10 +20,10 @@ youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, developerKey=DEVE
 # Call the search.list method to retrieve results matching the specified
 # query term.
 search_response = youtube.search().list(
-    q="cats&dogs",
-    part="id,snippet",
-    maxResults=20,
-    type="video"
+    q=QUERY,            # search terms
+    part="id,snippet",  # what we want back
+    maxResults=20,      # how many results we want back
+    type="video"        # only tell me about videos
 ).execute()
 
 # search_response is a dict
