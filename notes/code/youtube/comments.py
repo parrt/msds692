@@ -8,10 +8,10 @@ QUERY = urllib.quote(QUERY)
 YOUTUBE_API_SERVICE_NAME = "youtube"
 YOUTUBE_API_VERSION = "v3"
 
-def videoIDs(QUERY):
+def videoIDs(query):
     youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, developerKey=DEVELOPER_KEY)
     search_response = youtube.search().list(
-        q=QUERY,            # search terms
+        q=query,            # search terms
         part="id,snippet",  # what we want back
         maxResults=10,      # how many results we want back
         type="video"        # only tell me about videos
@@ -20,8 +20,8 @@ def videoIDs(QUERY):
     ids = [vid['id']['videoId'] for vid in search_response['items']]
     return ids
 
-def comments(QUERY):
-    ids = videoIDs(QUERY)
+def comments(query):
+    ids = videoIDs(query)
     comments = {} # map video ID to list of comment strings
     for id in ids:
         youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION,

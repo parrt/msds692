@@ -74,3 +74,83 @@ Gangsta Cats Video Compilation 2016 https://www.youtube.com/watch?v=VS6UOyTb5eU
 
 ## Getting all video comments
 
+Now that we know how to perform a video search, let's learn how to extract comments for particular video. 
+
+**Exercise**: We will extract comments by video ID, because that is what the [API](https://developers.google.com/youtube/v3/docs/comments/list) requires. Here are two sample video IDs:
+
+```python
+video_id = "gU_gYzwTbYQ"  # bonkers the cat
+video_id = "tntOCGkgt98"  # cat compilation
+```
+
+You need to call `youtube.commentThreads().list(...)` to get the comments. There is a bunch of sample code in the API documentation. Follow the code samples to extract the author and text of the top level comments. Here's a sample session:
+
+```bash
+$ python comments_one_video.py MYSECRET KEY
+Comment by Humbly_Bumbly: STOP REPEATING THE SAME CLIPS﻿
+Comment by mad rix: cute 😀 Come to my YouTube chanel i have lovely videos of my cats! !!!﻿
+Comment by LuksterCOD1234: God this has got a lot of views﻿
+Comment by DIAMOND BRAIN: No,no and no﻿
+Comment by Lea Villanueva: 7:45 😂﻿
+Comment by Andre Jackson: old school﻿
+Comment by Chris Poerschke: "most see" ?﻿
+Comment by Animalsworlds: Awesome video, my sadness immediately disappear after watching this video 
+=)﻿
+Comment by Vanirvis: Whats with the boxes on the screen? Thumbs down.﻿
+...
+```
+
+*Please do not bring up videos that could be offensive to your fellow student!*
+
+**Exercise**: Now let's combine the search with the comment retrieval so that we find all comments associated with, say, 10 videos. Create a function that returns a list of video IDs (cut/paste from previous functionality):
+
+```pyhon
+def videoIDs(query):
+    ...
+    return ids
+```
+
+and a function that returns a dictionary mapping video ID to a list of comment strings:
+
+```
+def comments(query):
+    ids = videoIDs(query)
+    comments = {} # map video ID to list of comment strings
+    for id in ids:
+        ... previous code to pull comments ...
+        comments[id] = []
+        for item in results["items"]:
+            ...
+            comments[id].append("Comment by %s: %s" % (author, text))
+    return comments
+```
+
+Then the main program can just print out a list of comments for each video, putting a tab in front of the comments so it's easier to see which video they are associated with.
+
+```python
+allcomments = comments(QUERY)
+for vid in allcomments:
+    comments = allcomments[vid]
+    print "Video "+vid
+    print "\t",
+    print '\n\t'.join(comments)
+```
+
+Sample output:
+
+```
+...
+Video vf7Geki6V4E
+	Comment by Leah Rosal: wrong﻿
+Video bmr9iELngJE
+	Comment by Noelle West: Not bad﻿
+	Comment by Noelle West: What?﻿
+	Comment by Angelita Luna: Truest thing I've ever heard﻿
+	Comment by Tumbling tori: This is awesome!﻿
+	Comment by Ian2713: Great job! Keep it up!﻿
+	Comment by Lord Ark: 
+	Comment by Lord Ark: 
+	Comment by foxy: not bad ﻿
+...
+```
+	
