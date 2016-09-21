@@ -48,7 +48,7 @@ search_response = youtube.search().list(
 ).execute()
 ```
 
-**Exercise**: The `search_response` variable is a `dict` with an `items` key containing the search results. Use the debugger or look at [API documentation](https://developers.google.com/youtube/v3/docs/videos#properties) to figure out what the elements of the individual search responses are. As usual, it appears there is a small discrepancy between the documentation and what I see in the actual dictionary. Figure out how to print the title and a link to the videos returned from the search. E.g., Running from the command-line, we should get:
+**Exercise**: The `search_response` variable is a `dict` with an `items` key containing the search results. Use the debugger or look at [API documentation](https://developers.google.com/youtube/v3/docs/search/list) to figure out what the elements of the individual search responses are. As usual, it appears there is a small discrepancy between the documentation and what I see in the actual dictionary. Figure out how to print the title and a link to the videos returned from the search. E.g., Running from the command-line, we should get:
 
 ```bash
 $ search.py MYSECRETKEY cats
