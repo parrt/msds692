@@ -4,6 +4,7 @@ import sys
 from linkedin import linkedin
 import BaseHTTPServer
 import urlparse
+import webbrowser
 
 KEY = sys.argv[1]
 SECRET = sys.argv[2]
@@ -21,7 +22,7 @@ def _wait_for_user_to_enter_browser(app):
                 app.authentication.state = params['state'][0]
                 token = app.authentication.get_access_token()
 
-    server_address = ('', 8000)
+    server_address = ('localhost', 8000)
     httpd = BaseHTTPServer.HTTPServer(server_address, MyHandler)
     httpd.handle_request()
     return token
@@ -32,6 +33,7 @@ RETURN_URL = "http://localhost:8000/"
 authentication = linkedin.LinkedInAuthentication(KEY, SECRET, RETURN_URL,
                                                  ['r_basicprofile'])
 print authentication.authorization_url
+webbrowser.open_new_tab(authentication.authorization_url)
 application = linkedin.LinkedInApplication(authentication)
 
 _wait_for_user_to_enter_browser(application)
@@ -41,4 +43,4 @@ print token # set in do_GET
 #                                 selectors=['name'])
 
 # print application.search_profile(selectors=[{'people': ['first-name', 'last-name']}], params={'keywords': 'apple microsoft'})
-print application.get_profile(selectors=["parrt"])
+print application.get_profile(member_url='https://www.linkedin.com/in/terence-parr-33530')

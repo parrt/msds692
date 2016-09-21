@@ -1,5 +1,7 @@
 # Pulling data from (open) REST APIs
 
+[Huge source of public APIs](https://www.publicapis.com/)
+
 We have already seen how to use `urlib2` to fetch a webpage:
 
 ```python

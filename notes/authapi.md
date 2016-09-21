@@ -1,16 +1,14 @@
-# REST APIs
+# Authenticating REST APIs
 
-[Huge source of public APIs](https://www.publicapis.com/)
+**Problem:** We can register with the website so that it allows us to pull from its APIs, but what about pulling from a specific user's account, such as at Facebook or Instagram? We need a way for the program to access private data without acquiring and saving their credentials, as we do with our simple API IDs (Zillow, youtube, ...). Enter OAuth2.
 
- * [facebook](notes/code/facebook/feed.py)
- * [linkedin](notes/code/linkedin/test.py)
- * [trulia](notes/code/trulia/pull.py)
- * [youtube](notes/code/youtube/search.py)
- * [zillow](notes/code/zillow/pull.py)
+## OAuth2
 
-## OAuth
+When it comes to a data collection program (the *client*), most REST APIs will require the program to authenticate using OAuth2.  A *resource owner*, such as a Facebook or twitter user, has data stored on a *resource server*. The **key idea** is that the Facebook user should not have to give their login credentials to a client program so that the client can login. Instead, the client gets an access token from an *authorization server* (usually just another server at target company) with approval (e.g., logging in with a dialog box) from the resource owner (Facebook user). Given the access token, the client code can access resources from the resource server.
 
-When it comes to a data collection program (the *client*), most REST APIs will require the program to authenticate using OAuth.  A *resource owner*, such as a Facebook or twitter user, has data stored on a *resource server*. The idea is that the Facebook user should not have to give their login credentials to a client program so that the client can login. Instead, the client gets an access token from an *authorization server* (usually just another server at target company) with approval (e.g., logging in with a dialogue box) from the resource owner. Given the access token, the client can access resources from the resource server.
+Here is what the authorization looks like for LinkedIn:
+ 
+<img src=figures/linkedin-allow.png width=300>
 
 This sequence is a tricky thing to get right but the basic idea is as follows.
 
