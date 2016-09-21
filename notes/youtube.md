@@ -13,8 +13,10 @@ Follow these steps to get set up:
 Familiarize yourself with the [API documentation](https://developers.google.com/youtube/v3/) and install some Python code that will make our lives easier:
 
 ```bash
-$ pip install --upgrade google-api-python-client
+$ pip install --ignore-installed --upgrade google-api-python-client
 ```
+
+(The `--ignore-installed` avoids errors on El Capitan OS X.)
 
 ## First contact
 
