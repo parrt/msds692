@@ -78,11 +78,11 @@ Gangsta Cats Video Compilation 2016 https://www.youtube.com/watch?v=VS6UOyTb5eU
 
 Now that we know how to perform a video search, let's learn how to extract comments for particular video. 
 
-**Exercise**: We will extract comments by video ID, because that is what the [API](https://developers.google.com/youtube/v3/docs/comments/list) requires. Here are two sample video IDs:
+**Exercise**: We will extract comments by video ID, because that is what the [API](https://developers.google.com/youtube/v3/docs/commentThreads/list) requires. Here are two sample video IDs:
 
 ```python
-video_id = "gU_gYzwTbYQ"  # bonkers the cat
-video_id = "tntOCGkgt98"  # cat compilation
+videoId = "gU_gYzwTbYQ"  # bonkers the cat
+videoId = "tntOCGkgt98"  # cat compilation
 ```
 
 You need to call `youtube.commentThreads().list(...)` to get the comments. There is a bunch of sample code in the API documentation. Follow the code samples to extract the author and text of the top level comments. Here's a sample session:
