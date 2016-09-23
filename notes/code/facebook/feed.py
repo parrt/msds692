@@ -25,7 +25,7 @@ def _wait_for_user_to_enter_browser():
             p = self.path.split('?')
             if len(p) > 1:
                 params = urlparse.parse_qs(p[1], True, True)
-                print "login!!!"
+                print params
                 if p[0]=='/login':
                     APP_CODE = params['code'][0]
                     self.send_response(200)
@@ -75,18 +75,31 @@ ACCESS_TOKEN = json_dict['access_token']
 # Ok, now we can pull data
 # https://developers.facebook.com/docs/graph-api/using-graph-api/
 
-FEED_URL = "https://graph.facebook.com/%s/feed?access_token=%s"
+def getfeed(who, ACCESS_TOKEN):
+    FEED_URL = "https://graph.facebook.com/%s/feed?access_token=%s"
+    FEED_URL = FEED_URL % (who, ACCESS_TOKEN)
 
-who = "whitehouse" # works for pages (like msnbc) but not users
+    response = urllib2.urlopen(FEED_URL)
+    jsondata = response.read()
+    json_dict = json.loads(jsondata)
 
-FEED_URL = FEED_URL % (who, ACCESS_TOKEN)
+    for story in json_dict['data']:
+        if "message" in story:
+            print "http://www.facebook.com/"+story['id']
+            print story["message"][0:80]
+            print
 
-response = urllib2.urlopen(FEED_URL)
-jsondata = response.read()
-json_dict = json.loads(jsondata)
+def get_my_photos(ACCESS_TOKEN):
+    FEED_URL = "https://graph.facebook.com/me/photos?access_token=%s"
+    FEED_URL = FEED_URL % ACCESS_TOKEN
 
-for story in json_dict['data']:
-    if "message" in story:
-        print "http://www.facebook.com/"+story['id']
-        print story["message"][0:80]
-        print
+    response = urllib2.urlopen(FEED_URL)
+    jsondata = response.read()
+    json_dict = json.loads(jsondata)
+
+    print json_dict
+
+get_my_photos(ACCESS_TOKEN)
+
+getfeed("whitehouse", ACCESS_TOKEN)  # works for pages (like msnbc) but not users
+
