@@ -29,13 +29,13 @@ def _wait_for_user_to_enter_browser():
                     APP_CODE = params['code'][0]
                     self.send_response(200)
                     self.end_headers()
-                    self.wfile.write("You logged in!")
-                elif p[0]=='/exchange':
-                    APP_ACCESS_TOKEN = params['access_token'][0]
-                    self.send_response(200)
-                    self.end_headers()
-                    self.wfile.write("Access token obtained!")
-
+                    self.wfile.write("You logged in!\n")
+                # elif p[0]=='/exchange':
+                #     APP_ACCESS_TOKEN = params['access_token'][0]
+                #     self.send_response(200)
+                #     self.end_headers()
+                #     self.wfile.write("Access token obtained!")
+            return
 
     server_address = ('', 8000)
     httpd = BaseHTTPServer.HTTPServer(server_address, MyHandler)
