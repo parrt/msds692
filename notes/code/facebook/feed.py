@@ -25,12 +25,14 @@ def _wait_for_user_to_enter_browser():
             p = self.path.split('?')
             if len(p) > 1:
                 params = urlparse.parse_qs(p[1], True, True)
+                print "login!!!"
                 if p[0]=='/login':
                     APP_CODE = params['code'][0]
                     self.send_response(200)
                     self.end_headers()
                     self.wfile.write("You logged in!\n")
                 # elif p[0]=='/exchange':
+                #     print "exchange!!!"
                 #     APP_ACCESS_TOKEN = params['access_token'][0]
                 #     self.send_response(200)
                 #     self.end_headers()
@@ -44,13 +46,17 @@ def _wait_for_user_to_enter_browser():
 APP_ID = sys.argv[1]
 APP_SECRET = sys.argv[2]
 
-LOGIN_URL = "https://www.facebook.com/dialog/oauth?client_id=%s&redirect_uri=http://localhost:8000/login"
+LOGIN_URL = "https://www.facebook.com/dialog/oauth" \
+            "?client_id=%s" \
+            "&redirect_uri=http://localhost:8000/login"
 webbrowser.open_new_tab(LOGIN_URL % APP_ID)
 
 _wait_for_user_to_enter_browser()
 
-# print "App code is", APP_CODE
+# Go get the app code (access token)
 
+# redirect_uri arg appears to be ignored as no redirect is done to our server (none is running!)
+# but it must be present
 EXCH_URL = "https://graph.facebook.com/v2.3/oauth/access_token" \
            "?client_id=%s" \
            "&redirect_uri=http://localhost:8000/login" \
