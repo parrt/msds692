@@ -14,11 +14,7 @@ import urllib2
 import json
 import webbrowser
 
-APP_CODE = None
-APP_ACCESS_TOKEN = None
-
-# Do $ python -m SimpleHTTPServer or do this:
-def _wait_for_user_to_enter_browser():
+def wait_for_user_to_login_via_browser():
     class MyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         def do_GET(self):
             global APP_CODE, APP_ACCESS_TOKEN
@@ -31,12 +27,6 @@ def _wait_for_user_to_enter_browser():
                     self.send_response(200)
                     self.end_headers()
                     self.wfile.write("You logged in!\n")
-                # elif p[0]=='/exchange':
-                #     print "exchange!!!"
-                #     APP_ACCESS_TOKEN = params['access_token'][0]
-                #     self.send_response(200)
-                #     self.end_headers()
-                #     self.wfile.write("Access token obtained!")
             return
 
     httpd = BaseHTTPServer.HTTPServer(('', 8000), MyHandler)
@@ -45,34 +35,37 @@ def _wait_for_user_to_enter_browser():
 APP_ID = sys.argv[1]
 APP_SECRET = sys.argv[2]
 
-LOGIN_URL = "https://www.facebook.com/dialog/oauth" \
-            "?client_id=%s" \
-            "&redirect_uri=http://localhost:8000/login"
-webbrowser.open_new_tab(LOGIN_URL % APP_ID)
+def authenticate(scopes="public_profile"):
+    """
+    Open browser to allow user to login, get authentication code,
+    exchange to get (and return) access token.
+    """
+    scopes = urllib.quote(scopes)
+    LOGIN_URL = "https://www.facebook.com/dialog/oauth" \
+                "?client_id=%s" \
+                "&redirect_uri=http://localhost:8000/login" \
+                "&scope=%s"
+    webbrowser.open_new_tab(LOGIN_URL % (APP_ID,scopes))
 
-_wait_for_user_to_enter_browser()
+    wait_for_user_to_login_via_browser() # sets global APP_CODE (yuck)
 
-# Go get the app code (access token)
+    # Go get the app code (access token)
 
-# redirect_uri arg appears to be ignored as no redirect is done to our server (none is running!)
-# but it must be present
-EXCH_URL = "https://graph.facebook.com/v2.3/oauth/access_token" \
-           "?client_id=%s" \
-           "&redirect_uri=http://localhost:8000/login" \
-           "&client_secret=%s" \
-           "&code=%s"
-URL = EXCH_URL % (APP_ID, urllib.quote(APP_SECRET), urllib.quote(APP_CODE))
+    # redirect_uri arg appears to be ignored as no redirect is done to our server (none is running!)
+    # but it must be present
+    EXCH_URL = "https://graph.facebook.com/v2.3/oauth/access_token" \
+               "?client_id=%s" \
+               "&redirect_uri=http://localhost:8000/login" \
+               "&client_secret=%s" \
+               "&code=%s"
+    URL = EXCH_URL % (APP_ID, urllib.quote(APP_SECRET), urllib.quote(APP_CODE))
 
-response = urllib2.urlopen(URL)
-jsondata = response.read()
-json_dict = json.loads(jsondata)
-ACCESS_TOKEN = json_dict['access_token']
-# print ACCESS_TOKEN
+    response = urllib2.urlopen(URL)
+    jsondata = response.read()
+    json_dict = json.loads(jsondata)
+    return json_dict['access_token']
 
-# Ok, now we can pull data
-# https://developers.facebook.com/docs/graph-api/using-graph-api/
-
-def getfeed(who, ACCESS_TOKEN):
+def getfeed(ACCESS_TOKEN, who):
     FEED_URL = "https://graph.facebook.com/%s/feed?access_token=%s"
     FEED_URL = FEED_URL % (who, ACCESS_TOKEN)
 
@@ -86,17 +79,30 @@ def getfeed(who, ACCESS_TOKEN):
             print story["message"][0:80]
             print
 
-def get_my_photos(ACCESS_TOKEN):
-    FEED_URL = "https://graph.facebook.com/me/photos?access_token=%s"
+def get_my_id(ACCESS_TOKEN):
+    FEED_URL = "https://graph.facebook.com/me?access_token=%s"
     FEED_URL = FEED_URL % ACCESS_TOKEN
 
     response = urllib2.urlopen(FEED_URL)
     jsondata = response.read()
     json_dict = json.loads(jsondata)
 
-    print json_dict
+    print "me:", json_dict
+    return json_dict['id']
 
-get_my_photos(ACCESS_TOKEN)
+def get_profile(ACCESS_TOKEN, uid, fields="email,name"):
+    fields = urllib.quote(fields)
+    FEED_URL = "https://graph.facebook.com/%s?access_token=%s&fields=%s"
+    FEED_URL = FEED_URL % (uid,ACCESS_TOKEN,fields)
 
-getfeed("whitehouse", ACCESS_TOKEN)  # works for pages (like msnbc) but not users
+    response = urllib2.urlopen(FEED_URL)
+    jsondata = response.read()
+    # {u'friends': {u'data': [], u'summary': {u'total_count': 165}}, u'id': u'xxxx'}
+    return json.loads(jsondata)
 
+ACCESS_TOKEN = authenticate(scopes="user_friends,public_profile,email")
+
+myid = get_my_id(ACCESS_TOKEN)
+get_profile(ACCESS_TOKEN, myid, fields="friends")
+
+getfeed(ACCESS_TOKEN, "whitehouse")  # works for public pages (like msnbc) but not users

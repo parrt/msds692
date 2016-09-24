@@ -79,9 +79,24 @@ def wait_for_user_to_login_via_browser(app):
     return
 ```
 
-The key thing that that server does is listen for an HTTP request and then pull out the `code` and POST it to `https://www.linkedin.com/uas/oauth2/accessToken` in order to exchange that code for an access token. The response json from that request contains the access token.  Function `get_access_token()` does all of the work POSTing and extracting the access token.
+The key thing that that server does is listen for an HTTP request and then pull out the `code` and POST it to `https://www.linkedin.com/uas/oauth2/accessToken` in order to exchange that code for an access token. The response json from that request contains the access token.  Function `get_access_token()` from the Python library does all of the work POSTing and extracting the access token:
 
-Function `wait_for_user_to_login_via_browser()` finishes after the server gets a single request, which of course has then discovered our access token and saves it in the `authentication` object. Therefore we can use that to get access to profiles. Here is how I can access my profile:
+```python
+def get_access_token(self, timeout=60):
+    assert self.authorization_code, 'You must first get the authorization code'
+    qd = {'grant_type': 'authorization_code',
+          'code': self.authorization_code,
+          'redirect_uri': self.redirect_uri,
+          'client_id': self.key,
+          'client_secret': self.secret}
+    response = requests.post(self.ACCESS_TOKEN_URL, data=qd, timeout=timeout)
+    raise_for_error(response)
+    response = response.json()
+    self.token = AccessToken(response['access_token'], response['expires_in'])
+    return self.token
+```        
+
+Function `wait_for_user_to_login_via_browser()` finishes after the server gets a single request, which of course has then retrieved our access token and saves it in the `authentication` object. Therefore we can use that to get access to profiles. Here is how I can access my profile:
 
 ```python
 profile = application.get_profile(member_url='https://www.linkedin.com/in/terence-parr-33530')
@@ -99,3 +114,5 @@ For example, I am LinkedIn with [David Uminsky](https://www.linkedin.com/in/davi
 ```
 David Uminsky, Associate Professor and Director of Analytics at University of San Francisco
 ```
+
+LinkedIn won't give us really much else so let's move on to Facebook.
