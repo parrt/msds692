@@ -1,8 +1,8 @@
 # Pulling data from LinkedIn
 
-Register as a developer at linkin and then [create a known entity](https://www.linkedin.com/secure/developer?newapp=) (application) that will communicate with the API. 
+Register as a developer at linkin and then [create a known entity](https://www.linkedin.com/secure/developer?newapp=) (application) that will communicate with the API.  Unless you apply for the [LinkedIn partner program](https://developer.linkedin.com/partner-programs/apply), the amount of information we can get is almost 0, but we can get basic profile information.
 
-I just used my name for the application name:
+When creating the application, I just used my name for the application name:
 
 <img src="figures/linkedin-app-settings.png" width=280>
 

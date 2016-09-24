@@ -4,9 +4,9 @@
 
 1. [Register/configure an App overview](https://developers.facebook.com/docs/apps/register)
 2. [Create developer account](https://developers.facebook.com/async/onboarding/dialog/)
-3. [Create new Facebook App](https://developers.facebook.com/apps/async/create/platform-setup/dialog/)<br>
+3. [Create new Facebook App](https://developers.facebook.com/apps/async/create/platform-setup/dialog/), which looks like:<br>
   <img src=figures/fb-add-app.png width=250><br>
-  Click "Basic Setup"<br>
+  Click "Basic Setup" which is what we need for our unusual application.<br>
   <img src=figures/fb-create-id.png width=350><br>
   It will ask you to verify your account using phone or credit card. Note that I had to drop my mobile phone from the account and re-added in order for Facebook to allow me to create the application ID.
 4. You need to make sure that you have specified where Facebook should go during OAuth:<br>
@@ -28,7 +28,9 @@ and set up security on same page:
 
 <img src=figures/fb-security.png width=400>
 
-[FaceBook Login Flow](https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow)
+Here is how the [FaceBook Login Flow](https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow) goes.
+
+First, we open a web browser to the following URL, which will ask the user to enter their username and password:
 
 ```
 https://www.facebook.com/dialog/oauth?
@@ -36,15 +38,13 @@ https://www.facebook.com/dialog/oauth?
   &redirect_uri={redirect-uri}
 ```
 
-browser will attempt to log the user in and then FB response after login does a redirect back to our site:
+The Facebook site will attempt to log the user in and then  respond by doing a redirect back to our site per the `redirect_uri` parameter (which must match the URL we specified in the configuration of our application at Facebook's dashboard):
 
 ```
-http://localhost:8000/?code=XXX
+http://localhost:8000/login?code=XXX
 ```
 
-with a code that you need to use for communication with the API.
-
-NOW, you need to exchange that code for an access token using your app secret.
+The code must then be exchanged for an access token, again using your app ID and secret via URL:
 
 ```
 https://graph.facebook.com/v2.3/oauth/access_token?
@@ -58,4 +58,6 @@ Note that the `app-id` and `app-secret` should be kept private. Do not embed the
 
 The `code-parameter` is what you got back from login above.
 
-[securing your FB requests](https://developers.facebook.com/docs/graph-api/securing-requests/)
+If you are curious, you can read more about [securing your FB requests](https://developers.facebook.com/docs/graph-api/securing-requests/)
+
+Once you have the access token, you can make requests to the [graph API](https://developers.facebook.com/docs/graph-api/using-graph-api/).

@@ -193,7 +193,6 @@ $ python tfidf.py ~/data/reuters-vol1-disk1-subset  ~/data/reuters-vol1-disk1-su
 So, we pass in the overall corpus and then a specific file for which we want the top TFIDF scored words. The output we get should look like:
 
 ```
-transmiss 0.428
 gener 0.274
 power 0.254
 electr 0.253
@@ -203,6 +202,14 @@ signal 0.214
 esanz 0.191
 cost 0.162
 leay 0.143
+gisborn 0.143
+charg 0.131
+new 0.130
+island 0.128
+auckland 0.113
+effici 0.110
+pricipl 0.096
+eastland 0.096
 ```
 
 where the output shows **three decimals of precision**.  Print only those words, scoring >= 0.09.
@@ -252,6 +259,9 @@ frost 0.148
 assess 0.112
 price 0.107
 weekli 0.102
+hard 0.095
+impact 0.092
+australian 0.092
 ```
 
 Notice that `said` has dropped out and `price` has dropped significantly. Hooray!
@@ -269,6 +279,9 @@ aex 0.153
 spark 0.099
 exceed 0.098
 netherland 0.096
+conflict 0.096
+trade 0.094
+price 0.094
 ```
 
 Notice that `trade` has dropped out and `option` has dropped a bit in importance. `eoe` (European Option Exchange) jumps to the top as it is fairly unique to this article probably.
@@ -278,16 +291,20 @@ Notice that `trade` has dropped out and `option` has dropped a bit in importance
 To show how amazing TFIDF is, try an experiment where your `tokenize()` does not remove stopwords and remove parameter `stop_words` from the `TfidfVectorizer` object. The TFIDF output is still the same, at least in terms of word order, though the scores will change. kept for example, if you run it again on `33212newsML.xml` without removing stop words, you will see scores:
 
 ```
-eoe 0.488
-unilev 0.427
-option 0.338
-royal 0.313
-dutch 0.278
-amsterdam 0.217
-aex 0.152
-spark 0.099
-exceed 0.098
-netherland 0.096
+eoe 0.473
+unilev 0.413
+option 0.328
+royal 0.303
+dutch 0.269
+amsterdam 0.210
+aex 0.147
+the 0.145
+spark 0.096
+exceed 0.095
+netherland 0.093
+conflict 0.093
+trade 0.091
+price 0.090
 ```
 
 This shows that removing stop words is a waste of time as we get essentially the same results. For our purposes, however, let's leave in the stop word removal as we can then simply call our previous `tokenize` function.
