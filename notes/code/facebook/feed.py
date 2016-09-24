@@ -39,8 +39,7 @@ def _wait_for_user_to_enter_browser():
                 #     self.wfile.write("Access token obtained!")
             return
 
-    server_address = ('', 8000)
-    httpd = BaseHTTPServer.HTTPServer(server_address, MyHandler)
+    httpd = BaseHTTPServer.HTTPServer(('', 8000), MyHandler)
     httpd.handle_request()
 
 APP_ID = sys.argv[1]
@@ -63,8 +62,6 @@ EXCH_URL = "https://graph.facebook.com/v2.3/oauth/access_token" \
            "&client_secret=%s" \
            "&code=%s"
 URL = EXCH_URL % (APP_ID, urllib.quote(APP_SECRET), urllib.quote(APP_CODE))
-# print URL
-#webbrowser.open_new_tab(URL)
 
 response = urllib2.urlopen(URL)
 jsondata = response.read()
