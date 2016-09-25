@@ -193,6 +193,7 @@ $ python tfidf.py ~/data/reuters-vol1-disk1-subset  ~/data/reuters-vol1-disk1-su
 So, we pass in the overall corpus and then a specific file for which we want the top TFIDF scored words. The output we get should look like:
 
 ```
+transmiss 0.428
 gener 0.274
 power 0.254
 electr 0.253
