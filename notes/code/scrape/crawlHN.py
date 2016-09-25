@@ -5,7 +5,10 @@ from bs4 import BeautifulSoup
 import sys, os, urlparse
 
 def fetch(url,delay=(2,5)):
-    """Simulate human random clicking 2..5 seconds then fetch URL"""
+    """
+    Simulate human random clicking x..y seconds then fetch URL.
+    Returns the actual page source fetched and the HTML object.
+    """
     time.sleep(random.randint(delay[0],delay[1])) # wait random seconds
     try:
         req = urllib2.Request(url, headers={'User-Agent': "Resistance is futile"})
