@@ -320,3 +320,72 @@ This shows that removing stop words is a waste of time as we get essentially the
 We will test your two Python scripts from the command line using a number of sample files and then compare some or all of the words in your output with ours. Any difference in counts or TFIDF scores are treated as a 0 for that test. 50% of your grade comes from each script.
 
 Test your code to make sure you get the same answers I do in the samples above. Because it takes so long to execute, we will test your code for grading purposes on a smaller set.
+
+**Test rig**.
+
+```bash
+$ ./testrig.sh ~/data/testing-reuters-vol1-disk1-subset ~/data/results-testing-reuters-vol1-disk1-subset
+Testing tfidf.py
+..............................................
+Testing common.py
+..............................................
+```
+
+Here is testrig.sh:
+
+```bash
+CORPUS=$1
+OUTPUT=$2
+
+echo "Testing tfidf.py"
+for f in $CORPUS/*.xml
+do
+	echo -n .
+	name=$(basename -s .xml $f)
+	python tfidf.py $CORPUS $f > /tmp/$name.tfidf
+	python wordcompare.py /tmp/$name.tfidf $OUTPUT/$name.tfidf
+done
+echo
+
+echo "Testing common.py"
+for f in $CORPUS/*.xml
+do
+	#echo $f
+	echo -n .
+	name=$(basename -s .xml $f)
+	python common.py $f > /tmp/$name.count
+	python wordcompare.py /tmp/$name.count $OUTPUT/$name.count
+done
+echo
+```
+
+Here is wordcompare.py:
+
+```python
+import sys
+
+def todict(s):
+    d = {}
+    lines = s.strip().split('\n')
+    for line in lines:
+        pair = line.split(" ")
+        value = pair[1]
+        if value[0]=='.':
+            value = '0'+value
+        d[pair[0]] = value
+    return d
+
+f1 = sys.argv[1]
+f2 = sys.argv[2]
+
+s1 = open(f1).read()
+s2 = open(f2).read()
+
+d1 = todict(s1)
+d2 = todict(s2)
+
+if d1 != d2:
+    print "%s %s differ" % (f1,f2)
+    print d1
+    print d2
+```
