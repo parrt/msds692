@@ -82,8 +82,9 @@ All projects are graded in binary fashion: They either work or they do not, even
  * [Youtube](https://github.com/parrt/msan692/blob/master/notes/youtube.md)
 * [APIs requiring authentication/identification](https://github.com/parrt/msan692/blob/master/notes/authapi.md)
  * [Facebook](https://github.com/parrt/msan692/blob/master/notes/facebook.md)
-* [web pages](notes/scraping.md)
-  * html
+* [web pages](https://github.com/parrt/msan692/blob/master/notes/scraping.md)
+  * [buzzfeed](https://github.com/parrt/msan692/blob/master/notes/buzzfeed.md)
+  * [Amazon](https://github.com/parrt/msan692/blob/master/notes/amazon.md)
   * javascript
 * Web crawling
 * Use Selenium to extract data from JavaScript-based non-HTML web pages	
