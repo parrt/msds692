@@ -19,5 +19,7 @@ def parseAmazonBestSellers():
     return books
 
 books = parseAmazonBestSellers()
-for b in books:
-    print b
+for price, title, author, href in books:
+    print title, author, price
+    print href
+    print
