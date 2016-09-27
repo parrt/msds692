@@ -87,8 +87,7 @@ All projects are graded in binary fashion: They either work or they do not, even
   * [buzzfeed](https://github.com/parrt/msan692/blob/master/notes/buzzfeed.md)
   * [Amazon](https://github.com/parrt/msan692/blob/master/notes/amazon.md)
   * javascript
-* Web crawling
-* Use Selenium to extract data from JavaScript-based non-HTML web pages	
+* [Selenium](https://github.com/parrt/msan692/blob/master/notes/selenium.md)
 
 ## Feature extraction
 

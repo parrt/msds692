@@ -2,6 +2,8 @@
 
 We already know how to fetch a webpage using `urlopen()`. The question is: How do we extract useful information from the HTML. We are going to use BeautifulSoup again to parse the HTML and then search for elements of interest.
 
+[Lots of useful web scraping info here](https://automatetheboringstuff.com/chapter11/)
+
 ## Baby steps
 
 **Exercise**: Go grab the latest news from Hacker News, part of the Y Combinator startup incubator: `https://news.ycombinator.com/newest`. Parse the data with BeautifulSoup and then find all of the links to news.  You can either look at the page source in your browser to see what HTML renders those links or you can use chrome browser. Right-click over one of the links and say "inspect". It will show you the HTML associated with that link:
@@ -90,3 +92,27 @@ As you try to crawl the links from hacker news, inevitably one of them will be b
 ```
 
 Upon exception, this will return an empty page rather than crashing the whole program.
+
+## Getting more out of life
+
+So far we've grabbed just one page of news but let's figure out how to get multiple pages. We'll pull just 3 pages from Hacker News just so 35 students don't each start a loop that bangs their server and pisses them off.
+
+Using "inspect element" in Chrome or your favorite browser, find the "More" link. It should look like:
+
+```html
+<a href="news?p=2" class="morelink" rel="nofollow">More</a>
+```
+
+and then on that page, the "More" link should look like:
+
+```html
+<a href="news?p=3" class="morelink" rel="nofollow">More</a>
+```
+
+**Exercise**: Create a function that returns a list of links scraped from the first 3 pages (just 3 please) of Hacker News.
+
+## Extracting a table of data
+
+Let's see if we can pull academic performance data from [2012-13 Accountability Progress Reporting (APR)](http://data1.cde.ca.gov/dataquest/Acnt2013/2013GrthStAPI.aspx).
+
+**Exercise**: Create a list of list representation for the `2013 Growth API` table and another for the `Number of Students Included in the 2013 Growth API` table.
