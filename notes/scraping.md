@@ -111,6 +111,36 @@ and then on that page, the "More" link should look like:
 
 **Exercise**: Create a function that returns a list of links scraped from the first 3 pages (just 3 please) of Hacker News.
 
+## Reddit
+
+Ok, so Hacker News might shut us down. As a back up, you can scan [reddit news](https://www.reddit.com/r/all). To me it looks like links have `class="title may-blank outbound "`:
+
+```html
+<a class="title may-blank outbound "
+ href="http://imgur.com/wJqUthV" 
+ tabindex="1" 
+ data-href-url="http://imgur.com/wJqUthV" 
+ data-outbound-url="https://out.reddit.com/t3_54ts81?url=http%3A%2F%2Fimgur.com
+%2FwJqUthV&amp;token=AQAAoh7rVw1w9L81tgHr_XrmvIA01bcGQyOcWWbvU9jNqgetktoX" 
+data-outbound-expiration="1475026594000" 
+rel="nofollow">My former teacher posted this today.
+ Said that "they always hug like this"</a>
+```
+
+If you don't set the "user agent" (browser), you'll see this in response:
+
+```bash
+$ curl https://www.reddit.com/r/all
+...
+<p>we're sorry, but you appear to be a bot and we've seen too many requests
+from you lately. we enforce a hard speed limit on requests that appear to come
+from bots to prevent abuse.</p>
+
+<p>if you are not a bot but are spoofing one via your browser's user agent
+string: please change your user agent string to avoid seeing this message
+again.</p>
+```
+
 ## Extracting a table of data
 
 Let's see if we can pull academic performance data from [2012-13 Accountability Progress Reporting (APR)](http://data1.cde.ca.gov/dataquest/Acnt2013/2013GrthStAPI.aspx).
