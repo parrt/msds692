@@ -22,6 +22,8 @@ As you try to crawl the links from hacker news, inevitably one of them will be b
     except ValueError as e:
         print str(e)
         return '', BeautifulSoup('', "html.parser")
+    except: # toss out any other issue
+        return '', BeautifulSoup('', "html.parser")    
 ```
 
 Upon exception, this will return an empty page rather than crashing the whole program.
