@@ -87,6 +87,7 @@ All projects are graded in binary fashion: They either work or they do not, even
   * [Crawling](https://github.com/parrt/msan692/blob/master/notes/crawling.md)
   * [buzzfeed](https://github.com/parrt/msan692/blob/master/notes/buzzfeed.md)
   * [Amazon](https://github.com/parrt/msan692/blob/master/notes/amazon.md)
+  * [Scraping data from tables](https://github.com/parrt/msan692/blob/master/notes/crawling-tables.md)
   * javascript
 * [Selenium](https://github.com/parrt/msan692/blob/master/notes/selenium.md)
 
