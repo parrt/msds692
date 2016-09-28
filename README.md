@@ -83,7 +83,8 @@ All projects are graded in binary fashion: They either work or they do not, even
 * [APIs requiring authentication/identification](https://github.com/parrt/msan692/blob/master/notes/authapi.md)
  * [LinkedIn](https://github.com/parrt/msan692/blob/master/notes/linkedin.md)
  * [Facebook](https://github.com/parrt/msan692/blob/master/notes/facebook.md)
-* [web pages](https://github.com/parrt/msan692/blob/master/notes/scraping.md)
+* [Extracting data from web pages](https://github.com/parrt/msan692/blob/master/notes/scraping.md)
+  * [Crawling](https://github.com/parrt/msan692/blob/master/notes/crawling.md)
   * [buzzfeed](https://github.com/parrt/msan692/blob/master/notes/buzzfeed.md)
   * [Amazon](https://github.com/parrt/msan692/blob/master/notes/amazon.md)
   * javascript
