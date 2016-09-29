@@ -55,3 +55,31 @@ search_box = driver.find_element_by_name('q')
 search_box.send_keys('USF Analytics')
 search_box.submit()
 ```
+
+## Log in to twitter, pull your following list
+
+From `https://twitter.com/login`, we see `form` fields:
+
+```html
+<input class="js-username-field email-input js-initial-focus" type="text" name="session[username_or_email]" autocomplete="on" value="" placeholder="Phone, email or username">
+```
+
+and
+
+```html
+<input class="js-password-field" type="password" name="session[password]" placeholder="Password">
+```
+
+We need to inject a username and password there to login.
+
+
+Get `https://twitter.com/the_antlr_guy/following`
+
+```html
+<a class="ProfileNav-stat ProfileNav-stat--link u-borderUserColor u-textCenter js-tooltip js-openSignupDialog js-nonNavigable u-textUserColor"
+  data-nav="following"
+  href="/the_antlr_guy/following" data-original-title="38 Following">
+  <span class="ProfileNav-label">Following</span>
+  <span class="ProfileNav-value" data-is-compact="false">38</span>
+</a>
+```
