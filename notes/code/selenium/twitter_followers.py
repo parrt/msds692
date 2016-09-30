@@ -14,6 +14,15 @@ passwordfield.submit()
 
 driver.get('https://twitter.com/DataInstituteSF/following')
 
+driver.execute_script("window.scrollTo(0, 10000);") # scroll down
+driver.execute_script("window.scrollTo(0, 10000);") # scroll down some more
+
+links = driver.find_elements_by_css_selector('a.ProfileNameTruncated-link')
+
+links = [(link.get_attribute('href'),link.text) for link in links]
+
+print links
+
 raw_input("Press Enter to quit")
 
 driver.quit() # close browser
