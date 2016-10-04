@@ -172,30 +172,78 @@ links = driver.find_elements_by_css_selector('a.ProfileNameTruncated-link')
 
 ## Pull messages from slack w/o API
 
-The slack website 
+The slack website is
 
 `https://msan-usf.slack.com`
 
-message list is 
+and has two text fields you can "inspect" and identify. The message list URL for `general` is:
 
 `https://msan-usf.slack.com/messages/general/`
 
-and "inspect element" shows messages themselves look like:
+The "inspect element" shows messages themselves to look like:
 
 ```html
 <span class="message_body">Whoooooooooops.</span>
 ```
 
-and those `span`s are nested within an outer wrapper that also helps us identify the user:
+Such `span`s are nested within an outer wrapper that also helps us identify the user:
 
 ```html
-<ts-message id="msg_1449864508_000895" ...>
+<ts-message id="msg_1449864508_000895" data-member-id="..." ...>
    ...
    <div class="message_content ">
-	    <a href="/team/parrt" ... data-member-id="U0XXXXXX">parrt</a>
+   <a href="/team/parrt" target="/team/parrt" class="message_sender member member_preview_link color_U0A2V9N94 color_4bbe2e " data-member-id="U0A2V9N94">hanjoes</a>
    ...
    </div>
 </ts-message>
 ```
 
-**Exercise**: Write a program to login to slack's website (not the API) using selenium and get messages from a channel with messages, such as our MSAN `general` channel.  Create a list of tuples with (user,message) and print that out.
+That has a weird non-HTML tag but we can still search for it by tag name with selenium.
+
+The links returned by selenium for the user look like `https://msan-usf.slack.com/team/parrt`.
+
+**Exercise**: To get started, write a script to login to slack and jump to a specific channel like `general`. My outline looks like:
+
+```python
+from login import login
+import time
+from selenium import webdriver
+
+driver = webdriver.Chrome('/usr/local/bin/chromedriver')
+
+def login_and_show_channel(channel):
+    user,password = login()
+    driver.get(...)
+    userfield = driver.find_element_by_id(...)
+    userfield.send_keys(user)
+    passwordfield = driver.find_element_by_id(...)
+    passwordfield.send_keys(password)
+    passwordfield.submit()
+
+    driver.get(...)
+
+login_and_show_channel("general")
+
+raw_input("Press Enter to quit")
+driver.quit() # close browser
+```
+
+**Exercise**: Write a program to login to slack's website (not the API) using selenium and get messages from a channel with messages, such as our MSAN `general` channel.  Create a function `parse_slack` that returns list of tuples with (user,message) and then have your main code print the stuff out:
+
+```python
+msgs = parse_slack()
+for user,msg in msgs:
+    print "%s: %s" % (user, msg)
+```
+
+There is a tricky thing to worry about: We have to wait 5 seconds or so for the brower to load our page and for the javascript to load data from slack's servers and populate the page.
+
+Find the messages using tag name `ts-message`. Within each of those, get the message text by finding class name `message_body`. 
+
+Get the user by finding the `message_icon` class under the `ts-message` node. Under that, find the `a` tag and grab the `href` attribute. Use a regex to pull out the user name:
+
+```python
+user = re.search(r'/team/([a-zA-Z0-9]+)', href).group(1)
+```
+
+That groups user names after the `/team/` in `href` and then asks for the first (and only) group value.  Add the user and message as a tuple to a list and return from `parse_slack` when done.
