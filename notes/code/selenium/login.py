@@ -12,6 +12,7 @@ def login():
     password.grid(row=1, column=1)
 
     Button(master, text='Login', command=master.quit).grid(row=3, column=0, sticky=W, pady=4)
+    master.bind('<Return>', lambda x: master.quit())
 
     mainloop()
 
