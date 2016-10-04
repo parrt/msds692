@@ -26,7 +26,7 @@ Oh wait. ok, a serious bug prevents firefox usage for 0.9 but 0.10 didn't work e
 
 ## Launching a Chrome Browser
 
-Here is the boilerplate code that launches a chrome browser to the Google search page, waits 5 seconds, and then closes the browser.
+Here is the boilerplate code that launches a chrome browser to the Google search page, waits for a keypress, and then closes the browser.
 
 ```python
 import time
@@ -43,6 +43,8 @@ driver.quit() # close browser
 
 Notice that this is creating an entirely new instance of the browser (You'll see more a new chrome icon appear).
 
+**Exercise**: Make sure you can get that code working.
+
 ## Puppeteering with Chrome Browser
 
 Let's start by asking chrome to perform a search for `USF Analytics`. The
@@ -50,7 +52,7 @@ Let's start by asking chrome to perform a search for `USF Analytics`. The
 
 <img src=figures/google-searchbox.png width=500>
 
-Using the boilerplate code from the previous section, we would add the following functionality.
+**Exercise**: Using the boilerplate code from the previous section, add the following functionality and watch the browser perform a search for you.
 
 ```python
 search_box = driver.find_element_by_name('q')
@@ -105,14 +107,24 @@ and
 
 That is where the user should enter their username and password. We need to launch a chrome browser at that URL and then inject characters into those two fields.  I tried selecting the input fields by `name` but it didn't work so I had to use the CSS `class` selector.
 
-**Exercise**:  Write a script to login to twitter and view the list of accounts followed by our data Institute. You can get this information here `https://twitter.com/DataInstituteSF/following` but only if you are logged in. You need these statements to select the input fields:
+**Exercise**:  Write a script to login to twitter. You need these statements to select the input fields:
 
 ```python
 userfield = driver.find_element_by_css_selector('.js-username-field.email-input.js-initial-focus')
 passwordfield = driver.find_element_by_css_selector('.js-password-field')
 ```
 
-**Exercise**:  Alter the script so that it (i) pages down twice using: `driver.execute_script("window.scrollTo(0, 10000);")` and (ii) collects all of the `following` `a` tags into a list of tuples with (*link*,*link text*). I get:
+**Exercise**: Next, alter the script to view the list of users followed by our Data Institute. You can get this information starting here `https://twitter.com/DataInstituteSF`. From that page, have the browser click on the `Following` link. I see this using the Chrome "inspect" feature:
+
+```html
+<a ... data-nav="following" href="/DataInstituteSF/following" ...>
+  ...
+</a>
+```
+
+The `data-nav=following` appears to be unique.  Find that with seleniums functions and then `click()` it.
+
+**Exercise**:  Alter the script so that it (i) pages down twice to see more users followed by the Data Institute using: `driver.execute_script("window.scrollTo(0, 10000);")` and (ii) collects all of the `following` `a` tags into a list of tuples with (*link*,*link text*). I get:
 
 ```
 [(u'https://twitter.com/DataInstituteSF', u''), 
@@ -157,3 +169,33 @@ and you can select them by using:
 ```python
 links = driver.find_elements_by_css_selector('a.ProfileNameTruncated-link')
 ```
+
+## Pull messages from slack w/o API
+
+The slack website 
+
+`https://msan-usf.slack.com`
+
+message list is 
+
+`https://msan-usf.slack.com/messages/general/`
+
+and "inspect element" shows messages themselves look like:
+
+```html
+<span class="message_body">Whoooooooooops.</span>
+```
+
+and those `span`s are nested within an outer wrapper that also helps us identify the user:
+
+```html
+<ts-message id="msg_1449864508_000895" ...>
+   ...
+   <div class="message_content ">
+	    <a href="/team/parrt" ... data-member-id="U0XXXXXX">parrt</a>
+   ...
+   </div>
+</ts-message>
+```
+
+**Exercise**: Write a program to login to slack's website (not the API) using selenium and get messages from a channel with messages, such as our MSAN `general` channel.  Create a list of tuples with (user,message) and print that out.

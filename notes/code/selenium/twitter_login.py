@@ -5,15 +5,14 @@ from selenium import webdriver
 user,password = login()
 
 driver = webdriver.Chrome('/usr/local/bin/chromedriver')
-driver.get('https://lang-wichteam.slack.com/')
-userfield = driver.find_element_by_id('email')
+driver.get('http://www.twitter.com/login')
+userfield = driver.find_element_by_css_selector('.js-username-field.email-input.js-initial-focus')
 userfield.send_keys(user)
-userfield = driver.find_element_by_id('email')
-passwordfield = driver.find_element_by_id('password')
+passwordfield = driver.find_element_by_css_selector('.js-password-field')
 passwordfield.send_keys(password)
 passwordfield.submit()
 
-driver.get('https://lang-wichteam.slack.com/messages/general/')
+driver.get('https://twitter.com/DataInstituteSF/following')
 
 raw_input("Press Enter to quit")
 
