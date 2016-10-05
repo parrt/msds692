@@ -24,8 +24,6 @@ mv ~/Downloads/chromedriver /usr/local/bin
 mv ~/Downloads/geckodriver /usr/local/bin
 ```
 
-Oh wait. ok, a serious bug prevents firefox usage for 0.9 but 0.10 didn't work either. Ok, Chrome it is. 
-
 ## Launching a Chrome Browser
 
 Here is the boilerplate code that launches a chrome browser to the Google search page, waits for a keypress, and then closes the browser.
