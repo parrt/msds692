@@ -15,6 +15,8 @@ pip install -U selenium
 pip install chromedriver # if you plan on automating chrome usage
 ```
 
+(*The last install failed for some students but they were still able to do the exercises.*)
+
 Download [Chrome driver binary](https://sites.google.com/a/chromium.org/chromedriver/downloads) as well and/or [FireFox's gecko driver](https://github.com/mozilla/geckodriver/releases). Get `geckodriver-v0.9.0` not v0.10. The pip stuff just makes the python packages but the real meat is in the binary download. I stored the executable binaries in a standard place:
 
 ```bash
@@ -82,6 +84,13 @@ def login():
 
 if __name__ == '__main__':
     print login()
+```
+
+If you get an error that Tkinter is not a valid package, verify you are using the right python. If you are, then you might try:
+
+```bash
+brew uninstall python
+brew install python --with-brewed-tk
 ```
 
 **Exercise**: Run that program and verify that it prints out a sample (meaningless) username and password.
