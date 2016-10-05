@@ -12,12 +12,12 @@ We have seen how to use Python programs to scrape data from websites, but there 
 
 ```bash
 pip install -U selenium
-pip install chromedriver # if you plan on automating chrome usage
+pip install chromedriver
 ```
 
 (*The last install failed for some students but they were still able to do the exercises.*)
 
-Download [Chrome driver binary](https://sites.google.com/a/chromium.org/chromedriver/downloads) as well and/or [FireFox's gecko driver](https://github.com/mozilla/geckodriver/releases). Get `geckodriver-v0.9.0` not v0.10. The pip stuff just makes the python packages but the real meat is in the binary download. I stored the executable binaries in a standard place:
+Next, download [Chrome driver binary](https://sites.google.com/a/chromium.org/chromedriver/downloads) using your browser The pip stuff just makes the python packages but the real meat is in the binary download. Now, move the executable binaries to a standard place:
 
 ```bash
 mv ~/Downloads/chromedriver /usr/local/bin
