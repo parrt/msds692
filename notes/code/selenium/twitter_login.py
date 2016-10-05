@@ -12,8 +12,6 @@ passwordfield = driver.find_element_by_css_selector('.js-password-field')
 passwordfield.send_keys(password)
 passwordfield.submit()
 
-driver.get('https://twitter.com/DataInstituteSF/following')
-
 raw_input("Press Enter to quit")
 
 driver.quit() # close browser
