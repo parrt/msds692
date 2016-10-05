@@ -64,7 +64,7 @@ search_box.submit()
 
 ## Support code for logging in
 
-We don't ever want to store a username and password in our source code. Also, if we hardcoded info like that, we could not use software for different users. Instead, I built a little dialog box that asks for a username and password from the user. The `login()` returns when the user clicks on the `Login` button:
+We don't ever want to store a username and password in our source code. Also, if we hardcoded info like that, we could not use software for different users. Instead, I built a little dialog box in `login.py` that asks for a username and password from the user. The `login()` returns when the user clicks on the `Login` button:
 
 ```python
 from Tkinter import *
@@ -73,13 +73,18 @@ def login():
     master = Tk()
     Label(master, text="Username").grid(row=0)
     Label(master, text="Password").grid(row=1)
+
     user = Entry(master)
     password = Entry(master, show="*")
+
     user.grid(row=0, column=1)
     password.grid(row=1, column=1)
+
     Button(master, text='Login', command=master.quit).grid(row=3, column=0, sticky=W, pady=4)
-    
+    master.bind('<Return>', lambda x: master.quit())
+
     mainloop()
+
     return user.get(), password.get()
 
 if __name__ == '__main__':
