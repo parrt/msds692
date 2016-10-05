@@ -10,6 +10,10 @@ We have seen how to use Python programs to scrape data from websites, but there 
 
 ## Installation
 
+Step 1. Download/install Chrome browser.
+
+Step 2. Install python packages we need.
+
 ```bash
 pip install -U selenium
 pip install chromedriver
@@ -17,7 +21,7 @@ pip install chromedriver
 
 (*The last install failed for some students but they were still able to do the exercises.*)
 
-Next, download [Chrome driver binary](https://sites.google.com/a/chromium.org/chromedriver/downloads) using your browser The pip stuff just makes the python packages but the real meat is in the binary download. Now, move the executable binaries to a standard place:
+Step 3. Download [Chrome driver binary](https://sites.google.com/a/chromium.org/chromedriver/downloads) using your browser The pip stuff just makes the python packages but the real meat is in the binary download. Now, move the executable binaries to a standard place:
 
 ```bash
 mv ~/Downloads/chromedriver /usr/local/bin
