@@ -26,7 +26,6 @@ The pip stuff just makes the python packages but the real meat is in the binary 
 
 ```bash
 mv ~/Downloads/chromedriver /usr/local/bin
-mv ~/Downloads/geckodriver /usr/local/bin
 ```
 
 ## Launching a Chrome Browser
