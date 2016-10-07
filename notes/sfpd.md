@@ -19,7 +19,7 @@ So 1,968,080 not including the header row.  Let's kill that first row using `tai
 $ tail +2 SFPD_Incidents_from_1_January_2003.csv > SFPD.csv
 ```
 
-In Python, that would be equivalent to `data[2:]`. You can name that data file whatever you want but I will call it `SFPD.csv` for these exercises.
+In Python, that would be equivalent to `data[1:]` (it counts from 0 not 1 like `tail`). You can name that data file whatever you want but I will call it `SFPD.csv` for these exercises.
 
 ## Sniffing the data
 
