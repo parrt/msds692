@@ -252,7 +252,7 @@ We are going to base our crime heat map on the [Heatmap example](https://develop
 {lat:37.7765080370233, lng:-122.414457764634},
 ```
 
-I have split Google's heat map example into two files with a small modification so that we can combine `heatmap-start.txt` + those longitude and latitude lines + `heatmap-end.txt` into a `heatmap.html` file and then view it in the browser.
+I have split Google's heat map example into two files with a small modification so that we can combine [`heatmap-start.txt`](https://github.com/parrt/msan692/blob/master/notes/code/sfpd/heatmap-start.txt) + those longitude and latitude lines + [`heatmap-end.txt`](https://github.com/parrt/msan692/blob/master/notes/code/sfpd/heatmap-end.txt) into a `heatmap.html` file and then view it in the browser.
 
 **Exercise**: Write a small Python program called `latlng.py` that processes the file specified as an argument and prints out column 10, column 9 but in the format above.
 
@@ -286,7 +286,7 @@ You should see something like the following map:
 
 Unfortunately, over such a long period, just about every location in the city has been hit; repeatedly. We need to filter the data for a smaller time range or sample the data at some interval. The easiest thing to do is simply to ask where the car break-ins have been for 2016. 
 
-**Exercise**: Filter the original CSV to get all crimes for 2016 using `grep`. and then rerun the above procedure with `latlng.py` to get a new heat map called `2016-heatmap.html`. The regular expression you need for `grep` to find all dates from 2016 is `../../2016`. Past that through another `grep` that filters for `GRAND THEFT FROM LOCKED AUTO` and write it to file `2016-car-break-ins.csv`.  Follow the process you did above to create the `heatmap.html` file with `latlng.py`, but now process data `2016-car-break-ins.csv`. I played around with the radius and maximum intensity parameters of the heat map and got a fairly useful image:
+**Exercise**: Filter the original CSV to get all crimes for 2016 using `grep`. and then rerun the above procedure with `latlng.py` to get a new heat map called `2016-heatmap.html`. The regular expression you need for `grep` to find all dates from 2016 is `../../2016`. Pass that through another `grep` that filters for `GRAND THEFT FROM LOCKED AUTO` and write it to file `2016-car-break-ins.csv`.  Follow the process you did above to create the `heatmap.html` file with `latlng.py`, but now process data `2016-car-break-ins.csv`. I played around with the radius and maximum intensity parameters of the heat map and got a fairly useful image:
 
 ```javascript
 heatmap.set('maxIntensity', 40);
@@ -298,3 +298,7 @@ My heat map looks like the following for 2016 car break-ins in SF:
 <img src=figures/2016-car-breakins-heatmap.png width=400>
 
 As we would expect, there is a lot of car break-ins at the de Young Museum garage and 5th/mission garage, but bizarrely there are lots of car break-ins at the Hall of Justice in SOMA! Weird. Wait, I also see the concentration at another police precinct station. Maybe they simply enter their own GPS location when someone calls into report a break-in.
+
+<hr>
+
+If you get stuck in any of these exercises, you can look at the [code associated with this notes](https://github.com/parrt/msan692/tree/master/notes/code/sfpd).
