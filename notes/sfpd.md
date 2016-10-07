@@ -1,4 +1,4 @@
-# Crime heatmap in San Francisco
+# Crime data visualization in San Francisco
 
 San Francisco has one of the most "open data" policies of any large city. In this lab, we are going to download about 400M of data (1,968,080 records) describing all police incidents since 2003 (I'm grabbing data on October 6, 2016).
 
