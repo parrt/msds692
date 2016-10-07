@@ -246,7 +246,7 @@ Don't worry too much about the JavaScript, we are simply going to use it as a fr
 
 ## Crime heat map
 
-We are going to base our crime heat map on the [Heatmap example](https://developers.google.com/maps/documentation/javascript/examples/layer-heatmap). Because we don't know JavaScript, we are going to use Python to process the CSV file and generate the minimum necessary JavaScript to get this working. For each crime, we will emit aligned such as:
+We are going to base our crime heat map on the [Heatmap example](https://developers.google.com/maps/documentation/javascript/examples/layer-heatmap). Because we don't know JavaScript, we are going to use Python to process the CSV file and generate the minimum necessary JavaScript to get this working. For each crime, we will emit a line such as:
 
 ```javascript
 {lat:37.7765080370233, lng:-122.414457764634},
@@ -254,7 +254,7 @@ We are going to base our crime heat map on the [Heatmap example](https://develop
 
 I have split Google's heat map example into two files with a small modification so that we can combine [`heatmap-start.txt`](https://github.com/parrt/msan692/blob/master/notes/code/sfpd/heatmap-start.txt) + those longitude and latitude lines + [`heatmap-end.txt`](https://github.com/parrt/msan692/blob/master/notes/code/sfpd/heatmap-end.txt) into a `heatmap.html` file and then view it in the browser.
 
-**Exercise**: Write a small Python program called `latlng.py` that processes the file specified as an argument and prints out column 10, column 9 but in the format above.
+**Exercise**: Write a small Python program called `latlng.py` that processes the file specified as an argument and prints out column 10, column 9 but in the format above. It should look like:
 
 ```bash
 $ python latlng.py ~/data/SFPD.csv
