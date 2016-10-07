@@ -272,7 +272,8 @@ $ python latlng.py ~/data/SFPD.csv
 ```
 
 **Exercise**: Modify the `heatmap-end.txt` file to use your API key. Combine the start and end files with the output from `latlng.py` into `heatmap.html`. Then view that file in a browser. The easy way to do that is the following:
- ```bash
+
+```bash
 cat heatmap-start.txt > heatmap.html
 python latlng.py ~/data/SFPD.csv >> heatmap.html 
 cat heatmap-end.txt >> heatmap.html 
