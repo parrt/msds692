@@ -130,7 +130,7 @@ A more interesting way to visualize differences in term frequency is using a so-
 
 <img src=figures/SFPD-wordcloud.png width=400>
 
-Python is a nice library you can use:
+Python has a nice library you can use:
 
 ```bash
 $ pip install wordcloud
