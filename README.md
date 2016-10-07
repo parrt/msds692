@@ -88,7 +88,6 @@ All projects are graded in binary fashion: They either work or they do not, even
   * [buzzfeed](https://github.com/parrt/msan692/blob/master/notes/buzzfeed.md)
   * [Amazon](https://github.com/parrt/msan692/blob/master/notes/amazon.md)
   * [Scraping data from tables](https://github.com/parrt/msan692/blob/master/notes/scraping-tables.md)
-  * javascript
 * [Selenium](https://github.com/parrt/msan692/blob/master/notes/selenium.md)
 
 ## Feature extraction
@@ -102,4 +101,4 @@ All projects are graded in binary fashion: They either work or they do not, even
 ## Misc
 
 * Running shell commands from Python
-* JavaScript for heat maps
+* [San Francisco police incidents word clouds and heat maps](https://github.com/parrt/msan692/blob/master/hw/sfpd.md)
