@@ -1,0 +1,17 @@
+		];
+		  var data = [];
+		  var p;
+		  var i;
+		  for (i = 0; i < points.length; i++) {
+			p = points[i];
+			var latlng = new google.maps.LatLng(p.lat,p.lng);
+			data.push(latlng);
+		  }
+		  return data;
+		}
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=visualization&callback=initMap">
+    </script>
+  </body>
+</html>
