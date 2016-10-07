@@ -101,4 +101,4 @@ All projects are graded in binary fashion: They either work or they do not, even
 ## Misc
 
 * Running shell commands from Python
-* [San Francisco police incidents word clouds and heat maps](https://github.com/parrt/msan692/blob/master/hw/sfpd.md)
+* [San Francisco police incidents word clouds and heat maps](https://github.com/parrt/msan692/blob/master/notes/sfpd.md)
