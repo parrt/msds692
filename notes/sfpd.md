@@ -358,7 +358,7 @@ Hmm.. so in 2016, I guess that is the absolute worst place to park your car. (ex
 
 <img src=figures/deyoung.png width=200>
 
-Ok, so it sounds like we just need to strip out the first one to get a more accurate picture.  The Hall of Justice artificially dampens down the other areas because it is three or four times as intense.
+Ok, so it sounds like we just need to strip out the first one to get a more accurate picture.  The Hall of Justice artificially dampens down the other areas because it is three or four times as intense. On the other hand, we have set the max intensity (`heatmap.set('maxIntensity', 40);`) so that this peak did not visually dampen the others. At least we can get rid of that big red dot that is spurious.
 
 Strip out the Hall of Justice using `grep`. First list check if a simple expression will find all of the Hall of Justice. It looks like it:
 
@@ -383,13 +383,9 @@ I changed the radius in that JavaScript to be the same as I had for the previous
 heatmap.set('radius', 9.5);
 ```
 
-Ok, so after we stripped out the Hall of Justice, we get a much more accurate picture of intensity:
+Ok, so after we stripped out the Hall of Justice, we get basically the same picture but without the spurious value:
 
 <img src=figures/better-2016-car-breakins-heatmap.png width=400>
-
-And here is a previous for reference:
-
-<img src=figures/2016-car-breakins-heatmap.png width=400>
 
 
 ## What is the worst block in the city?
