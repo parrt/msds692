@@ -1,9 +1,9 @@
 import sys
 
-from csvcols import get_columns
+from csvcols import get_column
 
-categories = get_columns(sys.argv[1],col=1)
-descriptions = get_columns(sys.argv[1],col=2)
+categories = get_column(sys.argv[1], col=1)
+descriptions = get_column(sys.argv[1], col=2)
 
 for c, n in categories.most_common(len(categories)):
     print "%6d %s" % (n, c)

@@ -1,7 +1,8 @@
 import csv
 from collections import Counter
+import sys
 
-def get_columns(filename,col):
+def get_column(filename, col):
     """
     Load CSV in Excel format, return Counter created from column of data indicated by
     integer col parameter.

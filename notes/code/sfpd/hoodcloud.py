@@ -1,9 +1,9 @@
 from wordcloud import WordCloud
-from csvcols import get_columns
+from csvcols import get_column
 import matplotlib.pyplot as plt
 import sys
 
-neighborhoods = get_columns(sys.argv[1],col=6)
+neighborhoods = get_column(sys.argv[1], col=6)
 
 wordcloud = WordCloud(width=1800,
                       height=1400,
