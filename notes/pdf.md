@@ -6,7 +6,7 @@ PDF files are effectively restricted versions of PostScript files, what you migh
 $ pip install pdfminer
 ```
 
-Then use `pdf2txt.py` as a command from the commandline, which will spit the text out to standard output:
+Then use `pdf2txt.py` as a command from the commandline, which will spit the text out to standard output. First download a sample PDF, such as [Dr_Maxwell_Glen_Berry.pdf](https://www.eisenhower.archives.gov/education/articles/Dr_Maxwell_Glen_Berry.pdf) then pass the filename to `pdf2txt.py`:
 
 ```bash
 $ pdf2txt.py ~/data/Dr_Maxwell_Glen_Berry.pdf
@@ -15,11 +15,11 @@ article  that  follows  is  a  special  feature  of  this  exhibition,  the  six
 ...
 ```
 
-You can redirect that text to a file using the bash `>`  operator or the `-o` option on `pdf2txt.py`.
+Now, redirect that text to a file using the bash `>`  operator or the `-o` option on `pdf2txt.py`.
 
 ```bash
 $ pdf2txt.py ~/data/Dr_Maxwell_Glen_Berry.pdf > t.txt
-$ pdf2txt.py -o t.txt ~/data/Dr_Maxwell_Glen_Berry.pdf
+$ pdf2txt.py -o /tmp/t.txt ~/data/Dr_Maxwell_Glen_Berry.pdf
 ```
 
 Once you have text output, you can perform whatever analysis you'd like without having to worry about the data coming in PDF form. For example, you might want to run some analysis on financial documents but they are all in PDF. First, convert to text and then perform your analysis.
