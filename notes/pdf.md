@@ -23,3 +23,27 @@ $ pdf2txt.py -o /tmp/t.txt ~/data/Dr_Maxwell_Glen_Berry.pdf
 ```
 
 Once you have text output, you can perform whatever analysis you'd like without having to worry about the data coming in PDF form. For example, you might want to run some analysis on financial documents but they are all in PDF. First, convert to text and then perform your analysis.
+
+**Exercise**: Read that text file and split the document into a list of words. Print out the first 100 words. It should look like:
+
+```
+['World', 'War', 'II', 'Remembered', 'is', 'a', 'multi-year', 'exhibition', ... ]
+```
+
+Now, import the `Counter` object which makes histograms from a list of elements:
+
+```python
+from collections import Counter
+```
+
+Then, if `words` is your list of words, create and print a histogram:
+
+```python
+print Counter(words)
+```
+
+The output starts like this:
+
+```
+Counter({'': 600, 'the': 52, 'of': 37, 'a': 31, 'and': 28, 'to': 26, '\n': 26, 'in': 25, 'his': 19, 'he': 17, 'was': 16, 'Max': 14, 'that': 11, 'were': 9, '.': 9, 'had': 9, 'for': 9, 'with': 9, 'at': 9, '\nand': 8, 'our': 8, 'I': 7, 'War': 6, 'on': 6, 'have': 5, 'as': 5, '\nin': 5, '1945,': 4, 'would': 4, 'two': 4, 'Maxwell': 4, 'World': 4, 'University': 4, 'Josephine': 4, ...
+```
