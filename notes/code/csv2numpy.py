@@ -13,4 +13,5 @@ with open(table_file, "rb") as csvfile:
 
 data = np.array(data)
 print type(data)
+print data.shape
 print data

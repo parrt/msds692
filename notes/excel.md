@@ -4,19 +4,16 @@ Data of interest that we want to process in Python often comes in the form of an
 
 Let's get some data. Download [Sample Superstore Sales .xls file](https://community.tableau.com/docs/DOC-1236) or [my local copy](../data/SampleSuperstoreSales.xls) and open it in Excel. Select `File>Save As...` menu option and then "Comma separated values (.csv)" from the `Format:` drop-down menu. Set the filename to `SampleSuperstoreSales.csv` or similiar. That will warn you that the data cannot be saved as CSV without losing some information. Don't worry about that because it's only formatting and not data information that you will lose. Say "Save Active Sheet". Then it will helpfully give you a second warning. Tell it to continue.
 
-If you use `cat` or `more` from the commandline, you will see some funny characters in the output and it will be all on one line:
+If you use `cat` or `more` from the commandline, you will see some funny characters in the output:
 
-<img src=figures/csv-funny-char.png width=800>
+<img src=figures/csv-funny-char.png width=600>
 
-**First issue**. `^M` (control-M) is key sequence to get a "carriage return" character, which is the way Windows likes to see newlines. That is `'\r'` from within Python strings or the command line. Unix prefers "new line" (`^J`) so we need to flip that character (`'\n'` from Python strings or the command line).
+That weird `<A8>` character is ASCII code 168 (or A8 in hexadecimal). It turns out it's weirder than you think and is actually a two-byte character `U+00AE` encoding the registered trademark symbol &#x00AE;.  From experience with these data formats, it means that Excel is saving things using a [UTF-8](https://en.wikipedia.org/wiki/UTF-8) text encoding. Encoding is essentially ASCII but anything above code 127 gets encoded with more than one byte. So, we need to fix that by stripping those out. 
 
-**Second issue**. You will also see a weird `<A8>` character, which is ASCII code 168 (or A8 in hexadecimal). It turns out it's weirder than you think and is actually a two-byte character `U+00AE` encoding the registered trademark symbol &#x00AE;.  From experience with these data formats, it means that Excel is saving things using a [UTF-8](https://en.wikipedia.org/wiki/UTF-8) text encoding. Encoding is essentially ASCII but anything above code 127 gets encoded with 2 bytes not 1. So, we also need to fix that by stripping those out. 
-
-We can accomplish that the first [iconv](https://www.gnu.org/software/libiconv/) command in the following script and the second command flips carriage return and newlines:
+We can accomplish that using the [iconv](https://www.gnu.org/software/libiconv/) command from the terminal:
 
 ```bash
 $ iconv -c -f utf-8 -t ascii ~/data/SampleSuperstoreSales.csv > /tmp/t.csv
-$ tr '\r' '\n' < /tmp/t.csv > /tmp/u.csv
 ```
 
 Ok, now we finally have some data we can pull into Python:
@@ -56,17 +53,28 @@ with open(table_file, "rb") as csvfile:
         data.append(row)
 ```
 
-We can extend that a little bit if we want that data in a numpy `array`:
+The first two rows should look like:
+
+```python
+>>> print data[0]
+['Row ID', 'Order ID', 'Order Date', 'Order Priority', 'Order Quantity', 'Sales', 'Discount', 'Ship Mode', 'Profit', 'Unit Price', 'Shipping Cost', 'Customer Name', 'Province', 'Region', 'Customer Segment', 'Product Category', 'Product Sub-Category', 'Product Name', 'Product Container', 'Product Base Margin', 'Ship Date']
+>>> print data[1]
+['1', '3', '10/13/10', 'Low', '6', '261.54', '0.04', 'Regular Air', '-213.25', '38.94', '35', 'Muhammed MacIntyre', 'Nunavut', 'Nunavut', 'Small Business', 'Office Supplies', 'Storage & Organization', 'Eldon Base for stackable storage shelf, platinum', 'Large Box', '0.8', '10/20/10']
+```
+
+We can extend that a little bit if we want that data in a numpy `array` (See the full [csv2numpy.py](https://github.com/parrt/msan692/blob/master/notes/code/csv2numpy.py)):
  
 ```python
 data = np.array(data)
 print type(data)
+print data.shape # print the dimensions
 print data
 ```
 
 ```bash
  $ python csv2numpy.py /tmp/u.csv
 <type 'numpy.ndarray'>
+(8400, 21)
 [['Row ID' 'Order ID' 'Order Date' ..., 'Product Container'
   'Product Base Margin' 'Ship Date']
  ['1' '3' '10/13/10' ..., 'Large Box' '0.8' '10/20/10']
@@ -77,4 +85,4 @@ print data
  ['7914' '56581' '2/8/09' ..., 'Medium Box' '0.65' '2/11/09']]
 ```
 
-**Exercise**: Extract the quantity and unit price columns and multiply them together to get the sale value. My solution uses a list comprehension across the list of lists, one per column I need. Then I create a numpy array of those and simply multiply them with `*`.
+**Exercise**: Extract the quantity and unit price columns and multiply them together to get the sale value. My solution uses a list comprehension across the list of lists, one per column I need. Then I create a numpy array of those and simply multiply them with `*`. Remember that `data[1:]` gives you all but the first element (a row in this case) of a list. `float(x)` converts string or integer `x` to a floating point number. If you get stuck, see [readcsv.py](https://github.com/parrt/msan692/blob/master/notes/code/readcsv.py).
