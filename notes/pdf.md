@@ -24,7 +24,7 @@ $ pdf2txt.py -o /tmp/t.txt ~/data/Dr_Maxwell_Glen_Berry.pdf
 
 Once you have text output, you can perform whatever analysis you'd like without having to worry about the data coming in PDF form. For example, you might want to run some analysis on financial documents but they are all in PDF. First, convert to text and then perform your analysis.
 
-**Exercise**: Read that text file and split the document into a list of words. Print out the first 100 words. It should look like:
+**Exercise**. Read that text file and split the document into a list of words. Print out the first 100 words. It should look like:
 
 ```
 ['World', 'War', 'II', 'Remembered', 'is', 'a', 'multi-year', 'exhibition', ... ]
@@ -47,3 +47,32 @@ The output starts like this:
 ```
 Counter({'': 600, 'the': 52, 'of': 37, 'a': 31, 'and': 28, 'to': 26, '\n': 26, 'in': 25, 'his': 19, 'he': 17, 'was': 16, 'Max': 14, 'that': 11, 'were': 9, '.': 9, 'had': 9, 'for': 9, 'with': 9, 'at': 9, '\nand': 8, 'our': 8, 'I': 7, 'War': 6, 'on': 6, 'have': 5, 'as': 5, '\nin': 5, '1945,': 4, 'would': 4, 'two': 4, 'Maxwell': 4, 'World': 4, 'University': 4, 'Josephine': 4, ...
 ```
+
+**Exercise**. A useful way to visualize histograms or word frequency is with a *word cloud*.  Augment your previous code to include packages for word clouds and graphics:
+
+```python
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt
+```
+
+Next, take your histogram and get the top 50 words using function `histo.most_common(...)`. This returns a list of (word,count) tuples but we need it as a dictionary (`dict`) so convert using: `top = dict(...)`.
+
+To get the actual word cloud to appear, add this code to the end of your program:
+
+```python
+wordcloud = WordCloud(width=1800,
+                      height=1400,
+                      max_words=500,
+                      random_state=1,
+                      relative_scaling=0.25)
+wordcloud.fit_words(top)
+plt.imshow(wordcloud)
+plt.axis("off")
+plt.show()
+```
+
+*Warning*: do not call your python file `wordcloud.py` as that is the package we are importing!
+
+When you run (passing a text file argument), you see something like:
+
+<img src=figures/wordcloud.png width=400>

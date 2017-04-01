@@ -1,4 +1,4 @@
-from wordcloud import WordCloud
+from cloud import WordCloud
 from csvcols import get_column
 import matplotlib.pyplot as plt
 import sys
