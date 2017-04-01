@@ -131,8 +131,10 @@ def html2text(html_text):
 * Get rid of the blank strings by collapsing spaces and newlines into a single space using: `re.sub("[\\n ]+", ' ', text)`. I then get: `[('considered,', 1), ('S-8', 1), ('S-1', 5), ...`.
 * Now, create the histogram the easy way using `Counter`. If you print that object, it will show you `Counter({'the': 6483, 'of': 5788, 'and': 4274, ...`.
 
+If get stuck, see [ipo-text.py](https://github.com/parrt/msan692/blob/master/notes/code/html/ipo-text.py).
 
-## Stripping non-ASCII characters
+
+## Stripping code points (characters) beyond 255
 
 If there are characters within the file that are non-ASCII and larger than 255, the file will have a two byte character. Here's a simple version of the problem I put into file `/tmp/foo.html`:
 
