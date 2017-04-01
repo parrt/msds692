@@ -76,3 +76,5 @@ plt.show()
 When you run (passing a text file argument), you see something like:
 
 <img src=figures/wordcloud.png width=400>
+
+If you get stuck, see [cloud.py](https://github.com/parrt/msan692/blob/master/notes/code/cloud.py).
