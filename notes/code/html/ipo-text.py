@@ -6,8 +6,8 @@ import re
 def html2text(html_text):
     html_text = html_text.replace('&nbsp;', ' ') # replace html space specifier with space char
     soup = BeautifulSoup(html_text, 'html.parser')
-    html_text = soup.get_text(' ', strip=False)  # space between tags, don't strip newlines
-    return html_text
+    text = soup.get_text(' ', strip=False)  # space between tags, don't strip newlines
+    return text
 
 filename = sys.argv[1]
 f = open(filename, "r")
