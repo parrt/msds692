@@ -2,20 +2,18 @@
 
 # no key required
 
-import urllib
-import urllib2
+import requests
 import json
 
 URL = "http://www.omdbapi.com/?"
 
-query = {
+args = {
 	's' : 'cats',
 	'r' : 'json'
 }
 
-query_url = URL + urllib.urlencode(query)
-response = urllib2.urlopen(query_url)
-jsondata = response.read()
+r = requests.get(URL, params=args)
+jsondata = r.text
 
 json_data = json.loads(jsondata)
 

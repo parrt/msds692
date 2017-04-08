@@ -1,11 +1,11 @@
 import sys
-import urllib2
+import requests
 
 HistoryURL = "http://ichart.finance.yahoo.com/table.csv?s=%s"
 
 ticker = sys.argv[1]  # AAPL
-response = urllib2.urlopen(HistoryURL % ticker)
-csvdata = response.read()
+r = requests.get(HistoryURL % ticker)
+csvdata = r.text
 print csvdata
 
 """
@@ -15,7 +15,7 @@ print csvdata
 ...
 """
 
-# csv Python lib prefers reading from files, and it's easy to handle ourselves.
+# csv is easy to handle ourselves:
 for row in csvdata.strip().split("\n"):
     cols = row.split(',')
-    print cols
+    print ', '.join(cols)

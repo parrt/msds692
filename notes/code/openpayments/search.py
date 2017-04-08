@@ -1,6 +1,5 @@
 # https://docs.python.org/2/howto/urllib2.html
-import urllib
-import urllib2
+import requests
 import sys
 import json
 
@@ -8,9 +7,8 @@ URL = "http://openpayments.us/data?query=%s"
 
 query = sys.argv[1]
 
-query = urllib.quote(query)             # https://docs.python.org/2/library/urllib.html#urllib.quote
-response = urllib2.urlopen(URL % query) # https://docs.python.org/2/library/urllib.html#urllib.urlencode
-jsondata = response.read()              # read all data
+r = requests.get(URL % query)
+jsondata = r.text
 
 #print jsondata                          # raw json
 

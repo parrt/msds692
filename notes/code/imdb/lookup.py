@@ -4,8 +4,7 @@
 # no key required
 
 # Derived from https://blog.n-der.net/?p=14
-import urllib
-import urllib2
+import requests
 import json
 import untangle
  
@@ -14,17 +13,16 @@ URL = "http://www.omdbapi.com/?"
 movie_title = "Star Wars"
 movie_year = "1977"
  
-query = {
+args = {
 	't' : movie_title,
 	'y' : movie_year,
 	'r' : 'xml'
 }
- 
-query_url = URL + urllib.urlencode(query)
-response = urllib2.urlopen(query_url)
-data = response.read()
 
-if 'r' in query and query['r']=='xml':
+r = requests.get(URL, params=args)
+data = r.text
+
+if 'r' in args and args['r']=='xml':
     print data
     xml = untangle.parse(data)
     print xml.root.movie['title']

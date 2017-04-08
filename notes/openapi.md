@@ -2,21 +2,22 @@
 
 [Huge source of public APIs](https://www.publicapis.com/)
 
-We have already seen how to use `urlib2` to fetch a webpage:
+We have already seen how to use `requests` to fetch a webpage:
 
 ```python
-webpage = urllib2.urlopen(URL).read()
+r = requests.get('http://www.cnn.com')
+print r.text
 ```
 
 If the URL is to a page that gives you HTML, we would say that we are fetching a webpage. On the other hand, if the URL is returning data in some form, we would say that we are accessing a *REST* api.
  
-*REST* is an acronym for REpresentational State Transfer and is a very handy way to make something trivial sound very complicated.  Anytime you see the word REST, just think "webpage that gives me data not HTML." There is a massive industry and giant following behind this term but I cannot see anything beyond "fetch data from webpage".
+**REST** is an acronym for *REpresentational State Transfer* and is a very handy way to make something trivial sound very complicated.  Anytime you see the word REST, just think "webpage that gives me data not HTML." There is a massive industry and giant following behind this term but I don't see anything beyond "fetch data from webpage".
 
-Anyway, we are going to pull data from Web servers that intentionally provide nice data spigot URLs. Information you need in order to get data is typically:
+Anyway, we are going to pull data from web servers that intentionally provide nice data spigot URLs. Information you need in order to get data is typically:
 
-* Base URL
-* The names and contents of parameters
-* What data comes back and in what format (XML, CSV, ...)
+* Base URL, including machine name, port number, and "file" path
+* The names and values of parameters
+* What data comes back and in what format (XML, JSON, CSV, ...)
 
 ## Yahoo
 
@@ -36,19 +37,26 @@ Code: [yahoo finance stock history](notes/code/yahoo/history.py):
 
 ```python
 import sys
-import urllib2
+import requests
 
 HistoryURL = "http://ichart.finance.yahoo.com/table.csv?s=%s"
 
-ticker = sys.argv[1]  # E.g., AAPL
-response = urllib2.urlopen(HistoryURL % ticker)
-csvdata = response.read()
+ticker = sys.argv[1]  # AAPL
+r = requests.get(HistoryURL % ticker)
+csvdata = r.text
 print csvdata
 
-# csv Python lib prefers reading from files, and it's easy to handle ourselves.
+"""
+...
+1998-02-23,20.125,21.624999,20.00,21.250001,119372400,0.694818
+1998-02-20,20.50,20.5625,19.8125,20.00,81354000,0.653947
+...
+"""
+
+# csv is easy to handle ourselves:
 for row in csvdata.strip().split("\n"):
     cols = row.split(',')
-    print cols
+    print ', '.join(cols)
 ```
 
 **Exercise:** Fetch and print a stock quote (not the history) from Yahoo finance for a specific quote. Here is the template for getting a stock quote:
@@ -81,7 +89,7 @@ URL = "http://openpayments.us/data?query=%s"
 query = sys.argv[1]
 ```
 
-A **technical detail** related to valid strings you can include as part of a URL.  Spaces are not allowed so `John Chan` has to be encoded or "quoted" we say:
+A **technical detail** related to valid strings you can include as part of a URL.  Spaces are not allowed so `John Chan` has to be encoded or "quoted".  Fortunately, `requests` does this automatically for us. If you ever need to quote URLs, use `urllib`:
 
 ```python
 query = urllib.quote(query)
@@ -118,20 +126,36 @@ Let's also learn a more convenient way to specify URL parameters (with a diction
 ```python
 URL = "http://www.omdbapi.com/?"
 
-query = {
+args = {
 	's' : 'cats',
 	'r' : 'json'
 }
 
-# urlencode converts the dictionary to a list of x=y pairs
-query_url = URL + urllib.urlencode(query)
+r = requests.get(URL, params=args)
 ```
 
-**Exercise**: Use this code as a starting point and extract data from the movie database. You can change the search string to anything you want. To print out the `query_url` so you can see how it encodes the dictionary as GET arguments on the URL.
+**Exercise**: Use this code as a starting point and extract data from the movie database. You can change the search string to anything you want. Print out `r.url` so you can see how it encodes the dictionary as GET arguments on the URL.
 
-**Exercise**:  Write a small Python script using base URL `http://www.omdbapi.com` and parameters `t` (movie title) and `y` (movie year) to look up some of your favorite movies. The default output should come back in JSON. 
+**Exercise**:  Write a small Python script using base URL `http://www.omdbapi.com` and parameters `t` (movie title) and `y` (movie year) to look up some of your favorite movies. The default output should come back in JSON.  Here is the structure of the argument dictionary:
 
-Now, change your program so that it requests data back in XML format. Replace the json conversion code with code that [untangle](https://untangle.readthedocs.io/en/latest/)'s the XML to print out the title and the plot. All of the REST parameters are explained in the [API document](http://www.omdbapi.com/).  Recall that untangle let you refer to children of x with x.childname. Attributes of a specific node are stored in a dictionary so x's attributes are x['attributename']. You will have to look at the structure of the XML to figure out how to dig down into the tree.
+```python
+args = {
+	't' : movie_title,
+	'y' : movie_year,
+}
+```
+
+Now, change your program so that it requests data back in XML format:
+
+```python
+args = {
+	't' : movie_title,
+	'y' : movie_year,
+	'r' : 'xml'
+}
+```
+
+Replace the json conversion code with code that [untangle](https://untangle.readthedocs.io/en/latest/)'s the XML to print out the title and the plot. All of the REST parameters are explained in the [API document](http://www.omdbapi.com/).  Recall that untangle lets you refer to children of `x` with `x.childname`. Parse with `x = untangle.parse(testxml)`. Attributes of a specific node are stored in a dictionary so `x`'s attributes are `x['attributename']`. You will have to look at the structure of the XML to figure out how to dig down into the tree.
 
 ## CURLing for it
 
@@ -144,12 +168,12 @@ curl "http://www.omdbapi.com/?s=cats&r=json"
 curl "http://www.omdbapi.com/?t=Star+Wars"
 ```
 
-curl writes the output to standard out so you can redirect into a file.
+`curl` writes the output to standard out so you can redirect into a file.
 
-Next, let's look at how we might process JSON using the command line. 1st, install [jq](https://stedolan.github.io/jq/):
+Next, let's look at how we might process JSON using the command line. First, install [jq](https://stedolan.github.io/jq/):
 
 ```bash
-$ brew install jq
+$ brew install jq  # for macs
 ```
 
 ```bash
