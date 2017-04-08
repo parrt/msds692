@@ -19,9 +19,19 @@ Separate processes on the same computer may share data and synchronize via _pipe
 $ ls | grep Aug
 ```
 
-pipes the output of `ls` to the input of `grep` using the UNIX `pipe()` function that sets up a one-way data flow from one process to another.
+pipes the output of `ls` to the input of `grep` using the UNIX `pipe()` function that sets up a one-way data flow from one process to another. The *standard output* of `ls` is connected to the *standard input* of `grep`.
 
-But, what about connecting processes on separate computers? Python provides access to OS _sockets_ that allow two or more processes on the same or different computers to send/receive data. The good news is that we can treat sockets just like files or any other stream of data from a programming perspective. Of course, we still have to keep in mind that it is across a slow link on a network versus in memory on the same machine. (Unless we are connected to a socket on the same machine.)
+<center>
+<img src=figures/ls-grep.png width=180>
+</center>
+
+But, what about connecting processes on separate computers? Python provides access to OS _sockets_ that allow two or more processes on the same or different computers to send/receive data. 
+
+<center>
+<img src=figures/browser-server.png width=250>
+</center>
+
+The good news is that we can treat sockets just like files or any other stream of data from a programming perspective. Of course, we still have to keep in mind that it is across a slow link on a network versus in memory on the same machine. (Unless we are connected to a socket on the same machine.)
 
 ## Background
 
@@ -29,24 +39,40 @@ But, what about connecting processes on separate computers? Python provides acce
 
 First, we need to talk about the IP protocol, which is really the lowest level abstraction above the hardware (at least from my point of view).  *Please distinguish IP protocol from ethernet, wireless, or any other physical networking mechanism.* This is a data protocol that sits on top of some physical network.
 
-IP is an addressing and fragmentation protocol.  It breaks all communications into _packets_, chunks of data up to 65536 bytes long.  Packets are individually _routed_ from source to destination.  IP is allowed to drop packets; i.e., it is an unreliable protocol.  There are no acknowledgements and no retransmissions.  There is no flow-control saying "you're sending data to fast!"
+**IP** is an addressing and fragmentation protocol:
 
-One way to think of IP communication is by analogy to communications via a letter. You write the letter (this is the data you are sending); put the letter inside an envelope (the IP packet); address the envelope (using an IP address); put your return address on the envelope (your local IP address); and then you send the letter.  Like a real letter, you have no way of knowing whether an IP packet was received. If you send a second letter one day after the first, the second one may be received before the first. Or, the second one may never be received.
+* It breaks all communications into _packets_, chunks of data up to 65536 bytes long.
+* Packets are individually _routed_ from source to destination.
+* IP is allowed to drop packets; i.e., it is an unreliable protocol.
+* There are no acknowledgements and no retransmissions.
+* There is no flow-control saying "*You're sending data too fast!*"
+
+One way to think of IP communication is by analogy to communications via a letter. It is "fire and forget" (no receipt of delivery).
+
+<center>
+<img src=figures/IP-packets.png width=480>
+</center>
+
+You write the letter (this is the data you are sending); put the letter inside an envelope (the IP packet); address the envelope (using an IP address); put your return address on the envelope (your local IP address); and then you send the letter.  Like a real letter, you have no way of knowing whether an IP packet was received. If you send a second letter one day after the first, the second one may be received before the first. Or, the second one may never be received.
 
 ### IP Addresses
 
-IP uses _IP addresses_ to define source/target.  IPs are 32 bit numbers represented as 4 8-bit numbers separated by periods.  When you try to visit `www.cnn.com` in your browser, the computer must first translate `www.cnn.com` to an IP address.  Then the browser can make a connection to the web server on the target machine identified by the IP address.  You can think of this as the "phone number" of a machine.  Special IPs:
+IP uses _IP addresses_ to define source/target.  IPs are 32 bit numbers represented as 4 8-bit numbers separated by periods.  When you try to visit `www.cnn.com` in your browser, the computer must first translate `www.cnn.com` to an IP address.  Then the browser can make a connection to the web server on the target machine identified by the IP address.  You can think of this as the "phone number" of a machine.  There are some special IPs:
 
 * Behind firewalls, people often use 192.168.x.y and use NAT (_network address translation_) in their firewall to translate an outside address (a real IP) to the special IPs behind the wall. In this case there is an external or public IP address and a private IP address. My `varmint.cs.usfca.edu` machine has public IP 138.202.170.154 but internal IP 10.10.10.51 or something like that.
-* 127.0.0.1 is "localhost"
+* 127.0.0.1 is `localhost` or "my machine"
 
-A good security feature is to hide your machines from outside.  For example, all machines from within IBM's firewall probably look like the exact same IP address to the outside world (for example, in web server log files).  That is one reason you cannot use an IP address to identify "sessions" for a web server application.
+A good security feature is to hide your machines from outside.  For example, all machines from within IBM's firewall probably look like the exact same IP address to the outside world (such as in web server log files).  That is one reason you cannot use an IP address to identify "sessions" for a web server application.
 
 **Exercise**: Use package `socket` and `socket.gethostbyname(socket.gethostname())` to figure out what your IP address is. If this pops up with 127.0.0.1 ("localhost") then you will need to go to your laptop network configurationto find your IP address.
 
+<center>
+<img src=figures/net-config.png width=300>
+</center>
+
 ### DNS -- Domain Name Service
 
-DNS is a distributed database that maps domain names to IP addresses using a series of distributed DNS servers. Example query using UNIX tool:
+DNS is a distributed database that maps domain names to IP addresses using a series of distributed DNS servers. It is really just a dictionary that maps a name to an IP address. Here is an example query using a UNIX tool:
 
 ```bash
 $ nslookup www.usfca.edu
@@ -58,7 +84,12 @@ Name:	www.usfca.edu
 Address: 104.239.221.147
 ```
 
-**Exercise**: use `gethostbyname` from the Python `socket` package to look up `www.usfca.edu`'s IP address. The IP address should be the same you get from the commandline with `nslookup`.  Use `gethostname()` to determine your laptop's hostname. Confirm it's the same as what `hostname` from the commandline prints.
+**Exercise**: use `gethostbyname` from the Python `socket` package to look up `www.usfca.edu`'s IP address. The IP address should be the same you get from the commandline with `nslookup`.  It'll be something like `104.239.221.147`.  Use `gethostname()` to determine your laptop's hostname. Confirm it's the same as what `hostname` from the commandline prints:
+
+```bash
+$ hostname
+beast.local
+```
 
 DNS lookup is distributed so there isn't a single point of failure. A single server would also get absolutely pounded by requests from the net and would be extremely expensive to maintain. There are caches etc. that reduce the load on the DNS servers.
 
@@ -66,22 +97,27 @@ If we didn't have DNS, we would all have to memorize a constantly shifting set o
 
 ### TCP/IP
 
-TCP (_Transmission Control Protocol_) is another protocol, a reliable but slower one, sitting on top of IP.  Believe it or not it comes from the 1970s. TCP provides reliable, stream-oriented connections; can treat the connection like a stream/file rather than packets.  Packets are ordered into the proper sequence at the target machine via use of _sequence numbers_.  TCP automatically deals with lost packets before delivering a complete "file" to a recipient.  Control-flow prevents buffer overflows etc...
+TCP (_Transmission Control Protocol_) is another protocol, a reliable but slower one, sitting on top of IP.  Believe it or not it comes from the 1970s. Characteristics:
 
-TCP is like a phone connection versus the simple "fire and forget" letter stateless style of IP.  TCP sockets are open for the duration of a communication (i.e., until you close the connection).
+* Reliable (fault tolerant). TCP automatically deals with lost packets before delivering a complete "file" to a recipient.
+* Stream-oriented connections. We can treat the connection like a stream/file rather than packets.
+* Packets are ordered into the proper sequence at the target machine via use of _sequence numbers_.
+* Control-flow prevents buffer overflows etc...
+
+TCP is like a phone connection versus the simple "fire and forget" letter stateless style of IP.  TCP connections are open for the duration of a communication (i.e., until you close the connection).
 
 ## What is a socket?
 
 If the IP address is like an office building's main phone number, sockets are like the extension numbers for offices.  So the IP and socket, often called the port, uniquely identify an "office" (server process).  You will see unique identifiers like `192.168.2.100:80` where 80 is the port.  We open sockets to these ports in order to communicate with servers.
 
-Ports run from 1..65535.  1..1024 require root privileges to use and ports 1..255 are reserved for common, publicly-defined server ports like:
+Ports range from 1..65535.  1..1024 require root privileges to use and ports 1..255 are reserved for common, publicly-defined server ports like:
 
-* 80: HTTP
-* 110: POP
-* 25: SMTP
-* 22: SSH
+* 80: HTTP (web)
+* 110: POP (mail)
+* 25: SMTP (mail)
+* 22: SSH (remote shell connections)
 
-You can use `telnet` to connect to ports to manually speak the protocol.  The most successful and long-lived protocols are simple and text based. For example, here is how I connect to port 80, the Web server, at the University:
+You can use `telnet` (`putty` on windows) to connect to remote ports to manually speak the protocol.  The most successful and long-lived protocols are simple and text based. For example, here is how I connect to port 80, the Web server, at the University:
 
 ```bash
 $ telnet www.usfca.edu 80
@@ -90,9 +126,9 @@ Connected to www.usfca.edu.
 Escape character is '^]'.
 ```
 
-To escape/quit, use control-] and then `quit`.
+To escape/quit, use *control-]* and then `quit`.
 
-Just like in an office, it is possible no process is listening at a port.  That is, there is no server waiting for requests at that port.
+Just like in an office, it is possible that no process is listening at a port.  That is, there is no server waiting for requests at that port.
 
 ```bash
 $ telnet www.usfca.edu 81
@@ -111,6 +147,8 @@ Continuing the office analogy further, just because you can open a connection to
 **Exercise**: Use `telnet` to open a socket to `www.usfca.edu:80` and type `hi` or some other text after connecting. The server should respond with `Client sent a bad request.`
 
 ### Sending mail the hard way
+
+*Our firewall from within USF is blocking port 25 SMTP traffic it appears (to hush spambots).*
 
 To send a piece of email, you need a mail client (even if it's telnet) that connects to an *SMTP* (Simple Mail Transfer Protocol by Jonathan B. Postel, 1982) and provides a packet of email with a target email address `user@domain.com`.
 
