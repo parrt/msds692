@@ -1,6 +1,6 @@
 # Python-based websites with flask
 
-Making a web server in Python is fairly easy if we use, yet another library, [Flask](http://flask.pocoo.org/).  Flask provides *annotations* that map URL file specifiers to Python functions. Every URL for which you want the server to respond, requires an annotation/function combination.
+Making a web server in Python is fairly easy if we use, yet another library, [Flask](http://flask.pocoo.org/).  Flask provides *annotations* that **map URL paths to Python functions**. Every URL for which you want the server to respond, requires an annotation/function combination.
  
 ### Hello Flask
 
@@ -45,3 +45,20 @@ def hello(name):
 Restart your server and then URL `http://127.0.0.1:5000/hello/parrt` should give output `Hello parrt!` in your browser. try it with different names after the `/hello/`.
 
 *If you get error "address in use" or something like that, that means that you have a previous version of the program running somewhere.*
+
+Try adding another function within annotation, so that that there will be two URLs operating.
+
+```pythhon
+@app.route("/data")
+def foo():
+        return mydata
+```
+
+Notice that the function name does not have to match the URL in any way.  Let's say that `mydata` is CSV:
+
+mydata = """
+parrt, 10, 134.983
+tombu, 11, 99.001
+"""
+
+Now, when we go to `http://127.0.0.1:5000/data`, we get that data in our browser.
