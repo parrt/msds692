@@ -4,54 +4,61 @@ HTTP is the text-based protocol used to pass information between browser and ser
 
 ## Connecting and requesting a page
 
-Let's communicate with the "White House" Web server (port 80) the hard way.  What I have to type once I connect:
+Let's communicate with the CNN web server (port 80) the hard way. Here is the protocol for handshaking with the Web server:
 
 ```
 GET / HTTP/1.1
-Host: whitehouse.com
+Host: www.cnn.com
 
 ```
 
-The `Host:` line is followed by newline then another newline to get a blank line, indicating end of stuff I'm sending to the server.  Please try out this sample session:
+The first line tells the server what page we are interested in (the root `/`). The `Host:` line indicates what server we think we are talking to. Then, we have to have a blank line which indicates we are done talking/handshaking. Please try out this sample session:
 
 ```
-$ telnet whitehouse.com 80
-Trying 54.208.227.56...
-Connected to whitehouse.com.
+$ telnet www.cnn.com 80
+Trying 151.101.41.67...
+Connected to turner-tls.map.fastly.net.
 Escape character is '^]'.
 GET / HTTP/1.1
-Host: whitehouse.com
+Host: www.cnn.com
 
+```
+
+The server responds to you with:
+
+```
 HTTP/1.1 200 OK
-Content-Type: text/html
-Last-Modified: Tue, 31 May 2016 15:51:11 GMT
-Accept-Ranges: bytes
-ETag: "0482a4154bbd11:0"
-Server: Microsoft-IIS/7.5
-X-Powered-By: ASP.NET
-Date: Mon, 22 Aug 2016 20:10:05 GMT
-Content-Length: 290
+access-control-allow-origin: *
+cache-control: max-age=60
+...
+Set-Cookie: countryCode=US; Domain=.cnn.com; Path=/
+Set-Cookie: geoData=San Jose|CA|95113|US|NA; Domain=.cnn.com; Path=/
+Content-Type: text/html; charset=utf-8
+Date: Sat, 08 Apr 2017 17:55:36 GMT
 
-<html>
+<!DOCTYPE html>
+<html class="no-js">
 <head>
-<title>WhiteHouse.com Official Site</title>
+...
 </head>
-<body>
-<center>
-<h2>WhiteHouse.com Official Site</h2><h3><br><br><red>
-Celebrating our 19th Anniversary (1997-2016)<br><br>
-World's Most Famous Adult Site coming back Summer 2016
-</red></h2></center>
-</body>
-
+...
 </html>
 ```
 
-Whoops.  I guess we meant `whitehouse.gov`. Anyway, it does send us back some headers, such as `Content-Type` and `Date`. Also, please note that *cookies* come back from the server to your web browser using these headers.
+It sends us back some headers, such as `Content-Type` and `Date`. Also, please note that *cookies* come back from the server to your web browser using these headers.
 
 ## Using python to get webpages
 
-Now that we understand about networks, sockets, and the HTTP protocol, let's use Python to connect to a webpage and get the content. Try out the following script that should print out the HTML from CNN's webpage:
+Now that we understand about networks, sockets, and the HTTP protocol, let's use Python to connect to a webpage and get the content. We will use [requests](http://docs.python-requests.org/en/master/), but I will sometime show you the `urllib2` version as well. Try out the following script that should print out the HTML from CNN's webpage:
+
+
+```python
+import requests
+r = requests.get('http://www.cnn.com')
+print r.text
+```
+
+Or, with `urllib2`:
 
 ```python
 import urllib2
@@ -66,4 +73,10 @@ In case you need it, here's how you would do that from the commandline:
 $ curl http://www.cnn.com
 ```
 
-**Exercise**: Using what you learned from previous lectures on extracting text from HTML, extract the text from URL `https://docs.python.org/2/howto/urllib2.html` and print that out.
+or
+
+```bash
+$ wget http://www.cnn.com
+```
+
+**Exercise**: Using what you learned from previous lectures on extracting text from HTML, extract the text from URL `http://docs.python-requests.org/en/master` and print that out.
