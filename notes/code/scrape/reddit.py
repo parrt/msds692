@@ -1,10 +1,9 @@
-import urllib2
+import requests
 
 from bs4 import BeautifulSoup
 
-req = urllib2.Request("https://www.reddit.com/r/all", headers={'User-Agent': "Resistance is futile"})
-response = urllib2.urlopen(req)
-html = BeautifulSoup(response, "html.parser")
+response = requests.get("https://www.reddit.com/r/all", params={'User-Agent': "Resistance is futile"})
+html = BeautifulSoup(response.content, "html.parser")
 
 for h in html.find_all('a', {'class': 'title may-blank outbound '}):
     print h.string
