@@ -10,10 +10,9 @@ To collect information about each book, we just have to look at the child nodes 
 
 ```python
 def parseAmazonBestSellers():
-    req = urllib2.Request("https://www.amazon.com/gp/bestsellers/books/ref=sv_b_2",
-                          headers={'User-Agent': "Resistance is futile"})
-    response = urllib2.urlopen(req)
-    html = BeautifulSoup(response, "html.parser")
+    response = requests.get("https://www.amazon.com/gp/bestsellers/books/ref=sv_b_2",
+                          params={'User-Agent': "Resistance is futile"})
+    html = BeautifulSoup(response.text, "html.parser")
     ...
 ```
 
