@@ -195,6 +195,8 @@ First some background.
 
 ## Set cookies
 
+[Flask cookie tutorial](http://www.tutorialspoint.com/flask/flask_cookies.htm) (haha. when I went to that tutorial just now after visiting petco.com to get cat food images for the above Facebook.com example, I see a cat food ad at the bottom of the tutorial from petco.com.)
+
 **Exercise**: Make a server with one "route":
 
 ```python
@@ -208,34 +210,37 @@ def cookie_insertion():
 Then look at the cookies and data coming back:
 
 ```bash
-$ telnet 127.0.0.1 5000
-Trying 127.0.0.1...
-Connected to localhost.
-Escape character is '^]'.
-GET /setcookie HTTP/1.1
-Host: 127.0.0.1
-
-HTTP/1.0 200 OK
-Content-Type: text/html; charset=utf-8
-Content-Length: 25
-Set-Cookie: ID=212392932; Path=/
-Server: Werkzeug/0.11.10 Python/2.7.11
-Date: Fri, 09 Sep 2016 18:35:16 GMT
-
+$ curl -v http://localhost:5000/setcookie
+*   Trying 127.0.0.1...
+* Connected to localhost (127.0.0.1) port 5000 (#0)
+> GET /setcookie HTTP/1.1
+> Host: localhost:5000
+> User-Agent: curl/7.49.0
+> Accept: */*
+> 
+* HTTP 1.0, assume close after body
+< HTTP/1.0 200 OK
+< Content-Type: text/html; charset=utf-8
+< Content-Length: 26
+< Set-Cookie: ID=212392932; Path=/
+< Server: Werkzeug/0.11.11 Python/2.7.12
+< Date: Sat, 22 Apr 2017 17:30:01 GMT
+< 
 i set some cookies. haha!
-Connection closed by foreign host.
-$ 
+* Closing connection 0
 ```
 
-Try doing the same thing in the browser using the developer tools to see the cookies.
+Try doing the same thing in the browser using the developer tools to see the cookies:
+
+<img src=figures/setcookie.png width=400>
  
 ## Fetch cookies
 
-Once a server has sent cookies to a browser, the browser will send those back to the server upon each request. In order to get those cookies, the flask "view" function can simply pull them out from the dictionary sent to the server by the browser. Very handy.
-
-[Flask cookie tutorial](http://www.tutorialspoint.com/flask/flask_cookies.htm)
+Once a server has sent cookies to a browser, the browser will send those cookies back to the server upon each request. In order to get those cookies, the flask "view" function can simply pull them out from the dictionary sent to the server by the browser. Very handy. 
 
 ```python
+from flask import request
+...
 @app.route('/getcookie')
 def getcookie():
    name = request.cookies.get('ID')
