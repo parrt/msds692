@@ -159,7 +159,7 @@ Replace the json conversion code with code that [untangle](https://untangle.read
 
 ## CURLing for it
 
-Now that we've done at the hard way in Python, let's repeat the exercises from above using one-liners on the shell. The `curl` program is your friend and can do all sorts of amazing things. Here are the 4 GETs using curl:
+Now that we've done it the hard way in Python, let's repeat the exercises from above using one-liners on the shell. The `curl` program is your friend and can do all sorts of amazing things. Here are the 4 GETs using curl:
 
 ```bash
 curl "http://ichart.finance.yahoo.com/table.csv?s=TSLA"
@@ -170,7 +170,9 @@ curl "http://www.omdbapi.com/?t=Star+Wars"
 
 `curl` writes the output to standard out so you can redirect into a file.
 
-Next, let's look at how we might process JSON using the command line. First, install [jq](https://stedolan.github.io/jq/):
+Notice that we have to url encode the arguments, so ` ` becomes `+`.
+
+Next, let's look at how we might process JSON using the command line. First, install [jq](https://stedolan.github.io/jq/), which is a very handy JSON formatting and querying tool:
 
 ```bash
 $ brew install jq  # for macs
