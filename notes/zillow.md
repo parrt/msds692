@@ -1,5 +1,7 @@
 # Zillow
 
+*Zillow apparently now blocks all of my API requests with a captcha. Grrrrrrr. I'm not the only one who's had this problem. Let's hope they fix it.*
+
 Most sites nowadays require you to register in order to access their data spigot, but some of them don't require authentication. You just need to have your secret ID in order to communicate with them. Zillow is such a site and is straightforward to pull data from, so it is how we will start with the more complicated APIs.
 
 In order to pull data from the real estate website [Zillow](http://www.zillow.com), you must:

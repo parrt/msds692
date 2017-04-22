@@ -1,19 +1,21 @@
-import urllib2
+import requests
 from bs4 import BeautifulSoup
 
 def parseAmazonBestSellers():
-    req = urllib2.Request("https://www.amazon.com/gp/bestsellers/books/ref=sv_b_2",
-                          headers={'User-Agent': "Resistance is futile"})
-    response = urllib2.urlopen(req)
-    html = BeautifulSoup(response, "html.parser")
+    response = requests.get("https://www.amazon.com/gp/bestsellers/books/ref=sv_b_2",
+                          params={'User-Agent': "Resistance is futile"})
+    html = BeautifulSoup(response.text, "html.parser")
 
     books = []
     for item in html.find_all(class_="zg_itemWrapper"):
-        link = item.find(class_="zg_title").a
-        price = item.find(class_="price").string.strip()
+        link = item.find(class_="a-link-normal")
+        priceitem = item.find(class_="a-size-base a-color-price")
+        if priceitem is None: continue
+        price = priceitem.string.strip()
         href = link['href'].strip()
-        title = link.string.strip()
-        author = item.find(class_="zg_byline").string.strip()
+        title = link.img['alt'].strip()
+        auth = item.find(class_="a-size-small a-link-child")
+        author = auth.text.strip()
         books.append((price, title, author, href))
 
     return books

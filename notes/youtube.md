@@ -102,7 +102,7 @@ Comment by Vanirvis: Whats with the boxes on the screen? Thumbs down.﻿
 ...
 ```
 
-*Please do not bring up videos that could be offensive to your fellow student!*
+*Please do not bring up videos that could be offensive to your fellow students!*
 
 **Exercise**: Now let's combine the search with the comment retrieval so that we find all comments associated with, say, 10 videos. Create a function that returns a list of video IDs (cut/paste from previous functionality):
 

@@ -1,10 +1,10 @@
-import urllib2
+import requests
 from bs4 import BeautifulSoup
 from collections import defaultdict
 
 def parseBF():
-    response = urllib2.urlopen("https://www.buzzfeed.com/news")
-    html = BeautifulSoup(response, "html.parser")
+    response = requests.get("https://www.buzzfeed.com/news")
+    html = BeautifulSoup(response.text, "html.parser")
 
     topics = defaultdict(list)
     for link in html.find_all('a', {'rel:gt_act':'post/title'}):

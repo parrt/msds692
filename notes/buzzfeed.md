@@ -2,7 +2,7 @@
 
 [Buzzfeed](https://www.buzzfeed.com/news) is an interesting news site that also still provides webpages as HTML we can parse easily. The difference between this and hacker news is that we are going to group links by category from the website.
 
-Using Chrome's "inspect" again, we see that news link `a` tags have a number of interesting attributes:
+Using Chrome's "inspect" again, we see that news link `a` tags have a number of interesting attributes (the links under the topic headings):
 
 ```html
 <a href="/katherinemiller/obama-jokes-i-am-so-relieved-that-the-birther-thing-is-over"

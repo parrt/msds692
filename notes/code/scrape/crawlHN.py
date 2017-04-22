@@ -1,4 +1,4 @@
-import urllib2
+import requests
 import time
 import random
 from bs4 import BeautifulSoup
@@ -11,12 +11,11 @@ def fetch(url,delay=(2,5)):
     """
     time.sleep(random.randint(delay[0],delay[1])) # wait random seconds
     try:
-        req = urllib2.Request(url, headers={'User-Agent': "Resistance is futile"})
-        response = urllib2.urlopen(req)
+        response = requests.get(url, params={'User-Agent': "Resistance is futile"})
     except ValueError as e:
         print str(e)
         return '', BeautifulSoup('', "html.parser")
-    page = response.read()
+    page = response.text
     html = BeautifulSoup(page, "html.parser")
     return (page,html)
 
