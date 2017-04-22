@@ -61,7 +61,7 @@ BROWSER SENDS (sends cookie back to the server):
 
 ```
 GET robots.txt HTTP/1.1
-Host: www.cnn.com
+Host: www.nytimes.com
 cookie=RMID=007f0102269d57d2fadd0006           <--------------- COOKIE!
 connection=Close
 accept=*/*
@@ -72,35 +72,118 @@ accept=*/*
 
 <img src=figures/cnn-cookies.png width=500>
 
+## Using CURL to examine cookies/headers
+
+The `curl` program is very useful for examining the traffic between a browser and web server. The `-v` option tells it to dump the protocol elements going towards the web server (stuff after `>`) and the elements coming back from the server (stuff after `<`). For example, here is a sample session contacting the New York Times Web server:
+
+```bash
+$ curl -v www.nytimes.com
+* Rebuilt URL to: www.nytimes.com/
+*   Trying 151.101.41.164...
+* Connected to www.nytimes.com (151.101.41.164) port 80 (#0)
+> GET / HTTP/1.1
+> Host: www.nytimes.com
+> User-Agent: curl/7.49.0
+> Accept: */*
+> 
+< HTTP/1.1 301 Moved Permanently
+< Server: Varnish
+< Retry-After: 0
+< Content-Length: 0
+< Location: https://www.nytimes.com/
+< Accept-Ranges: bytes
+< Date: Sat, 22 Apr 2017 16:24:21 GMT
+< X-Frame-Options: DENY
+< Set-Cookie: nyt-a=a611ba358d77595991882a6d595ab359cedd8952713792e6172e900c7a5779c7; Expires=Sun, 22 Apr 2018 16:24:21 GMT; Path=/; Domain=.nytimes.com
+< Connection: close
+< X-API-Version: F-0
+< X-PageType: homepage
+< X-Served-By: cache-sjc3633-SJC
+< X-Cache: HIT
+< X-Cache-Hits: 0
+< X-Timer: S1492878262.875681,VS0,VE0
+```
+
+CURL is not your browser and so it doesn't know what your cookies are; it just sends the most basic headers (`User-Agent` and `Accept`). In response, the Web server sends back a response code `301` and a bunch of headers, including cookie `nyt-a` with value `a611ba358d77595991882a6d595ab359cedd8952713792e6172e900c7a5779c7`. (This is different than the nytimes.com cookie shown previously in these notes probably because the cookie mechanism has changed since I wrote those  earlier notes.)
+
+We can also use CURL to send headers, including cookies, back to the server as if it were a browser.
+
+```bash
+$ curl --cookie a=a611ba358d77595991882a6d595ab359cedd8952713792e6172e900c7a5779c7 -v www.nytimes.com
+* Rebuilt URL to: www.nytimes.com/
+*   Trying 151.101.41.164...
+* Connected to www.nytimes.com (151.101.41.164) port 80 (#0)
+> GET / HTTP/1.1
+> Host: www.nytimes.com
+> User-Agent: curl/7.49.0
+> Accept: */*
+> Cookie: a=a611ba358d77595991882a6d595ab359cedd8952713792e6172e900c7a5779c7
+> 
+< HTTP/1.1 301 Moved Permanently
+< Server: Varnish
+< Retry-After: 0
+< Content-Length: 0
+< Location: https://www.nytimes.com/
+< Accept-Ranges: bytes
+< Date: Sat, 22 Apr 2017 16:31:29 GMT
+< X-Frame-Options: DENY
+< Set-Cookie: nyt-a=4ac2a689a7bf5bb72fbcd4841fe00aea4d150952b2bec8f2f8fefbffe4a780f9; Expires=Sun, 22 Apr 2018 16:31:29 GMT; Path=/; Domain=.nytimes.com
+...
+```
+
+Notice how `curl` has sent a cookie with the request, `> Cookie: a=a611...`.  Also note that it is different than the cookie response, `< Set-Cookie: nyt-a=4ac2...`.  No doubt the cookie encodes all sorts of information that the New York Times wants to track for each user.
 
 # How ad companies track you
 
-The browser will send cookies to remote servers even for images, not just webpages. Ad companies embed images in websites and therefore can send you a cookie that your browser dutifully stores. For example, here is the cookie ad traffic for realmedia.com that I got when I *opened an email* from `opentable.com`:
+## Background
+The browser sends cookies to remote servers even for images, not just webpages. Consider the following simple webpage with a reference to an image on another site. This HTML file would presumably be on some server xyz.com:
 
-BROWSER:
+<img src=figures/pageimg.png width=400>
+
+The HTML asks the browser to display a simple image:
+
+<img src=http://www.antlr.org/images/icons/antlr.png>
+
+Your browser makes **two** web requests, one to xyz.com to get the HTML page and **another** to www.antlr.org for the image. This gives `antlr.org` the opportunity to send cookies to the browser, say, *X=Y*. Any page, literally anywhere on the Internet, that references *anything* at `antlr.org` will send that *X=Y* cookie back to the `antlr.org` server along with the image request. Now `antlr.org` knows whenever you access a webpage containing one of its images. It can use the *Y* value to uniquely identify users simply by creating a unique identifier as *Y* for every new `antlr.org` request.
+
+## Using hidden images to track users
+
+Ad companies embed images in websites and therefore can send you a cookie that your browser dutifully stores. For example, here is the cookie traffic for realmedia.com that I got when I *opened an email* from `opentable.com`:
+
+BROWSER (I clicked an opentable email):
 
 ```
 GET http://oascnx18015.247realmedia.com/RealMedia/ads/adstream_nx.ads/www.opentable.opt/email-reminder/m-4/4234234@x26 HTTP/1.1
 ...
 ```
 
-REMOTE SERVER HEADERS:
+REMOTE SERVER HEADERS (realmedia server sent to my browser):
 
 ```
-	set-cookie=NSC_d18efmoy_qppm_iuuq=ffffffff09499e4a423660;path=/;httponly
-	cache-control=no-cache,no-store,private
-	pragma=no-cache
-	...
+set-cookie=NSC_d18efmoy_qppm_iuuq=9e4a423660;path=/;httponly
+cache-control=no-cache,no-store,private
+pragma=no-cache
+...
 ```
 
 There are a number of things to notice here:
 
-1. The ad company, `realmedia.com`, tracks where the ad is using the URL: `www.opentable.opt/email-reminder/m-4/4234234@x26`. In other words, it knows that I opened the email from opentable. Yikes!
+1. The ad company, `realmedia.com`, tracks where the ad is using the URL parameter: `www.opentable.opt/email-reminder/m-4/4234234@x26`. In other words, it knows that I opened the email from opentable. Yikes!
 2. The headers turn off caching so that every time you refresh the page it gets notified.
 
-Now, imagine that I go to a random website X that happens to have an ad from `realmedia.com`. My browser will send all cookies associated with `realmedia.com` to their server, effectively notifying them that I am looking at X. They will know about every page I visit that contains there ads.
+Now, imagine that I go to a random website X that happens to have an ad from `realmedia.com`. My browser will send all cookies associated with `realmedia.com` to their server, effectively notifying them that I am looking at X. `realmedia.com` will know about every page I visit that contains there ads *anywhere on the Internet*.
 
-Recently I was looking at hotels in San Diego and also purchasing some cat food on a different website. Then I went to Facebook and saw ads for the exact rooms and cat food I was looking for. This all works through the magic of cookies. There is a big ad clearinghouse where FB can ask if anybody is interested in serving ads to one of its users with a unique identifier. Hopefully they don't pass along your identity, but your browser still passes along your cookies for that ad server domain. The ad companies can then bid to send you an ad. Because your browser keeps sending the same cookies to them regardless of the website, hotel and pet food sites can show you ads for what you were just looking at on a completely unrelated site. wow.
+Recently I was looking at hotels in San Diego and also purchasing some cat food on a different website. Then I went to Facebook and saw ads for the exact rooms and cat food I was looking for. This all works through the magic of cookies. There is a big ad clearinghouse where FB can ask if anybody is interested in serving ads to one of its users with a unique identifier. Hopefully they don't pass along your identity, but your browser still passes along your cookies for that ad server domain. The ad companies can then bid to send you an ad. Because your browser keeps sending the same cookies to them regardless of the website, hotel and pet food sites can show you ads for what you were just looking at on a completely unrelated site. wow. Here is a visualization of me visiting two different non-FB websites.
+
+<img src="figures/fb-ads.png">
+
+The HTML pages coming back from hotelfoo.com and petfoo.com have hidden images (or maybe JavaScript but let's assume an image). These images are hidden references to facebook's server, who knows me as ID=99. The image reference is more than a reference to an invisible image---there is a parameter on the image reference that identifies the page containing the image. For example, something akin to `<img src=facebook.com/ad.png?page=hotelfoo.com/oceanview>`.  
+
+The next time I visit facebook.com, that server quickly asks any advertisers if they would like to purchase and add on my webpage. 
+
+<img src="figures/fb-ads-show.png">
+
+This of course is a function of what pages I have visited on the hotel and cat food sites. I'm sure they also provide demographic data on the user to the companies wanting to show ads.
 
 This technology is not all bad. Obviously, Google analytics requires a tiny little image the embedded in your webpages so that it can track things and give you statistics.
 
