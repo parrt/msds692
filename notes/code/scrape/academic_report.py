@@ -7,14 +7,14 @@ response = urllib2.urlopen("http://data1.cde.ca.gov/dataquest/Acnt2013/2013GrthS
 soup = BeautifulSoup(response, "html.parser")
 
 def get_table_headers(soup):
-    headers = []
+    headers = set()
     for h in soup.find_all('th', {'class': 'medium_center'}):
         s = ''
         for c in h.contents:
             if c.string:
                 s += c.string.strip()
         if len(s)>0:
-            headers.append(s)
+            headers.add(s)
     return headers
 
 def get_table_rows_as_tuple_lists(soup):
