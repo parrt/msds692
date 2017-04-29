@@ -17,7 +17,7 @@ def login():
     mainloop()
 
     u, p = user.get(), password.get()
-    master.destroy();
+    master.destroy()
     return u, p
 
 if __name__ == '__main__':

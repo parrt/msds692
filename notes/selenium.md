@@ -28,6 +28,17 @@ The pip stuff just makes the python packages but the real meat is in the binary 
 mv ~/Downloads/chromedriver /usr/local/bin
 ```
 
+I also noticed that after installing chromedriver with pip, it was sitting in my Anaconda directory: `/Users/parrt/anaconda2/chromedriver-Darwin` so you might be able to avoid the extra download. I did notice that the version numbers were different:
+
+```bash
+$ /Users/parrt/anaconda2/chromedriver-Darwin
+Starting ChromeDriver 2.24.417412 (ac882d3ce7c0d99292439bf3405780058fcca0a6) on port 9515
+Only local connections are allowed.
+$ /usr/local/bin/chromedriver 
+Starting ChromeDriver 2.29.461585 (0be2cd95f834e9ee7c46bcc7cf405b483f5ae83b) on port 9515
+Only local connections are allowed.
+```
+
 ## Launching a Chrome Browser
 
 Here is the boilerplate code that launches a chrome browser to the Google search page, waits for a keypress, and then closes the browser.
@@ -37,6 +48,9 @@ import time
 from selenium import webdriver
 
 driver = webdriver.Chrome('/usr/local/bin/chromedriver')  # Optional argument, if not specified will search path.
+# or, fill in your ANACONDA_INSTALL_DIR and try this:
+driver = webdriver.Chrome('ANACONDA_INSTALL_DIR/chromedriver-Darwin')
+
 driver.get('http://www.google.com')
 
 # here is where some useful work would typically happen
@@ -45,7 +59,7 @@ raw_input("Press Enter to quit")
 driver.quit() # close browser
 ```
 
-Notice that this is creating an entirely new instance of the browser (You'll see more a new chrome icon appear).
+Notice that this is creating an entirely new instance of the browser (You'll see a new chrome icon appear).
 
 **Exercise**: Make sure you can get that code working.
 
