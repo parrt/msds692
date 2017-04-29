@@ -4,11 +4,11 @@ from collections import defaultdict
 from bs4 import BeautifulSoup
 
 response = urllib2.urlopen("http://data1.cde.ca.gov/dataquest/Acnt2013/2013GrthStAPI.aspx")
-html = BeautifulSoup(response, "html.parser")
+soup = BeautifulSoup(response, "html.parser")
 
-def get_table_headers():
+def get_table_headers(soup):
     headers = []
-    for h in html.find_all('th', {'class': 'medium_center'}):
+    for h in soup.find_all('th', {'class': 'medium_center'}):
         s = ''
         for c in h.contents:
             if c.string:
@@ -17,12 +17,48 @@ def get_table_headers():
             headers.append(s)
     return headers
 
-def get_table_rows():
-    # this finds all "lbl_*" tags
-    data = defaultdict(list)
-    for h in html.find_all(lambda tag : tag.name=='span' and tag.has_attr('id') and tag['id'][0:4]=='lbl_'):
-        print h
+def get_table_rows_as_tuple_lists(soup):
+    data = []
+    for tbl in soup.find_all("table"):
+        for row in tbl.find_all("tr"):
+            datarow = []
+            cols = row.find_all("td")
+            rowname = cols[0].text.strip()
+            # bug in soup gobbles too much so just grab first line of text
+            rowname = rowname.split("\n")[0].strip()
+            datarow.append(("rowname", rowname))
+            for col in cols[1:]:
+                if col.span:
+                    colname = col.span['id'][len("lbl_"):].strip()
+                    value = col.span.text.strip()
+                    if len(value)>0:
+                        datarow.append((colname, value))
+            if len(datarow)==5:
+                data.append(datarow)
+    return data
 
-print get_table_headers()
+def get_table_rows(soup):
+    data = []
+    for tbl in soup.find_all("table"):
+        for row in tbl.find_all("tr"):
+            datarow = []
+            cols = row.find_all("td")
+            rowname = cols[0].text.strip()
+            # bug in soup gobbles too much so just grab first line of text
+            rowname = rowname.split("\n")[0].strip()
+            datarow.append(rowname)
+            for col in cols[1:]:
+                if col.span:
+                    colname = col.span['id'][len("lbl_"):].strip()
+                    value = col.span.text.strip()
+                    if len(value)>0:
+                        datarow.append(value)
+            if len(datarow)==5:
+                data.append(datarow)
+    return data
 
-print get_table_rows()
+print get_table_headers(soup)
+
+allrows = get_table_rows(soup)
+for row in allrows:
+    print row
