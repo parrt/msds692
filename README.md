@@ -72,6 +72,13 @@ All projects are graded in binary fashion: They either work or they do not, even
 * [Cookies](https://github.com/parrt/msan692/blob/master/notes/cookies.md), logging in/out
 * [Building web servers](https://github.com/parrt/msan692/blob/master/hw/server.md) (**project**)
 
+## Text feature extraction
+
+* [Intro to information extraction from text](https://github.com/parrt/msan692/blob/master/notes/text.ipynb)
+* [San Francisco police incidents word clouds and heat maps](https://github.com/parrt/msan692/blob/master/notes/sfpd.md)
+* [Computing TFIDF](https://github.com/parrt/msan692/blob/master/notes/tfidf.pdf)
+* [TFIDF document summarization](https://github.com/parrt/msan692/blob/master/hw/tfidf.md) (**project**)
+
 ## Data sources
 
 * files
@@ -92,15 +99,10 @@ All projects are graded in binary fashion: They either work or they do not, even
   * [Scraping data from tables](https://github.com/parrt/msan692/blob/master/notes/scraping-tables.md)
 * [Selenium](https://github.com/parrt/msan692/blob/master/notes/selenium.md)
 
-## Feature extraction
-
-* [Computing TFIDF](https://github.com/parrt/msan692/blob/master/notes/tfidf.pdf)
-* [TFIDF document summarization](https://github.com/parrt/msan692/blob/master/hw/tfidf.md) (**project**)
-* regex
-* Unix commands for extracting web content: wget, grep, awk, cut, paste, join, sed
-* k-means for compression, color selection
 
 ## Misc
 
 * Running shell commands from Python
-* [San Francisco police incidents word clouds and heat maps](https://github.com/parrt/msan692/blob/master/notes/sfpd.md)
+* regex
+* Unix commands for extracting web content: wget, grep, awk, cut, paste, join, sed
+* k-means for compression, color selection
