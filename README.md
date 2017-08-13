@@ -13,12 +13,12 @@ This course is part of the [MS in Analytics program at the University of San Fra
 
 **SPATIAL COORDINATES.** 101 Howard. Both sections Rm 527 on the fifth floor.
 
-**TEMPORAL COORDINATES.** Wed Aug 24 - Wed Oct 12.
+**TEMPORAL COORDINATES.** Wed Aug 23 - Wed Oct 11.
 
- * Section 01: Mon/Wed 10-12AM
- * Section 02: Mon/Wed 1-3PM 
+ * Section 01: Mon/Wed 10-11:50AM
+ * Section 02: Mon/Wed 1:15-3:05PM 
 
-**INSTRUCTION FORMAT**. Class runs for 2 hours, 2 days. Instructor-student interaction during lecture is encouraged and we'll mix in mini-exercises / labs during class. All programming will be done in the Python programming language, unless otherwise specified.
+**INSTRUCTION FORMAT**. Class runs for 1:50 hours, 2 days/week. Instructor-student interaction during lecture is encouraged and we'll mix in mini-exercises / labs during class. All programming will be done in the Python 2 programming language, unless otherwise specified.
 
 **TARDINESS.** Please be on time for class. It is a big distraction if you come in late.
 
@@ -36,12 +36,13 @@ If you ever have questions about what constitutes plagiarism, cheating, or acade
 
 | Artifact | Grade Weight | Due date |
 |--------|--------|--------|
-|[Data pipeline](https://github.com/parrt/msan692/blob/master/hw/pipeline.md)| 10%| Wed, Sep 7 before class |
+|[Data pipeline](https://github.com/parrt/msan692/blob/master/hw/pipeline.md)| 5%| Wed, Sep 7 before class |
 |[Building web servers](https://github.com/parrt/msan692/blob/master/hw/server.md)| 5%| Fri, Sep 16 midnight |
-|[Search Engine Implementation](https://github.com/parrt/msan501/blob/master/projects/hashtable.md)| 15% |
+|[Search Engine Implementation](https://github.com/parrt/msan501/blob/master/projects/hashtable.md)| 10% |
 |[TFIDF document summarization](https://github.com/parrt/msan692/blob/master/hw/tfidf.md)| 10%| Mon, Sep 26 before class|
-|[Group project](https://github.com/parrt/msan692/blob/master/hw/group.md)| 30%| Wed, Oct 12 midnight |
-|Exam| 30%| 10AM-12PM Fri, Oct 14 |
+|[Group project](https://github.com/parrt/msan692/blob/master/hw/group.md)| 20%| Wed, Oct 12 midnight |
+|Midterm Exam| 25%| 10AM-12PM Fri, Sep 15 |
+|Final Exam| 25%| 10AM-12PM Fri, Oct 13 |
 
 All projects are graded in binary fashion: They either work or they do not, even if you just misspelled a function name. Each project has a hard deadline and only those projects working correctly before the deadline get credit (100%).  My grading script pulls from github at the deadline. If you miss the deadline, you can still get 80% for the project if you complete it correctly by end of last class period.
 
@@ -51,7 +52,7 @@ All projects are graded in binary fashion: They either work or they do not, even
 
 ## Data formats
 
-* [representing text in a computer](https://github.com/parrt/msan692/blob/master/notes/text.md); see also [7-bit ascii codes](http://www.asciitable.com/), [unicode vs ascii in python](https://docs.python.org/2/howto/unicode.html)
+* [representing text in a computer](https://github.com/parrt/msan692/blob/master/notes/chars.md); see also [7-bit ascii codes](http://www.asciitable.com/), [unicode vs ascii in python](https://docs.python.org/2/howto/unicode.html)
 * [Data pipeline project](https://github.com/parrt/msan692/blob/master/hw/pipeline.md) (Converting stock history from Yahoo finance to various formats) (**project**)
 	* reading delimited data; tsv, csv
 	*  reading/generating XML (we'll load complicated XML in [TFIDF project](https://github.com/parrt/msan692/blob/master/hw/tfidf.md))
