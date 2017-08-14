@@ -37,12 +37,11 @@ If you ever have questions about what constitutes plagiarism, cheating, or acade
 | Artifact | Grade Weight | Due date |
 |--------|--------|--------|
 |[Data pipeline](https://github.com/parrt/msan692/blob/master/hw/pipeline.md)| 5%| Wed, Sep 7 before class |
-|[Building web servers](https://github.com/parrt/msan692/blob/master/hw/server.md)| 5%| Fri, Sep 16 midnight |
-|[Search Engine Implementation](https://github.com/parrt/msan501/blob/master/projects/hashtable.md)| 10% |
+|[Search Engine Implementation](https://github.com/parrt/msan692/blob/master/hw/hashtable.md)| 10% |
 |[TFIDF document summarization](https://github.com/parrt/msan692/blob/master/hw/tfidf.md)| 10%| Mon, Sep 26 before class|
-|[Group project](https://github.com/parrt/msan692/blob/master/hw/group.md)| 20%| Wed, Oct 12 midnight |
-|Midterm Exam| 25%| 10AM-12PM Fri, Sep 15 |
-|Final Exam| 25%| 10AM-12PM Fri, Oct 13 |
+|[Group project](https://github.com/parrt/msan692/blob/master/hw/group.md)| 15%| Wed, Oct 12 midnight |
+|Midterm Exam| 30%| 10AM-12PM Fri, Sep 15 |
+|Final Exam| 30%| 10AM-12PM Fri, Oct 13 |
 
 All projects are graded in binary fashion: They either work or they do not, even if you just misspelled a function name. Each project has a hard deadline and only those projects working correctly before the deadline get credit (100%).  My grading script pulls from github at the deadline. If you miss the deadline, you can still get 80% for the project if you complete it correctly by end of last class period.
 
