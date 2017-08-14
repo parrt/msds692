@@ -1,4 +1,3 @@
-from flask import Flask
 from flask import request
 from collections import Counter
 from html import HTML
