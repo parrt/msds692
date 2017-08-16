@@ -36,14 +36,21 @@ If you ever have questions about what constitutes plagiarism, cheating, or acade
 
 | Artifact | Grade Weight | Due date |
 |--------|--------|--------|
-|[Data pipeline](https://github.com/parrt/msan692/blob/master/hw/pipeline.md)| 5%| Wed, Sep 7 before class |
-|[Search Engine Implementation](https://github.com/parrt/msan692/blob/master/hw/hashtable.md)| 10% |
-|[TFIDF document summarization](https://github.com/parrt/msan692/blob/master/hw/tfidf.md)| 10%| Mon, Sep 26 before class|
-|[Group project](https://github.com/parrt/msan692/blob/master/hw/group.md)| 15%| Wed, Oct 12 midnight |
+|[Data pipeline](https://github.com/parrt/msan692/blob/master/hw/pipeline.md)| 5%| Mon, Sep 4 before class |
+|[Search Engine Implementation](https://github.com/parrt/msan692/blob/master/hw/search.md)| 10% | Wed, Sep 13 |
+|[Recommending Articles](https://github.com/parrt/msan692/blob/master/hw/recommender.md)| 7% | Wed, Sep 20 |
+|[TFIDF document summarization](https://github.com/parrt/msan692/blob/master/hw/tfidf.md)| 8%| Wed, Sep 27 |
+|[Tweet Sentiment Analysis](https://github.com/parrt/msan692/blob/master/hw/sentiment.md)| 10% | Wed, Oct 9 |
 |Midterm Exam| 30%| 10AM-12PM Fri, Sep 15 |
 |Final Exam| 30%| 10AM-12PM Fri, Oct 13 |
 
-All projects are graded in binary fashion: They either work or they do not, even if you just misspelled a function name. Each project has a hard deadline and only those projects working correctly before the deadline get credit (100%).  My grading script pulls from github at the deadline. If you miss the deadline, you can still get 80% for the project if you complete it correctly by end of last class period.
+<!--
+|[Group project](https://github.com/parrt/msan692/blob/master/hw/group.md)| 15%| Wed, Oct 12 midnight |
+-->
+
+All projects will be graded with the specific input or tests given in the project description, so you understand precisely what is expected of your program. Consequently, projects will be graded in binary fashion: They either work or they do not.  My hope is that everyone will get 100% on the projects.
+
+Each project has a hard deadline and only those projects working correctly before the deadline get credit.  My grading script pulls from github at the deadline.
 
 **Grading standards**. I consider an **A** grade to be above and beyond what most students have achieved. A **B** grade is an average grade for a student or what you could call "competence" in a business setting. A **C** grade means that you either did not or could not put forth the effort to achieve competence. Below **C** implies you did very little work or had great difficulty with the class compared to other students.
 
@@ -80,7 +87,6 @@ All projects are graded in binary fashion: They either work or they do not, even
 
 ## Data sources
 
-* files
 * [Pulling data from (open) REST APIs](https://github.com/parrt/msan692/blob/master/notes/openapi.md)
  * yahoo
  * openpayments.us
@@ -88,7 +94,7 @@ All projects are graded in binary fashion: They either work or they do not, even
 * Pull data from sites requiring an ID
  * [Zillow](https://github.com/parrt/msan692/blob/master/notes/zillow.md)
  * [Youtube](https://github.com/parrt/msan692/blob/master/notes/youtube.md)
-* [APIs requiring authentication/identification](https://github.com/parrt/msan692/blob/master/notes/authapi.md)
+* [APIs requiring authentication/identification](https://github.com/parrt/msan692/blob/master/notes/authapi.md) (optional)
  * [LinkedIn](https://github.com/parrt/msan692/blob/master/notes/linkedin.md)
  * [Facebook](https://github.com/parrt/msan692/blob/master/notes/facebook.md)
 * [Extracting data from web pages](https://github.com/parrt/msan692/blob/master/notes/scraping.md)
