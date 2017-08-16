@@ -41,8 +41,8 @@ If you ever have questions about what constitutes plagiarism, cheating, or acade
 | Artifact | Grade Weight | Due date |
 |--------|--------|--------|
 |[Data pipeline](https://github.com/parrt/msan692/blob/master/hw/pipeline.md)| 5%| Mon, Sep 4 before class |
-|[Search Engine Implementation](https://github.com/parrt/msan692/blob/master/hw/search.md)| 10% | Wed, Sep 13 |
-|[Recommending Articles](https://github.com/parrt/msan692/blob/master/hw/recommender.md)| 7% | Wed, Sep 20 |
+|[Search Engine Implementation](https://github.com/parrt/msan692/blob/master/hw/search.md)| 12% | Wed, Sep 13 |
+|[Recommending Articles](https://github.com/parrt/msan692/blob/master/hw/recommender.md)| 5% | Wed, Sep 20 |
 |[TFIDF document summarization](https://github.com/parrt/msan692/blob/master/hw/tfidf.md)| 8%| Wed, Sep 27 |
 |[Tweet Sentiment Analysis](https://github.com/parrt/msan692/blob/master/hw/sentiment.md)| 10% | Wed, Oct 9 |
 |Midterm Exam| 30%| 10AM-12PM Fri, Sep 15 |

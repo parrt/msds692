@@ -209,7 +209,7 @@ You must complete and add these to root of your `search-`*userid* repository:
 * words.py
 * search.py (copy this from starterkit unchanged)
 * test_htable.py (copy this from starterkit unchanged)
-* test_search.py (copy this from starterkit unchanged)
+* test_berlitz.py (copy this from starterkit unchanged)
 
 **Please do not add the data to your repository!**
 
