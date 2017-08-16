@@ -226,10 +226,10 @@ test_berlitz.py::test_hawaii_index PASSED
 test_berlitz.py::test_hawaii_myhtable PASSED
 test_berlitz.py::test_greek_linear PASSED
 test_berlitz.py::test_greek_index PASSED
-test_berlitz.py::test_greek_myhtable FAILED
+test_berlitz.py::test_greek_myhtable PASSED
 test_berlitz.py::test_lisbon_linear PASSED
 test_berlitz.py::test_lisbon_index PASSED
-test_berlitz.py::test_lisbon_myhtable FAILED
+test_berlitz.py::test_lisbon_myhtable PASSED
 test_berlitz.py::test_india_linear PASSED
 test_berlitz.py::test_india_index PASSED
 test_berlitz.py::test_india_myhtable PASSED
@@ -240,14 +240,13 @@ $ python -m pytest -v test_htable.py
 ...
 test_htable.py::test_empty PASSED
 test_htable.py::test_single PASSED
-test_htable.py::test_a_few PASSED
+test_htable.py::test_singleon PASSED
+test_htable.py::test_int_to_int PASSED
+test_htable.py::test_str_to_str PASSED
 test_htable.py::test_str_to_set PASSED
-...
 ```
 
 (You might need to install `pytest` with `pip`.)
-
-I will test your project using those test files on both data sets.
 
 ## Submission
 
