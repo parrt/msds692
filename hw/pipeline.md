@@ -317,7 +317,7 @@ Each of the five translators will be tested automatically. Any programming error
 
 You will find some [sample input](https://github.com/parrt/msan692/blob/master/hw/code/pipeline/data) and [expected output](https://github.com/parrt/msan692/blob/master/hw/code/pipeline/output) in this course repository.
 
-I provide a [test shell script](https://github.com/parrt/msan692/blob/master/hw/code/pipeline/testdata.sh) that you can use to test your data format generation and conversion.  Your project will be graded by running the AAPL.csv, TSLA.csv, and simple t data files:
+I provide a [test shell script](https://github.com/parrt/msan692/blob/master/hw/code/pipeline/testdata.sh) that you can use to test your data format generation and conversion.  Your project will be graded by running the AAPL, TSLA, and simple t data files:
 
 ```bash
 $ ./testdata.sh data output
@@ -347,6 +347,6 @@ Test t
    json2csv|csv2json: output/t.json and /tmp/t.json same
 ```
 
-`data` should have AAPL.csv and t.csv files; `output` is directory containing the [expected output](https://github.com/parrt/msan692/tree/master/hw/code/pipeline/output)
+`data` should have AAPL.csv, TSLA.csv, and t.csv files; `output` is directory containing the [expected output](https://github.com/parrt/msan692/tree/master/hw/code/pipeline/output).
 
 To get credit for the various deliverables, all related tests must pass, as shown here.
