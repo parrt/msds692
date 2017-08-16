@@ -3,6 +3,18 @@
 
 install flask, jinja2, tweepy, vaderSentiment pip install colour
 
+log in to twitter app mgmt, click on "create new app"
+
+E.g.,
+
+<img src="figures/twitter-app-creation.png" width=500>
+
+leave callback URL blank
+
+Then for that app, click "Keys and Access Tokens". that shows consumer key/secret, access token, secret.
+
+https://apps.twitter.com/
+
 docs for http://jinja.pocoo.org/docs/2.9/templates/
 
 Get max 100 tweets
