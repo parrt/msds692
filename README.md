@@ -2,7 +2,7 @@ MSAN692 Data acquisition
 =======
 
 
-There are lots of exciting and interesting problems in analytics, such as figuring out what the right question is, selecting features, training a model, and interpreting results. But all of that presupposes a tidy data set that is suitable for analysis or training models. Industry experts all agree that data collection and cleaning is roughly 3/4 of any analysis effort.  This course teaches how to collect, coalesce, and clean data from multiple sources in preparation for your analysis work. 
+There are lots of exciting and interesting problems in analytics, such as figuring out what the right question is, selecting features, training a model, and interpreting results. But all of that presupposes a tidy data set that is suitable for analysis or training models. Industry experts all agree that data collection and cleaning is roughly 3/4 of any analysis effort.  This course teaches how to collect, organize, coalesce, and clean data from multiple sources in preparation for your analysis work. 
 
 This course is part of the [MS in Analytics program at the University of San Francisco](http://analytics.usfca.edu).
 
