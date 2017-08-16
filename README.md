@@ -11,12 +11,16 @@ This course is part of the [MS in Analytics program at the University of San Fra
 
 **INSTRUCTOR.** [Terence Parr](http://parrt.cs.usfca.edu). I’m a professor in the computer science department and was founding director of the MS in Analytics program at USF.  Please call me Terence or Professor (the use of “Terry” is a capital offense).
 
-**SPATIAL COORDINATES.** 101 Howard. Both sections Rm 527 on the fifth floor.
+**SPATIAL COORDINATES:**<br>
+
+* Class is held at 101 Howard in 5th floor classroom 529.
+* Exams are held on first floor, 152/154. Both sections meet together.
 
 **TEMPORAL COORDINATES.** Wed Aug 23 - Wed Oct 11.
 
- * Section 01: Mon/Wed 10-11:50AM
- * Section 02: Mon/Wed 1:15-3:05PM 
+* Section 01: Mon/Wed 10-11:50AM
+* Section 02: Mon/Wed 1:15-3:05PM 
+* My office is room 608 (which I share with Prof. John Veitch).
 
 **INSTRUCTION FORMAT**. Class runs for 1:50 hours, 2 days/week. Instructor-student interaction during lecture is encouraged and we'll mix in mini-exercises / labs during class. All programming will be done in the Python 2 programming language, unless otherwise specified.
 
@@ -76,7 +80,7 @@ Each project has a hard deadline and only those projects working correctly befor
 * [flask](https://github.com/parrt/msan692/blob/master/notes/flask.md)
 * [Web analytics](https://github.com/parrt/msan692/blob/master/notes/webanalytics.md)
 * [Cookies](https://github.com/parrt/msan692/blob/master/notes/cookies.md), logging in/out
-* [Building web servers](https://github.com/parrt/msan692/blob/master/hw/server.md) (**project**)
+* [Building web servers](https://github.com/parrt/msan692/blob/master/hw/server.md) (**optional project**)
 
 ## Text feature extraction
 
