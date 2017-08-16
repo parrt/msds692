@@ -94,6 +94,7 @@ Each project has a hard deadline and only those projects working correctly befor
 * Pull data from sites requiring an ID
  * [Zillow](https://github.com/parrt/msan692/blob/master/notes/zillow.md)
  * [Youtube](https://github.com/parrt/msan692/blob/master/notes/youtube.md)
+ * [Twitter](https://github.com/parrt/msan692/blob/master/notes/twitter.md)
 * [APIs requiring authentication/identification](https://github.com/parrt/msan692/blob/master/notes/authapi.md) (optional)
  * [LinkedIn](https://github.com/parrt/msan692/blob/master/notes/linkedin.md)
  * [Facebook](https://github.com/parrt/msan692/blob/master/notes/facebook.md)
