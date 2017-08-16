@@ -4,21 +4,21 @@ The goal of this project is to learn how hashtables work and to *feel* just how 
 
 ## Discussion
 
-A **search engine** accepts one or more **terms** and searches a corpus for files matching all of those terms.  A **corpus** is just a directory and possibly subdirectories full of text files. If you go to the [American National corpus](http://www.anc.org/data/oanc/contents/), you'll see lots of fun text data. I have extracted articles from [Slate](https://github.com/parrt/msan692/blob/master/data/slate.7z) magazine and also from [Berlitz travelogues](https://github.com/parrt/msan692/blob/master/data/berlitz1.7z).  These are your data sets.  Berlitz is smaller and so I use that in some of my [unit tests](https://github.com/parrt/msan692-starterkit/blob/master/search/test_search.py).  Here is a fragment of a sample search results page as displayed in Chrome (activated from Python); clicking on a link brings up the actual file.
+A **search engine** accepts one or more **terms** and searches a corpus for files matching all of those terms.  A **corpus** is just a directory and possibly subdirectories full of text files. If you go to the [American National corpus](http://www.anc.org/data/oanc/contents/), you'll see lots of fun text data. I have extracted articles from [Slate](https://github.com/parrt/msan692/blob/master/data/slate.7z) magazine and also from [Berlitz travelogues](https://github.com/parrt/msan692/blob/master/data/berlitz1.7z).  These are your data sets.  Berlitz is smaller and so I use that in some of my [unit tests](https://github.com/parrt/msan692/tree/master/hw/code/search/test_search.py).  Here is a fragment of a sample search results page as displayed in Chrome (activated from Python); clicking on a link brings up the actual file.
 
 | HTML output        | File Content |
 | ---------- | -----
 | <img src="figures/search-page.png" width=300> |<img src="figures/search-file-page.png" width=350>|
 
-In repo directory `search-`*userid*, you're going to implement 3 different search mechanisms using code derived from the [starter kit files](https://github.com/parrt/msan692/tree/master/search). The actual search   mechanism of your code goes in these three files:
+In repo directory `search-`*userid*, you're going to implement 3 different search mechanisms using code derived from the [starter kit files](https://github.com/parrt/msan692/tree/master/hw/code/search). The actual search   mechanism of your code goes in these three files:
 
-1. Linear search; file [linear_search.py](https://github.com/parrt/msan692-starterkit/blob/master/search/linsearch.py)
-2. Hashtable via built in Python `dict` objects; file [index_search.py](https://github.com/parrt/msan692-starterkit/blob/master/search/index_search.py)
-3. Hashtable that you implement yourself; file [myhtable_search.py](https://github.com/parrt/msan692-starterkit/blob/master/search/myhtable_search.py)
+1. Linear search; file [linear_search.py](https://github.com/parrt/msan692/tree/master/hw/code/searchlinsearch.py)
+2. Hashtable via built in Python `dict` objects; file [index_search.py](https://github.com/parrt/msan692/tree/master/hw/code/search/index_search.py)
+3. Hashtable that you implement yourself; file [myhtable_search.py](https://github.com/parrt/msan692/tree/master/hw/code/search/myhtable_search.py)
 
 All three mechanism should give exactly the same results, but you will notice that the linear search is extremely slow. On my really fast machine with an SSD, it takes about five seconds to search through the Slate data. It has to open and search about 4500 files. With either of the hash tables, it's a matter of milliseconds.
 
-File [search.py](https://github.com/parrt/msan692-starterkit/blob/master/search/search.py) is the main program, which you execute like this from the `search-`*userid* directory:
+File [search.py](https://github.com/parrt/msan692/tree/master/hw/code/search/search.py) is the main program, which you execute like this from the `search-`*userid* directory:
 
 ```bash
 $ python search.py linear ~/data/slate
@@ -34,7 +34,7 @@ assuming you have placed the `slate` directory under a `data` directory in your 
 
 Your first task is to perform a brain-dead linear search, which looks at each file in turn to see if it contains all of the search terms. If it does, that filename is included in the set (not list) of matching documents. The complexity is *O(n)* for *n* total words in all files.
 
-Given a list of fully-qualified filenames containing the search terms, the main program in [search.py](https://github.com/parrt/msan692-starterkit/blob/master/search/search.py) uses function `results()` to get a string containing HTML, which search.py writes to file `/tmp/results.html`. It then requests, via `webbrowser.open_new_tab()`, that your default browser open that page.
+Given a list of fully-qualified filenames containing the search terms, the main program in [search.py](https://github.com/parrt/msan692/tree/master/hw/code/search/search.py) uses function `results()` to get a string containing HTML, which search.py writes to file `/tmp/results.html`. It then requests, via `webbrowser.open_new_tab()`, that your default browser open that page.
 
 ### HTML output
 
@@ -177,7 +177,7 @@ It computes the bucket where `key` lives and then linearly searches that (hopefu
 
 ## Getting started
 
-Please go to [Hashtable starterkit](https://github.com/parrt/msan692-starterkit/tree/master/search) and grab all the python files.  Store these in your repo `search-`*userid*, wherever you store that directory. E.g., I might put mine in `/Users/parrt/msan/parrt-hashtable`.
+Please go to the [Search starterkit](https://github.com/parrt/msan692/tree/master/hw/code/search) and grab all the python files.  Store these in your repo `search-`*userid*, wherever you store that directory. E.g., I might put mine in `/Users/parrt/msan/parrt-hashtable`.
 
 Store the [Slate](https://github.com/parrt/msan692/blob/master/data/slate.7z) and [Berlitz](https://github.com/parrt/msan692/blob/master/data/berlitz1.7z) data sets outside of your repo so that you are not tempted to add that data to the repository. Perhaps you can make a general data directory for use in lots of classes such as `~/data` or just for this class `~/msan692/data`.
 
@@ -221,7 +221,7 @@ test_htable.py::test_str_to_set PASSED
 
 (You might need to install `pytest` with `pip`.)
 
-I will test your project using something like the test file [test_search.py](https://github.com/parrt/msan692-starterkit/blob/master/search/test_search.py) but on a new data set you have not seen.
+I will test your project using something like the test file [test_search.py](https://github.com/parrt/msan692/tree/master/hw/code/search/test_search.py) but on a new data set you have not seen.
 
 Let me point out that my unit tests are incredibly anemic and are meant only to show the basic mechanism of testing. You are free to extend the tests to include a lot more.
 
