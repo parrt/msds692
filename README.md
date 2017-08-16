@@ -88,16 +88,16 @@ Each project has a hard deadline and only those projects working correctly befor
 ## Data sources
 
 * [Pulling data from (open) REST APIs](https://github.com/parrt/msan692/blob/master/notes/openapi.md)
- * yahoo
- * openpayments.us
- * IMDB movie data
+  * yahoo
+  * openpayments.us
+  * IMDB movie data
 * Pull data from sites requiring an ID
- * [Zillow](https://github.com/parrt/msan692/blob/master/notes/zillow.md)
- * [Youtube](https://github.com/parrt/msan692/blob/master/notes/youtube.md)
- * [Twitter](https://github.com/parrt/msan692/blob/master/notes/twitter.md)
+  * [Zillow](https://github.com/parrt/msan692/blob/master/notes/zillow.md)
+  * [Youtube](https://github.com/parrt/msan692/blob/master/notes/youtube.md)
+  * [Twitter](https://github.com/parrt/msan692/blob/master/notes/twitter.md)
 * [APIs requiring authentication/identification](https://github.com/parrt/msan692/blob/master/notes/authapi.md) (optional)
- * [LinkedIn](https://github.com/parrt/msan692/blob/master/notes/linkedin.md)
- * [Facebook](https://github.com/parrt/msan692/blob/master/notes/facebook.md)
+  * [LinkedIn](https://github.com/parrt/msan692/blob/master/notes/linkedin.md)
+  * [Facebook](https://github.com/parrt/msan692/blob/master/notes/facebook.md)
 * [Extracting data from web pages](https://github.com/parrt/msan692/blob/master/notes/scraping.md)
   * [Crawling](https://github.com/parrt/msan692/blob/master/notes/crawling.md)
   * [buzzfeed](https://github.com/parrt/msan692/blob/master/notes/buzzfeed.md)
