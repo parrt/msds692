@@ -10,7 +10,7 @@ A **search engine** accepts one or more **terms** and searches a corpus for file
 | ---------- | -----
 | <img src="figures/search-page.png" width=300> |<img src="figures/search-file-page.png" width=350>|
 
-In repo directory *userid*-hashtable, you're going to implement 3 different search mechanisms using code derived from the [starter kit files](https://github.com/parrt/msan692-starterkit/tree/master/search). The actual search   mechanism of your code goes in these three files:
+In repo directory `search-`*userid*, you're going to implement 3 different search mechanisms using code derived from the [starter kit files](https://github.com/parrt/msan692/tree/master/search). The actual search   mechanism of your code goes in these three files:
 
 1. Linear search; file [linear_search.py](https://github.com/parrt/msan692-starterkit/blob/master/search/linsearch.py)
 2. Hashtable via built in Python `dict` objects; file [index_search.py](https://github.com/parrt/msan692-starterkit/blob/master/search/index_search.py)
@@ -18,7 +18,7 @@ In repo directory *userid*-hashtable, you're going to implement 3 different sear
 
 All three mechanism should give exactly the same results, but you will notice that the linear search is extremely slow. On my really fast machine with an SSD, it takes about five seconds to search through the Slate data. It has to open and search about 4500 files. With either of the hash tables, it's a matter of milliseconds.
 
-File [search.py](https://github.com/parrt/msan692-starterkit/blob/master/search/search.py) is the main program, which you execute like this from the *userid*-hashtable directory:
+File [search.py](https://github.com/parrt/msan692-starterkit/blob/master/search/search.py) is the main program, which you execute like this from the `search-`*userid* directory:
 
 ```bash
 $ python search.py linear ~/data/slate
@@ -177,7 +177,7 @@ It computes the bucket where `key` lives and then linearly searches that (hopefu
 
 ## Getting started
 
-Please go to [Hashtable starterkit](https://github.com/parrt/msan692-starterkit/tree/master/search) and grab all the python files.  Store these in your repo *userid*-hashtable, wherever you store that directory. E.g., I might put mine in `/Users/parrt/msan/parrt-hashtable`.
+Please go to [Hashtable starterkit](https://github.com/parrt/msan692-starterkit/tree/master/search) and grab all the python files.  Store these in your repo `search-`*userid*, wherever you store that directory. E.g., I might put mine in `/Users/parrt/msan/parrt-hashtable`.
 
 Store the [Slate](https://github.com/parrt/msan692/blob/master/data/slate.7z) and [Berlitz](https://github.com/parrt/msan692/blob/master/data/berlitz1.7z) data sets outside of your repo so that you are not tempted to add that data to the repository. Perhaps you can make a general data directory for use in lots of classes such as `~/data` or just for this class `~/msan692/data`.
 
@@ -185,7 +185,7 @@ I recommend that you start by getting the simple linear search to work, which in
 
 ## Deliverables
 
-You must complete and add these to root of your *userid*-hashtable repository:
+You must complete and add these to root of your `search-`*userid* repository:
 
 * htable.py
 * index_search.py
