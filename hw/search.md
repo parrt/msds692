@@ -120,11 +120,11 @@ def index_search(files, index, terms):
     """
 ```
 
-These functions will use expressions like `index[w]`, where `index` is a `dict`, to access the documents containing word `w`. 
+These functions will use expressions like `index[w]`, where `index` is a `dict`, to get the document IDs containing word `w`.
 
 ### Creating an index using your own hashtable
 
-This version of the search engine should look and perform just like the version using `dict`. The difference is **you cannot use the built-in dictionary operations** like `index[k]` for `dict` `index` and key `k`. You will build your own hashtable and call your own get and put functions explicitly to manipulate the index.
+This version of the search engine should look and perform just like the version using `dict`. The difference is **you cannot use the built-in dictionary operations** like `index[k]` for `dict` `index` and key `k`. You will build your own hashtable and call your own `get` and `put` functions explicitly to manipulate the index.
 
 Because we are not studying the object-oriented aspects of Python, we are going to represent a hashtable as a list of lists (list of buckets):
  
@@ -133,7 +133,7 @@ def htable(nbuckets):
     """Return a list of nbuckets empty lists"""
 ```
 
-The number of buckets should be a prime number to avoid hash code collisions. in memory, the empty hash table looks like:
+The number of buckets should be a prime number to avoid hash code collisions. In memory, the empty hash table looks like:
 
 <img src=figures/hashtable-empty.png width=400>
 
@@ -142,16 +142,17 @@ Each element in a bucket is an association `(key,value)` where `value` is a set 
 ```python
 def htable_put(table, key, value):
     """
-    Perform table[key] = value
-    Find the appropriate bucket indicated by key and then append value to the bucket.
-    If the bucket for key already has a key,value pair with that key then replace it.
-    Make sure that you are only adding (key,value) associations to the buckets.
+    Perform the equivalent of table[key] = value
+    Find the appropriate bucket indicated by key and then append value
+    to that bucket. If the bucket for key already has a (key,value) pair
+    with that key then replace it.  Make sure that you are only adding
+    (key,value) associations to the buckets.
     """
 ```
 
 *The functionality that replaces an existing key->value mapping is something we will not use here, but I include it here for completeness.*
 
-In our case our values for the association are sets of document indexes.  If `ronald` is in documents 9 and 3 and `reagan` is in document 17 and both of those terms hashed to bucket 0, you would see the following 2-element bucket 0 with two associations:
+In our case our values for the association are sets of document IDs.  If `ronald` is in documents 9 and 3 and `reagan` is in document 17 and both of those terms hashed to bucket 0, you would see the following 2-element bucket 0 with two associations:
 
 <img src=figures/hashtable2.png width=800>
 
@@ -180,10 +181,10 @@ To get a value out of the hash table associated with a particular key, we use th
 ```python
 def htable_get(table, key):
     """
-    Return table[key].
-    Find the appropriate bucket indicated by the key and look for the association
-    with the key. Return the value (not the key and not the association!)
-    Return None if key not found.
+    Return the equivalent of table[key].
+    Find the appropriate bucket indicated by the key and look for the
+    association with the key. Return the value (not the key and not
+    the association!). Return None if key not found.
     """
 ```
 
@@ -191,7 +192,7 @@ It computes the bucket where `key` lives and then linearly searches that (hopefu
 
 ## Getting started
 
-Please go to the [Search starterkit](https://github.com/parrt/msan692/tree/master/hw/code/search) and grab all the python files.  Store these in your repo `search-`*userid*, wherever you store that directory. E.g., I might put mine in `/Users/parrt/msan/search-parrt`.
+Please go to the [Search starterkit](https://github.com/parrt/msan692/tree/master/hw/code/search) and grab all the python files.  Store these in your repo `search-`*userid*, wherever you store that directory.
 
 Store the [Slate](https://github.com/parrt/msan692/blob/master/data/slate.7z) and [Berlitz](https://github.com/parrt/msan692/blob/master/data/berlitz1.7z) data sets outside of your repo so that you are not tempted to add that data to the repository. Perhaps you can make a general data directory for use in lots of classes such as `~/data` or just for this class `~/msan692/data`.
 
@@ -215,15 +216,26 @@ You must complete and add these to root of your `search-`*userid* repository:
 Ultimately, you want the test results to look like the following.
 
 ```bash
-$ python -m pytest -v test_search.py 
+$ python -m pytest -v test_berlitz.py ~/data/berlitz1
 ...
-test_search.py::test_linear_berlitz_none PASSED
-test_search.py::test_index_berlitz_none PASSED
-test_search.py::test_myhtable_berlitz_none PASSED
-test_search.py::test_linear_berlitz PASSED
-test_search.py::test_index_berlitz PASSED
-test_search.py::test_myhtable_berlitz PASSED
-...
+test_berlitz.py::test_linear_berlitz_none PASSED
+test_berlitz.py::test_index_berlitz_none PASSED
+test_berlitz.py::test_myhtable_berlitz_none PASSED
+test_berlitz.py::test_hawaii_linear PASSED
+test_berlitz.py::test_hawaii_index PASSED
+test_berlitz.py::test_hawaii_myhtable PASSED
+test_berlitz.py::test_greek_linear PASSED
+test_berlitz.py::test_greek_index PASSED
+test_berlitz.py::test_greek_myhtable FAILED
+test_berlitz.py::test_lisbon_linear PASSED
+test_berlitz.py::test_lisbon_index PASSED
+test_berlitz.py::test_lisbon_myhtable FAILED
+test_berlitz.py::test_india_linear PASSED
+test_berlitz.py::test_india_index PASSED
+test_berlitz.py::test_india_myhtable PASSED
+test_berlitz.py::test_dublin_and_hawaii_linear PASSED
+test_berlitz.py::test_dublin_and_hawaii_index PASSED
+test_berlitz.py::test_dublin_and_hawaii_myhtable PASSED
 $ python -m pytest -v test_htable.py 
 ...
 test_htable.py::test_empty PASSED
@@ -235,9 +247,7 @@ test_htable.py::test_str_to_set PASSED
 
 (You might need to install `pytest` with `pip`.)
 
-I will test your project using something like the test file [test_search.py](https://github.com/parrt/msan692/tree/master/hw/code/search/test_search.py) but on a new data set you have not seen.
-
-Let me point out that my unit tests are incredibly anemic and are meant only to show the basic mechanism of testing. You are free to extend the tests to include a lot more.
+I will test your project using those test files on both data sets.
 
 ## Submission
 
