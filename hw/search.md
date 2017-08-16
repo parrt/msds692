@@ -10,9 +10,9 @@ A **search engine** accepts one or more **terms** and searches a corpus for file
 | ---------- | -----
 | <img src="figures/search-page.png" width=300> |<img src="figures/search-file-page.png" width=350>|
 
-In repo directory `search-`*userid*, you're going to implement 3 different search mechanisms using code derived from the [starter kit files](https://github.com/parrt/msan692/tree/master/hw/code/search). The actual search   mechanism of your code goes in these three files:
+In repo `search-`*userid*, you're going to implement 3 different search mechanisms using code derived from the [starter kit files](https://github.com/parrt/msan692/tree/master/hw/code/search). The actual search   mechanism of your code goes in these three files:
 
-1. Linear search; file [linear_search.py](https://github.com/parrt/msan692/tree/master/hw/code/searchlinsearch.py)
+1. Linear search; file [linear_search.py](https://github.com/parrt/msan692/tree/master/hw/code/search/linear_search.py)
 2. Hashtable via built in Python `dict` objects; file [index_search.py](https://github.com/parrt/msan692/tree/master/hw/code/search/index_search.py)
 3. Hashtable that you implement yourself; file [myhtable_search.py](https://github.com/parrt/msan692/tree/master/hw/code/search/myhtable_search.py)
 
@@ -27,6 +27,16 @@ $ python search.py myhtable ~/data/slate
 ```
 
 assuming you have placed the `slate` directory under a `data` directory in your home directory.
+
+Here is what the program looks like in action:
+
+```bash
+$ python search.py linear ~/data/slate
+4534 files
+Search terms: Reagan Iran
+```
+
+After you enter the search terms and hit return, the Python program pops up your default browser on the HTML file you have just generated as a result of the search.
 
 **Please do not add data files to your repository!** I don't need them and it takes forever to download your repos if you add the data. 
 
@@ -45,11 +55,11 @@ You can create whatever fancy HTML you want to show search results, but here is 
 <body>
 <h2>Search results for <b>ronald reagan</b> in 164 files</h2>
     
-    <p><a href="file:///Users/parrt/msan/parrt-hashtable/data/slate/15/Article247_3872.txt">/Users/parrt/msan/parrt-hashtable/data/slate/15/Article247_3872.txt</a><br>
+    <p><a href="file:///Users/parrt/msan/search-parrt/data/slate/15/Article247_3872.txt">/Users/parrt/msan/search-parrt/data/slate/15/Article247_3872.txt</a><br>
     relationship with Ronald Reagan, whom he served in the White House for eight<br>
     Hatch also took credit for just about everything significant Ronald Reagan did<br>expansion over the last number of years. It's been primarily because Reagan got<br><br>
     
-    <p><a href="file:///Users/parrt/msan/parrt-hashtable/data/slate/49/ArticleIP_12436.txt">/Users/parrt/msan/parrt-hashtable/data/slate/49/ArticleIP_12436.txt</a><br>
+    <p><a href="file:///Users/parrt/msan/search-parrt/data/slate/49/ArticleIP_12436.txt">/Users/parrt/msan/search-parrt/data/slate/49/ArticleIP_12436.txt</a><br>
     his two Republican predecessors, Reagan and Bush, they would have been<br>
     The only time Ronald<br>Reagan ever talked about Iran-Contra under oath was in a deposition for the<br><br>
     
@@ -62,7 +72,7 @@ You can create whatever fancy HTML you want to show search results, but here is 
 Notice that the links are URLs just like you see going to websites except they refer to a file on the local disk instead of another machine because of the `file://` prefix.
  
 ```
-file:///Users/parrt/msan/parrt-hashtable/data/slate/49/ArticleIP_12436.txt
+file:///Users/parrt/msan/search-parrt/data/slate/49/ArticleIP_12436.txt
 ```
 
 (My data is stored in a slightly different spot than yours will be.)
@@ -177,7 +187,7 @@ It computes the bucket where `key` lives and then linearly searches that (hopefu
 
 ## Getting started
 
-Please go to the [Search starterkit](https://github.com/parrt/msan692/tree/master/hw/code/search) and grab all the python files.  Store these in your repo `search-`*userid*, wherever you store that directory. E.g., I might put mine in `/Users/parrt/msan/parrt-hashtable`.
+Please go to the [Search starterkit](https://github.com/parrt/msan692/tree/master/hw/code/search) and grab all the python files.  Store these in your repo `search-`*userid*, wherever you store that directory. E.g., I might put mine in `/Users/parrt/msan/search-parrt`.
 
 Store the [Slate](https://github.com/parrt/msan692/blob/master/data/slate.7z) and [Berlitz](https://github.com/parrt/msan692/blob/master/data/berlitz1.7z) data sets outside of your repo so that you are not tempted to add that data to the repository. Perhaps you can make a general data directory for use in lots of classes such as `~/data` or just for this class `~/msan692/data`.
 
@@ -190,11 +200,11 @@ You must complete and add these to root of your `search-`*userid* repository:
 * htable.py
 * index_search.py
 * linear_search.py
-* myhtable_search.py (no `dict` allowed in this file)
-* search.py
-* test_htable.py
-* test_search.py
+* myhtable_search.py (no `dict`s allowed in this file!)
 * words.py
+* search.py (copy this from starterkit unchanged)
+* test_htable.py (copy this from starterkit unchanged)
+* test_search.py (copy this from starterkit unchanged)
 
 **Please do not add the data to your repository!**
 
@@ -227,7 +237,7 @@ Let me point out that my unit tests are incredibly anemic and are meant only to 
 
 ## Submission
 
-To submit your project, ensure that all of your Python files are submitted to your repository. Those files should be in the root of your repository so that if your repository is stored at `/Users/userid/msan/userid-hashtable`, that is the directory that should have the Python files.
+To submit your project, ensure that all of your Python files are submitted to your repository. Those files should be in the root of your `search`-*userid* repository.
 
 **Use of any `dict` objects within your `myhtable_search.py` file yields a 0 for that part of the project.**
 
