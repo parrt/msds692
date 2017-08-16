@@ -42,9 +42,9 @@ After you enter the search terms and hit return, the Python program pops up your
 
 ### Linear search
 
-Your first task is to perform a brain-dead linear search, which looks at each file in turn to see if it contains all of the search terms. If it does, that filename is included in the set (not list) of matching documents. The complexity is *O(n)* for *n* total words in all files.
+Your first task is to perform a brain-dead linear search, which looks at each file in turn to see if it contains all of the search terms. If it does, that filename is included in the list (not `set`) of matching documents. The time complexity is *O(n)* for *n* total words in all files.
 
-Given a list of fully-qualified filenames containing the search terms, the main program in [search.py](https://github.com/parrt/msan692/tree/master/hw/code/search/search.py) uses function `results()` to get a string containing HTML, which search.py writes to file `/tmp/results.html`. It then requests, via `webbrowser.open_new_tab()`, that your default browser open that page.
+Given a list of fully-qualified filenames for files containing the search terms, the main program in [search.py](https://github.com/parrt/msan692/tree/master/hw/code/search/search.py) uses function `results()` to get a string containing HTML, which `search.py` writes to file `/tmp/results.html`. It then requests, via `webbrowser.open_new_tab()`, that your default browser open that page.
 
 ### HTML output
 
@@ -55,27 +55,30 @@ You can create whatever fancy HTML you want to show search results, but here is 
 <body>
 <h2>Search results for <b>ronald reagan</b> in 164 files</h2>
     
-    <p><a href="file:///Users/parrt/msan/search-parrt/data/slate/15/Article247_3872.txt">/Users/parrt/msan/search-parrt/data/slate/15/Article247_3872.txt</a><br>
-    relationship with Ronald Reagan, whom he served in the White House for eight<br>
-    Hatch also took credit for just about everything significant Ronald Reagan did<br>expansion over the last number of years. It's been primarily because Reagan got<br><br>
+<p><a href="file:///Users/parrt/github/msan692/data/slate/1/Article247_42.txt">/Users/parrt/github/msan692/data/slate/1/Article247_42.txt</a><br>
+A Shared Vision pairs Ronald Reagan and Margaret Thatcher. Yes, they<br><br>
     
-    <p><a href="file:///Users/parrt/msan/search-parrt/data/slate/49/ArticleIP_12436.txt">/Users/parrt/msan/search-parrt/data/slate/49/ArticleIP_12436.txt</a><br>
-    his two Republican predecessors, Reagan and Bush, they would have been<br>
-    The only time Ronald<br>Reagan ever talked about Iran-Contra under oath was in a deposition for the<br><br>
+<p><a href="file:///Users/parrt/github/msan692/data/slate/10/Article247_3363.txt">/Users/parrt/github/msan692/data/slate/10/Article247_3363.txt</a><br>
+wartime. "I hope that neither President Carter or Governor Reagan, if he should<br>pay $5,000 and $3,500, respectively. After Ronald Reagan, who was elected<br><br>
     
-    ...
-    
+<p><a href="file:///Users/parrt/github/msan692/data/slate/11/Article247_3408.txt">/Users/parrt/github/msan692/data/slate/11/Article247_3408.txt</a><br>
+ I'd like to learn a decent salad dressing other than vinaigrette. Ideas? Well at least something other than the usual Masonic vinaigrette to Ronald Reagan brought the hall to its feet. The best of social<br><br>    
+...    
 </body>
 </html>
 ```      
 
-Notice that the links are URLs just like you see going to websites except they refer to a file on the local disk instead of another machine because of the `file://` prefix.
+Notice that the links are URLs just like you see going to websites except they refer to a file on the local disk instead of another machine because of the `file://` prefix.  For example, if my data is in the `github/msan692/data` subdirectory of my home directory, we see URLs like:
  
 ```
-file:///Users/parrt/msan/search-parrt/data/slate/49/ArticleIP_12436.txt
+file:///Users/parrt/github/msan692/data/slate/10/Article247_3363.txt
 ```
 
 (My data is stored in a slightly different spot than yours will be.)
+
+Also notice that in my search results, I am showing up to 2 lines containing at least one of the search term(s).
+
+You can use the template engine [jinja2](http://jinja.pocoo.org/docs/2.9/), which is part of the flask webserver that we will use later, or just slap together strings in order to create the HTML.
 
 ### Creating an index using `dict`
 
@@ -98,21 +101,22 @@ Here are the two key methods you must implement:
 def create_index(files):
     """
     Given a list of fully-qualified filenames, build an index from word
-    to set of document indexes. The document index is just the index into the
-    files parameter (indexed from 0).
-    Make sure that you are mapping a word to a set, not a list.
-    For each word w in file i, add i to the set of documents containing w
-    Return a dict object.
+    to set of document IDs. A document ID is just the index into the
+    files parameter (indexed from 0) to get the file name. Make sure that
+    you are mapping a word to a set of doc IDs, not a list.
+    For each word w in file i, add i to the set of document IDs containing w
+    Return a dict object mapping a word to a set of doc IDs.
     """
 ```
 
 ```python
 def index_search(files, index, terms):
     """
-    Given an index and a list of fully-qualified filenames, return a list of them
-    whose file contents has all words in terms as normalized by your words() function.
-    Parameter terms is a list of strings.
-    You can only use the index to find matching files; you cannot open the files and look inside.
+    Given an index and a list of fully-qualified filenames, return a list of
+    doc IDs whose file contents has all words in terms parameter as normalized
+    by your words() function.  Parameter terms is a list of strings.
+    You can only use the index to find matching files; you cannot open the files
+    and look inside.
     """
 ```
 

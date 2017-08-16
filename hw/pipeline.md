@@ -162,7 +162,7 @@ Of course our real data set is much bigger and the first part of it looks like t
 
 In file `csv2html.py`, write a small script that reads in the CSV using `getdata()` and then prints out an HTML `table`.  
 
-You can use the template engine [jinja2](http://jinja.pocoo.org/docs/2.9/), which is part of the flask webserver which we will use later, or just slap together strings in order to create the HTML. Please do not use any other template engine because I might not have that installed when grading. 
+You can use the template engine [jinja2](http://jinja.pocoo.org/docs/2.9/), which is part of the flask webserver that we will use later, or just slap together strings in order to create the HTML. Please do not use any other template engine because I might not have that installed when grading. 
 
 The program should read from standard input or from a filename parameter to the script (this is handled automatically for you by `getdata()`):
 
