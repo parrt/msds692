@@ -15,6 +15,16 @@ http://localhost:8080/realdonaldtrump
 
 <img src=figures/trump-tweets.png width=800>
 
+another page http://localhost:8080/following/the_antlr_guy
+
+SORTED reverse by followers
+
+<img src=figures/trump-follows.png width=400>
+
+<img src=figures/parrt-follows.png width=400>
+
+each text should be link to tweet. underline when hovering but not normally.
+
 figure out how to make square bullets, font size 70%, font family Verdana, sans-serif. h1 is 130% size
 
 'user' 
