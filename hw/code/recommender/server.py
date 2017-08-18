@@ -17,16 +17,12 @@ def article(topic,filename):
     """
 
 
-def init():
-    global gloves, articles, docvecs
+# initialization
+glove_filename = sys.argv[1]
+articles_dirname = sys.argv[2]
 
-    glove_filename = sys.argv[1]
-    articles_dirname = sys.argv[2]
+gloves = load_glove(glove_filename)
+articles = load_articles(articles_dirname)
+add_doc2vecs(articles, gloves)
 
-    gloves = load_glove(glove_filename)
-    articles = load_articles(articles_dirname)
-    add_doc2vecs(articles, gloves)
-
-
-init()
 app.run(host='0.0.0.0', port=80)
