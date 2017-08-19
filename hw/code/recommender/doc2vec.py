@@ -97,27 +97,22 @@ def words(text):
     """
 
 
-def load_articles(articles_dirname):
+def load_articles(articles_dirname, gloves):
     """
     Load all .txt files under articles_dirname and return a table (list of lists)
-    where each record is a list of [filename, title, article-text-minus-title].
+    where each record is a list of:
+
+      [filename, title, article-text-minus-title, wordvec-for-article-text]
+
     This record will be updated by add_doc2vecs() to include word vectors at position 3
-    of the record.
+    of the record.  We use gloves parameter to compute the word vector.
     """
 
 
-def add_doc2vecs(articles, gloves):
+def doc2vec(text, gloves):
     """
-    Update the list of articles to have the doc2vec as last element of record.
-    The articles should
-    """
-
-
-def doc2vec(article, gloves):
-    """
-    Return the word vector centroid for the article. Add the word vectors
-    for each word and then divide by the number of words.  The article
-    is record: [filename, title, article-text-minus-title].
+    Return the word vector centroid for the text. Sum the word vectors
+    for each word and then divide by the number of words.
     """
 
 
