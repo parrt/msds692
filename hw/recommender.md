@@ -148,13 +148,15 @@ Note that I have given fully qualified pathnames to the word vectors and the roo
 
 ## Evaluation
 
-To evaluate your projects, the grader and I will run the `test_server.py` script, from your repo root directory, that automatically pulls your article list page and a selection of article pages to check that your recommendations match our solution.
+To evaluate your projects, the grader and I will run the [test_server.py](https://github.com/parrt/msan692/blob/master/hw/code/recommender/test_server.py) script, from your repo root directory, that automatically pulls your article list page and a selection of article pages to check that your recommendations match our solution.
 
 **Without the IP.txt file at the root of your repository, we cannot test your server and you get a zero!** Our script reads your IP.txt file with 
  ```pytho
 with open("IP.txt") as f:
     host = f.read().strip()
 ```
+
+It also reads some pickled "truth" data structures that encode the articles from my solution's web server.
 
 Here is a sample run:
 
