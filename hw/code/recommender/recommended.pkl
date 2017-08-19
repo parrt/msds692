@@ -7,24 +7,24 @@ p3
 VJobs growth still slow in the US
 p4
 tp5
-a(S'/article/business/292.txt'
+a(S'/article/business/134.txt'
 p6
-VSteady job growth continues in US
+VUS adds more jobs than expected
 p7
 tp8
-a(S'/article/business/416.txt'
+a(S'/article/business/292.txt'
 p9
 VSteady job growth continues in US
 p10
 tp11
-a(S'/article/business/134.txt'
+a(S'/article/business/416.txt'
 p12
-VUS adds more jobs than expected
+VSteady job growth continues in US
 p13
 tp14
-a(S'/article/business/165.txt'
+a(S'/article/business/022.txt'
 p15
-VConsumer spending lifts US growth
+VSluggish economy hits German jobs
 p16
 tp17
 atp18
@@ -51,67 +51,67 @@ p30
 VYukos heading back to US courts
 p31
 tp32
-a(S'/article/business/164.txt'
+a(S'/article/business/358.txt'
 p33
-VYukos sues four firms for $20bn
+VDeutsche attacks Yukos case
 p34
 tp35
 atp36
 a(S'business/131.txt'
 p37
 (lp38
-(S'/article/business/077.txt'
+(S'/article/business/332.txt'
 p39
-VChina had role in Yukos split-up
+VPutin backs state grab for Yukos
 p40
 tp41
-a(S'/article/business/332.txt'
+a(S'/article/business/077.txt'
 p42
-VPutin backs state grab for Yukos
+VChina had role in Yukos split-up
 p43
 tp44
-a(S'/article/business/399.txt'
+a(S'/article/business/314.txt'
 p45
-VIndian oil firm eyes Yukos assets
+VYukos unit fetches $9bn at auction
 p46
 tp47
-a(S'/article/business/324.txt'
+a(S'/article/business/318.txt'
 p48
-VYukos seeks court action on sale
+VMystery surrounds new Yukos owner
 p49
 tp50
-a(S'/article/business/181.txt'
+a(S'/article/business/324.txt'
 p51
-VIndia and Russia in energy talks
+VYukos seeks court action on sale
 p52
 tp53
 atp54
 a(S'business/223.txt'
 p55
 (lp56
-(S'/article/business/367.txt'
+(S'/article/business/341.txt'
 p57
-VTakeover offer for Sunderland FC
+VJarvis sells Tube stake to Spain
 p58
 tp59
-a(S'/article/tech/119.txt'
+a(S'/article/business/367.txt'
 p60
-VArgonaut founder rebuilds empire
+VTakeover offer for Sunderland FC
 p61
 tp62
-a(S'/article/business/341.txt'
+a(S'/article/business/062.txt'
 p63
-VJarvis sells Tube stake to Spain
+VWembley firm won't make a profit
 p64
 tp65
-a(S'/article/business/483.txt'
+a(S'/article/tech/119.txt'
 p66
-VAiling EuroDisney vows turnaround
+VArgonaut founder rebuilds empire
 p67
 tp68
-a(S'/article/tech/114.txt'
+a(S'/article/business/021.txt'
 p69
-VGames maker fights for survival
+VRank 'set to sell off film unit'
 p70
 tp71
 atp72
@@ -128,19 +128,19 @@ p78
 VBlair buys copies of new Band Aid
 p79
 tp80
-a(S'/article/entertainment/162.txt'
+a(S'/article/entertainment/240.txt'
 p81
-VPrince crowned 'top music earner'
+VElvis 'set for chart hat-trick'
 p82
 tp83
-a(S'/article/entertainment/250.txt'
+a(S'/article/entertainment/162.txt'
 p84
 VPrince crowned 'top music earner'
 p85
 tp86
-a(S'/article/entertainment/240.txt'
+a(S'/article/entertainment/250.txt'
 p87
-VElvis 'set for chart hat-trick'
+VPrince crowned 'top music earner'
 p88
 tp89
 atp90
@@ -157,19 +157,19 @@ p96
 VGoodrem wins top female MTV prize
 p97
 tp98
-a(S'/article/entertainment/125.txt'
+a(S'/article/entertainment/251.txt'
 p99
-VSnow Patrol feted at Irish awards
+VBrit awards for Devon music acts
 p100
 tp101
-a(S'/article/entertainment/251.txt'
+a(S'/article/entertainment/125.txt'
 p102
-VBrit awards for Devon music acts
+VSnow Patrol feted at Irish awards
 p103
 tp104
-a(S'/article/entertainment/150.txt'
+a(S'/article/entertainment/243.txt'
 p105
-VUsher leads Billboard nominations
+VBlue beat U2 to top France honour
 p106
 tp107
 atp108
@@ -186,19 +186,19 @@ p114
 VUS actor Ossie Davis found dead
 p115
 tp116
-a(S'/article/entertainment/339.txt'
+a(S'/article/entertainment/307.txt'
 p117
-VKeanu Reeves given Hollywood star
+VCarry On star Patsy Rowlands dies
 p118
 tp119
-a(S'/article/entertainment/012.txt'
+a(S'/article/entertainment/339.txt'
 p120
-VNeeson in bid to revive theatre
+VKeanu Reeves given Hollywood star
 p121
 tp122
-a(S'/article/entertainment/307.txt'
+a(S'/article/entertainment/314.txt'
 p123
-VCarry On star Patsy Rowlands dies
+VHow the Academy Awards flourished
 p124
 tp125
 atp126
@@ -210,24 +210,24 @@ p129
 VWatchdog probes e-mail deletions
 p130
 tp131
-a(S'/article/politics/116.txt'
+a(S'/article/politics/233.txt'
 p132
-VCSA 'could close', says minister
+V'Few ready' for information act
 p133
 tp134
-a(S'/article/politics/233.txt'
+a(S'/article/politics/116.txt'
 p135
-V'Few ready' for information act
+VCSA 'could close', says minister
 p136
 tp137
-a(S'/article/politics/049.txt'
+a(S'/article/politics/315.txt'
 p138
-VClarke to press on with ID cards
+VCSA chief who 'quit' still in job
 p139
 tp140
-a(S'/article/politics/315.txt'
+a(S'/article/politics/049.txt'
 p141
-VCSA chief who 'quit' still in job
+VClarke to press on with ID cards
 p142
 tp143
 atp144
@@ -254,9 +254,9 @@ p156
 VCole refuses to blame van Persie
 p157
 tp158
-a(S'/article/sport/269.txt'
+a(S'/article/sport/278.txt'
 p159
-VReds sink 10-man Magpies
+VRobben and Cole earn Chelsea win
 p160
 tp161
 atp162
@@ -268,24 +268,24 @@ p165
 VCelts savour Grand Slam prospect
 p166
 tp167
-a(S'/article/sport/371.txt'
+a(S'/article/sport/395.txt'
 p168
-VAll Black magic: New Zealand rugby
+VParis promise raises Welsh hopes
 p169
 tp170
-a(S'/article/sport/367.txt'
+a(S'/article/sport/354.txt'
 p171
-VJohnson announces June retirement
+VO'Sullivan keeps his powder dry
 p172
 tp173
-a(S'/article/sport/291.txt'
+a(S'/article/sport/371.txt'
 p174
-VThomas out of Six Nations
+VAll Black magic: New Zealand rugby
 p175
 tp176
-a(S'/article/sport/375.txt'
+a(S'/article/sport/368.txt'
 p177
-VDallaglio his own man to the end
+VA November to remember
 p178
 tp179
 atp180
@@ -312,23 +312,23 @@ p192
 VBT offers free net phone calls
 p193
 tp194
-a(S'/article/tech/349.txt'
+a(S'/article/tech/205.txt'
 p195
-VBroadband set to revolutionise TV
+VUK broadband gets speed injection
 p196
 tp197
 atp198
 a(S'tech/384.txt'
 p199
 (lp200
-(S'/article/tech/033.txt'
+(S'/article/tech/074.txt'
 p201
-VGlobal digital divide 'narrowing'
+VChina 'to overtake US net use'
 p202
 tp203
-a(S'/article/business/129.txt'
+a(S'/article/business/342.txt'
 p204
-VIraq to invite phone licence bids
+VHonda wins China copyright ruling
 p205
 tp206
 a(S'/article/business/252.txt'
@@ -336,14 +336,14 @@ p207
 VBT offers equal access to rivals
 p208
 tp209
-a(S'/article/politics/109.txt'
+a(S'/article/business/437.txt'
 p210
-VUK firms 'embracing e-commerce'
+VChina bans new tobacco factories
 p211
 tp212
-a(S'/article/tech/074.txt'
+a(S'/article/tech/242.txt'
 p213
-VChina 'to overtake US net use'
+VPC ownership to 'double by 2010'
 p214
 tp215
 atp216
@@ -360,19 +360,19 @@ p222
 VGo-ahead for new internet names
 p223
 tp224
-a(S'/article/tech/399.txt'
+a(S'/article/tech/340.txt'
 p225
-VBe careful how you code
+VDomain system opens door to scams
 p226
 tp227
-a(S'/article/tech/340.txt'
+a(S'/article/tech/049.txt'
 p228
-VDomain system opens door to scams
+VDomain system scam fear
 p229
 tp230
-a(S'/article/tech/049.txt'
+a(S'/article/tech/399.txt'
 p231
-VDomain system scam fear
+VBe careful how you code
 p232
 tp233
 atp234
