@@ -152,8 +152,7 @@ To evaluate your projects, the grader and I will run the [test_server.py](https:
 
 **Without the IP.txt file at the root of your repository, we cannot test your server and you get a zero!** Our script reads your IP.txt file with:
  ```python
-with open("IP.txt") as f:
-    host = f.read().strip()
+with open("IP.txt") as f: host = f.read().strip()
 ```
 
 The starterkit has `localhost` in it so you can test locally before deploying to your server.
