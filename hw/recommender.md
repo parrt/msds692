@@ -12,6 +12,8 @@ Clicking on one of those articles takes you to an article page that shows the te
 
 <img src=figures/article2.png width=450>
 
+You will do your work in `recommender-`*userid*.
+
 ## Discussion
 
 ### Article word-vector centroids
@@ -146,6 +148,27 @@ Note that I have given fully qualified pathnames to the word vectors and the roo
 
 ## Evaluation
 
-To evaluate your projects, the grader and I will run a script that automatically pulls your article list page and a selection of article pages to check that your recommendations match our solution.
+To evaluate your projects, the grader and I will run the `test_server.py` script, from your repo root directory, that automatically pulls your article list page and a selection of article pages to check that your recommendations match our solution.
 
-**Without the IP.txt file at the root of your repository, we cannot test your server and you get a zero!**
+**Without the IP.txt file at the root of your repository, we cannot test your server and you get a zero!** Our script reads your IP.txt file with 
+ ```pytho
+with open("IP.txt") as f:
+    host = f.read().strip()
+```
+
+Here is a sample run:
+
+```
+$ cd ~/grading/MSAN692/recommender-parrt
+$ python -m pytest -v test_server.py
+============================================ test session starts =============================================
+platform darwin -- Python 2.7.12, pytest-2.9.2, py-1.4.31, pluggy-0.3.1 -- /Users/parrt/anaconda2/bin/python
+cachedir: .cache
+rootdir: /Users/parrt/courses/msan692-private/hw/recommender, inifile: 
+collected 2 items 
+
+test_server.py::test_links PASSED
+test_server.py::test_sample_articles PASSED
+
+========================================== 2 passed in 0.57 seconds ==========================================
+```
