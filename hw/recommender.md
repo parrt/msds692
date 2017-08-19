@@ -156,9 +156,11 @@ with open("IP.txt") as f:
     host = f.read().strip()
 ```
 
-It also reads some pickled "truth" data structures that encode the articles from my solution's web server.
+The starterkit has `localhost` in it so you can test locally before deploying to your server.
 
-Here is a sample run:
+It also reads some pickled "truth" data structures that encode the articles from my solution's web server. That data was generated with [pickle_truth.py](https://github.com/parrt/msan692/blob/master/hw/code/recommender/pickle_truth.py).
+
+Here is a sample test run:
 
 ```
 $ cd ~/grading/MSAN692/recommender-parrt
@@ -166,7 +168,7 @@ $ python -m pytest -v test_server.py
 ============================================ test session starts =============================================
 platform darwin -- Python 2.7.12, pytest-2.9.2, py-1.4.31, pluggy-0.3.1 -- /Users/parrt/anaconda2/bin/python
 cachedir: .cache
-rootdir: /Users/parrt/courses/msan692-private/hw/recommender, inifile: 
+rootdir: /Users/parrt/grading/MSAN692/recommender-parrt, inifile: 
 collected 2 items 
 
 test_server.py::test_links PASSED
@@ -174,3 +176,5 @@ test_server.py::test_sample_articles PASSED
 
 ========================================== 2 passed in 0.57 seconds ==========================================
 ```
+
+Getting the article list right is worth 20% and getting the recommended articles right is worth 80%. As you have the complete test, you should be able to get it working and we will grade in binary fashion (works or it doesn't).
