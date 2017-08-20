@@ -86,7 +86,7 @@ This information is needed to generate the HTML for the two different kinds of p
  
 ### Generating HTML pages
 
-In the starter kit, I provide sample HTML files, [parrt-tweets.html](https://github.com/parrt/msan692/blob/master/hw/code/sentiment/parrt-tweets.html) and [parrt-following.html](https://github.com/parrt/msan692/blob/master/hw/code/sentiment/parrt-following.html).
+In the starter kit, I provide sample HTML files, [sample-parrt-tweets.html](https://github.com/parrt/msan692/blob/master/hw/code/sentiment/sample-parrt-tweets.html) and [sample-parrt-following.html](https://github.com/parrt/msan692/blob/master/hw/code/sentiment/sample-parrt-following.html).
 
 We use the template engine [jinja2](http://jinja.pocoo.org/docs/2.9/) that is built-in with flask. When you call `render_template()` from within a flask route method, it looks in the `templates` subdirectory for the file indicated in that function call. You need to pass in appropriate arguments to the two different page templates so the pages fill with data.
  
@@ -165,3 +165,15 @@ Note that I have given fully qualified pathname to the twitter secrets file. The
 
 To evaluate your projects, the grader and I will go to your AWS server and test the current output for the two pages using Twitter users `the_antlr_guy` and `realdonaldtrump`. We will also launch your server locally to make sure that the software runs correctly and that its output matches what we see at your Amazon server.
 
+**Without the IP.txt file at the root of your repository, we cannot test your server and you get a zero!**
+
+Here is an automated bash script, I've put in `pulltwitter.sh`, that we will use to pull down the HTML from your servers:
+
+```bash
+curl "http://"$(cat IP.txt)"/the_antlr_guy" > parrt-tweets.html
+curl "http://"$(cat IP.txt)"/following/the_antlr_guy" > parrt-following.html
+curl "http://"$(cat IP.txt)"/realdonaldtrump" > trump-tweets.html
+curl "http://"$(cat IP.txt)"/following/realdonaldtrump" > trump-following.html
+```
+
+We will run this script in all of your directories and then open up a browser on those files.
