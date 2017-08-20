@@ -45,7 +45,7 @@ Under the Permissions tab, make sure that you have your access as "Read only" fo
 
 **We never encode secrets in source code**, consequently, we need to pass that information into our web server every time we launch. To prevent having to type that every time, we will store those keys and secrets in a CSV file format:
 
-    consumer_key, consumer_secret, access_token, access_token_secret
+*consumer_key*, *consumer_secret*, *access_token*, *access_token_secret*
 
 The server then takes a commandline argument indicating the file name of this data. For example, I pass in my secrets via
 
@@ -137,17 +137,19 @@ $ tree
 
 Next, make sure that the following Python packages are installed: `flask`, `jinja2`, `tweepy`, `vaderSentiment`, `colour`.
 
+Examine `server.py` and `tweetie.py` carefully as it describes the functions you need to implement.
+
 ## Deliverables
 
 ### Github
 
 In your github repository, you should submit the following:
 
-* IP.txt; this is a single line text file terminated by a newline character that indicates the machine name or IP address of your server at Amazon
-* server.py; implement `tweets()`, `add_color()`, and `following()`
-* tweetie.py; implement `authenticate()`, `fetch_tweets()`, `fetch_following()`
-* templates/tweets.html; use template language to generate the right HTML for the list of tweets for the screen name in the URL.
-* templates/following.html; use template language to generate the right HTML for the users followed by the screen name in the URL.
+* `IP.txt`; this is a single line text file terminated by a newline character that indicates the machine name or IP address of your server at Amazon
+* `server.py`; implement `tweets()`, `add_color()`, and `following()`
+* `tweetie.py`; implement `authenticate()`, `fetch_tweets()`, `fetch_following()`
+* `templates/tweets.html`; use template language to generate the right HTML for the list of tweets for the screen name in the URL.
+* `templates/following.html`; use template language to generate the right HTML for the users followed by the screen name in the URL.
 
 ### AWS
 
@@ -167,7 +169,7 @@ To evaluate your projects, the grader and I will go to your AWS server and test 
 
 **Without the IP.txt file at the root of your repository, we cannot test your server and you get a zero!**
 
-Here is an automated bash script, I've put in `pulltwitter.sh`, that we will use to pull down the HTML from your servers:
+Here is an automated bash script, I've put in `pulltwitter.sh`, that we will use to pull down the HTML from your servers (whatever server is specified in `IP.txt`):
 
 ```bash
 curl "http://"$(cat IP.txt)"/the_antlr_guy" > parrt-tweets.html
@@ -177,3 +179,7 @@ curl "http://"$(cat IP.txt)"/following/realdonaldtrump" > trump-following.html
 ```
 
 We will run this script in all of your directories and then open up a browser on those files.
+
+As we will be looking at it as humans not comparing it to known strings of HTML, small variations in display format are acceptable.
+
+*You get 50% for getting the tweet list properly displayed with color gradient and 50% for getting the list of followed users correct.* As you have the complete test, you should be able to get it working and we will grade in binary fashion (works or it doesn't).

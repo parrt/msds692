@@ -175,4 +175,4 @@ test_server.py::test_sample_articles PASSED
 ```
 
 
-Getting the article list right is worth 20% and getting the recommended articles right is worth 80%. As you have the complete test, you should be able to get it working and we will grade in binary fashion (works or it doesn't).
+*Getting the article list right is worth 20% and getting the recommended articles right is worth 80%.* As you have the complete test, you should be able to get it working and we will grade in binary fashion (works or it doesn't).
