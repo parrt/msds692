@@ -20,62 +20,15 @@ Or:
 
 Note that the users should be sorted in reverse order by their number of followers. Just to be clear, `/following/the_antlr_guy` shows the list of users that I follow sorted by how many followers those users have. Clearly, Guido has the most followers and so he is shown first in my list of people I follow.
 
+You will do your work in repository `sentiment-`*userid*.
+
 ## Discussion
 
-### Mining for tweets
-
-    create a list of tweets where each tweet is a dictionary with the
-    following keys:
-
-       id: tweet ID
-       created: tweet creation date
-       retweeted: number of retweets
-       text: text of the tweet
-       hashtags: list of hashtags mentioned in the tweet
-       urls: list of URLs mentioned in the tweet
-       mentions: list of screen names mentioned in the tweet
-       score: the "compound" polarity score from vader's polarity_scores()
-
-    Return a dictionary containing keys-value pairs:
-
-       user: user's screen name
-       count: number of tweets
-       tweets: list of tweets, each tweet is a dictionary
-
-following
-
-       name: real name
-       screen_name: Twitter screen name
-       followers: number of followers
-       created: created date (no time info)
-       image: the URL of the profile's image
-       
-### Generating HTML pages
-
-https://github.com/parrt/msan692/blob/master/hw/code/sentiment/parrt-tweets.html
-
-```html
-<li style="list-style:square; font-size:70%; font-family:Verdana, sans-serif; color:#ea4c00">
-    -0.68: <a style="color:#ea4c00" href="https://twitter.com/the_antlr_guy/status/897491721944158208">RT @kotlin: Kotlin 1.1.4 is out! Auto-generating Parcelable impls, JS dead code elimination, package-default nullability &amp;amp; more: https://t.…</a>
-</li>
-```
-
-https://github.com/parrt/msan692/blob/master/hw/code/sentiment/parrt-following.html
-
-```html
-<tr>
-    <td align=center width="80"><img src="http://pbs.twimg.com/profile_images/424495004/GuidoAvatar_normal.jpg"></td>
-    <td style="font-size:70%; font-family:Verdana, sans-serif">
-        <a href="https://twitter.com/gvanrossum">Guido van Rossum</a><br>
-        98538 followers<br>
-        Since 2008-08-11
-    </td>
-</tr>
-```
+Using the twitter API, you will pull tweets and user information and then displayed using HTML.
 
 ### Authenticating with the twitter API server
 
-Twitter requires that you register as a user and then also create an "app" for which he will give you authentication credentials. These credentials are needed for making requests to the API server. Start by logging in to [twitter app management](https://apps.twitter.com/) then click on "create new app". It should show you a dialog box such as the following, but of course you would fill in your own details:
+Twitter requires that you register as a user and then also create an "app" for which Twitter will give you authentication credentials. These credentials are needed for making requests to the API server. Start by logging in to [twitter app management](https://apps.twitter.com/) then click on "create new app". It should show you a dialog box such as the following, but of course you would fill in your own details:
 
 <img src="figures/twitter-app-creation.png" width=500>
 
@@ -94,7 +47,7 @@ Under the Permissions tab, make sure that you have your access as "Read only" fo
 
     consumer_key, consumer_secret, access_token, access_token_secret
 
-The server then takes a commandline argument indicating the file name of this data. For example, I pass in my secrets via file name:
+The server then takes a commandline argument indicating the file name of this data. For example, I pass in my secrets via
 
 ```bash
 $ sudo python server.py ~/Dropbox/licenses/twitter.csv
@@ -102,25 +55,69 @@ $ sudo python server.py ~/Dropbox/licenses/twitter.csv
 
 Please keep in mind the [limits imposed by the twitter API](https://dev.twitter.com/rest/public/rate-limits). For example, you can only do 15 follower list fetches per 15 minute window, but you can do 900 user timeline fetches.
 
-docs for http://jinja.pocoo.org/docs/2.9/templates/
+### Mining for tweets
 
-Get max 100 tweets
+In file `tweetie.py` (pronounced "tweety pie", get it?) you will create methods to fetch a list of tweets for a given user and a list of users followed by a given user.  Function `fetch_tweets()` returns a dictionary containing:
 
-each text should be link to tweet. underline when hovering but not normally.
+* `user`: user's screen name
+* `count`: number of tweets
+* `tweets`: list of tweets
 
-'user' 
-'count'
-'tweets'
+where each tweet is a dictionary containing:
 
-for each tweet:
+* `id`: tweet ID
+* `created`: tweet creation date
+* `retweeted`: number of retweets
+* `text`: text of the tweet
+* `hashtags`: list of hashtags mentioned in the tweet
+* `urls`: list of URLs mentioned in the tweet
+* `mentions`: list of screen names mentioned in the tweet
+* `score`: the "compound" polarity score from vader's `polarity_scores()`
 
-"id"
-"created"
-"retweeted"
-"text"
-"hashtags"
-"urls"
-"mentions"
+Function `fetch_following()` returns a dictionary containing:
+
+* `name`: user's real name
+* `screen_name`: Twitter screen name (e.g., `the_antlr_guy`)
+* `followers`: number of followers
+* `created`: created date (no time info)
+* `image`: the URL of the profile's image
+       
+This information is needed to generate the HTML for the two different kinds of pages.
+ 
+### Generating HTML pages
+
+In the starter kit, I provide sample HTML files, [parrt-tweets.html](https://github.com/parrt/msan692/blob/master/hw/code/sentiment/parrt-tweets.html) and [parrt-following.html](https://github.com/parrt/msan692/blob/master/hw/code/sentiment/parrt-following.html).
+
+We use the template engine [jinja2](http://jinja.pocoo.org/docs/2.9/) that is built-in with flask. When you call `render_template()` from within a flask route method, it looks in the `templates` subdirectory for the file indicated in that function call. You need to pass in appropriate arguments to the two different page templates so the pages fill with data.
+ 
+Here is what a single tweet's HTML looks like:
+
+```html
+<li style="list-style:square; font-size:70%; font-family:Verdana, sans-serif; color:#ea4c00">
+    -0.68: <a style="color:#ea4c00" href="https://twitter.com/the_antlr_guy/status/897491721944158208">RT @kotlin: Kotlin 1.1.4 is out! Auto-generating Parcelable impls, JS dead code elimination, package-default nullability &amp;amp; more: https://t.…</a>
+</li>
+```
+
+You must update the `templates/tweets.html` HTML template to generate tweets like that. See the `add_color()` method in `server.py` for information on generating the color (`#ea4c00` in this example).
+
+**Get max 100 tweets**.
+
+Similarly, here is what a single followed user entry looks like on the other page:
+
+```html
+<tr>
+    <td align=center width="80"><img src="http://pbs.twimg.com/profile_images/424495004/GuidoAvatar_normal.jpg"></td>
+    <td style="font-size:70%; font-family:Verdana, sans-serif">
+        <a href="https://twitter.com/gvanrossum">Guido van Rossum</a><br>
+        98538 followers<br>
+        Since 2008-08-11
+    </td>
+</tr>
+```
+
+You must update the `templates/following.html` HTML template to generate user records like that.
+
+**Sort the users by how many followers they have**.
 
 ## Getting started
 
@@ -138,7 +135,7 @@ $ tree
 └── tweetie.py
 ```
 
-Next, make sure that the following Python packages are installed: flask, jinja2, tweepy, vaderSentiment, colour.
+Next, make sure that the following Python packages are installed: `flask`, `jinja2`, `tweepy`, `vaderSentiment`, `colour`.
 
 ## Deliverables
 
@@ -166,4 +163,5 @@ Note that I have given fully qualified pathname to the twitter secrets file. The
 
 ## Evaluation
 
-To evaluate your projects, the grader and I will
+To evaluate your projects, the grader and I will go to your AWS server and test the current output for the two pages using Twitter users `the_antlr_guy` and `realdonaldtrump`. We will also launch your server locally to make sure that the software runs correctly and that its output matches what we see at your Amazon server.
+
