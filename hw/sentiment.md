@@ -49,13 +49,18 @@ following
        followers: number of followers
        created: created date (no time info)
        image: the URL of the profile's image
+       
 ### Generating HTML pages
+
+https://github.com/parrt/msan692/blob/master/hw/code/sentiment/parrt-tweets.html
 
 ```html
 <li style="list-style:square; font-size:70%; font-family:Verdana, sans-serif; color:#ea4c00">
     -0.68: <a style="color:#ea4c00" href="https://twitter.com/the_antlr_guy/status/897491721944158208">RT @kotlin: Kotlin 1.1.4 is out! Auto-generating Parcelable impls, JS dead code elimination, package-default nullability &amp;amp; more: https://t.…</a>
 </li>
 ```
+
+https://github.com/parrt/msan692/blob/master/hw/code/sentiment/parrt-following.html
 
 ```html
 <tr>
@@ -91,7 +96,9 @@ Under the Permissions tab, make sure that you have your access as "Read only" fo
 
 The server then takes a commandline argument indicating the file name of this data. For example, I pass in my secrets via file name:
 
+```bash
 $ sudo python server.py ~/Dropbox/licenses/twitter.csv
+```
 
 Please keep in mind the [limits imposed by the twitter API](https://dev.twitter.com/rest/public/rate-limits). For example, you can only do 15 follower list fetches per 15 minute window, but you can do 900 user timeline fetches.
 
@@ -117,13 +124,20 @@ for each tweet:
 
 ## Getting started
 
-Download the [starterkit](https://github.com/parrt/msan692/tree/master/hw/code/sentiment), which has the following files and structure:
+Download the [starterkit](https://github.com/parrt/msan692/tree/master/hw/code/sentiment), which has the following files and structure (from `tree` commandline tool):
 
 ```
+$ tree
+├── parrt-following.html
+├── parrt-tweets.html
+├── server.py
+├── templates
+│   ├── following.html
+│   └── tweets.html
+└── tweetie.py
 ```
 
-install flask, jinja2, tweepy, vaderSentiment pip install colour
-
+Next, make sure that the following Python packages are installed: flask, jinja2, tweepy, vaderSentiment, colour.
 
 ## Deliverables
 
