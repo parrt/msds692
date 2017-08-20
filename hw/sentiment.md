@@ -128,6 +128,7 @@ Download the [starterkit](https://github.com/parrt/msan692/tree/master/hw/code/s
 
 ```
 $ tree
+├── IP.txt
 ├── parrt-following.html
 ├── parrt-tweets.html
 ├── server.py
@@ -140,6 +141,28 @@ $ tree
 Next, make sure that the following Python packages are installed: flask, jinja2, tweepy, vaderSentiment, colour.
 
 ## Deliverables
+
+### Github
+
+In your github repository, you should submit the following:
+
+* IP.txt; this is a single line text file terminated by a newline character that indicates the machine name or IP address of your server at Amazon
+* server.py; implement `tweets()`, `add_color()`, and `following()`
+* tweetie.py; implement `authenticate()`, `fetch_tweets()`, `fetch_following()`
+* templates/tweets.html; use template language to generate the right HTML for the list of tweets for the screen name in the URL.
+* templates/following.html; use template language to generate the right HTML for the users followed by the screen name in the URL.
+
+### AWS
+
+As part of your submission, you must launch a Linux instance at Amazon and install your software. Then launch your server and keep it running for the duration of our grading period. We will notify you when it's okay to terminate that instance. Choose a server that is only one or two cents per hour.
+
+Here is how I launch my server on AWS or locally:
+
+```bash
+$ sudo python server.py ~/Dropbox/licenses/twitter.csv
+```
+
+Note that I have given fully qualified pathname to the twitter secrets file. The `sudo` is required so that the server runs as the superuser, which is the only user that is able to open a process listening at port 80 (the HTTP web protocol port).
 
 ## Evaluation
 
