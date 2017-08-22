@@ -67,7 +67,7 @@ Each project has a hard deadline and only those projects working correctly befor
 Most data you encounter will be in the form of human readable text, such as comma-separated value (CSV) files. We begin the course by studying how characters are stored in files and learning about the key data formats.
 
 * [representing text in a computer](https://github.com/parrt/msan692/blob/master/notes/chars.md); see also [7-bit ascii codes](http://www.asciitable.com/), [unicode vs ascii in python](https://docs.python.org/2/howto/unicode.html)
-* [Data pipeline project](https://github.com/parrt/msan692/blob/master/hw/pipeline.md) (Converting stock history from Yahoo finance to various formats) (**project**)
+* [Data pipeline project](https://github.com/parrt/msan692/blob/master/hw/pipeline.md) (Converting stock history from Quandl to various formats) (**project**)
 	* reading delimited data; tsv, csv
 	*  reading/generating XML (we'll load complicated XML in [TFIDF project](https://github.com/parrt/msan692/blob/master/hw/tfidf.md))
 	* reading/generating json
@@ -75,6 +75,8 @@ Most data you encounter will be in the form of human readable text, such as comm
 * [Excel](https://github.com/parrt/msan692/blob/master/notes/excel.md) (Saving as CSV, stripping non-ASCII stuff, loading into Python)
 * [HTML](https://github.com/parrt/msan692/blob/master/notes/html.md) (Parsing Tesla's IPO prospectus)
 * [Parsing web access log files](https://github.com/parrt/msan692/blob/master/notes/logs.md)
+
+There are also plenty of nontext, binary formats. You can learn more from the MSAN501 boot camp material for [audio processing](https://github.com/parrt/msan501/blob/master/notes/sound.ipynb) and [image processing](https://github.com/parrt/msan501/raw/master/projects/images.pdf).
 
 ## Text feature extraction
 
@@ -100,7 +102,7 @@ Now you know how to work with data files already sitting on your desk, we turn t
 With an understanding of how the Internet and web works, it's time to start pulling data from various web sources.  The difficulty of collecting data depends a great deal on the permissions and services available for a site or page.  A good analogy is: some doors are open, some doors are closed, some doors are locked, some "doors" are not doors but reinforced steel walls.
 
 * [Pulling data from (open) REST APIs](https://github.com/parrt/msan692/blob/master/notes/openapi.md)
-  * yahoo
+  * [Quandl stock data](https://www.quandl.com/api/v3/datasets/EOD/AAPL.csv).
   * openpayments.us
   * IMDB movie data
 * Pull data from sites requiring an ID
@@ -116,11 +118,3 @@ With an understanding of how the Internet and web works, it's time to start pull
   * [Amazon](https://github.com/parrt/msan692/blob/master/notes/amazon.md)
   * [Scraping data from tables](https://github.com/parrt/msan692/blob/master/notes/scraping-tables.md)
 * [Selenium](https://github.com/parrt/msan692/blob/master/notes/selenium.md)
-
-
-## Misc
-
-* Running shell commands from Python
-* regex
-* Unix commands for extracting web content: wget, grep, awk, cut, paste, join, sed
-* k-means for compression, color selection

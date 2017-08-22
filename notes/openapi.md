@@ -19,59 +19,75 @@ Anyway, we are going to pull data from web servers that intentionally provide ni
 * The names and values of parameters
 * What data comes back and in what format (XML, JSON, CSV, ...)
 
-## Yahoo
+## Historical stock data
 
-Let's start with something we have already seen: CSV data coming back from Yahoo finance.
+*Yahoo's API was taken down in 2017 so we will use Quandl instead.* 
 
-* Base URL: `http://ichart.finance.yahoo.com/table.csv`
-* The names and contents of parameters: `s` is the ticker name
-* What data comes back and in what format: CSV
-
-So, the full URL to fetch TSLA's stock history is:
+Register for an API key at [Quandl](https://www.quandl.com/account/api) and then you can use this URL to access, for example, Apple's stock data:
 
 ```
-http://ichart.finance.yahoo.com/table.csv?s=TSLA
+https://www.quandl.com/api/v3/datatables/WIKI/PRICES.csv?ticker=AAPL&api_key=YOURAPIKEY
 ```
 
-Code: [yahoo finance stock history](notes/code/yahoo/history.py):
+You have to replace the `AAPL` with whatever stock ticker you want and of course replace `YOURAPIKEY` with your specific API key that you got when you registered.
+ 
+Code: [Quandl finance stock history](notes/code/quandl/history.py):
 
 ```python
 import sys
 import requests
 
-HistoryURL = "http://ichart.finance.yahoo.com/table.csv?s=%s"
+HistoryURL = "https://www.quandl.com/api/v3/datatables/WIKI/PRICES.csv?ticker=%s&api_key=%s"
 
 ticker = sys.argv[1]  # AAPL
-r = requests.get(HistoryURL % ticker)
+APIKEY = sys.argv[2]  # your key
+
+url = HistoryURL % (ticker,APIKEY)
+r = requests.get(url)
 csvdata = r.text
 print csvdata
+```
 
-"""
-...
-1998-02-23,20.125,21.624999,20.00,21.250001,119372400,0.694818
-1998-02-20,20.50,20.5625,19.8125,20.00,81354000,0.653947
-...
-"""
+The CSV you get back looks like:
 
+```
+ticker,date,open,high,low,close,volume,ex-dividend,split_ratio,adj_open,adj_high,adj_low,adj_close,adj_volume
+AAPL,1980-12-12,28.75,28.87,28.75,28.75,2093900.0,0.0,1.0,0.42270591588018,0.42447025361603,0.42270591588018,0.42270591588018,117258400.0
+AAPL,1980-12-15,27.38,27.38,27.25,27.25,785200.0,0.0,1.0,0.40256306006259,0.40256306006259,0.40065169418209,0.40065169418209,43971200.0
+...
+```
+
+```
 # csv is easy to handle ourselves:
 for row in csvdata.strip().split("\n"):
     cols = row.split(',')
     print ', '.join(cols)
 ```
 
-**Exercise:** Fetch and print a stock quote (not the history) from Yahoo finance for a specific quote. Here is the template for getting a stock quote:
+**Exercise:** By looking at the [quandl doc](https://www.quandl.com/product/WIKIP/documentation/about) fetch and fetch stock history for TSLA for just 2015 and only get columns `data` and `open`.
 
 ```python
-QuoteURL = "http://finance.yahoo.com/d/quotes.csv?s=%s&f=%s"
+QuoteURL = "https://www.quandl.com/api/v3/datatables/WIKI/PRICES.csv?ticker=%s&api_key=YOURAPIKEY&date.gte=%s&date.lt=%s&qopts.columns=%s"
 ```
 
-where `s` is the ticker name and `f` is the set of fields you want. Use `f=ab` for "bid, ask fields".
+Here's my solution from the command line:
+
+```bash
+$ curl "https://www.quandl.com/api/v3/datatables/WIKI/PRICES.csv?ticker=AAPL&api_key=NGxt-Vnf67v8z_xT-c5B&date.gte=20150101&date.lt=20160101&qopts.columns=date,open"
+```
 
 The data you get back is in CSV format. For stock ticker `TSLA`, you would see two requested fields (close to these values):
 
 ```
-103.520,103.510
+date,open
+2015-01-02,111.39
+2015-01-05,108.29
+2015-01-06,106.54
+2015-01-07,107.2
+2015-01-08,109.23
 ```
+
+**Exercise**: Change `csv` into `json` in the URL and see that you get JSON back now.
 
 ## JSON from openpayments.us
 
