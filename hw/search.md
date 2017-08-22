@@ -257,3 +257,14 @@ To submit your project, ensure that all of your Python files are submitted to yo
 Do not define any Python `class`es.
 
 *Please do not add the data sets to your repository as it is a waste of space and network bandwidth.*
+
+## Evaluation
+
+To evaluate your projects, we will run the following tests (with an appropriate path to the Berlitz data):
+
+```bash
+$ python -m pytest -v test_berlitz.py ~/data/berlitz1
+$ python -m pytest -v test_htable.py 
+```
+
+The hash table implementation is worth 60% and the Berlitz data search tests are worth 40%. Again, we will attempt to grade in a binary fashion (works or doesn't) because you have all of the known tests.
