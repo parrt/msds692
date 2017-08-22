@@ -1,0 +1,6 @@
+from tfidf import *
+import sys
+
+xmltext = ...
+
+...

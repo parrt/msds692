@@ -2,17 +2,17 @@
 
 ## Goal
 
-The goal of this homework is to learn a core technique used in text analysis called *TFIDF* or *term frequency, inverse document frequency*.  We will use what is called a *bag-of-words* representation where the order of words in a document don't matter--we care only about the words and how often they are present. A word's TFIDF value is often used as a feature for document clustering or classification. We will use it simply as a summarization tool for document. The more a term helps to distinguish its enclosing document from other documents, the higher its TFIDF score.
+The goal of this homework is to learn a core technique used in text analysis called *TFIDF* or *term frequency, inverse document frequency*.  We will use what is called a *bag-of-words* representation where the order of words in a document don't matter--we care only about the words and how often they occur. A word's TFIDF value is often used as a feature for document clustering or classification. The more a term helps to distinguish its enclosing document from other documents, the higher its TFIDF score. As such, words with high TFIDF scores are often very good summarizing keywords for document.
 
 As a practical matter, you will learn how to process some real XML files (Reuters articles) in Python.
 
-You will work in git repo *userid*-tfidf.
+You will work in git repo `tfidf-`*userid*.
 
 ## Description
 
 ### Reading in Reuters' XML
 
-As a first step, let's grab text from a Reuters article in XML format. Download the 3.8M compressed reuters corpus (44M uncompressed, 9164 files) from the files area of Canvas for this class.  This data should not be made public so just uncompress on your disk but please don't post the articles anywhere.  The articles look like this fictitious file contents:
+As a first step, let's grab text from a Reuters article in XML format. Download the `reuters-vol1-disk1-subset.zip` 12.8M compressed Reuters corpus (44M uncompressed, 9165 files) from the files area of Canvas for this class.  This data should not be made public so please don't post the articles anywhere.  You can uncompress it to look at the files but we will process the zip file directly. The articles (text files) in the zip file look like this fictitious file's contents:
 
 ```xml
 <?xml version="1.0" encoding="iso-8859-1" ?>
@@ -36,11 +36,11 @@ As a first step, let's grab text from a Reuters article in XML format. Download 
 </newsitem>
 ```        
 
-Unlike in previous labs where we used the simple `untangle`, this time we will use `ElementTree`. (A [good tutorial on XML in Python](http://eli.thegreenplace.net/2012/03/15/processing-xml-in-python-with-elementtree/)). Given a filename, read in the xml as a string, then use `ET.fromstring()` and `ElementTree()` to parse the XML text. From this XML tree, you can ask it to find the `title` tag. Then use XPath notation with `tree.iterfind()` to grab all of the tags underneath the `<text>` tag. In our case, these will be `<p>` tags so use XPath `.//text/*`. It means "*from the current node, find all text tag descendants then all of their children.*"
+Unlike in previous labs where we used the simple `untangle`, this time we will use `ElementTree` to process XML. (A [good tutorial on XML in Python](http://eli.thegreenplace.net/2012/03/15/processing-xml-in-python-with-elementtree/)). Given the text of a file as a string, use `ET.fromstring()` and `ElementTree()` to parse the XML text. From this XML tree, you can ask it to find the `title` tag. Then use XPath notation with `tree.iterfind()` to grab all of the tags underneath the `<text>` tag. In our case, these will be `<p>` tags so use XPath `.//text/*`, which means "*from the current node, find all text tag descendants then all of their children.*"
 
-When you are packing the text together, make sure to put a space in between the elements you join. Otherwise, you might end up putting two words together forming a new nonsense word. 
+When you are packing the text together, make sure to put a space in between the elements you join. Otherwise, you might end up putting two words together forming a new, nonsense word. 
 
-In a file called `common.py`, create this function:
+In our main file called `tfidf.py`, create this function:
 
 ```python
 import xml.etree.cElementTree as ET
@@ -63,7 +63,7 @@ Now that we have some raw text without all of the XML, let's learn how to proper
 5.  Removes stop words using SciKit-Learn's `ENGLISH_STOP_WORDS` set. 
 6.  Stem the words to help normalize the text.
 
-In `common.py`, break this down into the two separate functions shown here:
+In `tfidf.py`, break this down into the two separate functions shown here:
 
 ```python
 def tokenize(text):
@@ -86,15 +86,12 @@ def stemwords(words):
 
 ### Sample application
 
-Our sample application for tokenization will be summarizing a file, which is specified as a commandline argument via `sys.argv[1]`. Use the functions above to read in the XML, tokenize it, stem it, and then show the 10 most common words with their word count.  Use a `Counter` object to get the counts and wrap your main script stuff so that it only executes if we run `common.py` (as opposed to importing it):
+Our sample application for tokenization, in `common.py`, will be summarizing an article by showing the most common words. The input file is specified as a commandline argument and used from Python via `sys.argv[1]`. Use the functions above to read in the XML, tokenize it, stem it, and then show the 10 most common words with their word count.  Use a `Counter` object to get the counts and wrap your main script stuff so that it only executes if we run `common.py` (as opposed to importing it):
 
 ```python
-if __name__=="__main__":
-    xmltext = ... text from filename in sys.argv[1] ...
-    text = gettext(xmltext)
-    ...
-    counts = Counter(tokens)
-    ...
+xmltext = ... text from filename in sys.argv[1] ...
+text = gettext(xmltext)
+...
 ```
 
 Then you can walk the `counts` and print the most common 10 words out. Note that when you iterate through them they come out with most common first. Very convenient.
@@ -112,7 +109,7 @@ electr 11
 cost 10
 zealand 9
 signal 8
-tran 7
+tran 7	
 ```
 
 Note that `generation`, `generated`, `generator` all stem to `gener`. It nicely summarizes the article!
@@ -150,6 +147,7 @@ signals 6
 For file `33312newsML.xml`, I get the following final output:
 
 ```
+$ python common.py ~/data/reuters-vol1-disk1-subset/33312newsML.xml
 awb 8
 tonn 6
 said 6
@@ -166,6 +164,7 @@ hard 2
 For file `131705newsML.xml`, I get the following final output:
 
 ```
+$ python common.py ~/data/reuters-vol1-disk1-subset/131705newsML.xml 
 seita 4
 share 3
 cancer 2
@@ -184,15 +183,10 @@ This works great but can we do better?
 
 Our "most common word" mechanism is simple and pretty effective but not as good as we can do.  We need to penalize words that are not only common in that article but common across articles. E.g., `said` and `price` probably don't help to summarize an article as they are very common words.
 
-We need to use TFIDF on a corpus of articles from which we can compute the term frequency across articles.  Here is how we will execute our program (`tfidf.py`):
+We need to use TFIDF on a corpus of articles from which we can compute the term frequency across articles.  Here is how we will execute our program (`summarize.py`):
 
 ```bash
-$ python tfidf.py ~/data/reuters-vol1-disk1-subset  ~/data/reuters-vol1-disk1-subset/33313newsML.xml
-```
-
-So, we pass in the overall corpus and then a specific file for which we want the top TFIDF scored words. The output we get should look like:
-
-```
+$ python summarize.py ~/data/reuters-vol1-disk1-subset.zip 33313newsML.xml
 transmiss 0.428
 gener 0.274
 power 0.254
@@ -206,36 +200,34 @@ leay 0.143
 gisborn 0.143
 charg 0.131
 new 0.130
-island 0.128
+island 0.127
 auckland 0.113
 effici 0.110
 pricipl 0.096
 eastland 0.096
 ```
 
-where the output shows **three decimals of precision**.  Print only those words, scoring >= 0.09.
+So, we pass in the overall corpus and then a specific file for which we want the top TFIDF scored words. The output shows max 20 words and with **three decimals of precision**. Print only those words scoring >= 0.09.
 
 We'll use `scikit-learn` to compute TFIDF for us.  There are lots of examples on the web how to use the `TfidfVectorizer` but the parameters I use are:
 
 ```python
 def tokenizer(text):
-    call tokenize() from common.py
-    call stemwords() from common.py
-    ...
-    return ... # list of tokens (words)
+    return stemwords(tokenize(text))
     
-tfidf = TfidfVectorizer(input='filename', # argument to transform() is list of files
+tfidf = TfidfVectorizer(input='content',
                         analyzer='word',
-                        preprocessor=gettext, # convert xml to text
-                        tokenizer=tokenizer,  # tokenize, stem
-                        stop_words='english') # strip out stop words
+                        preprocessor=gettext,
+                        tokenizer=tokenizer,
+                        stop_words='english',
+                        decode_error = 'ignore')
 ```                        
 
-Function `gettext` is the imported function from `common.py`.
+Function `gettext` is the imported function from `tfidf.py`.
 
 Some files might have non-ascii char so you need tell `TfidfVectorizer()` to not puke (raise an exception) upon decoding error characters. See the [doc](http://scikit-learn.org/dev/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html#sklearn.feature_extraction.text.CountVectorizer).
 
-Once you create that object, you can call functions `fit` and `transform` or together as `fit_transform`. That will return to you a sparse matrix (not sure why) containing the  index of the various words from the argument to `transform` plus the TFIDF scores:
+Once you create that `tfidf` object, you can call functions `fit` and `transform` or together as `fit_transform`. That will return to you a sparse matrix (not sure why) containing the index of the various words from the argument to `transform` plus the TFIDF scores:
 
 ```
   (0, 35257)	0.235473480686
@@ -245,11 +237,12 @@ Once you create that object, you can call functions `fit` and `transform` or tog
   ...
 ```
 
-Calling `nonzero` on that matrix gives you the word indexes as the 2nd element of tuples like: (0,*word-index-we-want*). So just walk those indexes and collect tuples with the feature names (the words) and the TFIDF.  Then sort them in reverse order according to the second element of the tuple, the TFIDF score. Print these out using three decimals precision for the TFIDF.
+Calling `nonzero` on that matrix gives you the word indexes as the 2nd element of tuples like: (0,*word-index-we-want*). So just walk those indexes and collect tuples with the feature names (the words) and the TFIDF.  Then sort them in reverse order according to the second element of the tuple, the TFIDF score.
 
 For file `33312newsML.xml`, I get the following final output:
 
 ```
+$ python summarize.py ~/data/reuters-vol1-disk1-subset.zip 33312newsML.xml
 awb 0.698
 wheat 0.328
 tonn 0.251
@@ -267,53 +260,58 @@ australian 0.092
 
 Notice that `said` has dropped out and `price` has dropped significantly. Hooray!
 
-For file `33212newsML.xml`, I get the following final output:
+For file `131705newsML.xml`, I get the following final output:
 
 ```
-eoe 0.490
-unilev 0.428
-option 0.340
-royal 0.314
-dutch 0.279
-amsterdam 0.217
-aex 0.153
-spark 0.099
-exceed 0.098
-netherland 0.096
-conflict 0.096
-trade 0.094
-price 0.094
+$ python summarize.py ~/data/reuters-vol1-disk1-subset.zip 131705newsML.xml
+seita 0.733
+cancer 0.255
+cigarett 0.246
+tobacco 0.225
+link 0.176
+overdon 0.150
+franc 0.143
+lung 0.141
+fell 0.136
+share 0.131
+smoke 0.123
+lawsuit 0.119
+happen 0.093
+studi 0.090
 ```
 
-Notice that `trade` has dropped out and `option` has dropped a bit in importance. `eoe` (European Option Exchange) jumps to the top as it is fairly unique to this article probably.
+Notice that `share` and `go` have dropped out and `tobacco` and `cigarett` have move up in importance.
 
 ### Experiment
 
-To show how amazing TFIDF is, try an experiment where your `tokenize()` does not remove stopwords and remove parameter `stop_words` from the `TfidfVectorizer` object. The TFIDF output is still the same, at least in terms of word order, though the scores will change. kept for example, if you run it again on `33212newsML.xml` without removing stop words, you will see scores:
+*Just for fun, not required*
+
+To show how amazing TFIDF is, try an experiment where your `tokenize()` does not remove stopwords and remove parameter `stop_words` from the `TfidfVectorizer` object. The TFIDF output is still the same, at least in terms of word order, though the scores will change. For example, if you run it again on `131705newsML.xml` without removing stop words, you will see scores:
 
 ```
-eoe 0.473
-unilev 0.413
-option 0.328
-royal 0.303
-dutch 0.269
-amsterdam 0.210
-aex 0.147
-the 0.145
-spark 0.096
-exceed 0.095
-netherland 0.093
-conflict 0.093
-trade 0.091
-price 0.090
+seita 0.708
+cancer 0.247
+cigarett 0.237
+tobacco 0.218
+link 0.170
+overdon 0.145
+go 0.141
+franc 0.138
+lung 0.136
+fell 0.132
+share 0.127
+smoke 0.119
+lawsuit 0.115
+happen 0.090
 ```
 
-This shows that removing stop words is a waste of time as we get essentially the same results. For our purposes, however, let's leave in the stop word removal as we can then simply call our previous `tokenize` function.
+This shows that removing stop words is a waste of time for TFIDF as we get essentially the same results. For our purposes, however, let's leave in the stop word removal as we can then simply call our previous `tokenize` function.
 
 ## Deliverables
 
-* common.py
-* tfidf.py (Print scores with **three decimals of precision**)
+* `tfidf.py`;  implement methods
+* `common.py`;
+* `summarize.py`; Print scores with **three decimals of precision**
 
 ## Evaluation
 

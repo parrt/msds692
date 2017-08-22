@@ -2,7 +2,9 @@ MSAN692 Data acquisition
 =======
 
 
-There are lots of exciting and interesting problems in analytics, such as figuring out what the right question is, selecting features, training a model, and interpreting results. But all of that presupposes a tidy data set that is suitable for analysis or training models. Industry experts all agree that data collection and cleaning is roughly 3/4 of any analysis effort.  This course teaches how to collect, organize, coalesce, and clean data from multiple sources in preparation for your analysis work. 
+There are lots of exciting and interesting problems in analytics, such as figuring out what the right question is, selecting features, training a model, and interpreting results. But all of that presupposes a tidy data set that is suitable for analysis or training models. Industry experts all agree that data collection and preparation is roughly 3/4 of any analysis effort.
+
+The title of this course is "Data Acquisition" but of course, once we get the data, we have to organize it into handy data structures and typically have to extract information from the raw data. For example, we might need to boil down a Twitter stream into a single positive or negative sentiment score for a given user.  This course teaches you how to collect, organize, coalesce, and extract information from multiple sources in preparation for your analysis work. 
 
 This course is part of the [MS in Analytics program at the University of San Francisco](http://analytics.usfca.edu).
 
@@ -20,7 +22,7 @@ This course is part of the [MS in Analytics program at the University of San Fra
 
 * Section 01: Mon/Wed 10-11:50AM
 * Section 02: Mon/Wed 1:15-3:05PM 
-* My office is room 608 (which I share with Prof. John Veitch).
+* My office is room 608 @ 101 Howard (which I share with Prof. John Veitch).
 
 **INSTRUCTION FORMAT**. Class runs for 1:50 hours, 2 days/week. Instructor-student interaction during lecture is encouraged and we'll mix in mini-exercises / labs during class. All programming will be done in the Python 2 programming language, unless otherwise specified.
 
@@ -61,6 +63,8 @@ Each project has a hard deadline and only those projects working correctly befor
 # Syllabus
 
 ## Data formats
+
+Most data you encounter will be in the form of human readable text, such as, separated value files. We begin the course by studying how characters are stored in files and learning about the key data formats.
 
 * [representing text in a computer](https://github.com/parrt/msan692/blob/master/notes/chars.md); see also [7-bit ascii codes](http://www.asciitable.com/), [unicode vs ascii in python](https://docs.python.org/2/howto/unicode.html)
 * [Data pipeline project](https://github.com/parrt/msan692/blob/master/hw/pipeline.md) (Converting stock history from Yahoo finance to various formats) (**project**)
