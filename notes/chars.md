@@ -201,7 +201,7 @@ Examples of non-textbased formats: mp3, png, jpg, .mpg, ...
 
 As we learn to process data files, you will see that they are all textbased but the text inside follows the grammar of a specific format: CSV, XML, etc...
 
-For your first project, you will be working with stock history obtained from Yahoo finance in CSV format. Your project will partially be to convert it to HTML, JSON, XML. The file sizes for the various formats are as follows.
+For your first project, you will be working with stock history obtained from Quandl finance in CSV format. Your project will partially be to convert it to HTML, JSON, XML. The file sizes for the various formats are as follows.
 
 ```bash
 $ ls -l
