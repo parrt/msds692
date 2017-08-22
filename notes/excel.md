@@ -10,7 +10,7 @@ If you use `cat` or `more` from the commandline, you will see some funny charact
 
 <img src=figures/csv-funny-char.png width=600>
 
-That weird `<A8>` character is ASCII code 168 (or A8 in hexadecimal). It turns out it's weirder than you think and is actually a two-byte character `U+00AE` encoding the registered trademark symbol &#x00AE;.  From experience with these data formats, it means that Excel is saving things using a [UTF-8](https://en.wikipedia.org/wiki/UTF-8) text encoding. Encoding is essentially ASCII but anything above code 127 gets encoded with more than one byte. So, we need to fix that by stripping those out. 
+That weird `<A8>` character is ASCII code 168 (or A8 in hexadecimal). It turns out it's weirder than you think and is actually a two-byte character `U+00AE` encoding the registered trademark symbol &#x00AE;.  From experience with these data formats, it means that Excel is saving things using a "Latin-1" text encoding (0..255 char values). That encoding is essentially ASCII but anything above code 127 is Euro-specific. So, we need to fix that by stripping those out. 
 
 We can accomplish that using the [iconv](https://www.gnu.org/software/libiconv/) command from the terminal:
 
@@ -91,7 +91,7 @@ print data
 
 ## Pandas Data frames
 
-In the end, the easiest way to deal with loading CSV files is with [Pandas](http://pandas.pydata.org/). For example, to load our sales CSV, we don't even have to open a file:
+In the end, the easiest way to deal with loading CSV files is probably with [Pandas](http://pandas.pydata.org/). For example, to load our sales CSV, we don't even have to open a file:
 
 ```python
 table = pandas.read_csv("SampleSuperstoreSales.csv")
@@ -114,7 +114,7 @@ yields:
 4        Carlos Soltero
 ```
 
-I also like to convert this to a numpy matrix so that I can pull out various rows:
+I also like to convert this to a numpy matrix so that I can pull out various rows conveniently:
 
 ```python
 m = table.as_matrix()
@@ -137,3 +137,15 @@ yields:
 
 ## CSV kung fu from the command line
 
+You might be surprised how much data slicing and dicing you can do from the command line using some simple tools and I/O redirection + piping. (See [A Quick Introduction to Pipes and Redirection](http://bconnelly.net/working-with-csvs-on-the-command-line/#a-quick-introduction-to-pipes-and-redirection)).
+
+We've already seen I/O redirection where we took the output of a command and wrote it to a file (`/tmp/t.csv`):
+ 
+```bash
+$ iconv -c -f utf-8 -t ascii ~/data/SampleSuperstoreSales.csv > /tmp/t.csv
+```
+
+Now, let me introduce you to the `grep` command that lets us filter the lines in a file according to a regular expression.
+
+```bash
+grep 'Annie Cyprus' ../data/SampleSuperstoreSales.csv
