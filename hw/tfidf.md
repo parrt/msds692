@@ -307,8 +307,14 @@ happen 0.090
 
 This shows that removing stop words is a waste of time for TFIDF as we get essentially the same results. For our purposes, however, let's leave in the stop word removal as we can then simply call our previous `tokenize` function.
 
+## Getting started
+
+I have provided a [starter kit](https://github.com/parrt/msan692/tree/master/hw/code/tfidf) with all of the commented function definitions you need. Also download the `reuters-vol1-disk1-subset.zip` file from the files area of Canvas. You will be processing that file as a zip but you can unzip it to look inside, if you like.
+
 ## Deliverables
 
+In your repository `tfidf-`*userid*, you must have the following files:
+ 
 * `tfidf.py`; Implement methods `gettext()`, `tokenize()`, `stemwords()`, `compute_tfidf()`, `summarize()`, `load_corpus()`
 * `common.py`; Print most common 10 "*word* *score*" pairs
 * `summarize.py`; Print up to 20 scores with **three decimals of precision**
