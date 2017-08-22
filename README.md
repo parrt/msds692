@@ -44,8 +44,8 @@ If you ever have questions about what constitutes plagiarism, cheating, or acade
 |--------|--------|--------|
 |[Data pipeline](https://github.com/parrt/msan692/blob/master/hw/pipeline.md)| 5%| Mon, Sep 4 before class |
 |[Search Engine Implementation](https://github.com/parrt/msan692/blob/master/hw/search.md)| 12% | Wed, Sep 13 |
-|[Recommending Articles](https://github.com/parrt/msan692/blob/master/hw/recommender.md)| 5% | Wed, Sep 20 |
-|[TFIDF document summarization](https://github.com/parrt/msan692/blob/master/hw/tfidf.md)| 8%| Wed, Sep 27 |
+|[TFIDF document summarization](https://github.com/parrt/msan692/blob/master/hw/tfidf.md)| 8%| Wed, Sep 20 |
+|[Recommending Articles](https://github.com/parrt/msan692/blob/master/hw/recommender.md)| 5% | Wed, Sep 27 |
 |[Tweet Sentiment Analysis](https://github.com/parrt/msan692/blob/master/hw/sentiment.md)| 10% | Wed, Oct 9 |
 |Midterm Exam| 30%| 10AM-12PM Fri, Sep 15 |
 |Final Exam| 30%| 10AM-12PM Fri, Oct 13 |
@@ -64,7 +64,7 @@ Each project has a hard deadline and only those projects working correctly befor
 
 ## Data formats
 
-Most data you encounter will be in the form of human readable text, such as, separated value files. We begin the course by studying how characters are stored in files and learning about the key data formats.
+Most data you encounter will be in the form of human readable text, such as comma-separated value (CSV) files. We begin the course by studying how characters are stored in files and learning about the key data formats.
 
 * [representing text in a computer](https://github.com/parrt/msan692/blob/master/notes/chars.md); see also [7-bit ascii codes](http://www.asciitable.com/), [unicode vs ascii in python](https://docs.python.org/2/howto/unicode.html)
 * [Data pipeline project](https://github.com/parrt/msan692/blob/master/hw/pipeline.md) (Converting stock history from Yahoo finance to various formats) (**project**)
@@ -76,7 +76,16 @@ Most data you encounter will be in the form of human readable text, such as, sep
 * [HTML](https://github.com/parrt/msan692/blob/master/notes/html.md) (Parsing Tesla's IPO prospectus)
 * [Parsing web access log files](https://github.com/parrt/msan692/blob/master/notes/logs.md)
 
+## Text feature extraction
+
+* [Intro to information extraction from text](https://github.com/parrt/msan692/blob/master/notes/text.ipynb)
+* [San Francisco police incidents word clouds and heat maps](https://github.com/parrt/msan692/blob/master/notes/sfpd.md)
+* [Computing TFIDF](https://github.com/parrt/msan692/blob/master/notes/tfidf.pdf)
+* [TFIDF document summarization](https://github.com/parrt/msan692/blob/master/hw/tfidf.md) (**project**)
+
 ## How the web works
+
+Now you know how to work with data files already sitting on your desk, we turn towards a study of computer networking and web infrastructure.
 
 * [Network sockets](https://github.com/parrt/msan692/blob/master/notes/sockets.md), DNS, email
 * [client/server architecture](https://github.com/parrt/msan692/blob/master/notes/client-server.md)
@@ -86,14 +95,9 @@ Most data you encounter will be in the form of human readable text, such as, sep
 * [Cookies](https://github.com/parrt/msan692/blob/master/notes/cookies.md), logging in/out
 * [Building web servers](https://github.com/parrt/msan692/blob/master/hw/server.md) (**optional project**)
 
-## Text feature extraction
-
-* [Intro to information extraction from text](https://github.com/parrt/msan692/blob/master/notes/text.ipynb)
-* [San Francisco police incidents word clouds and heat maps](https://github.com/parrt/msan692/blob/master/notes/sfpd.md)
-* [Computing TFIDF](https://github.com/parrt/msan692/blob/master/notes/tfidf.pdf)
-* [TFIDF document summarization](https://github.com/parrt/msan692/blob/master/hw/tfidf.md) (**project**)
-
 ## Data sources
+
+With an understanding of how the Internet and web works, it's time to start pulling data from various web sources.  The difficulty of collecting data depends a great deal on the permissions and services available for a site or page.  A good analogy is: some doors are open, some doors are closed, some doors are locked, some "doors" are not doors but reinforced steel walls.
 
 * [Pulling data from (open) REST APIs](https://github.com/parrt/msan692/blob/master/notes/openapi.md)
   * yahoo

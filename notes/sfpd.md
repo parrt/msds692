@@ -197,9 +197,13 @@ Take a look at [Google maps API doc](https://developers.google.com/maps/document
 
 <img src=figures/first-crime-in-2003.png width=350>
 
-**Exercise**: Using the template below, fill in the `...` latitude and longitude for any place that you'd like to see. And also change `YOUR_API_KEY` to your Google API key.  For example, we can grab a location from the police data. Column 10 (from 0) is the latitude and column 9 is the longitude: 37.7981336020854, -122.427270640646. Save the file as `map.html` and then open it with your browser.
+**Getting a google API key**. Google requires that you get a so-called API key for use with every Google Maps request. Follow these steps to get set up:
 
-In your [Google api console](https://console.developers.google.com), you will have to make sure that the Google maps javascript API **is enabled**.
+* Get a google account if you don't already have one.
+* Go to the [Google API Console](https://console.developers.google.com/apis/dashboard) and create a project. I call mine msan692-test or something like that.
+* Enable the " Google Maps JavaScript API" API from your console (click the "Enable APIs and services" link).
+
+**Exercise**: Using the template below, fill in the `...` latitude and longitude for any place that you'd like to see. And also change `YOUR_API_KEY` to your Google API key.  For example, we can grab a location from the police data. Column 10 (from 0) is the latitude and column 9 is the longitude: 37.7981336020854, -122.427270640646. Save the file as `map.html` and then open it with your browser. Here is the HTML file containing the JavaScript necessary to create a map with a marker:
 
 ```html
 <!DOCTYPE html>
