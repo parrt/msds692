@@ -1,6 +1,8 @@
-# Exporting data from Excel
+# CSV data
 
-Data of interest that we want to process in Python often comes in the form of an Excel spreadsheet. kept the easiest way to get access to it is to export the data in CSV format.
+## Exporting data from Excel
+
+Data of interest that we want to process in Python often comes in the form of an Excel spreadsheet. The easiest way to get access to it is to export the data in CSV format.
 
 Let's get some data. Download [Sample Superstore Sales .xls file](https://community.tableau.com/docs/DOC-1236) or [my local copy](../data/SampleSuperstoreSales.xls) and open it in Excel. Select `File>Save As...` menu option and then "Comma separated values (.csv)" from the `Format:` drop-down menu. Set the filename to `SampleSuperstoreSales.csv` or similiar. That will warn you that the data cannot be saved as CSV without losing some information. Don't worry about that because it's only formatting and not data information that you will lose. Say "Save Active Sheet". Then it will helpfully give you a second warning. Tell it to continue.
 
@@ -16,7 +18,7 @@ We can accomplish that using the [iconv](https://www.gnu.org/software/libiconv/)
 $ iconv -c -f utf-8 -t ascii ~/data/SampleSuperstoreSales.csv > /tmp/t.csv
 ```
 
-Ok, now we finally have some data we can pull into Python:
+Ok, now we finally have some plain CSV data we can pull into Python:
 
 ```
 Row ID,Order ID,Order Date,Order Priority,Order Quantity,Sales,Discount,Ship Mode,Profit,Unit Price,Shipping Cost,Customer Name,Province,Region,Customer Segment,Product Category,Product Sub-Category,Product Name,Product Container,Product Base Margin,Ship Date
@@ -86,3 +88,52 @@ print data
 ```
 
 **Exercise**: Extract the quantity and unit price columns and multiply them together to get the sale value. My solution uses a list comprehension across the list of lists, one per column I need. Then I create a numpy array of those and simply multiply them with `*`. Remember that `data[1:]` gives you all but the first element (a row in this case) of a list. `float(x)` converts string or integer `x` to a floating point number. If you get stuck, see [readcsv.py](https://github.com/parrt/msan692/blob/master/notes/code/readcsv.py).
+
+## Pandas Data frames
+
+In the end, the easiest way to deal with loading CSV files is with [Pandas](http://pandas.pydata.org/). For example, to load our sales CSV, we don't even have to open a file:
+
+```python
+table = pandas.read_csv("SampleSuperstoreSales.csv")
+```
+
+Pandas hides all of the details. I also find that pulling out columns is nice with pandas. Here's how to print the customer name column:
+
+```python
+names = table['Customer Name']
+print names[0:5]
+```
+
+yields:
+
+```
+0    Muhammed MacIntyre
+1          Barry French
+2          Barry French
+3         Clay Rozendal
+4        Carlos Soltero
+```
+
+I also like to convert this to a numpy matrix so that I can pull out various rows:
+
+```python
+m = table.as_matrix()
+print m[0:2]
+```
+
+yields:
+
+```
+[[1 3 '10/13/10' 'Low' 6 261.54 0.04 'Regular Air' -213.25 38.94 35.0
+  'Muhammed MacIntyre' 'Nunavut' 'Nunavut' 'Small Business'
+  'Office Supplies' 'Storage & Organization'
+  'Eldon Base for stackable storage shelf, platinum' 'Large Box' 0.8
+  '10/20/10']
+ [49 293 '10/1/12' 'High' 49 10123.02 0.07 'Delivery Truck' 457.81 208.16
+  68.02 'Barry French' 'Nunavut' 'Nunavut' 'Consumer' 'Office Supplies'
+  'Appliances' '1.7 Cubic Foot Compact "Cube" Office Refrigerators'
+  'Jumbo Drum' 0.58 '10/2/12']]
+```
+
+## CSV kung fu from the command line
+
