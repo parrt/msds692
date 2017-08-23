@@ -66,7 +66,7 @@ Each project has a hard deadline and only those projects working correctly befor
 
 Most data you encounter will be in the form of human readable text, such as comma-separated value (CSV) files. We begin the course by studying how characters are stored in files and learning about the key data formats.
 
-* [representing text in a computer](https://github.com/parrt/msan692/blob/master/notes/chars.md); see also [7-bit ascii codes](http://www.asciitable.com/), [unicode vs ascii in python](https://docs.python.org/2/howto/unicode.html)
+* [representing text in a computer](https://github.com/parrt/msan692/blob/master/notes/chars.ipynb); see also [7-bit ascii codes](http://www.asciitable.com/), [unicode vs ascii in python](https://docs.python.org/2/howto/unicode.html)
 * [Data pipeline project](https://github.com/parrt/msan692/blob/master/hw/pipeline.md) (Converting stock history from Quandl to various formats) (**project**)
 	* reading delimited data; tsv, csv
 	*  reading/generating XML (we'll load complicated XML in [TFIDF project](https://github.com/parrt/msan692/blob/master/hw/tfidf.md))
