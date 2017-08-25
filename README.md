@@ -46,7 +46,7 @@ If you ever have questions about what constitutes plagiarism, cheating, or acade
 |[Search Engine Implementation](https://github.com/parrt/msan692/blob/master/hw/search.md)| 12% | Wed, Sep 13 |
 |[TFIDF document summarization](https://github.com/parrt/msan692/blob/master/hw/tfidf.md)| 8%| Wed, Sep 20 |
 |[Recommending Articles](https://github.com/parrt/msan692/blob/master/hw/recommender.md)| 5% | Wed, Sep 27 |
-|[Tweet Sentiment Analysis](https://github.com/parrt/msan692/blob/master/hw/sentiment.md)| 10% | Wed, Oct 9 |
+|[Tweet Sentiment Analysis](https://github.com/parrt/msan692/blob/master/hw/sentiment.md)| 10% | Sat, Oct 7 midnight |
 |Midterm Exam| 30%| 10AM-12PM Fri, Sep 15 |
 |Final Exam| 30%| 10AM-12PM Fri, Oct 13 |
 
