@@ -18,7 +18,6 @@ def listviz(elems, showassoc=True):
     s += '    mainlist [space="0.0", margin="0.01", fontcolor="#444443", fontname="Helvetica", label=<'+'|'.join(labels)+'>];\n'
 
     s += "}\n"
-    print s
     return graphviz.Source(s)
 
 
