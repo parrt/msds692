@@ -91,7 +91,9 @@ def lolviz(table, showassoc=True):
 
 def elviz(el, showassoc):
     if showassoc and type(el) == tuple and len(el) == 2:
-        els = "%s&rarr;%s" % el
+        els = "%s&rarr;%s" % (elviz(el[0], showassoc), elviz(el[1], showassoc))
+    elif type(el)==set:
+        els = '{'+', '.join([str(e) for e in el])+'}'
     else:
         els = str(el)
     els = els.replace('{', '&#123;')
@@ -104,14 +106,10 @@ def idx_elviz(idx, el, showassoc):
         """
         <table BORDER="0" CELLBORDER="1" CELLSPACING="0">
           <tr>
-            <td cellspacing="0" bgcolor="#FBFEB0" border="1" sides="b" valign="top">
-              <font color="#444443" point-size="9">%d</font>
-            </td>
+            <td cellspacing="0" bgcolor="#FBFEB0" border="1" sides="b" valign="top"><font color="#444443" point-size="9">%d</font></td>
           </tr>
           <tr>
-            <td bgcolor="#FBFEB0" border="0" align="center">
-              <font point-size="11">%s</font>
-            </td>
+            <td bgcolor="#FBFEB0" border="0" align="center"><font point-size="11">%s</font></td>
           </tr>
         </table>
         """ % (idx, elviz(el,showassoc))
@@ -120,6 +118,8 @@ x = [ None, [('a','3')], [], None, [('b',230), ('c',21)] ]
 # x = [('the',4), ('cat',1), ('sat',1), ('hat',1)]
 # x = [('a',4),[2],"hi",99]
 # x = {'the':4, 'hi':4}
-# x = [ [], [], [], None, [], [] ]
+# x = [ [], [], [], [], [], [{}] ]
+# x = [ [('ronald',{9,3}),('reagan',{17})], [], [], [], [] ]
+x = ["hi", 99, 3.4]
 dot = lolviz(x, showassoc=True)
 dot.render(view=True)
