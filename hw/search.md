@@ -135,7 +135,7 @@ def htable(nbuckets):
 
 The number of buckets should be a prime number to avoid hash code collisions. In memory, the empty hash table looks like:
 
-<img src=figures/hashtable-empty.png width=400>
+<img src=figures/hashtable-empty.png width=140>
 
 Each element in a bucket is an association `(key,value)` where `value` is a set or unique list of document indexes. The buckets are themselves lists; do not confuse the buckets with the set of document indexes in each association. For example, `htable_put(index,'parrt', [99])` should add tuple `('parrt',[99])` to the bucket associated with key string `parrt`. The following method embodies the put operation:
 
@@ -154,7 +154,7 @@ def htable_put(table, key, value):
 
 In our case our values for the association are sets of document IDs.  If `ronald` is in documents 9 and 3 and `reagan` is in document 17 and both of those terms hashed to bucket 0, you would see the following 2-element bucket 0 with two associations:
 
-<img src=figures/hashtable2.png width=800>
+<img src=figures/hashtable2.png width=300>
 
 
 To make that work, you need a function that computes hash codes:
