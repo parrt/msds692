@@ -1,5 +1,20 @@
 import graphviz
 
+def dictviz(d):
+    s = """
+    digraph G {
+        nodesep=.05;
+        rankdir=LR;
+        node [penwidth="0.5", shape=record,width=.1,height=.1];
+    """
+    labels = []
+    for key,value in d.items():
+        labels.append("%s&rarr;%s" % (repr(key),elviz(value,True)))
+    s += '    mainlist [color="#444443", fontsize="9", fontcolor="#444443", fontname="Helvetica", style=filled, fillcolor="#FBFEB0", label = "'+'|'.join(labels)+'"];\n'
+    s += '}\n'
+    return graphviz.Source(s)
+
+
 def listviz(elems, showassoc=True):
     s = """
     digraph G {
@@ -7,7 +22,8 @@ def listviz(elems, showassoc=True):
         node [penwidth="0.5", shape=record,width=.1,height=.1];
     """
     if type(elems)==dict:
-        elems = elems.items()
+        return dictviz(elems)
+
     labels = []
     for i in range(len(elems)):
         el = elems[i]
@@ -92,9 +108,11 @@ def elviz(el, showassoc):
     if showassoc and type(el) == tuple and len(el) == 2:
         els = "%s&rarr;%s" % (elviz(el[0], showassoc), elviz(el[1], showassoc))
     elif type(el)==set:
-        els = '{'+', '.join([str(e) for e in el])+'}'
+        els = '{'+', '.join([elviz(e, showassoc) for e in el])+'}'
+    elif type(el) == dict:
+        els = '{' + ','.join([elviz(e, showassoc) for e in el.items()]) + '}'
     else:
-        els = str(el)
+        els = repr(el)
     els = els.replace('{', '&#123;')
     els = els.replace('}', '&#125;')
     return els
@@ -116,9 +134,9 @@ def idx_elviz(idx, el, showassoc):
 x = [ None, [('a','3')], [], None, [('b',230), ('c',21)] ]
 # x = [('the',4), ('cat',1), ('sat',1), ('hat',1)]
 # x = [('a',4),[2],"hi",99]
-# x = {'the':4, 'hi':4}
+x = {'the':4, 'hi':{'foo':{3,4}}}
 # x = [ [], [], [], [], [], [{}] ]
 # x = [ [('ronald',{9,3}),('reagan',{17})], [], [], [], [] ]
-x = ["hi", 99, 3.4]
+# x = ["hi", 99, 3.4]
 dot = lolviz(x, showassoc=True)
 dot.render(view=True)
