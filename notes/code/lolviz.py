@@ -45,11 +45,10 @@ def lolviz(table, showassoc=True):
         if not bucket or len(bucket)==0: continue
         s += 'mainlist:f%d -> node%d [arrowsize=.5]\n' % (i,i)
     s += "}\n"
-    print s
-    return s
+    # print s
+    return graphviz.Source(s)
 
 x = [ [('a','3')], [], [('b',230), ('c',21)] ]
 x = [('the',(3,4)), ('cat',1), ('sat',1), ('hat',1)]
 dot = lolviz(x, showassoc=False)
-g = graphviz.Source(dot)
-g.render(view=True)
+dot.render(view=True)
