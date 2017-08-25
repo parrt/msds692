@@ -4,7 +4,7 @@ def listviz(elems, showassoc=True):
     s = """
     digraph G {
         nodesep=.05;
-        node [shape=record,width=.1,height=.1];
+        node [penwidth="0.5", shape=record,width=.1,height=.1];
     """
     if type(elems)==dict:
         elems = elems.items()
@@ -39,42 +39,51 @@ def lolviz(table, showassoc=True):
                 return True
         return False
 
+    if not islol(table):
+        return listviz(table, showassoc)
+
     s = """
     digraph G {
         nodesep=.05;
         rankdir=LR;
-        node [shape=record,width=.1,height=.1];
+        node [penwidth="0.5", shape=record,width=.1,height=.1];
     """
     # Make outer list as vertical
     labels = []
     for i in range(len(table)):
-        bucket = table[i]
-        if (type(bucket)==list or type(bucket)==tuple) and len(bucket) == 0:
-            labels.append(str(i))
-        else:
-            labels.append("<f%d> %d" % (i, i))
+        # if (type(bucket)==list or type(bucket)==tuple) and len(bucket) == 0:
+        #     labels.append(str(i))
+        # else:
+        #     labels.append("<f%d> %d" % (i, i))
+        labels.append("<f%d> %d" % (i, i))
 
     s += '    mainlist [color="#444443", fontsize="9", fontcolor="#444443", fontname="Helvetica", style=filled, fillcolor="#D9E6F5", label = "'+'|'.join(labels)+'"];\n'
 
     # define inner lists
     for i in range(len(table)):
         bucket = table[i]
-        if not bucket or ((type(bucket)==list or type(bucket)==tuple) and len(bucket)==0):
+        if bucket==None:
             continue
         elements = []
-        if type(bucket)==list or type(bucket)==tuple:
-            for j, el in enumerate(bucket):
-                elements.append(idx_elviz(j, el, showassoc))
+        if (type(bucket)==list or type(bucket)==tuple) and len(bucket) == 0:
+            s += 'node%d [margin="0.03", fontname="Italics", shape=none label=<<font color="#444443" point-size="9">empty list</font>>];\n' % i
         else:
-            elements.append(elviz(bucket, showassoc))
-        s += 'node%d [color="#444443", fontname="Helvetica", margin="0.01", space="0.0", shape=record label=<{%s}>];\n' % (i, '|'.join(elements))
+            if type(bucket)==list or type(bucket)==tuple:
+                if len(bucket)>0:
+                    for j, el in enumerate(bucket):
+                        elements.append(idx_elviz(j, el, showassoc))
+            else:
+                elements.append(elviz(bucket, showassoc))
+            s += 'node%d [color="#444443", fontname="Helvetica", margin="0.01", space="0.0", shape=record label=<{%s}>];\n' % (i, '|'.join(elements))
 
     # Do edges
     for i in range(len(table)):
         bucket = table[i]
-        if not bucket or ((type(bucket)==list or type(bucket)==tuple) and len(bucket)==0):
+        if bucket==None:
             continue
-        s += 'mainlist:f%d -> node%d [arrowsize=.5]\n' % (i,i)
+        # if not bucket or ((type(bucket)==list or type(bucket)==tuple) and len(bucket)==0):
+        #     continue
+        s += 'mainlist:f%d -> node%d [penwidth="0.5", color="#444443", arrowsize=.4]\n' % (i,i)
     s += "}\n"
     # print s
     return graphviz.Source(s)
@@ -107,10 +116,10 @@ def idx_elviz(idx, el, showassoc):
         </table>
         """ % (idx, elviz(el,showassoc))
 
-x = [ [('a','3')], [], [('b',230), ('c',21)] ]
-x = [('the',4), ('cat',1), ('sat',1), ('hat',1)]
-x = [('a',4),[2],"hi",99]
-x = {'the':4, 'hi':4}
-x = ["hi",'mom']
-dot = listviz(x, showassoc=True)
+x = [ None, [('a','3')], [], None, [('b',230), ('c',21)] ]
+# x = [('the',4), ('cat',1), ('sat',1), ('hat',1)]
+# x = [('a',4),[2],"hi",99]
+# x = {'the':4, 'hi':4}
+# x = [ [], [], [], None, [], [] ]
+dot = lolviz(x, showassoc=True)
 dot.render(view=True)
