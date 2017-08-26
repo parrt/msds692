@@ -32,7 +32,7 @@ Here is what the program looks like in action:
 
 ```bash
 $ python search.py linear ~/data/slate
-4534 files
+4530 files
 Search terms: Reagan Iran
 ```
 
