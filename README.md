@@ -72,7 +72,7 @@ Most data you encounter will be in the form of human readable text, such as comm
 	* reading/generating XML (we'll load complicated XML in [TFIDF project](https://github.com/parrt/msan692/blob/master/hw/tfidf.md))
 	* reading/generating json
 * [PDF using pdf2txt.py](https://github.com/parrt/msan692/blob/master/notes/pdf.ipynb) (Parsing documents from Eisenhower's presidential library) (Day 2)
-* [Excel and CSV data](https://github.com/parrt/msan692/blob/master/notes/excel.ipynb) (Saving as CSV, stripping non-ASCII stuff, loading into Python, commandline kung fu) (Day 2)
+* [Excel and CSV data](https://github.com/parrt/msan692/blob/master/notes/excel.ipynb) (Saving as CSV, stripping non-ASCII stuff, loading into Python) (Day 2)
 * [HTML](https://github.com/parrt/msan692/blob/master/notes/html.md) (Parsing Tesla's IPO prospectus)
 * [Parsing web access log files](https://github.com/parrt/msan692/blob/master/notes/logs.md)
 
@@ -80,6 +80,7 @@ There are also plenty of nontext, binary formats. You can learn more from the MS
 
 ## Text feature extraction
 
+* [CSV command-line kung fu](notes/bashcsv.ipynb)
 * [Intro to information extraction from text](https://github.com/parrt/msan692/blob/master/notes/text.ipynb)
 * [San Francisco police incidents word clouds and heat maps](https://github.com/parrt/msan692/blob/master/notes/sfpd.md)
 * [Computing TFIDF](https://github.com/parrt/msan692/blob/master/notes/tfidf.pdf)
