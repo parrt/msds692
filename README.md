@@ -71,10 +71,10 @@ Most data you encounter will be in the form of human readable text, such as comm
 	* reading delimited data; tsv, csv
 	* reading/generating XML (we'll load complicated XML in [TFIDF project](https://github.com/parrt/msan692/blob/master/hw/tfidf.md))
 	* reading/generating json
-* [PDF using pdf2txt.py](https://github.com/parrt/msan692/blob/master/notes/pdf.ipynb) (Parsing documents from Eisenhower's presidential library) (Day 2)
-* [Excel and CSV data](https://github.com/parrt/msan692/blob/master/notes/excel.ipynb) (Saving as CSV, stripping non-ASCII stuff, processing with Python and terminal) (Day 2)
-* [HTML](https://github.com/parrt/msan692/blob/master/notes/html.md) (Parsing Tesla's IPO prospectus)
-* [Parsing web access log files](https://github.com/parrt/msan692/blob/master/notes/logs.md)
+* [PDF using pdf2txt.py](https://github.com/parrt/msan692/blob/master/notes/pdf.ipynb) (Expecting text from Eisenhower's presidential library) (Day 2)
+* [Excel and CSV data](https://github.com/parrt/msan692/blob/master/notes/excel.ipynb) (Saving as CSV, stripping non-ASCII stuff, processing CSV with Python) (Day 2)
+* [HTML](https://github.com/parrt/msan692/blob/master/notes/html.md) (Parsing Tesla's IPO prospectus) (Day 2)
+* [Parsing web access log files](https://github.com/parrt/msan692/blob/master/notes/logs.md) (Optional)
 
 There are also plenty of nontext, binary formats. You can learn more from the MSAN501 boot camp material for [audio processing](https://github.com/parrt/msan501/blob/master/notes/sound.ipynb) and [image processing](https://github.com/parrt/msan501/raw/master/projects/images.pdf).
 
