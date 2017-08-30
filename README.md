@@ -42,11 +42,11 @@ If you ever have questions about what constitutes plagiarism, cheating, or acade
 
 | Artifact | Grade Weight | Due date |
 |--------|--------|--------|
-|[Data pipeline](https://github.com/parrt/msan692/blob/master/hw/pipeline.md)| 5%| Fri, Sep 1 midnight |
+|[Data pipeline](https://github.com/parrt/msan692/blob/master/hw/pipeline.md)| 5%| Fri, Sep 1 11:59pm |
 |[Search Engine Implementation](https://github.com/parrt/msan692/blob/master/hw/search.md)| 12% | Wed, Sep 13 |
 |[TFIDF document summarization](https://github.com/parrt/msan692/blob/master/hw/tfidf.md)| 8%| Wed, Sep 20 |
 |[Recommending Articles](https://github.com/parrt/msan692/blob/master/hw/recommender.md)| 5% | Wed, Sep 27 |
-|[Tweet Sentiment Analysis](https://github.com/parrt/msan692/blob/master/hw/sentiment.md)| 10% | Sat, Oct 7 midnight |
+|[Tweet Sentiment Analysis](https://github.com/parrt/msan692/blob/master/hw/sentiment.md)| 10% | Sun, Oct 8 11:59pm |
 |Midterm Exam| 30%| 10AM-12PM Fri, Sep 15 |
 |Final Exam| 30%| 10AM-12PM Fri, Oct 13 |
 
@@ -73,7 +73,7 @@ Most data you encounter will be in the form of human readable text, such as comm
 	* reading/generating json
 * [PDF using pdf2txt.py](https://github.com/parrt/msan692/blob/master/notes/pdf.ipynb) (Expecting text from Eisenhower's presidential library) (Day 2)
 * [Excel and CSV data](https://github.com/parrt/msan692/blob/master/notes/excel.ipynb) (Saving as CSV, stripping non-ASCII stuff, processing CSV with Python) (Day 2)
-* [HTML](https://github.com/parrt/msan692/blob/master/notes/html.md) (Parsing Tesla's IPO prospectus) (Day 2)
+* [HTML](https://github.com/parrt/msan692/blob/master/notes/html.md) (Parsing Tesla's IPO prospectus) (Day 3)
 * [Parsing web access log files](https://github.com/parrt/msan692/blob/master/notes/logs.md) (Optional)
 
 There are also plenty of nontext, binary formats. You can learn more from the MSAN501 boot camp material for [audio processing](https://github.com/parrt/msan501/blob/master/notes/sound.ipynb) and [image processing](https://github.com/parrt/msan501/raw/master/projects/images.pdf).
@@ -82,7 +82,7 @@ There are also plenty of nontext, binary formats. You can learn more from the MS
 
 * [CSV command-line kung fu](notes/bashcsv.ipynb) (Day 3)
 * [Associations and dictionaries](notes/dict.ipynb) (Day 3)
-* [Search Engine Implementation](https://github.com/parrt/msan692/blob/master/hw/search.md) (**project**)
+* [Search Engine Implementation](https://github.com/parrt/msan692/blob/master/hw/search.md) (**project**) (Day 3)
 * [Intro to information extraction from text](https://github.com/parrt/msan692/blob/master/notes/text.ipynb)
 * [San Francisco police incidents word clouds and heat maps](https://github.com/parrt/msan692/blob/master/notes/sfpd.md)
 * [Computing TFIDF](https://github.com/parrt/msan692/blob/master/notes/tfidf.pdf)

@@ -201,8 +201,6 @@ def htable_put(table, key, value):
     """
 ```
 
-*The functionality that replaces an existing key->value mapping is something we will not use here, but I include it here for completeness.*
-
 In our case our values for the association are sets of document IDs.  If `ronald` is in documents 9 and 3 and `reagan` is in document 17 and both of those terms hashed to bucket 0, you would see the following 2-element bucket 0 with two associations:
 
 <img src=figures/hashtable2.png width=300>
