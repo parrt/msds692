@@ -72,7 +72,7 @@ python ipo-text.py tesla.html | more
 UnicodeEncodeError: 'ascii' codec can't encode character u'\xa0' in position 197: ordinal not in range(128)
 ```
 
-That character is out of range (the "registered trademark" symbol), and the encoder will give us an error.  The character fits within one byte (value 0x92=146) but the Python string printing routine wants everything less than 128.  Note this is not a UTF-8 issue, because the HTML does not have multi-byte characters. The characters are simply out of range.
+That character is out of range (the "registered trademark" symbol), and the encoder will give us an error.  The character fits within one byte (value 0xa0=160) but the Python string printing routine wants everything less than 128.  Note this is not a UTF-8 issue, because the HTML does not have multi-byte characters. The characters are simply out of range.
 
 Fortunately this is very easy to fix. All we have to do is tell the string to encode self as ASCII before printing it out:
 
@@ -138,9 +138,22 @@ If get stuck, see [ipo-text.py](https://github.com/parrt/msan692/blob/master/not
 
 If there are characters within the file that are non-ASCII and larger than 255, the file will have a two byte character. Here's a simple version of the problem I put into file `/tmp/foo.html`:
 
-<img src=figures/html-funny-char.png width=75>
+```html
+<html>
+<body>
+གྷ
+</body>
+</html>
+```
 
-I deliberately injected a Unicode code point > 255, which requires two bytes to store.  Most of the characters require just one byte.
+I deliberately injected a Unicode code point > 255, which requires two bytes to store.  Most of the characters require just one byte. Here is first part of file:
+
+```bash
+$ od -c -t xC /tmp/t.html
+0000000    <   h   t   m   l   >  \n   <   b   o   d   y   >  \n   གྷ  **
+           3c  68  74  6d  6c  3e  0a  3c  62  6f  64  79  3e  0a  e0  bd
+...
+```           
 
 Here is how you could strip any non-one-byte characters from the file before processing:
 
