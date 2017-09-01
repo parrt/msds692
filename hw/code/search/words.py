@@ -24,6 +24,13 @@ def words(text):
     Ignore words < 3 char long.
     Lowercase all words
     """
+    regex = re.compile('[' + re.escape(string.punctuation) + '0-9\\r\\t\\n]')
+    nopunct = regex.sub(" ", text)  # delete stuff but leave at least a space to avoid clumping together
+    words = nopunct.split(" ")
+    words = [w for w in words if len(w) > 2]  # ignore a, an, to, at, be, ...
+    words = [w.lower() for w in words]
+    # print words
+    return words
 
 
 def results(docs, terms):
