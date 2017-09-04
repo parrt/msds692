@@ -62,7 +62,11 @@ A Shared Vision pairs Ronald Reagan and Margaret Thatcher. Yes, they<br><br>
 wartime. "I hope that neither President Carter or Governor Reagan, if he should<br>pay $5,000 and $3,500, respectively. After Ronald Reagan, who was elected<br><br>
     
 <p><a href="file:///Users/parrt/github/msan692/data/slate/11/Article247_3408.txt">/Users/parrt/github/msan692/data/slate/11/Article247_3408.txt</a><br>
- I'd like to learn a decent salad dressing other than vinaigrette. Ideas? Well at least something other than the usual Masonic vinaigrette to Ronald Reagan brought the hall to its feet. The best of social<br><br>    
+Gary Bauer Soft-spoken but effective. His
+tribute to Ronald Reagan brought the hall to its feet. The best of social
+conservatives. "Campaigns aren't supposed to be about how much one guy has
+raised and another guy has inherited. Campaigns are supposed to be about our
+futures."<br><br>    
 ...    
 </body>
 </html>
