@@ -84,7 +84,7 @@ There are also plenty of nontext, binary formats. You can learn more from the MS
 * [Search Engine Implementation](https://github.com/parrt/msan692/blob/master/hw/search.md) (**project**) (Day 3)
 * [CSV command-line kung fu](notes/bashcsv.ipynb) (Day 4)
 * [Intro to information extraction from text](https://github.com/parrt/msan692/blob/master/notes/text.ipynb) (Day 4)
-* [San Francisco police incidents word clouds and heat maps](https://github.com/parrt/msan692/blob/master/notes/sfpd.md)
+* [San Francisco police incidents word clouds](https://github.com/parrt/msan692/blob/master/notes/sfpd.md) (Day 4)
 * [Computing TFIDF](https://github.com/parrt/msan692/blob/master/notes/tfidf.pdf)
 * [TFIDF document summarization](https://github.com/parrt/msan692/blob/master/hw/tfidf.md) (**project**)
 
@@ -112,6 +112,7 @@ With an understanding of how the Internet and web works, it's time to start pull
   * [Zillow](https://github.com/parrt/msan692/blob/master/notes/zillow.md)
   * [Youtube](https://github.com/parrt/msan692/blob/master/notes/youtube.md)
   * [Twitter](https://github.com/parrt/msan692/blob/master/notes/twitter.md)
+  * [San Francisco police activity heat map using google map API](https://github.com/parrt/msan692/blob/master/notes/heatmap.md)
 * [APIs requiring authentication/identification](https://github.com/parrt/msan692/blob/master/notes/authapi.md) (optional)
   * [LinkedIn](https://github.com/parrt/msan692/blob/master/notes/linkedin.md)
   * [Facebook](https://github.com/parrt/msan692/blob/master/notes/facebook.md)
