@@ -71,12 +71,12 @@ def test_str_to_str():
 
 def test_str_to_set():
     table = htable(5)
-    htable_put(table, "parrt", {2, 99, 3942})
-    htable_put(table, "tombu", {6, 3, 1024, 99, 102342})
-    assert htable_str(table) == "{tombu:set([1024, 3, 99, 6, 102342]), parrt:set([2, 99, 3942])}"
+    htable_put(table, "parrt", [2, 99, 3942])
+    htable_put(table, "tombu", [6, 3, 1024, 99, 102342])
+    assert htable_str(table) == "{tombu:[6, 3, 1024, 99, 102342], parrt:[2, 99, 3942]}"
     assert htable_buckets_str(table) == """0000->
-0001->tombu:set([1024, 3, 99, 6, 102342])
+0001->tombu:[6, 3, 1024, 99, 102342]
 0002->
-0003->parrt:set([2, 99, 3942])
+0003->parrt:[2, 99, 3942]
 0004->
 """
