@@ -82,8 +82,8 @@ There are also plenty of nontext, binary formats. You can learn more from the MS
 
 * [Associations and dictionaries](notes/dict.ipynb) (Day 3)
 * [Search Engine Implementation](https://github.com/parrt/msan692/blob/master/hw/search.md) (**project**) (Day 3)
-* [CSV command-line kung fu](notes/bashcsv.ipynb) (Day 3)
-* [Intro to information extraction from text](https://github.com/parrt/msan692/blob/master/notes/text.ipynb)
+* [CSV command-line kung fu](notes/bashcsv.ipynb) (Day 4)
+* [Intro to information extraction from text](https://github.com/parrt/msan692/blob/master/notes/text.ipynb) (Day 4)
 * [San Francisco police incidents word clouds and heat maps](https://github.com/parrt/msan692/blob/master/notes/sfpd.md)
 * [Computing TFIDF](https://github.com/parrt/msan692/blob/master/notes/tfidf.pdf)
 * [TFIDF document summarization](https://github.com/parrt/msan692/blob/master/hw/tfidf.md) (**project**)
