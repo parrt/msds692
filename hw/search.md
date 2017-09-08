@@ -1,5 +1,7 @@
 # Search Engine Implementation
 
+*TODO*: add replace test in test_htable.py
+
 The goal of this project is to learn how hashtables work and to *feel* just how much slower a linear search is. Along the way, you'll learn the basic mechanics of implementing a search engine, including displaying search results in a browser window and being able to navigate to documents. You'll also learn a tiny bit of HTML.
 
 ## Discussion
@@ -198,10 +200,12 @@ Each element in a bucket is an association `(key,value)` where `value` is a set 
 def htable_put(table, key, value):
     """
     Perform the equivalent of table[key] = value
-    Find the appropriate bucket indicated by key and then append value
-    to that bucket. If the bucket for key already has a (key,value) pair
-    with that key then replace it.  Make sure that you are only adding
-    (key,value) associations to the buckets.
+    Find the appropriate bucket indicated by key and then append (key,value)
+    to that bucket if the (key,value) pair doesn't exist yet in that bucket.
+    If the bucket for key already has a (key,value) pair with that key,
+    then replace the tuple with the new (key,value).
+    Make sure that you are only adding (key,value) associations to the buckets.
+    The type(value) can be anything. Could be a set, list, number, string, anything!
     """
 ```
 
