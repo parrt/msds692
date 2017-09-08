@@ -247,6 +247,12 @@ def htable_get(table, key):
 
 It computes the bucket where `key` lives and then linearly searches that (hopefully) small bucket for an association with key `key`. It then returns the value, the second element, from that association.
 
+<img src="figures/redbang.png" width=30 align="left"> Building a search index on top of your own implementation of a hash table can be quite confusing. This is particularly so because we are associating a word (string) with a **mutable** set of document IDs.
+
+The confusing part is how you update the search index entries when it is your own hash table implementation. If you look at the example from above, where `'a'` maps to `99`, we can see that changing 99 to 42 requires that we replace that mapping.  The reason is `99` is immutable: it cannot be changed. So, we replace the entire tuple `('a',99)` with `('a',42)`. 
+
+Now look at the example where we map `'ronald'` to `{9,3}`.  That set is mutable so if you want to update the set, you don't have to replace the `('ronald', {9,3})` association in the hash table. You just have to update the set that already exists.  You need to initialize the search index with empty sets the first time but after that the hash table "get" will retrieve the existing set and you can simply call `add()` to add a document ID to that set.
+
 ## Getting started
 
 Please go to the [Search starterkit](https://github.com/parrt/msan692/tree/master/hw/code/search) and grab all the python files.  Store these in your repo `search-`*userid*, wherever you store that directory.
