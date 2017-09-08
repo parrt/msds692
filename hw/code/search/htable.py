@@ -27,10 +27,12 @@ def bucket_indexof(table, key):
 def htable_put(table, key, value):
     """
     Perform the equivalent of table[key] = value
-    Find the appropriate bucket indicated by key and then append value
-    to that bucket. If the bucket for key already has a (key,value) pair
-    with that key then replace it.  Make sure that you are only adding
-    (key,value) associations to the buckets.
+    Find the appropriate bucket indicated by key and then append (key,value)
+    to that bucket if the (key,value) pair doesn't exist yet in that bucket.
+    If the bucket for key already has a (key,value) pair with that key,
+    then replace the tuple with the new (key,value).
+    Make sure that you are only adding (key,value) associations to the buckets.
+    The type(value) can be anything. Could be a set, list, number, string, anything!
     """
 
 

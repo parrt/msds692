@@ -42,11 +42,11 @@ If you ever have questions about what constitutes plagiarism, cheating, or acade
 
 | Artifact | Grade Weight | Due date |
 |--------|--------|--------|
-|[Data pipeline](https://github.com/parrt/msan692/blob/master/hw/pipeline.md)| 5%| Fri, Sep 1 midnight |
+|[Data pipeline](https://github.com/parrt/msan692/blob/master/hw/pipeline.md)| 5%| Fri, Sep 1 11:59pm |
 |[Search Engine Implementation](https://github.com/parrt/msan692/blob/master/hw/search.md)| 12% | Wed, Sep 13 |
 |[TFIDF document summarization](https://github.com/parrt/msan692/blob/master/hw/tfidf.md)| 8%| Wed, Sep 20 |
 |[Recommending Articles](https://github.com/parrt/msan692/blob/master/hw/recommender.md)| 5% | Wed, Sep 27 |
-|[Tweet Sentiment Analysis](https://github.com/parrt/msan692/blob/master/hw/sentiment.md)| 10% | Sat, Oct 7 midnight |
+|[Tweet Sentiment Analysis](https://github.com/parrt/msan692/blob/master/hw/sentiment.md)| 10% | Sun, Oct 8 11:59pm |
 |Midterm Exam| 30%| 10AM-12PM Fri, Sep 15 |
 |Final Exam| 30%| 10AM-12PM Fri, Oct 13 |
 
@@ -71,17 +71,20 @@ Most data you encounter will be in the form of human readable text, such as comm
 	* reading delimited data; tsv, csv
 	* reading/generating XML (we'll load complicated XML in [TFIDF project](https://github.com/parrt/msan692/blob/master/hw/tfidf.md))
 	* reading/generating json
-* [PDF using pdf2txt.py](https://github.com/parrt/msan692/blob/master/notes/pdf.ipynb) (Parsing documents from Eisenhower's presidential library) (Day 2)
-* [Excel and CSV data](https://github.com/parrt/msan692/blob/master/notes/excel.ipynb) (Saving as CSV, stripping non-ASCII stuff, loading into Python, commandline kung fu) (Day 2)
-* [HTML](https://github.com/parrt/msan692/blob/master/notes/html.md) (Parsing Tesla's IPO prospectus)
-* [Parsing web access log files](https://github.com/parrt/msan692/blob/master/notes/logs.md)
+* [PDF using pdf2txt.py](https://github.com/parrt/msan692/blob/master/notes/pdf.ipynb) (Expecting text from Eisenhower's presidential library) (Day 2)
+* [Excel and CSV data](https://github.com/parrt/msan692/blob/master/notes/excel.ipynb) (Saving as CSV, stripping non-ASCII stuff, processing CSV with Python) (Day 2)
+* [HTML](https://github.com/parrt/msan692/blob/master/notes/html.md) (Parsing Tesla's IPO prospectus) (Day 3)
+* [Parsing web access log files](https://github.com/parrt/msan692/blob/master/notes/logs.md) (Optional)
 
 There are also plenty of nontext, binary formats. You can learn more from the MSAN501 boot camp material for [audio processing](https://github.com/parrt/msan501/blob/master/notes/sound.ipynb) and [image processing](https://github.com/parrt/msan501/raw/master/projects/images.pdf).
 
 ## Text feature extraction
 
-* [Intro to information extraction from text](https://github.com/parrt/msan692/blob/master/notes/text.ipynb)
-* [San Francisco police incidents word clouds and heat maps](https://github.com/parrt/msan692/blob/master/notes/sfpd.md)
+* [Associations and dictionaries](notes/dict.ipynb) (Day 3)
+* [Search Engine Implementation](https://github.com/parrt/msan692/blob/master/hw/search.md) (**project**) (Day 3)
+* [CSV command-line kung fu](notes/bashcsv.ipynb) (Day 4)
+* [Intro to information extraction from text](https://github.com/parrt/msan692/blob/master/notes/text.ipynb) (Day 4)
+* [San Francisco police incidents word clouds](https://github.com/parrt/msan692/blob/master/notes/sfpd.md) (Day 4)
 * [Computing TFIDF](https://github.com/parrt/msan692/blob/master/notes/tfidf.pdf)
 * [TFIDF document summarization](https://github.com/parrt/msan692/blob/master/hw/tfidf.md) (**project**)
 
@@ -109,6 +112,7 @@ With an understanding of how the Internet and web works, it's time to start pull
   * [Zillow](https://github.com/parrt/msan692/blob/master/notes/zillow.md)
   * [Youtube](https://github.com/parrt/msan692/blob/master/notes/youtube.md)
   * [Twitter](https://github.com/parrt/msan692/blob/master/notes/twitter.md)
+  * [San Francisco police activity heat map using google map API](https://github.com/parrt/msan692/blob/master/notes/heatmap.md)
 * [APIs requiring authentication/identification](https://github.com/parrt/msan692/blob/master/notes/authapi.md) (optional)
   * [LinkedIn](https://github.com/parrt/msan692/blob/master/notes/linkedin.md)
   * [Facebook](https://github.com/parrt/msan692/blob/master/notes/facebook.md)

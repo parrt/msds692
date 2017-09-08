@@ -1,5 +1,7 @@
 # Search Engine Implementation
 
+*TODO*: add replace test in test_htable.py
+
 The goal of this project is to learn how hashtables work and to *feel* just how much slower a linear search is. Along the way, you'll learn the basic mechanics of implementing a search engine, including displaying search results in a browser window and being able to navigate to documents. You'll also learn a tiny bit of HTML.
 
 ## Discussion
@@ -32,7 +34,7 @@ Here is what the program looks like in action:
 
 ```bash
 $ python search.py linear ~/data/slate
-4534 files
+4530 files
 Search terms: Reagan Iran
 ```
 
@@ -62,7 +64,11 @@ A Shared Vision pairs Ronald Reagan and Margaret Thatcher. Yes, they<br><br>
 wartime. "I hope that neither President Carter or Governor Reagan, if he should<br>pay $5,000 and $3,500, respectively. After Ronald Reagan, who was elected<br><br>
     
 <p><a href="file:///Users/parrt/github/msan692/data/slate/11/Article247_3408.txt">/Users/parrt/github/msan692/data/slate/11/Article247_3408.txt</a><br>
- I'd like to learn a decent salad dressing other than vinaigrette. Ideas? Well at least something other than the usual Masonic vinaigrette to Ronald Reagan brought the hall to its feet. The best of social<br><br>    
+Gary Bauer Soft-spoken but effective. His
+tribute to Ronald Reagan brought the hall to its feet. The best of social
+conservatives. "Campaigns aren't supposed to be about how much one guy has
+raised and another guy has inherited. Campaigns are supposed to be about our
+futures."<br><br>    
 ...    
 </body>
 </html>
@@ -124,18 +130,69 @@ These functions will use expressions like `index[w]`, where `index` is a `dict`,
 
 ### Creating an index using your own hashtable
 
-This version of the search engine should look and perform just like the version using `dict`. The difference is **you cannot use the built-in dictionary operations** like `index[k]` for `dict` `index` and key `k`. You will build your own hashtable and call your own `get` and `put` functions explicitly to manipulate the index.
+We know that a linear search of a list of associations is slow because it requires a search through all associations, in the worst case. But how can we find something without looking through all the items?
+
+Imagine our goal is to find a particular person Eric Erickson in the United States. Where would you look first? Southern California or Minnesota? It turns out that people that immigrated to the United States tended to cluster in regions where they had family or friends from the old country. There were a lot of Scandinavians that moved to Minnesota and because of its proximity to Mexico, there are many people with Spanish last names in Southern California. That gives us a clue about how we might speed up the search.  Something about the key gives us a clue about how to restrict the region(s) where we need to look. Imagine that a person's name uniquely told you in which state they live. That would mean searching only roughly 300M / 50 people instead of all 300M given no knowledge about the keys.
+
+A **hashtable** is a dictionary implementation that relies on this strategy to dramatically speed up key lookups by constraining the size of the search region.  A hashtable is a list of buckets and a bucket is a list of associations mapping and arbitrary key to arbitrary value. We compute a function, a **hash function**, on the key that indicates which bucket (number) potentially contains the search key. With a uniform distribution, we would expect roughly *N*/*B* associations in each bucket for *B* buckets and *N* total elements in the dictionary.  A complexity of *N*/*B* is much better than *N* and, with sufficiently large *B*, we would say that *N*/*B* approaches 1, giving complexity *O(1)* versus *O(n)*.
 
 Because we are not studying the object-oriented aspects of Python, we are going to represent a hashtable as a list of lists (list of buckets):
- 
+
 ```python
 def htable(nbuckets):
     """Return a list of nbuckets empty lists"""
 ```
 
-The number of buckets should be a prime number to avoid hash code collisions. In memory, the empty hash table looks like:
+The number of buckets should be a prime number to avoid hash code collisions. In memory, the empty hash table looks like (with 5 buckets):
 
-<img src=figures/hashtable-empty.png width=400>
+<img src=figures/hashtable-empty.png width=140>
+
+Let's look at an example that adds something to our hashtable. Imagine that our keys are always single element strings like `'a'`, which means we can use their character code as the hash code. That hash code could be some very large number in general, so we need to constrain it in 0..*B*-1. The modulo operator, `%`, takes care of that for us:
+
+```python
+key = 'a'
+value = 99
+def hashcode(o): return ord(o) # assume keys are single-element strings
+print "hashcode =", hashcode(key)
+bucket_index = hashcode(key) % len(table)
+print "bucket_index =", bucket_index
+```
+
+Gives:
+
+```python
+hashcode = 97
+bucket_index = 2
+```
+
+To actually add something to the hash table, we get the bucket and then add an association tuple to the list:
+
+```python
+bucket = table[bucket_index]
+bucket.append( (key,value) ) # add association to the bucket
+```
+
+The data structure now looks like this:
+
+<img src=figures/hashtable3.png width=150>
+
+Different hash codes can hash to the same bucket because of the modulo operation that constrains the hash code value. For example, `'f'` will also have to the same bucket despite having a different hash code:
+
+```python
+key = 'f'
+value = 99
+print "hashcode =", hashcode(key)
+bucket_index = hashcode(key) % len(table)
+print "bucket_index =", bucket_index
+bucket = table[bucket_index]
+bucket.append( (key,value) ) # add association to the bucket
+```
+
+Gives:
+
+<img src=figures/hashtable4.png width=200>
+ 
+Ok, back to this specific project. The version of the search engine you create for this section should look and perform just like the version using `dict`. The difference is **you cannot use the built-in dictionary operations** like `index[k]` for `dict` `index` and key `k`. You will build your own hashtable and call your own `get` and `put` functions explicitly to manipulate the index.
 
 Each element in a bucket is an association `(key,value)` where `value` is a set or unique list of document indexes. The buckets are themselves lists; do not confuse the buckets with the set of document indexes in each association. For example, `htable_put(index,'parrt', [99])` should add tuple `('parrt',[99])` to the bucket associated with key string `parrt`. The following method embodies the put operation:
 
@@ -143,18 +200,18 @@ Each element in a bucket is an association `(key,value)` where `value` is a set 
 def htable_put(table, key, value):
     """
     Perform the equivalent of table[key] = value
-    Find the appropriate bucket indicated by key and then append value
-    to that bucket. If the bucket for key already has a (key,value) pair
-    with that key then replace it.  Make sure that you are only adding
-    (key,value) associations to the buckets.
+    Find the appropriate bucket indicated by key and then append (key,value)
+    to that bucket if the (key,value) pair doesn't exist yet in that bucket.
+    If the bucket for key already has a (key,value) pair with that key,
+    then replace the tuple with the new (key,value).
+    Make sure that you are only adding (key,value) associations to the buckets.
+    The type(value) can be anything. Could be a set, list, number, string, anything!
     """
 ```
 
-*The functionality that replaces an existing key->value mapping is something we will not use here, but I include it here for completeness.*
-
 In our case our values for the association are sets of document IDs.  If `ronald` is in documents 9 and 3 and `reagan` is in document 17 and both of those terms hashed to bucket 0, you would see the following 2-element bucket 0 with two associations:
 
-<img src=figures/hashtable2.png width=800>
+<img src=figures/hashtable2.png width=300>
 
 
 To make that work, you need a function that computes hash codes:
@@ -205,7 +262,7 @@ You must complete and add these to root of your `search-`*userid* repository:
 * htable.py
 * index_search.py
 * linear_search.py
-* myhtable_search.py (no `dict`s allowed in this file!)
+* myhtable_search.py (**no `dict`s allowed in this file!**)
 * words.py
 * search.py (copy this from starterkit unchanged)
 * test_htable.py (copy this from starterkit unchanged)
