@@ -227,7 +227,7 @@ Function `gettext` is the imported function from `tfidf.py`.
 
 Some files might have non-ascii char so you need tell `TfidfVectorizer()` to not puke (raise an exception) upon decoding error characters. See the [doc](http://scikit-learn.org/dev/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html#sklearn.feature_extraction.text.CountVectorizer).
 
-Once you create that `tfidf` object, you can call functions `fit` and `transform` or together as `fit_transform`. That will return to you a sparse matrix (not sure why) containing the index of the various words from the argument to `transform` plus the TFIDF scores:
+Once you create that `tfidf` object, you can call functions `fit` and `transform` or together as `fit_transform`. That will return to you a sparse matrix containing the index of the various words from the argument to `transform` plus the TFIDF scores:
 
 ```
   (0, 35257)	0.235473480686
@@ -286,7 +286,7 @@ Notice that `share` and `go` have dropped out and `tobacco` and `cigarett` have 
 
 *Just for fun, not required*
 
-To show how amazing TFIDF is, try an experiment where your `tokenize()` does not remove stopwords and remove parameter `stop_words` from the `TfidfVectorizer` object. The TFIDF output is still the same, at least in terms of word order, though the scores will change. For example, if you run it again on `131705newsML.xml` without removing stop words, you will see scores:
+To show how amazing TFIDF is, try an experiment where your `tokenize()` does not remove stopwords and then remove parameter `stop_words` from the `TfidfVectorizer` object. The TFIDF output is still the same, at least in terms of word order, though the scores will change. For example, if you run it again on `131705newsML.xml` without removing stop words, you will see scores:
 
 ```
 seita 0.708
@@ -313,7 +313,7 @@ I have provided a [starter kit](https://github.com/parrt/msan692/tree/master/hw/
 
 ## Deliverables
 
-In your repository `tfidf-`*userid*, you must have the following files:
+In your repository `tfidf-`*userid*, you must have the following files in the root of your repository directory:
  
 * `tfidf.py`; Implement methods `gettext()`, `tokenize()`, `stemwords()`, `compute_tfidf()`, `summarize()`, `load_corpus()`
 * `common.py`; Print most common 10 "*word* *score*" pairs
@@ -323,6 +323,6 @@ In your repository `tfidf-`*userid*, you must have the following files:
 
 We will test your TFIDF functionality using `test_tfidf.py`, which uses the entire corpus for "training" but then uses just a small subset of the files for testing.
 
-Any difference in words or TFIDF scores are treated as a 0 for that test. There are 12 randomly-selected test files used and you must get everything right for each file. I have computed the right values and store them in a pickled file, which is how the test compares your work for correctness.
+Any difference in words or TFIDF scores are treated as a 0 for that test. There are 12 randomly-selected test files used and you must get everything right for each file. I have computed the right values and store them in a pickled file, `corpus.pkl`, which is how the test compares your work for correctness.
 
 We will also make a quick check that your `common.py` and `summarize.py` scripts generate the right output.
