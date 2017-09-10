@@ -41,7 +41,7 @@ colorlinks=true
 
 \section{Goal}
 
-The goal of this lesson is to learn a core technique used in text analysis called {\em TFIDF} or {\em term frequency, inverse document frequency}. This document as background material for your TFIDF project. We will use what is called a {\em bag-of-words} representation where the order of words in a document doesn't matter---we care only about the words and how often they are present. A word's TFIDF value is often used as a feature for document clustering or classification. We will use it simply as a summarization tool for document. The more a term helps to distinguish its enclosing document from other documents, the higher its TFIDF score. 
+The goal of this lesson is to learn a core technique used in text analysis called {\em TFIDF} or {\em term frequency, inverse document frequency}. This document is background material for your TFIDF project. We will use what is called a {\em bag-of-words} representation where the order of words in a document doesn't matter---we care only about the words and how often they are present. A word's TFIDF value is often used as a feature for document clustering or classification. We will use it simply as a summarization tool for document. The more a term helps to distinguish its enclosing document from other documents, the higher its TFIDF score. 
 
 \section{Discussion}
 
@@ -51,13 +51,13 @@ Collecting all of the words commonly used in the database forum did not work wel
 
 To make this discussion simpler, let's think about individual documents versus all documents in a corpus. We boost words used frequently in a document but attenuate  that word if it is used in a lot of documents.  For more on this topic, see \href{http://nlp.stanford.edu/IR-book/html/htmledition/term-frequency-and-weighting-1.html}{Introduction to Information Retrieval}.
 
-A word's {\em term frequency} is just the term (word) count within a document divided by the number of words in that document (some people use ``frequency'' to mean ``count'' but that is an affront to the gods):
+A word's {\em term frequency} is just the term (word) count within a document divided by the number of words in that document (some people use ``frequency'' to mean ``count'' but that is technically inaccurate):
 
 \[\tag{Term frequency of term $t \in d$, document $d$}
 tf(t,d) = \frac{count(t)}{|d|}
 \]
 
-\noindent The term frequency is higher for commonly used words within a document.
+\noindent The term frequency is higher for commonly used words within a document. So, ``the'' will be very common and thus have high term frequency in most documents.
 
 A word's {\em document frequency} is the count of documents containing that word divided by the total number of documents:
 
@@ -65,25 +65,24 @@ A word's {\em document frequency} is the count of documents containing that word
 df(t,N) = \frac{|\{d_i : t \in d_i, \ i = 1..N\}|}{N}
 \]
 
-\noindent The document frequency is higher for words used in many documents.
+\noindent The document frequency is higher for words used in many documents. For example, ``the'' will have very high document frequency because it is present in just about every document. On the other hand, a word specific to a few articles such as ``simulation'' will have much lower document frequency.
 
-In order to reduce the TFIDF score for terms with high document frequencies, we need the document frequency  in the denominator:
+The goal is to find words that helped to distinguish one document from the others. To do that we want to amplify the words used commonly in that document but attenuate that word frequency if the word is used across documents frequently.  Quantifying that information per word is called the TFIDF score. A simple division of term frequency within a document by document frequency is a simple but effective starting point:
 
 \[\tag{First approximation to TFIDF}
 \text{\em tfidf}(t,d,N) = \frac{tf(t,d)}{df(t,N)}
 \]
 
-This formula is  meaningful but gives a poor weight because the document frequency tends to overwhelm the term frequency fractions in the numerator so we take the log of the denominator first. Here's the formula slightly rewritten as it is normally shown:
+This formula is  meaningful but gives a poor score because the document frequency tends to overwhelm the term frequency in the numerator, so we take the log of the denominator first. Here's the formula slightly rewritten as it is normally shown:
 
 \[\tag{TFIDF with attenuated document frequency}
 \text{\em tfidf}(t,d,N) = tf(t,d) \times log(\frac{1}{df(t,N)})
 \]
 
-\noindent When $t$ is in every document, $idf$ is $log(1/df(t,N)) = log(1) = 0$. When $t$ is in very few documents, such as $1/10^5$, $idf$ is $log(10^5)$, which is about 11.5.
+\noindent When $t$ is in every document, $idf$ is $log(1/df(t,N)) = log(1) = 0$, which gives a TFIDF score of 0.  Such a word is a terrible word for distinguishing between documents as it exists in all of them. When $t$ is in very few documents, such as $1/10^5$, $idf$ is $log(10^5)$, which is about 11.5.
 
-To summarize a document, we can order its terms by \text{\em tfidf} in reverse order and look at the top 20 words, for example.  (To get the lexicon of a topic like databases, we can collect a known set of database posts into a single document and compute the tfidf in association with the aggregated documents of the other topics.) For example, here is a set of terms and the associated \text{\em tfidf} computed from a sample Reuters article. It's clear that it's talking about Nielsen ratings for news programs, without even looking at the original article.
+To summarize a document, we can order its terms by \text{\em tfidf} in reverse order and look at the top 20 words, for example.  (To get the lexicon of a topic like databases, we can collect a known set of database posts into a single document and compute the tfidf in association with the aggregated documents of the other topics.) For example, here is a set of terms and the associated \text{\em tfidf} computed from a sample Reuters article:
 
-\begin{table}[htp]
 \begin{center}
 \begin{tabular}{|c|c|}
 \hline
@@ -103,7 +102,8 @@ Term & \text{\em tfidf}\\
 \end{tabular}
 \end{center}
 \label{default}
-\end{table}%
+
+\noindent It's clear that it's talking about Nielsen ratings for news programs, without even looking at the original article.
 
 To compute TFIDF using code, we would need an overall index that maps term $t$ to document frequency $df(t,N)$ for all $t$ in all $N$ documents and an index that maps document $d$ to another index that maps each $t \in d$ to $tf(t,d)$. From that, we could easily compute all of the TFIDF scores.  
 
@@ -141,7 +141,7 @@ $d_2$ = ``{\bf the new york post}''\\
 $d_3$ = ``{\bf the los angeles times}''
 \\
 
-For these documents, we would get a combined vocabulary of [{\bf angeles, in, los, new, post, the, times, york}].   A common way to represent the documents then is as a vector from this vocabulary whose elements are the term counts (in this case, just 0 and 1):
+For these documents, we would get a combined vocabulary of [{\bf angeles, in, los, new, post, the, times, york}].   A common way to represent the documents then is as a vector from this vocabulary whose elements are the {\em term counts} (in this case, just 0, 1, and 2):
 
 \begin{table}[H]
 \begin{center}
@@ -156,7 +156,7 @@ $d_3$ & 1 & 0 & 1 & 0 & 0 & 1 & 1 & 0\\
 \label{default}
 \end{table}%
 
-The term frequencies would be each of those numbers divided by 6 or 4 because the documents are 6 and 4 words long.
+The term frequencies would be each of those numbers divided by 6 or 4 because the documents are 6 or 4 words long.
 
 The document counts and frequencies are:
 
