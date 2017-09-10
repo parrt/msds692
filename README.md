@@ -83,12 +83,11 @@ There are also plenty of nontext, binary formats. You can learn more from the MS
 
 * [Associations and dictionaries](notes/dict.ipynb) (Day 3)
 * [Search Engine Implementation](https://github.com/parrt/msan692/blob/master/hw/search.md) (**project**) (Day 3)
-* (code review of jsontable())
+* (code review of sample jsontable functions)
 * [CSV command-line kung fu](notes/bashcsv.ipynb) (Day 4)
 * [Intro to information extraction from text](https://github.com/parrt/msan692/blob/master/notes/text.ipynb) (Day 5)
-* [San Francisco police incidents word clouds](https://github.com/parrt/msan692/blob/master/notes/sfpd.md) (Day 5)
 * [Computing TFIDF](https://github.com/parrt/msan692/blob/master/notes/tfidf.pdf) (Day 5)
-* [TFIDF document summarization](https://github.com/parrt/msan692/blob/master/hw/tfidf.md) (**project**) (Day 5)
+* [TFIDF document summarization](https://github.com/parrt/msan692/blob/master/hw/tfidf.md) (**project**) (Day 6)
 
 ## How the web works
 
@@ -124,3 +123,7 @@ With an understanding of how the Internet and web works, it's time to start pull
   * [Amazon](https://github.com/parrt/msan692/blob/master/notes/amazon.md)
   * [Scraping data from tables](https://github.com/parrt/msan692/blob/master/notes/scraping-tables.md)
 * [Selenium](https://github.com/parrt/msan692/blob/master/notes/selenium.md)
+
+## Misc
+
+* [San Francisco police incidents word clouds](https://github.com/parrt/msan692/blob/master/notes/sfpd.md)
