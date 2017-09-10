@@ -12,7 +12,7 @@ You will work in git repo `tfidf-`*userid*.
 
 ### Reading in Reuters' XML
 
-As a first step, let's grab text from a Reuters article in XML format. Download the `reuters-vol1-disk1-subset.zip` 12.8M compressed Reuters corpus (44M uncompressed, 9165 files) from the files area of Canvas for this class.  This data should not be made public so please don't post the articles anywhere.  You can uncompress it to look at the files but we will process the zip file directly. The articles (text files) in the zip file look like this fictitious file's contents:
+As a first step, let's grab text from a Reuters article in XML format. Download the `reuters-vol1-disk1-subset.zip` 12.8M compressed Reuters corpus (44M uncompressed, 9164 files) from the files area of Canvas for this class.  This data should not be made public so please don't post the articles anywhere.  You can uncompress it to look at the files but we will process the zip file directly. The articles (text files) in the zip file look like this fictitious file's contents:
 
 ```xml
 <?xml version="1.0" encoding="iso-8859-1" ?>
@@ -36,7 +36,7 @@ As a first step, let's grab text from a Reuters article in XML format. Download 
 </newsitem>
 ```        
 
-Unlike in previous labs where we used the simple `untangle`, this time we will use `ElementTree` to process XML. (A [good tutorial on XML in Python](http://eli.thegreenplace.net/2012/03/15/processing-xml-in-python-with-elementtree/)). Given the text of a file as a string, use `ET.fromstring()` and `ElementTree()` to parse the XML text. From this XML tree, you can ask it to find the `title` tag. Then use XPath notation with `tree.iterfind()` to grab all of the tags underneath the `<text>` tag. In our case, these will be `<p>` tags so use XPath `.//text/*`, which means "*from the current node, find all text tag descendants then all of their children.*"
+Unlike in previous labs where we used the simple `untangle`, this time we will use `ElementTree` from the standard library to process XML. (A [good tutorial on XML in Python](http://eli.thegreenplace.net/2012/03/15/processing-xml-in-python-with-elementtree/)). Given the text of a file as a string, use `ET.fromstring()` and `ElementTree()` to parse the XML text. From this XML tree, you can ask it to find the `title` tag. Then use XPath notation with `tree.iterfind()` to grab all of the tags underneath the `<text>` tag. In our case, these will be `<p>` tags so use XPath `.//text/*`, which means "*from the current node, find all text tag descendants then all of their children.*"
 
 When you are packing the text together, make sure to put a space in between the elements you join. Otherwise, you might end up putting two words together forming a new, nonsense word. 
 
@@ -54,7 +54,7 @@ def gettext(xmltext):
 
 ### Tokenizing text
 
-Now that we have some raw text without all of the XML, let's learn how to properly tokenize English text. It is a multistep process:
+Now that we have some raw text without all of the XML, let's properly tokenize English text. It is a multistep process (and some of it you can take from prior projects/labs):
 
 1. Convert everything to lowercase
 2.  Strip punctuation, numbers, and `\r`, `\n`\, `\t`
