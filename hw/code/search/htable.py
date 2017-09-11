@@ -18,7 +18,7 @@ def hashcode(o):
 def bucket_indexof(table, key):
     """
     You don't have to implement this, but I found it to be a handy function.
-    Return the element within a specific bucket; the bucket is:
+    Return the index of the element within a specific bucket; the bucket is:
     table[hashcode(key) % len(table)]. You have to linearly
     search the bucket to find the tuple containing key.
     """
