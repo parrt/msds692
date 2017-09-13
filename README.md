@@ -93,7 +93,7 @@ There are also plenty of nontext, binary formats. You can learn more from the MS
 
 Now you know how to work with data files already sitting on your desk, we turn towards a study of computer networking and web infrastructure.
 
-* [Network sockets](https://github.com/parrt/msan692/blob/master/notes/sockets.md), DNS, email
+* [Network sockets](https://github.com/parrt/msan692/blob/master/notes/sockets.md), DNS, email (Day 6)
 * [client/server architecture](https://github.com/parrt/msan692/blob/master/notes/client-server.md)
 * [HTTP](https://github.com/parrt/msan692/blob/master/notes/http.md)
 * [flask](https://github.com/parrt/msan692/blob/master/notes/flask.md)
