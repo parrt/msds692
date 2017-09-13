@@ -33,7 +33,7 @@ import netifaces as ni
 # Create a serve socket
 serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 ip = ni.ifaddresses('en0')[ni.AF_INET][0]['addr']
-print("server listening at "+ip)
+print("server listening at "+ip+":8000")
 # (on linux it might be `eth0` not `en0`)
 serversocket.bind((ip, 8000)) # wait at port 8000
 # Start listening for connections from client
