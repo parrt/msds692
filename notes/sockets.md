@@ -64,11 +64,35 @@ IP uses _IP addresses_ to define source/target.  IPs are 32 bit numbers represen
 
 A good security feature is to hide your machines from outside.  For example, all machines from within IBM's firewall probably look like the exact same IP address to the outside world (such as in web server log files).  That is one reason you cannot use an IP address to identify "sessions" for a web server application.
 
-**Exercise**: Use package `socket` and `socket.gethostbyname(socket.gethostname())` to figure out what your IP address is. If this pops up with 127.0.0.1 ("localhost") then you will need to go to your laptop network configurationto find your IP address.
+**Exercise**: Use package `socket` and print the result of calling `socket.gethostbyname(socket.gethostname())` to figure out what your IP address is. If this pops up with 127.0.0.1 ("localhost") then you will need to go to your laptop network configurationto find your IP address.
 
 <center>
 <img src=figures/net-config.png width=300>
 </center>
+
+**Note:** Mac Sierra requires a tweak to work. `Edit /etc/hosts`:
+
+```bash
+$ sudo nano /etc/hosts
+```
+
+(you'll need to type your password) so that it looks like:
+
+```
+127.0.0.1       localhost
+127.0.0.1       rover.local
+255.255.255.255 broadcasthost
+::1             localhost
+```
+
+where `rover.local` is replaced by what you get from command line via:
+
+```bash
+$ hostname
+rover.local
+```
+
+See [apple stackexchange](https://apple.stackexchange.com/questions/253817/cannot-ping-my-local-machine) for more info.
 
 ### DNS -- Domain Name Service
 
