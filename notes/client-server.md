@@ -34,6 +34,7 @@ import netifaces as ni
 serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 ip = ni.ifaddresses('en0')[ni.AF_INET][0]['addr']
 print("server listening at "+ip)
+# (on linux it might be `eth0` not `en0`)
 serversocket.bind((ip, 8000)) # wait at port 8000
 # Start listening for connections from client
 serversocket.listen(5) # 5 is number of clients that can queue up before failure
