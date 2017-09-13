@@ -28,10 +28,11 @@ Another important detail: bank service employees do not waste time, running in p
 
 ```python
 import socket
+import netifaces
 
 # Create a serve socket
 serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-ip = socket.gethostbyname(socket.gethostname())
+ip = netifaces.ifaddresses('en0')[ni.AF_INET][0]['addr']
 print("server listening at "+ip)
 serversocket.bind((ip, 8000)) # wait at port 8000
 # Start listening for connections from client
