@@ -2,7 +2,7 @@
 S'31930newsML.xml'
 p1
 (lp2
-(S'xinhua'
+(Vxinhua
 p3
 cnumpy.core.multiarray
 scalar
@@ -37,7 +37,7 @@ p16
 tp17
 Rp18
 tp19
-a(S'gulf'
+a(Vgulf
 p20
 g4
 (g8
@@ -55,7 +55,7 @@ p26
 tp27
 Rp28
 tp29
-a(S'china'
+a(Vchina
 p30
 g4
 (g8
@@ -82,7 +82,7 @@ p41
 tp42
 Rp43
 tp44
-a(S'clinton'
+a(Vclinton
 p45
 g4
 (g8
@@ -100,7 +100,7 @@ p51
 tp52
 Rp53
 tp54
-a(S'raid'
+a(Vraid
 p55
 g4
 (g8
@@ -118,7 +118,7 @@ p61
 tp62
 Rp63
 tp64
-a(S'iraqi'
+a(Viraqi
 p65
 g4
 (g8
@@ -136,7 +136,7 @@ p71
 tp72
 Rp73
 tp74
-a(S'iraq'
+a(Viraq
 p75
 g4
 (g8
@@ -145,7 +145,7 @@ p76
 tp77
 Rp78
 tp79
-a(S'ploy'
+a(Vploy
 p80
 g4
 (g8
@@ -172,7 +172,7 @@ p91
 tp92
 Rp93
 tp94
-a(S'boost'
+a(Vboost
 p95
 g4
 (g8
@@ -190,7 +190,7 @@ p101
 tp102
 Rp103
 tp104
-a(S'target'
+a(Vtarget
 p105
 g4
 (g8
@@ -238,7 +238,7 @@ p128
 tp129
 Rp130
 tp131
-a(S'zealand'
+a(Vzealand
 p132
 g4
 (g8
@@ -247,7 +247,7 @@ p133
 tp134
 Rp135
 tp136
-a(S'tran'
+a(Vtran
 p137
 g4
 (g8
@@ -265,7 +265,7 @@ p143
 tp144
 Rp145
 tp146
-a(S'esanz'
+a(Vesanz
 p147
 g4
 (g8
@@ -274,7 +274,7 @@ p148
 tp149
 Rp150
 tp151
-a(S'cost'
+a(Vcost
 p152
 g4
 (g8
@@ -283,7 +283,7 @@ p153
 tp154
 Rp155
 tp156
-a(S'leay'
+a(Vleay
 p157
 g4
 (g8
@@ -310,7 +310,7 @@ p168
 tp169
 Rp170
 tp171
-a(S'new'
+a(Vnew
 p172
 g4
 (g8
@@ -328,7 +328,7 @@ p178
 tp179
 Rp180
 tp181
-a(S'auckland'
+a(Vauckland
 p182
 g4
 (g8
@@ -355,7 +355,7 @@ p193
 tp194
 Rp195
 tp196
-a(S'eastland'
+a(Veastland
 p197
 g4
 (g8
@@ -376,7 +376,7 @@ p205
 tp206
 Rp207
 tp208
-a(S'lamar'
+a(Vlamar
 p209
 g4
 (g8
@@ -394,7 +394,7 @@ p215
 tp216
 Rp217
 tp218
-a(S'common'
+a(Vcommon
 p219
 g4
 (g8
@@ -421,7 +421,7 @@ p230
 tp231
 Rp232
 tp233
-a(S'share'
+a(Vshare
 p234
 g4
 (g8
@@ -430,7 +430,7 @@ p235
 tp236
 Rp237
 tp238
-a(S'outdoor'
+a(Voutdoor
 p239
 g4
 (g8
@@ -466,7 +466,7 @@ p255
 tp256
 Rp257
 tp258
-a(S'million'
+a(Vmillion
 p259
 g4
 (g8
@@ -484,7 +484,7 @@ p265
 tp266
 Rp267
 tp268
-a(S'fkm'
+a(Vfkm
 p269
 g4
 (g8
@@ -502,7 +502,7 @@ p275
 tp276
 Rp277
 tp278
-a(S'said'
+a(Vsaid
 p279
 g4
 (g8
@@ -511,7 +511,7 @@ p280
 tp281
 Rp282
 tp283
-a(S'total'
+a(Vtotal
 p284
 g4
 (g8
@@ -523,7 +523,7 @@ tp288
 asS'31902newsML.xml'
 p289
 (lp290
-(S'steel'
+(Vsteel
 p291
 g4
 (g8
@@ -532,7 +532,7 @@ p292
 tp293
 Rp294
 tp295
-a(S'profit'
+a(Vprofit
 p296
 g4
 (g8
@@ -541,7 +541,7 @@ p297
 tp298
 Rp299
 tp300
-a(S'nippon'
+a(Vnippon
 p301
 g4
 (g8
@@ -559,7 +559,7 @@ p307
 tp308
 Rp309
 tp310
-a(S'half'
+a(Vhalf
 p311
 g4
 (g8
@@ -577,7 +577,7 @@ p317
 tp318
 Rp319
 tp320
-a(S'yen'
+a(Vyen
 p321
 g4
 (g8
@@ -595,7 +595,7 @@ p327
 tp328
 Rp329
 tp330
-a(S'nkk'
+a(Vnkk
 p331
 g4
 (g8
@@ -604,7 +604,7 @@ p332
 tp333
 Rp334
 tp335
-a(S'kobe'
+a(Vkobe
 p336
 g4
 (g8
@@ -613,7 +613,7 @@ p337
 tp338
 Rp339
 tp340
-a(S'output'
+a(Voutput
 p341
 g4
 (g8
@@ -622,7 +622,7 @@ p342
 tp343
 Rp344
 tp345
-a(S'parent'
+a(Vparent
 p346
 g4
 (g8
@@ -640,7 +640,7 @@ p352
 tp353
 Rp354
 tp355
-a(S'demand'
+a(Vdemand
 p356
 g4
 (g8
@@ -658,7 +658,7 @@ p362
 tp363
 Rp364
 tp365
-a(S'cut'
+a(Vcut
 p366
 g4
 (g8
@@ -667,7 +667,7 @@ p367
 tp368
 Rp369
 tp370
-a(S'lower'
+a(Vlower
 p371
 g4
 (g8
@@ -676,7 +676,7 @@ p372
 tp373
 Rp374
 tp375
-a(S'billion'
+a(Vbillion
 p376
 g4
 (g8
@@ -685,7 +685,7 @@ p377
 tp378
 Rp379
 tp380
-a(S'yoshii'
+a(Vyoshii
 p381
 g4
 (g8
@@ -694,7 +694,7 @@ p382
 tp383
 Rp384
 tp385
-a(S'sumitomo'
+a(Vsumitomo
 p386
 g4
 (g8
@@ -706,7 +706,7 @@ tp390
 asS'133062newsML.xml'
 p391
 (lp392
-(S'gold'
+(Vgold
 p393
 g4
 (g8
@@ -715,7 +715,7 @@ p394
 tp395
 Rp396
 tp397
-a(S'bullion'
+a(Vbullion
 p398
 g4
 (g8
@@ -733,7 +733,7 @@ p404
 tp405
 Rp406
 tp407
-a(S'african'
+a(Vafrican
 p408
 g4
 (g8
@@ -760,7 +760,7 @@ p419
 tp420
 Rp421
 tp422
-a(S'south'
+a(Vsouth
 p423
 g4
 (g8
@@ -805,7 +805,7 @@ p444
 tp445
 Rp446
 tp447
-a(S'index'
+a(Vindex
 p448
 g4
 (g8
@@ -822,7 +822,7 @@ p453
 tp454
 Rp455
 tp456
-a(S'nice'
+a(Vnice
 p457
 g4
 (g8
@@ -831,7 +831,7 @@ p458
 tp459
 Rp460
 tp461
-a(S'level'
+a(Vlevel
 p462
 g4
 (g8
@@ -858,7 +858,7 @@ p473
 tp474
 Rp475
 tp476
-a(S'cpi'
+a(Vcpi
 p477
 g4
 (g8
@@ -867,7 +867,7 @@ p478
 tp479
 Rp480
 tp481
-a(S'rich'
+a(Vrich
 p482
 g4
 (g8
@@ -888,7 +888,7 @@ tp491
 asS'134130newsML.xml'
 p492
 (lp493
-(S'genoa'
+(Vgenoa
 p494
 g4
 (g8
@@ -914,7 +914,7 @@ p504
 tp505
 Rp506
 tp507
-a(S'percent'
+a(Vpercent
 p508
 g4
 (g8
@@ -931,7 +931,7 @@ p513
 tp514
 Rp515
 tp516
-a(S'italian'
+a(Vitalian
 p517
 g4
 (g8
@@ -984,7 +984,7 @@ p542
 tp543
 Rp544
 tp545
-a(S'footwear'
+a(Vfootwear
 p546
 g4
 (g8
@@ -1038,7 +1038,7 @@ p572
 tp573
 Rp574
 tp575
-a(S'breakdown'
+a(Vbreakdown
 p576
 g4
 (g8
@@ -1068,7 +1068,7 @@ tp590
 asS'25775newsML.xml'
 p591
 (lp592
-(S'romania'
+(Vromania
 p593
 g4
 (g8
@@ -1077,7 +1077,7 @@ p594
 tp595
 Rp596
 tp597
-a(S'lithuania'
+a(Vlithuania
 p598
 g4
 (g8
@@ -1095,7 +1095,7 @@ p604
 tp605
 Rp606
 tp607
-a(S'cup'
+a(Vcup
 p608
 g4
 (g8
@@ -1104,7 +1104,7 @@ p609
 tp610
 Rp611
 tp612
-a(S'soccer'
+a(Vsoccer
 p613
 g4
 (g8
@@ -1113,7 +1113,7 @@ p614
 tp615
 Rp616
 tp617
-a(S'beat'
+a(Vbeat
 p618
 g4
 (g8
@@ -1122,7 +1122,7 @@ p619
 tp620
 Rp621
 tp622
-a(S'viorel'
+a(Vviorel
 p623
 g4
 (g8
@@ -1131,7 +1131,7 @@ p624
 tp625
 Rp626
 tp627
-a(S'petrescu'
+a(Vpetrescu
 p628
 g4
 (g8
@@ -1140,7 +1140,7 @@ p629
 tp630
 Rp631
 tp632
-a(S'galca'
+a(Vgalca
 p633
 g4
 (g8
@@ -1158,7 +1158,7 @@ p639
 tp640
 Rp641
 tp642
-a(S'moldovan'
+a(Vmoldovan
 p643
 g4
 (g8
@@ -1167,7 +1167,7 @@ p644
 tp645
 Rp646
 tp647
-a(S'world'
+a(Vworld
 p648
 g4
 (g8
@@ -1176,7 +1176,7 @@ p649
 tp650
 Rp651
 tp652
-a(S'scorer'
+a(Vscorer
 p653
 g4
 (g8
@@ -1194,7 +1194,7 @@ p659
 tp660
 Rp661
 tp662
-a(S'dan'
+a(Vdan
 p663
 g4
 (g8
@@ -1203,7 +1203,7 @@ p664
 tp665
 Rp666
 tp667
-a(S'attend'
+a(Vattend
 p668
 g4
 (g8
@@ -1221,7 +1221,7 @@ p674
 tp675
 Rp676
 tp677
-a(S'saturday'
+a(Vsaturday
 p678
 g4
 (g8
@@ -1233,7 +1233,7 @@ tp682
 asS'133023newsML.xml'
 p683
 (lp684
-(S'manitoba'
+(Vmanitoba
 p685
 g4
 (g8
@@ -1242,7 +1242,7 @@ p686
 tp687
 Rp688
 tp689
-a(S'pork'
+a(Vpork
 p690
 g4
 (g8
@@ -1251,7 +1251,7 @@ p691
 tp692
 Rp693
 tp694
-a(S'cwt'
+a(Vcwt
 p695
 g4
 (g8
@@ -1260,7 +1260,7 @@ p696
 tp697
 Rp698
 tp699
-a(S'close'
+a(Vclose
 p700
 g4
 (g8
@@ -1278,7 +1278,7 @@ p706
 tp707
 Rp708
 tp709
-a(S'contract'
+a(Vcontract
 p710
 g4
 (g8
@@ -1287,7 +1287,7 @@ p711
 tp712
 Rp713
 tp714
-a(S'oct'
+a(Voct
 p715
 g4
 (g8
@@ -1296,7 +1296,7 @@ p716
 tp717
 Rp718
 tp719
-a(S'minimum'
+a(Vminimum
 p720
 g4
 (g8
@@ -1305,7 +1305,7 @@ p721
 tp722
 Rp723
 tp724
-a(S'forward'
+a(Vforward
 p725
 g4
 (g8
@@ -1314,7 +1314,7 @@ p726
 tp727
 Rp728
 tp729
-a(S'winnipeg'
+a(Vwinnipeg
 p730
 g4
 (g8
@@ -1341,7 +1341,7 @@ p741
 tp742
 Rp743
 tp744
-a(S'cdt'
+a(Vcdt
 p745
 g4
 (g8
@@ -1350,7 +1350,7 @@ p746
 tp747
 Rp748
 tp749
-a(S'hog'
+a(Vhog
 p750
 g4
 (g8
@@ -1368,7 +1368,7 @@ p756
 tp757
 Rp758
 tp759
-a(S'apr'
+a(Vapr
 p760
 g4
 (g8
@@ -1377,7 +1377,7 @@ p761
 tp762
 Rp763
 tp764
-a(S'jun'
+a(Vjun
 p765
 g4
 (g8
@@ -1386,7 +1386,7 @@ p766
 tp767
 Rp768
 tp769
-a(S'feb'
+a(Vfeb
 p770
 g4
 (g8
@@ -1404,7 +1404,7 @@ p776
 tp777
 Rp778
 tp779
-a(S'jul'
+a(Vjul
 p780
 g4
 (g8
@@ -1416,7 +1416,7 @@ tp784
 asS'134424newsML.xml'
 p785
 (lp786
-(S'wgtd'
+(Vwgtd
 p787
 g4
 (g8
@@ -1425,7 +1425,7 @@ p788
 tp789
 Rp790
 tp791
-a(S'caraustar'
+a(Vcaraustar
 p792
 g4
 (g8
@@ -1434,7 +1434,7 @@ p793
 tp794
 Rp795
 tp796
-a(S'freight'
+a(Vfreight
 p797
 g4
 (g8
@@ -1443,7 +1443,7 @@ p798
 tp799
 Rp800
 tp801
-a(S'avg'
+a(Vavg
 p802
 g4
 (g8
@@ -1461,7 +1461,7 @@ p808
 tp809
 Rp810
 tp811
-a(S'shr'
+a(Vshr
 p812
 g4
 (g8
@@ -1488,7 +1488,7 @@ p823
 tp824
 Rp825
 tp826
-a(S'net'
+a(Vnet
 p827
 g4
 (g8
@@ -1524,7 +1524,7 @@ p843
 tp844
 Rp845
 tp846
-a(S'sept'
+a(Vsept
 p847
 g4
 (g8
@@ -1562,7 +1562,7 @@ p864
 tp865
 Rp866
 tp867
-a(S'bidder'
+a(Vbidder
 p868
 g4
 (g8
@@ -1589,7 +1589,7 @@ p879
 tp880
 Rp881
 tp882
-a(S'pact'
+a(Vpact
 p883
 g4
 (g8
@@ -1607,7 +1607,7 @@ p889
 tp890
 Rp891
 tp892
-a(S'tender'
+a(Vtender
 p893
 g4
 (g8
@@ -1625,7 +1625,7 @@ p899
 tp900
 Rp901
 tp902
-a(S'ffr'
+a(Vffr
 p903
 g4
 (g8
@@ -1678,7 +1678,7 @@ p928
 tp929
 Rp930
 tp931
-a(S'bln'
+a(Vbln
 p932
 g4
 (g8
@@ -1708,7 +1708,7 @@ tp946
 asS'25828newsML.xml'
 p947
 (lp948
-(S'thatcher'
+(Vthatcher
 p949
 g4
 (g8
@@ -1717,7 +1717,7 @@ p950
 tp951
 Rp952
 tp953
-a(S'orr'
+a(Vorr
 p954
 g4
 (g8
@@ -1744,7 +1744,7 @@ p965
 tp966
 Rp967
 tp968
-a(S'ingram'
+a(Vingram
 p969
 g4
 (g8
@@ -1762,7 +1762,7 @@ p975
 tp976
 Rp977
 tp978
-a(S'bernard'
+a(Vbernard
 p979
 g4
 (g8
@@ -1780,7 +1780,7 @@ p985
 tp986
 Rp987
 tp988
-a(S'occult'
+a(Voccult
 p989
 g4
 (g8
@@ -1798,7 +1798,7 @@ p995
 tp996
 Rp997
 tp998
-a(S'libran'
+a(Vlibran
 p999
 g4
 (g8
@@ -1807,7 +1807,7 @@ p1000
 tp1001
 Rp1002
 tp1003
-a(S'ingham'
+a(Vingham
 p1004
 g4
 (g8
@@ -1846,7 +1846,7 @@ tp1023
 asS'134529newsML.xml'
 p1024
 (lp1025
-(S'berenato'
+(Vberenato
 p1026
 g4
 (g8
@@ -1855,7 +1855,7 @@ p1027
 tp1028
 Rp1029
 tp1030
-a(S'ducommun'
+a(Vducommun
 p1031
 g4
 (g8
@@ -1882,7 +1882,7 @@ p1042
 tp1043
 Rp1044
 tp1045
-a(S'chief'
+a(Vchief
 p1046
 g4
 (g8
@@ -1891,7 +1891,7 @@ p1047
 tp1048
 Rp1049
 tp1050
-a(S'barkeley'
+a(Vbarkeley
 p1051
 g4
 (g8
@@ -1900,7 +1900,7 @@ p1052
 tp1053
 Rp1054
 tp1055
-a(S'norman'
+a(Vnorman
 p1056
 g4
 (g8
@@ -1909,7 +1909,7 @@ p1057
 tp1058
 Rp1059
 tp1060
-a(S'board'
+a(Vboard
 p1061
 g4
 (g8
@@ -1918,7 +1918,7 @@ p1062
 tp1063
 Rp1064
 tp1065
-a(S'director'
+a(Vdirector
 p1066
 g4
 (g8
@@ -1936,7 +1936,7 @@ p1072
 tp1073
 Rp1074
 tp1075
-a(S'ceo'
+a(Vceo
 p1076
 g4
 (g8
@@ -1954,7 +1954,7 @@ p1082
 tp1083
 Rp1084
 tp1085
-a(S'joseph'
+a(Vjoseph
 p1086
 g4
 (g8

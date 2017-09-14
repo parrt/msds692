@@ -200,7 +200,7 @@ leay 0.143
 gisborn 0.143
 charg 0.131
 new 0.130
-island 0.127
+island 0.128
 auckland 0.113
 effici 0.110
 pricipl 0.096
