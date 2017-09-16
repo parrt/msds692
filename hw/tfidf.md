@@ -86,7 +86,7 @@ def stemwords(words):
 
 ### Sample application
 
-Our sample application for tokenization, in `common.py`, will be summarizing an article by showing the most common words. The input file is specified as a commandline argument and used from Python via `sys.argv[1]`. Use the functions above to read in the XML, tokenize it, stem it, and then show the 10 most common words with their word count.  Use a `Counter` object to get the counts and wrap your main script stuff so that it only executes if we run `common.py` (as opposed to importing it):
+Our sample application for tokenization will be in `common.py` and will summarize an article by showing the most common words. The input file is specified as a commandline argument and used from Python via `sys.argv[1]`. Use the functions above to read in the XML, tokenize it, stem it, and then show the 10 most common words with their word count.  Use a `Counter` object to get the counts:
 
 ```python
 xmltext = ... text from filename in sys.argv[1] ...
@@ -200,7 +200,7 @@ leay 0.143
 gisborn 0.143
 charg 0.131
 new 0.130
-island 0.127
+island 0.128
 auckland 0.113
 effici 0.110
 pricipl 0.096
@@ -321,8 +321,12 @@ In your repository `tfidf-`*userid*, you must have the following files in the ro
 
 ## Evaluation
 
-We will test your TFIDF functionality using `test_tfidf.py`, which uses the entire corpus for "training" but then uses just a small subset of the files for testing.
+We will test your TFIDF functionality using `test_tfidf.py`, which uses the entire corpus for "training" but then uses just a small subset of the files for testing. For example, on my machine:
 
-Any difference in words or TFIDF scores are treated as a 0 for that test. There are 12 randomly-selected test files used and you must get everything right for each file. I have computed the right values and store them in a pickled file, `corpus.pkl`, which is how the test compares your work for correctness.
+```bash
+$ python test_tfidf.py  ~/data/reuters-vol1-disk1-subset.zip 
+```
+
+Any difference in words or TFIDF scores are treated as a 0 for that test. There are 12 randomly-selected test files used and you must get everything right for each file. I have computed the right values and store them in a pickled file, `corpus.pkl`, which is how the test compares your work for correctness. (It compares the filename to list of (value,tfidf score) tuples).
 
 We will also make a quick check that your `common.py` and `summarize.py` scripts generate the right output.

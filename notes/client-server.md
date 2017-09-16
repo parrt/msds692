@@ -28,11 +28,13 @@ Another important detail: bank service employees do not waste time, running in p
 
 ```python
 import socket
+import netifaces as ni
 
 # Create a serve socket
 serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-ip = socket.gethostbyname(socket.gethostname())
-print "server listening at "+ip+":8000"
+ip = ni.ifaddresses('en0')[ni.AF_INET][0]['addr']
+print("server listening at "+ip+":8000")
+# (on linux it might be `eth0` not `en0`)
 serversocket.bind((ip, 8000)) # wait at port 8000
 # Start listening for connections from client
 serversocket.listen(5) # 5 is number of clients that can queue up before failure
@@ -59,6 +61,8 @@ Then start it up with and it will show you the IP address of your machine. For e
 $ python /tmp/server.py
 server listening at 192.168.0.105:8000
 ```
+
+If you get error `nodename nor servname provided, or not known` then see [this answer](https://apple.stackexchange.com/questions/253817/cannot-ping-my-local-machine) or previous [sockets](sockets.md) notes.
 
 Instead of writing code to open a raw socket to the server (which is as complicated as the server code above), we can simply use the UNIX `telnet` program as our client, for the purposes of this exercise. (When we need to communicate with a remote server as a client, the target will always be a web server. In that case we get to use a much higher level library, `urllib2`, without worrying about these low-level details.)  To test this out yourself, do this from the commandline:
 
