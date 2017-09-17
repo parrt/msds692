@@ -83,7 +83,7 @@ There are also plenty of nontext, binary formats. You can learn more from the MS
 
 * [Associations and dictionaries](notes/dict.ipynb) (Day 3)
 * [Search Engine Implementation](https://github.com/parrt/msan692/blob/master/hw/search.md) (**project**) (Day 3)
-* (code review of sample jsontable functions)
+* (code review of sample jsontable functions, more htable discussion)
 * [CSV command-line kung fu](notes/bashcsv.ipynb) (Day 4)
 * [Intro to information extraction from text](https://github.com/parrt/msan692/blob/master/notes/text.ipynb) (Day 5)
 * [Computing TFIDF](https://github.com/parrt/msan692/blob/master/notes/tfidf.pdf) (Day 5)
@@ -94,10 +94,10 @@ There are also plenty of nontext, binary formats. You can learn more from the MS
 Now you know how to work with data files already sitting on your desk, we turn towards a study of computer networking and web infrastructure.
 
 * [Network sockets](https://github.com/parrt/msan692/blob/master/notes/sockets.md), DNS, email (Day 6)
-* [client/server architecture](https://github.com/parrt/msan692/blob/master/notes/client-server.md)
-* [HTTP](https://github.com/parrt/msan692/blob/master/notes/http.md)
-* [flask](https://github.com/parrt/msan692/blob/master/notes/flask.md)
-* [Web analytics](https://github.com/parrt/msan692/blob/master/notes/webanalytics.md)
+* [client/server architecture](https://github.com/parrt/msan692/blob/master/notes/client-server.md) (Day 6)
+* [HTTP](https://github.com/parrt/msan692/blob/master/notes/http.md) (Day 7)
+* [flask](https://github.com/parrt/msan692/blob/master/notes/flask.md) (Day 7)
+* [Web analytics](https://github.com/parrt/msan692/blob/master/notes/ webanalytics.md) (Day 7)
 * [Cookies](https://github.com/parrt/msan692/blob/master/notes/cookies.md), logging in/out
 * [Building web servers](https://github.com/parrt/msan692/blob/master/hw/server.md) (**optional project**)
 
