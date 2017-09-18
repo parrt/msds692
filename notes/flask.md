@@ -33,7 +33,19 @@ $ curl http://127.0.0.1:5000
 Hello MSAN692!
 ```
 
-That little Web server actually spits out lots of stuff that you don't see.  Using the `-v` option, you can see the entire conversation between the client, `curl`, and the server:
+**Exercise**: run your previous python "get" code using this URL to fetch the data. Now you have a server and a client on same machine talking to each other.
+
+**Exercise**: Add this code so server spits out its IP address and have a partner use browser and python code from previous exercise to connect to your server. Then switch.
+
+```python
+import netifaces as ni
+ip = ni.ifaddresses('en0')[ni.AF_INET][0]['addr']
+print "I'm at IP "+ip
+...
+app.run('0.0.0.0')
+```
+
+Ok, so that little Web server actually spits out lots of stuff that you don't see.  Using the `-v` option, you can see the entire conversation between the client, `curl`, and the server:
 
 ```bash
 $ curl -v http://127.0.0.1:5000
@@ -145,3 +157,4 @@ mydata = """
 ```
 
 Now restart your server and visit the URL. You should see some nicely formatted data. Of course, now HTML will come to the command line if we use `curl`.
+
