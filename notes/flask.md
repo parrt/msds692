@@ -161,6 +161,8 @@ Now restart your server and visit the URL. You should see some nicely formatted 
 **Exercise**: Update your server so that it accepts URLs with an *argument*, `/data?format=txt`, and gives html by default or csv if `txt` format.
 
 ```python
+from flask import request
+...
 mydata = """
 parrt, 10, 134.983
 tombu, 11, 99.001
