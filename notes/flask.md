@@ -158,3 +158,22 @@ mydata = """
 
 Now restart your server and visit the URL. You should see some nicely formatted data. Of course, now HTML will come to the command line if we use `curl`.
 
+**Exercise**: Update your server so that it accepts URLs with an *argument*, `/data?format=txt`, and gives html by default or csv if `txt` format.
+
+```python
+mydata = """
+parrt, 10, 134.983
+tombu, 11, 99.001
+"""
+mydata_html = """
+<b>parrt</b>, 10, 134.983<br>
+tombu, 11, 99.001
+"""
+...
+@app.route("/data")
+def foo():
+    if request.args.get("format")=='txt':
+        return mydata
+    else:
+        return mydata_html
+```
