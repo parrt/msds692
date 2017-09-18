@@ -104,8 +104,7 @@ def load_articles(articles_dirname, gloves):
 
       [filename, title, article-text-minus-title, wordvec-for-article-text]
 
-    This record will be updated by add_doc2vecs() to include word vectors at position 3
-    of the record.  We use gloves parameter to compute the word vector.
+    We use gloves parameter to compute the word vector.
     """
 
 
