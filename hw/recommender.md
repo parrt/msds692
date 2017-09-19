@@ -53,8 +53,7 @@ def load_articles(articles_dirname, gloves):
 
       [filename, title, article-text-minus-title, wordvec-for-article-text]
 
-    This record will be updated by add_doc2vecs() to include word vectors at position 3
-    of the record.  We use gloves parameter to compute the word vector.
+    We use gloves parameter to compute the word vector.
     """
     ...
 ```
@@ -136,7 +135,7 @@ In your github repository, you should submit the following:
 
 ### AWS
 
-As part of your submission, you must launch a Linux instance at Amazon and install your software + necessary data. Then launch your server and keep it running for the duration of our grading period. We will notify you when it's okay to terminate that instance. Choose a server that is only one or two cents per hour.
+As part of your submission, you must launch a Linux instanceBig enough to hold the 300-vectors  at Amazon and install your software + necessary data. Then launch your server and keep it running for the duration of our grading period. We will notify you when it's okay to terminate that instance. Choose a server that is only about 5 cents per hour (either medium or large; not sure).
 
 Here is how I launch my server on AWS or locally:
  
@@ -173,6 +172,5 @@ test_server.py::test_sample_articles PASSED
 
 ========================================== 2 passed in 0.57 seconds ==========================================
 ```
-
 
 *Getting the article list right is worth 20% and getting the recommended articles right is worth 80%.* As you have the complete test, you should be able to get it working and we will grade in binary fashion (works or it doesn't).
