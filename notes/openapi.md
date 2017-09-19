@@ -73,7 +73,7 @@ QuoteURL = "https://www.quandl.com/api/v3/datatables/WIKI/PRICES.csv?ticker=%s&a
 Here's my solution from the command line:
 
 ```bash
-$ curl "https://www.quandl.com/api/v3/datatables/WIKI/PRICES.csv?ticker=AAPL&api_key=NGxt-Vnf67v8z_xT-c5B&date.gte=20150101&date.lt=20160101&qopts.columns=date,open"
+$ curl "https://www.quandl.com/api/v3/datatables/WIKI/PRICES.csv?ticker=AAPL&api_key=SECRET&date.gte=20150101&date.lt=20160101&qopts.columns=date,open"
 ```
 
 The data you get back is in CSV format. For stock ticker `TSLA`, you would see two requested fields (close to these values):
