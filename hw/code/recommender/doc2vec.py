@@ -112,7 +112,8 @@ def load_articles(articles_dirname, gloves):
 def doc2vec(text, gloves):
     """
     Return the word vector centroid for the text. Sum the word vectors
-    for each word and then divide by the number of words.
+    for each word and then divide by the number of words. Ignore words
+    not in gloves.
     """
 
 
