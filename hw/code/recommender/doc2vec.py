@@ -94,6 +94,7 @@ def words(text):
     Split on space to get word list.
     Ignore words < 3 char long.
     Lowercase all words
+    Remove English stop words
     """
 
 
