@@ -105,6 +105,33 @@ def article(topic,filename):
 
 Also note that we are using the template engine [jinja2](http://jinja.pocoo.org/docs/2.9/) that is built-in with flask. When you call `render_template()` from within a flask route method, it looks in the `templates` subdirectory for the file indicated in that function call. You need to pass in appropriate arguments to the two different page templates so the pages fill with data.
 
+### Your server will be attacked
+
+"Don't panic!" When you leave your web server up at port 80 for more than a few minutes, you will see people from around the web try to break into your computer. For example, you will see URLs like `/mysql/admin/`, `/phpmyadmin/`, `/dbadmin/`, `/mysql/`. The attacker is trying to use known exploits or default passwords for these various kinds of servers hoping to get in. You will see log entries printed from your flask server that look like this (138.202.1.109 was me):
+
+```
+$ sudo python server.py
+ * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+138.202.1.109 - - [20/Sep/2017 20:02:45] "GET / HTTP/1.1" 200 -
+138.202.1.109 - - [20/Sep/2017 20:03:07] "GET / HTTP/1.1" 200 -
+138.202.1.109 - - [20/Sep/2017 20:03:09] "GET / HTTP/1.1" 200 -
+138.202.1.109 - - [20/Sep/2017 20:10:20] "GET / HTTP/1.1" 200 -
+89.133.128.188 - - [20/Sep/2017 20:12:31] "HEAD http://174.129.105.171:80/dbadmin/ HTTP/1.1" 404 -
+89.133.128.188 - - [20/Sep/2017 20:12:32] "HEAD http://174.129.105.171:80/pma/ HTTP/1.1" 404 -
+89.133.128.188 - - [20/Sep/2017 20:12:32] "HEAD http://174.129.105.171:80/db/ HTTP/1.1" 404 -
+89.133.128.188 - - [20/Sep/2017 20:12:32] "HEAD http://174.129.105.171:80/admin/ HTTP/1.1" 404 -
+89.133.128.188 - - [20/Sep/2017 20:12:32] "HEAD http://174.129.105.171:80/mysql/ HTTP/1.1" 404 -
+89.133.128.188 - - [20/Sep/2017 20:12:33] "HEAD http://174.129.105.171:80/database/ HTTP/1.1" 404 -
+89.133.128.188 - - [20/Sep/2017 20:12:33] "HEAD http://174.129.105.171:80/db/phpmyadmin/ HTTP/1.1" 404 -
+89.133.128.188 - - [20/Sep/2017 20:12:33] "HEAD http://174.129.105.171:80/db/phpMyAdmin/ HTTP/1.1" 404 -
+89.133.128.188 - - [20/Sep/2017 20:12:33] "HEAD http://174.129.105.171:80/sqlmanager/ HTTP/1.1" 404 -
+...
+```
+
+It only took 7 minutes for the server to be attacked. It was attacked by four others within a few minutes. Naturally none of the attackers broke in because my flask server doesn't support any of those URLs. According to `whois`, the IP addresses of those connecting to my server were from Austria, India, Hungary, some local Comcast customer, and Australia.  Naturally the attacker is probably exploiting a machine or a proxy in those locations and is in some other location.
+
+Anyway, the upshot is you don't have to worry about these attacks but it's something interesting to be aware of. The Internet is constantly being swept by target acquisition radar. Any server that opens up a port through the firewall will start getting hit almost immediately.
+
 ## Getting started
 
 Download the [starterkit](https://github.com/parrt/msan692/tree/master/hw/code/recommender), which has the following files and structure:
