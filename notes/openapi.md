@@ -108,16 +108,17 @@ query = sys.argv[1]
 A **technical detail** related to valid strings you can include as part of a URL.  Spaces are not allowed so `John Chan` has to be encoded or "quoted".  Fortunately, `requests` does this automatically for us. If you ever need to quote URLs, use `urllib`:
 
 ```python
-query = urllib.quote(query)
+from requests.utils import quote
+query = quote(query)
 ```
 
 Because `&` is the separator between parameters, it is also invalid in a parameter name or value. Here are some example conversions:
 
 ```python
 >>> import urllib
->>> urllib.quote("john chan")
+>>> quote("john chan")
 'john%20chan'
->>> urllib.quote("john&chan")
+>>> quote("john&chan")
 'john%26chan'
 ```
 
