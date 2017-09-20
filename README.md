@@ -97,8 +97,9 @@ Now you know how to work with data files already sitting on your desk, we turn t
 * [client/server architecture](https://github.com/parrt/msan692/blob/master/notes/client-server.md) (Day 6)
 * [HTTP](https://github.com/parrt/msan692/blob/master/notes/http.md) (Day 7)
 * [flask](https://github.com/parrt/msan692/blob/master/notes/flask.md) (Day 7)
-* [Web analytics](https://github.com/parrt/msan692/blob/master/notes/webanalytics.md) (Day 8)
-* [Cookies](https://github.com/parrt/msan692/blob/master/notes/cookies.md), logging in/out (Day 8)
+* Review exam, launch AWS box, launch flask server at port 80 (Day 8)
+* [Web analytics](https://github.com/parrt/msan692/blob/master/notes/webanalytics.md) (Day 9)
+* [Cookies](https://github.com/parrt/msan692/blob/master/notes/cookies.md), logging in/out (Day 9)
 * [Building web servers](https://github.com/parrt/msan692/blob/master/hw/server.md) (**optional project**)
 
 ## Data sources
