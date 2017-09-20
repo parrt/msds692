@@ -140,8 +140,10 @@ As part of your submission, you must launch a Linux instanceBig enough to hold t
 Here is how I launch my server on AWS or locally:
  
 ```bash
-$ sudo python server.py ~/data/glove/glove.6B.300d.txt ~/github/msan692/data/bbc
+$ sudo python server.py ~/data/glove/glove.6B.300d.txt ~/github/msan692/data/bbc &
 ```
+
+**Note the `&` on the end that launches that server in the background, not the foreground.**  That means that when you log out of the remote computer, breaking the connection, that process still keeps running. It means we can still access the Web server even though you are not connected with ssh.
 
 Note that I have given fully qualified pathnames to the word vectors and the root of the BBC article corpus. The `sudo` is required so that the server runs as the superuser, which is the only user that is able to open a process listening at port 80 (the HTTP web protocol port).
 
