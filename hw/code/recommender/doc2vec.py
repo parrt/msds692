@@ -103,9 +103,9 @@ def load_articles(articles_dirname, gloves):
     Load all .txt files under articles_dirname and return a table (list of lists)
     where each record is a list of:
 
-      [filename, title, article-text-minus-title, wordvec-for-article-text]
+      [filename, title, article-text-minus-title, wordvec-centroid-for-article-text]
 
-    We use gloves parameter to compute the word vector.
+    We use gloves parameter to compute the word vectors and centroid.
     """
 
 
