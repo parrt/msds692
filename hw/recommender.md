@@ -189,7 +189,7 @@ wget https://s3-us-west-1.amazonaws.com/msan692/bbc.7z
 You should now be able to run your server:
 
 ```bash
-sudo python server.py glove.6B.300d.txt bbc
+sudo python server.py glove.6B.300d.txt bbc &
 ```
 
 Don't forget to open up port 80 in the far wall for the server so that the outside world can access it. Make sure that you test from your laptop!
@@ -214,10 +214,10 @@ In your github repository, you should submit the following:
 
 As part of your submission, you must launch a Linux instanceBig enough to hold the 300-vectors  at Amazon and install your software + necessary data. Then launch your server and keep it running for the duration of our grading period. We will notify you when it's okay to terminate that instance. Choose a server that is only about 5 cents per hour (either medium or large; not sure).
 
-Here is how I launch my server on AWS or locally:
+Here is how I launch my server on AWS (see above) or locally:
  
 ```bash
-$ sudo python server.py ~/data/glove/glove.6B.300d.txt ~/github/msan692/data/bbc &
+$ sudo python server.py glove.6B.300d.txt bbc &
 ```
 
 **Note the `&` on the end that launches that server in the background, not the foreground.**  That means that when you log out of the remote computer, breaking the connection, that process still keeps running. It means we can still access the Web server even though you are not connected with ssh.
