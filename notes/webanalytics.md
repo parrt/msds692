@@ -58,13 +58,13 @@ The HTML asks the browser to display a simple image:
 
 <img src=http://www.antlr.org/images/icons/antlr.png>
 
-Your browser makes **two** web requests, one to xyz.com and **another** to www.antlr.org for the image.
+Your browser makes **two** web requests, one to xyz.com to get the page itself and **another** to www.antlr.org for the image.
 
-Any page on the Internet that references this image would notify my antlr.org server every time a browser visited that page. Now imagine that the image is an invisible 1x1 image and you can see that it could be hidden in lots of websites. Antlr.org could then track references to pages all over the net.   The amount we can track from this image reference depends on how much information we add to the `img` tag URL. Here we are not adding anything but typically JavaScript is used to collect all sorts of information and pass it to the tracking server through URL parameters or cookies (more on this later).
+Any page on the Internet that references this image would notify my antlr.org server every time a browser visited that page. Now imagine that the image is an invisible 1x1 image and you can see how it could be hidden in lots of websites. Antlr.org could then track references to pages all over the net.   The amount we can track from this image reference depends on how much information we add to the `img` tag URL. Here we are not adding anything but typically JavaScript is used to collect all sorts of information and pass it to the tracking server through URL parameters or cookies (more on this later).
 
 ### Exercise
 
-Work with a partner on this. Make an html page that references a URL on your partner's computer via an `img` tag:
+Work with a partner on this. One person makes an html page called `t.html` that references a URL on your partner's computer via an `img` tag:
 
 ```html
 <html>
@@ -74,13 +74,14 @@ Work with a partner on this. Make an html page that references a URL on your par
 </html>
 ```
 
-The partner has to have a flask server running with URL `/track1 available.
+You can view that file with `open t.html` from a mac command line.
+
+The partner has to have a flask server running with URL `/track` available (in perhaps `server.py`):
 
 ```python
 from flask import Flask
 import netifaces as ni
 ip = ni.ifaddresses('en0')[ni.AF_INET][0]['addr']
-print "Listening at IP "+ip+" port 5000"
 
 app = Flask(__name__)
 
@@ -88,26 +89,24 @@ app = Flask(__name__)
 def trackme():
     return ""
 
-app.run(host='0.0.0.0')
+app.run(host=ip)
 ```
 
-That `host='0.0.0.0'` is a bit weird but basically makes the server allow connections associated with any IP address that gets routed to this machine. When that server starts up you will see something like the following:
+When that server starts up you will see something like the following:
 
-```
-Listening at IP 172.16.198.184 port 5000
- * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+```bash
+$ python server.py
+ * Running on http://172.16.198.184:5000/ (Press CTRL+C to quit)
 ...
 ```
 
-Pay attention to the first-line is that has the IP address that the HTML file's `img` tag should reference.
+where `172.16.198.184` is my computer's IP address.  Pay attention to this because that is the IP address that the HTML file's `img` tag should reference. The HTML file is on another person's computer.
 
 Every time you refresh the browser, your partner should see a log entry such as the following appear on their screen:
 
 ```
 172.16.198.184 - - [17/Sep/2017 12:42:05] "GET /track HTTP/1.1" 200 -
 ```
-
-
 
 ### What is JavaScript?
 
