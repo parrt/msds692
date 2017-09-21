@@ -80,16 +80,7 @@ Cookie: countryCode=US; geoData=san francisco|CA|94117|US|NA; tryThing00=7772
 
 ```
 
-which sends those cookie keyvalue pairs back to cnn. If you'd like to watch the conversation between client and server, you can use curl with `-c` to store cookies in a "cookie jar" file and `-b` to send those cookies back:
-
-```bash
-$ curl -v -c /tmp/cookies http://www.cnn.com/
-...
-$ curl -v -b /tmp/cookies http://www.cnn.com/
-...
-```
-
-The `-v` option shows the conversation going out and coming back from the server.
+which sends those cookie keyvalue pairs back to cnn. 
 
 **Exercise:**  Open a fresh tab in your browser and open the developer tools. Then go to CNN.com in the URL text field. In chrome, you should see a bunch of cookies:
 
@@ -156,10 +147,20 @@ $ curl --cookie a=a611ba358d77595991882a6d595ab359cedd8952713792e6172e900c7a5779
 
 Notice how `curl` has sent a cookie with the request, `> Cookie: a=a611...`.  Also note that it is different than the cookie response, `< Set-Cookie: nyt-a=4ac2...`.  No doubt the cookie encodes all sorts of information that the New York Times wants to track for each user.
 
+If you'd like to save all cookies coming back from a server, you can use curl with `-c` to store cookies in a "cookie jar" file and `-b` to send those cookies back:
+
+```bash
+$ curl -v -c /tmp/cookies http://www.cnn.com/
+...
+$ curl -v -b /tmp/cookies http://www.cnn.com/
+...
+```
+
 # How ad companies track you
 
 ## Background
-The browser sends cookies to remote servers even for images, not just webpages. Consider the following simple webpage with a reference to an image on another site. This HTML file would presumably be on some server xyz.com:
+
+We've already seen an example the webpage that refers to an image from my antlr site:
 
 <img src=figures/pageimg.png width=400>
 
@@ -167,7 +168,9 @@ The HTML asks the browser to display a simple image:
 
 <img src=http://www.antlr.org/images/icons/antlr.png>
 
-Your browser makes **two** web requests, one to xyz.com to get the HTML page and **another** to www.antlr.org for the image. This gives `antlr.org` the opportunity to send cookies to the browser, say, *X=Y*. Any page, literally anywhere on the Internet, that references *anything* at `antlr.org` will send that *X=Y* cookie back to the `antlr.org` server along with the image request. Now `antlr.org` knows whenever you access a webpage containing one of its images. It can use the *Y* value to uniquely identify users simply by creating a unique identifier as *Y* for every new `antlr.org` request.
+Recall that your browser makes **two** web requests, one to xyz.com to get the HTML page and **another** to www.antlr.org for the image.  
+
+It not only notifies the `antlr.org` server but the image reference gives `antlr.org` the opportunity to send cookies to the browser, say, *X=Y*. Any page, literally anywhere on the Internet, that references *anything* at `antlr.org` will send that *X=Y* cookie back to the `antlr.org` server along with the image request. Now `antlr.org` knows whenever you access a webpage containing one of its images. It can use the *Y* value to uniquely identify users simply by creating a unique identifier as *Y* for every new `antlr.org` request (any request that does not come in with antlr cookies set).
 
 ## Using hidden images to track users
 
@@ -196,13 +199,20 @@ There are a number of things to notice here:
 
 Now, imagine that I go to a random website X that happens to have an ad from `realmedia.com`. My browser will send all cookies associated with `realmedia.com` to their server, effectively notifying them that I am looking at X. `realmedia.com` will know about every page I visit that contains their ads *anywhere on the Internet*.
 
-Recently I was looking at hotels in San Diego and also purchasing some cat food on a different website. Then I went to Facebook and saw ads for the exact rooms and cat food I was looking for. This all works through the magic of cookies. There is a big ad clearinghouse where FB can ask if anybody is interested in serving ads to one of its users with a unique identifier. Hopefully they don't pass along your identity, but your browser still passes along your cookies for that ad server domain. The ad companies can then bid to send you an ad. Because your browser keeps sending the same cookies to them regardless of the website, hotel and pet food sites can show you ads for what you were just looking at on a completely unrelated site. wow. Here is a visualization of me visiting two different non-FB websites.
+Recently I was looking at hotels in San Diego and also purchasing some cat food on a different website. Then I went to Facebook and saw ads for the exact rooms and cat food I was looking for. This all works through the magic of cookies.
+
+*in progress*
+
+The easiest mechanism to make this work is as follows. The HTML pages coming back from hotelfoo.com and petfoo.com have hidden img tags (or maybe JavaScript but let's assume an image) that refer to URLs on some Facebook server. For example, something akin to `<img src=facebook.com/ad.png?page=hotelfoo.com/oceanview>`.  Because of the reference to Facebook, the Facebook server can store cookies
+
+These images are hidden references to facebook's server, who knows me as ID=99. The image reference is more than a reference to an invisible image---there is a parameter on the image reference that identifies the page containing the image. 
+There is a big ad clearinghouse where FB can ask if anybody is interested in serving ads to one of its users with a unique identifier.  Hopefully they don't pass along your identity, but your browser still passes along your cookies for that ad server domain. The ad companies can then bid to send you an ad. Because your browser fetches image tags from keeps sending the same cookies to them regardless of the website, hotel and pet food sites can show you ads for what you were just looking at on a completely unrelated site. wow. Here is a visualization of me visiting two different non-FB websites.
 
 <img src="figures/fb-ads.png">
 
 The HTML pages coming back from hotelfoo.com and petfoo.com have hidden images (or maybe JavaScript but let's assume an image). These images are hidden references to facebook's server, who knows me as ID=99. The image reference is more than a reference to an invisible image---there is a parameter on the image reference that identifies the page containing the image. For example, something akin to `<img src=facebook.com/ad.png?page=hotelfoo.com/oceanview>`.  
 
-The next time I visit facebook.com, that server quickly asks any advertisers if they would like to purchase and add on my webpage. 
+The next time I visit facebook.com, that server quickly asks any advertisers if they would like to purchase an add on my FB page. 
 
 <img src="figures/fb-ads-show.png">
 
