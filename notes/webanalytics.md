@@ -196,14 +196,20 @@ Ok, in a nutshell, web tracking works when a website developer includes a bit of
 
 ## Homebrew web analytics
 
-**Exercise**. Let's build our own web analytics server, a more sophisticated version of the exercise we did above. We need a server that answers:
+**Exercise**. Let's build our own web analytics server, a more sophisticated version of the exercise we did above.  To make it respond to requests for `localhost` and your laptops actual IP address, change the `run()` command to be:
 
-* `http://IP_ADDRESS:5000/track.gif?page=...` Any page with an image reference to this URL will notify our server.
-* `http://IP_ADDRESS:5000/dashboard` If we go to this URL in a browser, we should see a histogram of the page views.
+```python
+app.run(host='0.0.0.0')
+```
+
+Ok, so we need a server that answers:
+
+* `http://127.0.0.1:5000/track.gif?page=...` Any page with an image reference to this URL will notify our server.
+* `http://127.0.0.1:5000/dashboard` If we go to this URL in a browser, we should see a histogram of the page views.
 
 (Our flask servers by default pop up at URL `http://127.0.0.1:5000`.)
 
-For the purposes of this exercise, you can use this [directory of files](https://github.com/parrt/msan692/tree/master/notes/code/webanalytics/static). Put `static` in the same directory as your Python code.  For example, the `static/index.html` file looks like:
+For the purposes of this exercise, you can use this [directory of files](https://github.com/parrt/msan692/tree/master/notes/code/webanalytics/static). Put that `static` directory in the same directory as your Python code.  For example, the `static/index.html` file looks like:
 
 ```html
 <html>
@@ -215,13 +221,16 @@ A fake home page with <a href="anotherpage.html">link to some other page</a>.
 </html>
 ```
 
-The `img` tag on the bottom will notify our server that somebody has accessed `index.html`.  Recall that the browser makes another socket connection to some remote server for each image tag.
+The `img` tag will contact our server, indicating that somebody has accessed page `index.html`.  Recall that the browser makes another socket connection to some remote server for each image tag.
 
 Here is a starter kit for your `server.py` file:
 
 ```python
 from flask import Flask
 from flask import request
+import netifaces as ni
+ip = ni.ifaddresses('en0')[ni.AF_INET][0]['addr']
+print "This machines IP address is "+ip
 
 app = Flask(__name__)
 
@@ -233,10 +242,10 @@ def track():
         print "Visit to page "+page
     # return the result of calling app.send_static_file on 'images/shim.gif'
 
-app.run()
+app.run(host='0.0.0.0')
 ```
 
-Once you think you have your server going, start it up and then have your browser open the local file `static/index.html`. You should see `Visit to page index.html` as output from the running server. Try it a few times and click on the link to `anotherpage.html`. You should see different output in the server console.
+Once you think you have your server going, open your browser on the local file `static/index.html`. You should see `Visit to page index.html` as output from the running server. Try it a few times and click on the link to `anotherpage.html`. You should see different output in the server console.
 
 Now, add a `dashboard` function to your server that is triggered when someone visits URL `http://127.0.0.1:5000/dashboard`.
 
@@ -246,13 +255,13 @@ def dashboard():
     ...
 ```
 
-To keep track of the page views, use a `Counter` object that we used previously to keep track of a word histogram:
+To keep track of the page views, use a `Counter` object initialized as a global variable:
 
 ```python
 pageviews = Counter()
 ```
 
-You will have to modify `track()` so that it updates `pageviews`. The `dashboard()` function can then create and return an HTML table **string** that shows the histogram:
+You will have to modify `track()` so that it updates `pageviews`. The `dashboard()` function can then create and return an HTML table string that shows the histogram such as:
 
 <img src=figures/dashboard.png width=150>
 
@@ -279,6 +288,6 @@ r.th("Page name")
 
 ### Going further
 
-If you are a more advanced programmer, you can improve the functionality of the server by adding parameters to the tracking `img` tag that include the referring page automatically, instead of manually as it's done now. You can look up on the web how to get access to the page, the browser, the language, even the size of the user screen. All of this can be passed as arguments to the image reference. Your tracking function must then record this in addition to the page name. Your `Counter` object used previously, that tracked page name to count, is still useful but you should add another `Counter` for each parameter you pass, such as user agent (browser). Then you should modify your dashboard to include that information as well.
+If you are a more advanced programmer, you can improve the functionality of the server by adding parameters to the tracking `img` tag that include the referring page automatically, instead of manually as it's done now (using JavaScript). You can look up on the web how to get access to the page, the browser, the language, even the size of the user screen. All of this can be passed as arguments to the image reference. Your tracking function must then record this in addition to the page name. Your `Counter` object used previously, that tracked page name to count, is still useful but you should add another `Counter` for each parameter you pass, such as user agent (browser). Then you should modify your dashboard to include that information as well.
 
-Next, you can set the `host` parameter on `run()` so flask opens at your specific IP not 127.0.0.1. Then modify the HTML files so they reference your IP. Give them to another person and have them load the files in their browser. You should see their requests and your dashboard should reflect that.
+Next, you can modify the HTML files so they reference your actual IP address instead of 127.0.0.1. Give those files to another person and have them load the files in their browser. You should see their requests as output from your server and your dashboard should reflect that when you refresh.
