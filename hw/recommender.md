@@ -154,7 +154,7 @@ The first thing is to launch a server with different software than the simple  A
 
 <img src=figures/aws-ami.png width=500>
 
-Create a `t2.medium` size computer (in Oregon; it's cheaper)!  The cost is $0.047 per Hour.
+Create a `t2.medium` size computer (in Oregon; it's cheaper)!  The cost is $0.047 per Hour, which is only $1.12 per day.
 
 When you try to connect, it will tell you to use user `root` but use `ec2-user` like we did for the other machines.  In other words, here's how I login:
  
