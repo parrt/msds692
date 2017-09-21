@@ -22,37 +22,49 @@ A server can specify the lifetime of cookies in terms of seconds to live or that
 
 # Sample HTTP traffic with cookies
 
-My first request to `nytimes.com` results in a cookie coming back from cnn:
+My first request to `http://www.cnn.com/` results in a cookie coming back from cnn:
 
 BROWSER SENDS:
 
 ```
 GET / HTTP/1.1
-Host: www.nytimes.com
-connection=Close
-accept=*/*
+Host: www.cnn.com
+User-Agent: curl/7.49.0
+Accept: */*
 
 ```
 
-HEADERS FROM REMOTE SERVER (sets cookie with name `RMID ` to `007f0102269d57d2fadd0006 `):
+(including of life line at the end)
+
+HEADERS FROM REMOTE SERVER (sets cookies called `countryCode`, `geoData`, and `tryThing00`):
 
 ```
 HTTP/1.1 200 OK
-Server: Apache
-Vary: Host
-X-App-Name: homepage
-Cache-Control: no-cache
+access-control-allow-origin: * 
+cache-control: max-age=60
+content-security-policy: default-src 'self' blob: https://*.cnn.com:* http://*.cnn.com:* *.cnn.io:* *.cnn.net:* *.turner.com:* *.turner.io:* *.ugdturner.com:* courageousstudio.com *.vgtf.net:*; script-src 'unsafe-eval' 'unsafe-inline' 'self' *; style-src 'unsafe-inline' 'self' blob: *; child-src 'self' blob: *; frame-src 'self' *; object-src 'self' *; img-src 'self' data: blob: *; media-src 'self' blob: *; font-src 'self' data: *; connect-src 'self' *; frame-ancestors 'self' *.cnn.com:* *.turner.com:* courageousstudio.com;
 Content-Type: text/html; charset=utf-8
-Transfer-Encoding: chunked
-Date: Fri, 09 Sep 2016 18:09:32 GMT
-Age: 1550
-X-API-Version: 5-5
-X-Cache: hit
-X-PageType: homepage
-nnCoection: close
-X-Frame-Options: DENY
-Set-Cookie: RMID=007f0102269d57d2fadd0006;Path=/; <--------------- COOKIE!Domain=nytimes.com;Expires=Sat, 09 Sep 2017 18:09:32 UTC
+x-content-type-options: nosniff
+x-servedByHost: ::ffff:172.17.30.21
+x-xss-protection: 1; mode=block
+Via: 1.1 varnish
+Fastly-Debug-Digest: 46be59e687681f2cbdc5286ab50024ed035dc360065b1aec7ce355bf418daeb9
+Content-Length: 141398
+Accept-Ranges: bytes
+Date: Thu, 21 Sep 2017 22:36:48 GMT
+Via: 1.1 varnish
+Age: 84
+Connection: keep-alive
+Set-Cookie: countryCode=US; Domain=.cnn.com; Path=/
+Set-Cookie: geoData=san francisco|CA|94117|US|NA; Domain=.cnn.com; Path=/
+Set-Cookie: tryThing00=8432; Domain=.cnn.com; Path=/; Expires=Sun Apr 01 2018 00:00:00 GMT
+X-Served-By: cache-iad2139-IAD, cache-sjc3626-SJC
+X-Cache: HIT, HIT
+X-Cache-Hits: 1, 16
+X-Timer: S1506033409.697123,VS0,VE0
+Vary: Accept-Encoding, Fastly-SSL, Fastly-SSL
 
+... web page html ...
 ```
 
 In the second HTTP request, we see that my browser is sending the cookie back to cnn.
@@ -60,13 +72,24 @@ In the second HTTP request, we see that my browser is sending the cookie back to
 BROWSER SENDS (sends cookie back to the server):
 
 ```
-GET robots.txt HTTP/1.1
-Host: www.nytimes.com
-cookie=RMID=007f0102269d57d2fadd0006           <--------------- COOKIE!
-connection=Close
-accept=*/*
+GET / HTTP/1.1
+Host: www.cnn.com
+User-Agent: curl/7.49.0
+Accept: */*
+Cookie: countryCode=US; geoData=san francisco|CA|94117|US|NA; tryThing00=7772
 
 ```
+
+which sends those cookie keyvalue pairs back to cnn. If you'd like to watch the conversation between client and server, you can use curl with `-c` to store cookies in a "cookie jar" file and `-b` to send those cookies back:
+
+```bash
+$ curl -v -c /tmp/cookies http://www.cnn.com/
+...
+$ curl -v -b /tmp/cookies http://www.cnn.com/
+...
+```
+
+The `-v` option shows the conversation going out and coming back from the server.
 
 **Exercise:**  Open a fresh tab in your browser and open the developer tools. Then go to CNN.com in the URL text field. In chrome, you should see a bunch of cookies:
 
