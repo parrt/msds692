@@ -106,6 +106,9 @@ def load_articles(articles_dirname, gloves):
       [filename, title, article-text-minus-title, wordvec-centroid-for-article-text]
 
     We use gloves parameter to compute the word vectors and centroid.
+
+    The filename is stripped of the prefix of the articles_dirname pulled in as
+    script parameter sys.argv[2]. E.g., filename will be "business/223.txt"
     """
 
 

@@ -198,8 +198,8 @@ Ok, in a nutshell, web tracking works when a website developer includes a bit of
 
 **Exercise**. Let's build our own web analytics server, a more sophisticated version of the exercise we did above. We need a server that answers:
 
-* `http://127.0.0.1:5000/track.gif?page=...` Any page with an image reference to this URL will notify our server.
-* `http://127.0.0.1:5000/dashboard` If we go to this URL in a browser, we should see a histogram of the page views.
+* `http://IP_ADDRESS:5000/track.gif?page=...` Any page with an image reference to this URL will notify our server.
+* `http://IP_ADDRESS:5000/dashboard` If we go to this URL in a browser, we should see a histogram of the page views.
 
 (Our flask servers by default pop up at URL `http://127.0.0.1:5000`.)
 
