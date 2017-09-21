@@ -48,7 +48,7 @@ The description of those functions is in `doc2vec.py` from the starter kit, but 
 ```python
 def load_articles(articles_dirname, gloves):
     """
-    Load all .txt files under articles_dirname and return a table (list of lists)
+    Load all .txt files under articles_dirname and return a table (list of lists/tuples)
     where each record is a list of:
 
       [filename, title, article-text-minus-title, wordvec-centroid-for-article-text]
@@ -62,7 +62,8 @@ def load_articles(articles_dirname, gloves):
 def recommended(article, articles, n):
     """
     Return a list of the n articles (records with filename, title, etc...)
-    closest to article's word vector centroid.
+    closest to article's word vector centroid. The article is one of the elements
+    (tuple) from the articles list.
     """
     ...
 ```

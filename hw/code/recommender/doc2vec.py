@@ -100,7 +100,7 @@ def words(text):
 
 def load_articles(articles_dirname, gloves):
     """
-    Load all .txt files under articles_dirname and return a table (list of lists)
+    Load all .txt files under articles_dirname and return a table (list of lists/tuples)
     where each record is a list of:
 
       [filename, title, article-text-minus-title, wordvec-centroid-for-article-text]
@@ -120,12 +120,14 @@ def doc2vec(text, gloves):
 def distances(article, articles):
     """
     Compute the euclidean distance from article to every other article and return
-    a list of (distance, a) tuples for all a in articles.
+    a list of (distance, a) tuples for all a in articles. The article is one
+    of the elements (tuple) from the articles list.
     """
 
 
 def recommended(article, articles, n):
     """
     Return a list of the n articles (records with filename, title, etc...)
-    closest to article's word vector centroid.
+    closest to article's word vector centroid. The article is one of the elements
+    (tuple) from the articles list.
     """
