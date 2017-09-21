@@ -69,7 +69,7 @@ def recommended(article, articles, n):
 
 ### Web server
 
-Besides those core functions, you need to build a web server as well using flask. To learn how to launch a flask web server at Amazon, check out this [video](https://www.youtube.com/watch?v=qQncEJL6NHs&t=156s) I made. The server should respond to two different URLs: the list of articles is at `/` and each article is at something like `/article/business/353.txt`. The BBC corpus in directory `bbc` is organized with topic subdirectories and then a list of articles as text files:
+Besides those core functions, you need to build a web server as well using flask. See the video on [how to launch a flask web server at Amazon](https://www.youtube.com/watch?v=qQncEJL6NHs&t=156s) that I made for you. The server should respond to two different URLs: the list of articles is at `/` and each article is at something like `/article/business/353.txt`. The BBC corpus in directory `bbc` is organized with topic subdirectories and then a list of articles as text files:
 
 <img src="figures/bbc.png" width=300>
 
@@ -145,6 +145,56 @@ Download the [starterkit](https://github.com/parrt/msan692/tree/master/hw/code/r
 ```
 
 There are predefined functions with comments indicating the required functionality.
+
+## Launching your server at Amazon
+
+Creating a server that has all the appropriate software can be tricky so I have recorded a sequence that works for me.
+
+The first thing is to launch a server with different software than the simple  Amazon linux we have been using in class. We need one that has, for example, `numpy` and friends so let's use an *image* (snapshot of a disk with a bunch of stuff installed) that already has machine learning software installed: Use "*Deep Learning AMI Amazon Linux Version 3.1_Sep2017 - ami-bde90fc7*":
+
+<img src=figures/aws-ami.png width=500>
+
+Create a `t2.medium` size computer (in Oregon; it's cheaper)!  The cost is $0.047 per Hour.
+
+When you try to connect, it will tell you to use user `root` but use `ec2-user` like we did for the other machines.  In other words, here's how I login:
+ 
+```bash
+$ ssh -i "parrt.pem" ec2-user@34.203.194.19
+```
+
+Then install software we need:
+
+```bash
+sudo pip install flask
+sudo yum install -y p7zip.x86_64
+sudo cp /usr/bin/7za /usr/bin/7z
+```
+
+Now, clone your repository into the home directory:
+
+```bash
+cd ~
+git clone https://github.com/USF-MSAN692/recommender-parrt.git
+cd recommender-parrt
+```
+
+Now, download the data you need and unzip:
+
+```bash
+wget https://s3-us-west-1.amazonaws.com/msan692/glove.6B.300d.txt
+wget https://s3-us-west-1.amazonaws.com/msan692/bbc.7z
+7z x bbc.7z
+```
+
+You should now be able to run your server:
+
+```bash
+sudo python server.py glove.6B.300d.txt bbc
+```
+
+Don't forget to open up port 80 in the far wall for the server so that the outside world can access it. Make sure that you test from your laptop!
+
+Make sure the `IP.txt` file as the **public** IP address of your server on the line by itself!
 
 ## Deliverables
 
