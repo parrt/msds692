@@ -257,7 +257,7 @@ i set some cookies. haha!
 Try doing the same thing in the browser using the developer tools to see the cookies:
 
 <img src=figures/setcookie.png width=400>
- 
+
 ## Fetch cookies
 
 Once a server has sent cookies to a browser, the browser will send those cookies back to the server upon each request. In order to get those cookies, the flask "view" function can simply pull them out from the dictionary sent to the server by the browser. Very handy. 
@@ -273,7 +273,7 @@ def getcookie():
 
 Please make the distinction in your head between GET URL parameters and cookies. GET parameters come in to the server as `?x=y` on the URL itself whereas cookies come in as part of the GET headers, not the URL.
 
-**Exercise**: Upgrade the server from the previous section that sets cookies to include this code to fetch the cookie. Now open pages in the browser in the following sequence to set and get cookies:
+**Exercise**: Upgrade the server from the previous section, that sets cookies, to include `getcookie()` to fetch the cookie. Now open pages in the browser in the following sequence to set and get cookies:
 
 ```
 http://127.0.0.1:5000/setcookie
