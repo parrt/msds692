@@ -208,7 +208,7 @@ The easiest mechanism to make this work is as follows. The HTML pages coming bac
 These images are hidden references to facebook's server, who knows me as ID=99. The image reference is more than a reference to an invisible image---there is a parameter on the image reference that identifies the page containing the image. 
 There is a big ad clearinghouse where FB can ask if anybody is interested in serving ads to one of its users with a unique identifier.  Hopefully they don't pass along your identity, but your browser still passes along your cookies for that ad server domain. The ad companies can then bid to send you an ad. Because your browser fetches image tags from keeps sending the same cookies to them regardless of the website, hotel and pet food sites can show you ads for what you were just looking at on a completely unrelated site. wow. Here is a visualization of me visiting two different non-FB websites.
 
-<img src="figures/fb-ads.png">
+<img src="figures/fb-ads.png" width=400>
 
 The HTML pages coming back from hotelfoo.com and petfoo.com have hidden images (or maybe JavaScript but let's assume an image). These images are hidden references to facebook's server, who knows me as ID=99. The image reference is more than a reference to an invisible image---there is a parameter on the image reference that identifies the page containing the image. For example, something akin to `<img src=facebook.com/ad.png?page=hotelfoo.com/oceanview>`.  
 
