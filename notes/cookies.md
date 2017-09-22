@@ -199,26 +199,17 @@ There are a number of things to notice here:
 
 Now, imagine that I go to a random website X that happens to have an ad from `realmedia.com`. My browser will send all cookies associated with `realmedia.com` to their server, effectively notifying them that I am looking at X. `realmedia.com` will know about every page I visit that contains their ads *anywhere on the Internet*.
 
-Recently I was looking at hotels in San Diego and also purchasing some cat food on a different website. Then I went to Facebook and saw ads for the exact rooms and cat food I was looking for. This all works through the magic of cookies.
+Recently I was looking at hotels in San Diego and also purchasing some cat food on a different website. Then I went to Facebook and saw ads for the exact rooms and cat food I was just looking at! This all works through the magic of cookies.
 
-*in progress*
+The easiest mechanism to make this work is as follows. The HTML pages coming back from hotelfoo.com and petfoo.com have hidden img tags (or maybe JavaScript but let's assume an image) that refer to URLs on some third-party ad company's server. For example, something akin to `<img src=ads.com/ad.png?page=hotelfoo.com/oceanview>`.  Because of the reference to ads.com, our browser contacts the ads.com server. That ads.com server can send back and store cookies on my laptop that identify me as, for example ID=99. They don't know who I am but they know that they have assigned a unique identifier to my specific browser. Every time my browser sees a reference to ads.com in some web page, it will send back the ads.com ID=99 cookie to ads.com. Notice that there is a `page` parameter on the image reference that identifies the page containing the image. In other words, the ad company knows that ID 99 visited page `hotelfoo.com/oceanview`.
 
-The easiest mechanism to make this work is as follows. The HTML pages coming back from hotelfoo.com and petfoo.com have hidden img tags (or maybe JavaScript but let's assume an image) that refer to URLs on some Facebook server. For example, something akin to `<img src=facebook.com/ad.png?page=hotelfoo.com/oceanview>`.  Because of the reference to Facebook, the Facebook server can store cookies
-
-These images are hidden references to facebook's server, who knows me as ID=99. The image reference is more than a reference to an invisible image---there is a parameter on the image reference that identifies the page containing the image. 
-There is a big ad clearinghouse where FB can ask if anybody is interested in serving ads to one of its users with a unique identifier.  Hopefully they don't pass along your identity, but your browser still passes along your cookies for that ad server domain. The ad companies can then bid to send you an ad. Because your browser fetches image tags from keeps sending the same cookies to them regardless of the website, hotel and pet food sites can show you ads for what you were just looking at on a completely unrelated site. wow. Here is a visualization of me visiting two different non-FB websites.
+Now imagine I go to the pet food company that also has a hidden image reference to ads.com, such as `<img src=ads.com/ad.png?page=petfoo.com/catfood>`. My browser will send ID=99 to the ad company and let it know that I have also visited page `petfoo.com/catfood`.  Here is a visualization of me visiting two different non-FB websites.
 
 <img src="figures/fb-ads.png" width=400>
 
-The HTML pages coming back from hotelfoo.com and petfoo.com have hidden images (or maybe JavaScript but let's assume an image). These images are hidden references to facebook's server, who knows me as ID=99. The image reference is more than a reference to an invisible image---there is a parameter on the image reference that identifies the page containing the image. For example, something akin to `<img src=facebook.com/ad.png?page=hotelfoo.com/oceanview>`.  
+The next time I visit facebook.com, the FB server quickly asks ads.com to send it an advertisement from one of its customers, in this case hotelfoo and petfoo. Those customers bid in an auction to show me an ad on Facebook. The ad company tells the hotel or pet food company which pages I have visited, which lets them decide whether to sell me an ad and also what ad to show. This all happens very quickly and in essence is just another image reference on the Facebook page.
 
-The next time I visit facebook.com, that server quickly asks any advertisers if they would like to purchase an add on my FB page. 
-
-<img src="figures/fb-ads-show.png">
-
-This of course is a function of what pages I have visited on the hotel and cat food sites. I'm sure they also provide demographic data on the user to the companies wanting to show ads.
-
-This technology is not all bad. Obviously, Google analytics requires a tiny little image the embedded in your webpages so that it can track things and give you statistics.
+This technology is scary but not all bad. Obviously, Google analytics requires a tiny little image the embedded in your webpages so that it can track things and give you statistics.
 
 # Accessing cookies in Python
 
