@@ -192,8 +192,10 @@ wget https://s3-us-west-1.amazonaws.com/msan692/bbc.7z
 You should now be able to run your server:
 
 ```bash
-sudo python server.py glove.6B.300d.txt bbc &
+sudo python server.py glove.6B.300d.txt bbc &> server.log &
 ```
+
+All output goes into `server.log`, even after you log out.
 
 Don't forget to open up port 80 in the far wall for the server so that the outside world can access it. Make sure that you test from your laptop!
 
