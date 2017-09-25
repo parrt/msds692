@@ -123,7 +123,7 @@ CURL is not your browser and so it doesn't know what your cookies are; it just s
 We can also use CURL to send headers, including cookies, back to the server as if it were a browser.
 
 ```bash
-$ curl --cookie a=a611ba358d77595991882a6d595ab359cedd8952713792e6172e900c7a5779c7 -v www.nytimes.com
+$ curl --cookie nyt-a=a611ba358d77595991882a6d595ab359cedd8952713792e6172e900c7a5779c7 -v www.nytimes.com
 * Rebuilt URL to: www.nytimes.com/
 *   Trying 151.101.41.164...
 * Connected to www.nytimes.com (151.101.41.164) port 80 (#0)
@@ -131,7 +131,7 @@ $ curl --cookie a=a611ba358d77595991882a6d595ab359cedd8952713792e6172e900c7a5779
 > Host: www.nytimes.com
 > User-Agent: curl/7.49.0
 > Accept: */*
-> Cookie: a=a611ba358d77595991882a6d595ab359cedd8952713792e6172e900c7a5779c7
+> Cookie: nyt-a=a611ba358d77595991882a6d595ab359cedd8952713792e6172e900c7a5779c7
 > 
 < HTTP/1.1 301 Moved Permanently
 < Server: Varnish
