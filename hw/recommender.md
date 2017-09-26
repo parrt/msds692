@@ -200,7 +200,7 @@ All output goes into `server.log`, even after you log out. The `-D` means put th
 
 Don't forget to open up port 5000 in the far wall for the server so that the outside world can access it. Make sure that you test from your laptop!
 
-Make sure the `IP.txt` file as the **public** IP address of your server on the line by itself!
+Make sure the `IP.txt` file as the **public** IP address of your server with `:5000` on the line by itself, such as `54.198.43.135:5000`!
 
 ## Deliverables
 
