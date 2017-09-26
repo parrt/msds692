@@ -106,14 +106,14 @@ Now you know how to work with data files already sitting on your desk, we turn t
 
 With an understanding of how the Internet and web works, it's time to start pulling data from various web sources.  The difficulty of collecting data depends a great deal on the permissions and services available for a site or page.  A good analogy is: some doors are open, some doors are closed, some doors are locked, some "doors" are not doors but reinforced steel walls.
 
-* [Pulling data from (open) REST APIs](https://github.com/parrt/msan692/blob/master/notes/openapi.md)
-  * [Quandl stock data](https://www.quandl.com/api/v3/datasets/EOD/AAPL.csv).
+* [Pulling data from (open) REST APIs](https://github.com/parrt/msan692/blob/master/notes/openapi.md) (Day 10)
+  * Quandl stock data
   * openpayments.us
   * IMDB movie data
 * Pull data from sites requiring an ID
   * [Zillow](https://github.com/parrt/msan692/blob/master/notes/zillow.md)
   * [Youtube](https://github.com/parrt/msan692/blob/master/notes/youtube.md)
-  * [Twitter](https://github.com/parrt/msan692/blob/master/notes/twitter.md)
+  * [Twitter](https://github.com/parrt/msan692/blob/master/notes/twitter.md)  (jump ahead here to sync with project Day 10)
   * [San Francisco police activity heat map using google map API](https://github.com/parrt/msan692/blob/master/notes/heatmap.md)
 * [APIs requiring authentication/identification](https://github.com/parrt/msan692/blob/master/notes/authapi.md) (optional)
   * [LinkedIn](https://github.com/parrt/msan692/blob/master/notes/linkedin.md)
