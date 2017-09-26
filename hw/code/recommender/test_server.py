@@ -25,12 +25,12 @@ artlist = [
     "tech/387.txt"
 ]
 
+agent = {'User-agent':"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36"}
 
 def fetch_article_list():
-    with open("IP.txt") as f:
-        host = f.read().strip()
+    host = getIP()
 
-    r = requests.get("http://"+host)
+    r = requests.get("http://"+host, headers=agent)
     links = []
     soup = BeautifulSoup(r.text, "lxml")
     for link in soup.findAll('a'):
@@ -39,11 +39,11 @@ def fetch_article_list():
 
 
 def fetch_sample_articles(artlist):
-    with open("IP.txt") as f:
-        host = f.read().strip()
+    host = getIP()
+
     articles = []
     for url in artlist:
-        r = requests.get("http://"+host+"/article/"+url)
+        r = requests.get("http://"+host+"/article/"+url, headers=agent)
         soup = BeautifulSoup(r.text, "lxml")
         links = []
         for link in soup.findAll('a'):
@@ -89,3 +89,11 @@ def test_sample_articles():
                 assert False, "FAIL: recommended articles has extra: "+str(links.difference(true_links))
 
     print "Recommended articles OK"
+
+
+def getIP():
+    with open("IP.txt") as f:
+        host = f.read().strip()
+        if not host.index(':'):
+            host += ':5000'
+    return host
