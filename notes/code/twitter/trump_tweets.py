@@ -23,5 +23,5 @@ api = tweepy.API(auth)
 user = api.get_user('realDonaldTrump')
 print "followers", user.followers_count
 
-for status in tweepy.Cursor(api.user_timeline, id='realDonaldTrump').items():
+for status in tweepy.Cursor(api.user_timeline, id='realDonaldTrump').items(100):
     print status

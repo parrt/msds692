@@ -5,10 +5,19 @@ from tweepy import OAuthHandler
 from tweepy import Stream
 
 #link to consumer and access token: https://dev.twitter.com/ 
-consumer_key = ''
-consumer_secret =''
-access_token = ''
-access_token_secret = ''
+def loadkeys(filename):
+    """"
+    load keys/tokens from CSV file with form
+    consumer_key, consumer_secret, access_token, access_token_secret
+    """
+    with open(filename) as f:
+        items = f.readline().strip().split(', ')
+        return items
+
+
+consumer_key, consumer_secret, \
+access_token, access_token_secret \
+    = loadkeys("/Users/parrt/Dropbox/licenses/twitter.csv")
 
 class StdOutListener(StreamListener):
     """
@@ -28,11 +37,10 @@ class StdOutListener(StreamListener):
         print status
 
 if __name__ == '__main__':
-
     l = StdOutListener()
     auth = OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
     stream = Stream(auth, l)
 
     #capture data by keywords, more useful on popular terms 
-    stream.filter(track=['berkeley'])
+    stream.filter(track=['trump'])

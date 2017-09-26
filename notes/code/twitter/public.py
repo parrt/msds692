@@ -6,7 +6,7 @@ import tweepy
 
 def loadkeys(filename):
     """"
-    load parrt's keys/tokens from CSV file with form
+    load keys/tokens from CSV file with form
     consumer_key, consumer_secret, access_token, access_token_secret
     """
     with open(filename) as f:
