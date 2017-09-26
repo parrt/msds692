@@ -110,6 +110,8 @@ Also note that we are using the template engine [jinja2](http://jinja.pocoo.org/
 
 ### Your server will be attacked
 
+*we moved back to port 5000 so might not be an issue*
+
 "Don't panic!" When you leave your web server up at port 80 for more than a few minutes, you will see people from around the web try to break into your computer. For example, you will see URLs like `/mysql/admin/`, `/phpmyadmin/`, `/dbadmin/`, `/mysql/`. The attacker is trying to use known exploits or default passwords for these various kinds of servers hoping to get in. You will see log entries printed from your flask server that look like this (138.202.1.109 was me):
 
 ```
@@ -169,6 +171,7 @@ Then install software we need:
 
 ```bash
 sudo pip install flask
+sudo pip install gunicorn
 sudo yum install -y p7zip.x86_64
 sudo cp /usr/bin/7za /usr/bin/7z
 ```
@@ -192,10 +195,9 @@ wget https://s3-us-west-1.amazonaws.com/msan692/bbc.7z
 You should now be able to run your server:
 
 ```bash
-sudo python server.py glove.6B.300d.txt bbc &> server.log &
-```
+gunicorn -D --threads 4 -b 0.0.0.0:5000 --access-logfile server.log --timeout 60 server:app glove.6B.300d.txt bbc```
 
-All output goes into `server.log`, even after you log out.
+All output goes into `server.log`, even after you log out. The `-D` means put the server in daemon mode, which runs the background.
 
 Don't forget to open up port 80 in the far wall for the server so that the outside world can access it. Make sure that you test from your laptop!
 
