@@ -2,7 +2,7 @@
 
 The goal of this project is to learn how to make a simple article recommendation engine using a semi-recent advance in natural language processing called [word2vec](http://arxiv.org/pdf/1301.3781.pdf) (or just *word vectors*). In particular, we're going to use a "database" from [Stanford's GloVe project](https://nlp.stanford.edu/projects/glove/) trained on a dump of Wikipedia. The project involves reading in a database of word vectors and a corpus of text articles then organizing them into a handy table (list of lists) for processing.
 
-Around the recommendation engine, you are going to build a web server that displays a list of [BBC](http://mlg.ucd.ie/datasets/bbc.html) articles for URL `http://localhost` (testing) or whatever the IP address is of your Amazon server (deployment):
+Around the recommendation engine, you are going to build a web server that displays a list of [BBC](http://mlg.ucd.ie/datasets/bbc.html) articles for URL `http://localhost:5000` (testing) or whatever the IP address is of your Amazon server (deployment):
 
 <img src=figures/articles.png width=200>
 
@@ -28,11 +28,9 @@ Given a word vector filename, such as `glove.6B.300d.txt`, and the root director
 
 ```python
 # get commandline arguments
-glove_filename = sys.argv[1]
-articles_dirname = sys.argv[2]
-
-gloves = load_glove(glove_filename)
-articles = load_articles(articles_dirname, gloves)
+i = sys.argv.index('server:app')
+glove_filename = sys.argv[i+1]
+articles_dirname = sys.argv[i+2]
 ```
 
 The `gloves` variable is the dictionary mapping a word to its 300-vector vector. The `articles` is a list of records, one for each article. An article record is just a list containing the fully-qualified file name, the article title, the text without the title, and the word vector computed from the text without the title.
@@ -78,13 +76,13 @@ Besides those core functions, you need to build a web server as well using flask
 
 So, if you are testing and from your laptop, you would go to the following URL in your browser to get the list of articles:
 
-`http://localhost/`
+`http://localhost:5000/`
 
 And to get to a specific article you would go to:
 
-`http://localhost/article/business/030.txt`
+`http://localhost:5000/article/business/030.txt`
 
-The `localhost` will be replaced with an IP address or some machine name given to you by Amazon when you deploy your server.
+The `localhost:5000` will be replaced with an IP address plus `:5000' or some machine name given to you by Amazon when you deploy your server.
 
 For display purposes, I have given you some CSS to make the pages look good and to have the recommendation box on the right side gutter.   Please figure out how to use font size 70% and font family Verdana, sans-serif for the text just like you see in the examples at the start of this document.
 
@@ -195,11 +193,12 @@ wget https://s3-us-west-1.amazonaws.com/msan692/bbc.7z
 You should now be able to run your server:
 
 ```bash
-gunicorn -D --threads 4 -b 0.0.0.0:5000 --access-logfile server.log --timeout 60 server:app glove.6B.300d.txt bbc```
+$ gunicorn -D --threads 4 -b 0.0.0.0:5000 --access-logfile server.log --timeout 60 server:app glove.6B.300d.txt bbc
+```
 
 All output goes into `server.log`, even after you log out. The `-D` means put the server in daemon mode, which runs the background.
 
-Don't forget to open up port 80 in the far wall for the server so that the outside world can access it. Make sure that you test from your laptop!
+Don't forget to open up port 5000 in the far wall for the server so that the outside world can access it. Make sure that you test from your laptop!
 
 Make sure the `IP.txt` file as the **public** IP address of your server on the line by itself!
 
@@ -224,12 +223,12 @@ As part of your submission, you must launch a Linux instanceBig enough to hold t
 Here is how I launch my server on AWS (see above) or locally:
  
 ```bash
-$ sudo python server.py glove.6B.300d.txt bbc &
+$ gunicorn -D --threads 4 -b 0.0.0.0:5000 --access-logfile server.log --timeout 60 server:app glove.6B.300d.txt bbc
 ```
 
-**Note the `&` on the end that launches that server in the background, not the foreground.**  That means that when you log out of the remote computer, breaking the connection, that process still keeps running. It means we can still access the Web server even though you are not connected with ssh.
+All output goes into `server.log`, even after you log out. The `-D` means put the server in daemon mode (the background).  It means we can still access the Web server even though you are not connected with ssh.
 
-Note that I have given fully qualified pathnames to the word vectors and the root of the BBC article corpus. The `sudo` is required so that the server runs as the superuser, which is the only user that is able to open a process listening at port 80 (the HTTP web protocol port).
+Note that I you must give fully-qualified pathnames to the word vectors and the root of the BBC article corpus, if they are not in the same directory.
 
 ## Evaluation
 
@@ -238,7 +237,7 @@ To evaluate your projects, the grader and I will run the [test_server.py](https:
 **Without the IP.txt file at the root of your repository, we cannot test your server and you get a zero!**  Our script reads your IP.txt file with:
  `with open("IP.txt") as f: host = f.read().strip()`
 
-The starterkit has `localhost` in it so you can test locally before deploying to your server.
+The starterkit has `localhost:5000` in it so you can test locally before deploying to your server.
 
 It also reads some pickled "truth" data structures that encode the articles from my solution's web server. That data was generated with [pickle_truth.py](https://github.com/parrt/msan692/blob/master/hw/code/recommender/pickle_truth.py).
 
