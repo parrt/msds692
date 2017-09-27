@@ -64,7 +64,7 @@ for row in csvdata.strip().split("\n"):
     print ', '.join(cols)
 ```
 
-**Exercise:** By looking at the [quandl doc](https://docs.quandl.com/docs/in-depth-usage-1) fetch and fetch stock history for TSLA for just 2015 and only get columns `data` and `open`.
+**Exercise:** By looking at the [quandl usage doc](https://docs.quandl.com/docs/in-depth-usage-1) and [quandl parameter doc](https://docs.quandl.com/docs/parameters-1) fetch and fetch stock history for TSLA for just 2015 and only get columns `data` and `open`.
 
 ```python
 QuoteURL = "https://www.quandl.com/api/v3/datatables/WIKI/PRICES.csv?ticker=%s&api_key=YOURAPIKEY&date.gte=%s&date.lt=%s&qopts.columns=%s"
