@@ -2,7 +2,7 @@
 
 ## Getting access to twitter data
 
-Sign in with your twitter account at [apps.twitter.com](https://apps.twitter.com/). Click on "Create New App". I made mine `USF-parrt-teaching'.  Click on that new app when it appears, then the `Keys and Access Tokens` tab. You should find and copy into a secure file on your laptop the consumer_key, consumer_secret, access_token, access_token_secret.  I store them in a one-line CSV file for convenient use in apps. We never want to expose these by putting into source code literally.
+Sign in with your twitter account at [apps.twitter.com](https://apps.twitter.com/). Click on "Create New App". I made mine `USF-parrt-teaching`.  Click on that new app when it appears, then the "Keys and Access Tokens" tab. You should find and copy into a secure file on your laptop the *consumer_key, consumer_secret, access_token, access_token_secret*.  I store them in a one-line CSV file for convenient use in apps. We never want to expose these by putting into source code literally.
 
 ## Tweet feeds
 

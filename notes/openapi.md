@@ -19,6 +19,49 @@ Anyway, we are going to pull data from web servers that intentionally provide ni
 * The names and values of parameters
 * What data comes back and in what format (XML, JSON, CSV, ...)
 
+## JSON from openpayments.us
+
+Now, let's look at a website that will give us JSON data: [www.openpayments.us](http://www.openpayments.us).
+ 
+There is a REST data API available at URL template:
+
+```
+URL = "http://openpayments.us/data?query=%s"
+```
+
+**Exercise**: Fetch the data for a doctor's name, such as `John Chan`. If you want to get fancy, you can pull in the query from a script parameter via:
+
+```python
+query = sys.argv[1]
+```
+
+A **technical detail** related to valid strings you can include as part of a URL.  Spaces are not allowed so `John Chan` has to be encoded or "quoted".  Fortunately, `requests` does this automatically for us. If you ever need to quote URLs, use `urllib`:
+
+```python
+from requests.utils import quote
+query = quote(query)
+```
+
+Because `&` is the separator between parameters, it is also invalid in a parameter name or value. Here are some example conversions:
+
+```python
+>>> import urllib
+>>> quote("john chan")
+'john%20chan'
+>>> quote("john&chan")
+'john%26chan'
+```
+
+The conversion uses the ASCII character code (in 2-digit hexadecimal) for space and ampersand. Sometimes you will see the space converted to a `+`, which also works: `John+Chan`.
+
+This website gives you JSON, which is very easy to load in using the default `json` package:
+
+```python
+data = json.loads(jsondata)
+```
+
+Dump the JSON using `json.dumps()`.
+
 ## Historical stock data
 
 *Yahoo's API was taken down in 2017 so we will use Quandl instead.* 
@@ -88,49 +131,6 @@ date,open
 ```
 
 **Exercise**: Change `csv` into `json` in the URL and see that you get JSON back now.
-
-## JSON from openpayments.us
-
-Now, let's look at a website that will give us JSON data: [www.openpayments.us](http://www.openpayments.us).
- 
-There is a REST data API available at URL template:
-
-```
-URL = "http://openpayments.us/data?query=%s"
-```
-
-**Exercise**: Fetch the data for a doctor's name, such as `John Chan`. If you want to get fancy, you can pull in the query from a script parameter via:
-
-```python
-query = sys.argv[1]
-```
-
-A **technical detail** related to valid strings you can include as part of a URL.  Spaces are not allowed so `John Chan` has to be encoded or "quoted".  Fortunately, `requests` does this automatically for us. If you ever need to quote URLs, use `urllib`:
-
-```python
-from requests.utils import quote
-query = quote(query)
-```
-
-Because `&` is the separator between parameters, it is also invalid in a parameter name or value. Here are some example conversions:
-
-```python
->>> import urllib
->>> quote("john chan")
-'john%20chan'
->>> quote("john&chan")
-'john%26chan'
-```
-
-The conversion uses the ASCII character code (in 2-digit hexadecimal) for space and ampersand. Sometimes you will see the space converted to a `+`, which also works: `John+Chan`.
-
-This website gives you JSON, which is very easy to load in using the default `json` package:
-
-```python
-data = json.loads(jsondata)
-```
-
-Dump the JSON using `json.dumps()`.
 
 ## Pulling movie data from IMDB
 
