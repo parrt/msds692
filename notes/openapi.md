@@ -28,11 +28,28 @@ There is a REST data API available at URL template:
 ```
 URL = "http://openpayments.us/data?query=%s"
 ```
+**Exercise**: Use `curl` to fetch data about a doctor.
 
 **Exercise**: Fetch the data for a doctor's name, such as `John Chan`. If you want to get fancy, you can pull in the query from a script parameter via:
 
 ```python
 query = sys.argv[1]
+```
+
+Sample code:
+
+```
+import requests
+import json
+import sys
+
+URL = "http://openpayments.us/data?query=%s"
+name = sys.argv[1]
+
+r = requests.get(URL % name)
+data = json.loads(r.text)
+
+print json.dumps(data)
 ```
 
 A **technical detail** related to valid strings you can include as part of a URL.  Spaces are not allowed so `John Chan` has to be encoded or "quoted".  Fortunately, `requests` does this automatically for us. If you ever need to quote URLs, use `urllib`:
