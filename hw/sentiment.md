@@ -173,14 +173,6 @@ git clone https://github.com/USF-MSAN692/sentiment-parrt.git
 cd sentiment-parrt
 ```
 
-Now, download the data you need and unzip:
-
-```bash
-wget https://s3-us-west-1.amazonaws.com/msan692/glove.6B.300d.txt
-wget https://s3-us-west-1.amazonaws.com/msan692/bbc.7z
-7z x bbc.7z
-```
-
 You should now be able to run your server:
 
 ```bash

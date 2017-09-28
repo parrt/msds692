@@ -64,7 +64,8 @@ def following(name):
     """
 
 
-twitter_auth_filename = sys.argv[1] # e.g., "/Users/parrt/Dropbox/licenses/twitter.csv"
+i = sys.argv.index('server:app')
+twitter_auth_filename = sys.argv[i+1] # e.g., "/Users/parrt/Dropbox/licenses/twitter.csv"
 api = authenticate(twitter_auth_filename)
 
-app.run(host='0.0.0.0', port=80)
+#app.run(host='0.0.0.0', port=80)
