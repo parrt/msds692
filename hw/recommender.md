@@ -198,7 +198,7 @@ $ gunicorn -D --threads 4 -b 0.0.0.0:5000 --access-logfile server.log --timeout 
 
 All output goes into `server.log`, even after you log out. The `-D` means put the server in daemon mode, which runs the background.
 
-Don't forget to open up port 5000 in the far wall for the server so that the outside world can access it. Make sure that you test from your laptop!
+Don't forget to open up port 5000 in the firewall for the server so that the outside world can access it. Make sure that you test from your laptop!
 
 Make sure the `IP.txt` file as the **public** IP address of your server with `:5000` on the line by itself, such as `54.198.43.135:5000`!
 
