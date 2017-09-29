@@ -159,4 +159,4 @@ If there is no error you get `<code>0</code>` in the message, whereas here you c
   ...
 ```
 
-You want to print out the `url` tag in `response` tag. Then click on it and you will see a nice chart.
+You want to print out the `url` tag in `response` tag: `xml.Chart_chart.response.url.cdata` via untangle. Then click on it and you will see a nice chart.
