@@ -7,19 +7,19 @@
 # Run with args: yourzipid "190 7th St APT 4" "San Francisco, CA"
 import sys
 import untangle
-import urllib2
 import urllib
+import requests
 
 KEY = sys.argv[1]                       # your zillow api key/id as argument to script
 addr=urllib.quote(sys.argv[2])          # "190 7th St APT 4"
 citystatezip=urllib.quote(sys.argv[3])  # "San Francisco, CA"
 
-# Find a house
 SearchURL = "http://www.zillow.com/webservice/GetSearchResults.htm?zws-id=%s&address=%s&citystatezip=%s"
 
 URL = SearchURL % (KEY, addr, citystatezip)
-response = urllib2.urlopen(URL)
-xmldata = response.read()
+print URL
+r = requests.get(URL)
+xmldata = r.text
 # print xmldata
 
 testxml = """<?xml version="1.0" encoding="utf-8"?>
