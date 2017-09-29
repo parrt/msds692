@@ -18,9 +18,6 @@ print URL
 response = requests.get(URL)
 xmldata = unicode.encode(response.text, encoding='ascii', errors='ignore')
 
-with open("/tmp/t.html", "w") as f:
-    f.write(xmldata)
-
 xml = untangle.parse(xmldata)
 print "URL", xml.Zestimate_zestimate.response.links.homedetails.cdata
 print "Value $%s" % xml.Zestimate_zestimate.response.zestimate.amount.cdata
