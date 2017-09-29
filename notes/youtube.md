@@ -51,7 +51,7 @@ search_response = youtube.search().list(
 **Exercise**: The `search_response` variable is a `dict` with an `items` key containing the search results. Use the debugger or look at [API documentation](https://developers.google.com/youtube/v3/docs/search/list) to figure out what the elements of the individual search responses are. As usual, it appears there is a small discrepancy between the documentation and what I see in the actual dictionary. Figure out how to print the title and a link to the videos returned from the search. E.g., Running from the command-line, we should get:
 
 ```bash
-$ search.py MYSECRETKEY cats
+$ python search.py MYSECRETKEY cats
 Funny Cats Compilation [Most See] Funny Cat Videos Ever Part 1 https://www.youtube.com/watch?v=tntOCGkgt98
 Cats are just the funniest pets ever - Funny cat compilation https://www.youtube.com/watch?v=htOroIbxiFY
 Funny Cats - A Funny Cat Videos Compilation 2016 || NEW HD https://www.youtube.com/watch?v=G8KpPw303PY
@@ -108,6 +108,7 @@ Comment by Vanirvis: Whats with the boxes on the screen? Thumbs down.﻿
 
 ```pyhon
 def videoIDs(query):
+    youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, ...)
     ...
     return ids
 ```
@@ -131,7 +132,7 @@ Then the main program can just print out a list of comments for each video, putt
 
 ```python
 allcomments = comments(QUERY)
-for vid in allcomments:
+for vid in allcomments.keys()[:5]: # just 5 videos
     comments = allcomments[vid]
     print "Video "+vid
     print "\t",
@@ -140,19 +141,13 @@ for vid in allcomments:
 
 Sample output:
 
-```
+```bash
+$ python comments.py SECRETKEY 'cats and dogs'
 ...
-Video vf7Geki6V4E
-	Comment by Leah Rosal: wrong﻿
-Video bmr9iELngJE
-	Comment by Noelle West: Not bad﻿
-	Comment by Noelle West: What?﻿
-	Comment by Angelita Luna: Truest thing I've ever heard﻿
-	Comment by Tumbling tori: This is awesome!﻿
-	Comment by Ian2713: Great job! Keep it up!﻿
-	Comment by Lord Ark: 
-	Comment by Lord Ark: 
-	Comment by foxy: not bad ﻿
+Video zKoBk37EKG4
+	Comment by Jamie Carey: I want a pug
+	Comment by Arissa Williams: Like your videos and jokes can I please have a shout-out I subscribed and like 
+	Comment by sharonda scarboro: Did the superhero kids get to come to your house DP subscribe did they leave a comment if you did they ask
 ...
 ```
 	

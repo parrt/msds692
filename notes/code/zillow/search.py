@@ -2,6 +2,8 @@
 # API REGISTER: https://www.zillow.com/webservice/Registration.htm
 # API DOC: http://www.zillow.com/howto/api/APIOverview.htm
 
+# This seems to not get captcha Sept 2017
+
 # Run with args: yourzipid "190 7th St APT 4" "San Francisco, CA"
 import sys
 import untangle

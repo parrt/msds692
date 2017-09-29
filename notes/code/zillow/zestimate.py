@@ -2,6 +2,8 @@
 # API REGISTER: https://www.zillow.com/webservice/Registration.htm
 # API DOC: http://www.zillow.com/howto/api/APIOverview.htm
 
+# This one gives captcha not data!
+
 import sys
 import untangle
 import requests
@@ -14,11 +16,10 @@ URL = "http://www.zillow.com/webservice/GetZestimate.htm&zws-id=%s&zpid=%s" % (K
 print URL
 # response = requests.get(URL, params={"zws-id":KEY, "zpid":zpid})
 response = requests.get(URL)
-print response.url
 xmldata = response.text
 
 print xmldata
 
-# xml = untangle.parse(xmldata)
-# print "URL", xml.Zestimate_zestimate.response.links.homedetails.cdata
-# print "Value $%s" % xml.Zestimate_zestimate.response.zestimate.amount.cdata
+xml = untangle.parse(xmldata)
+print "URL", xml.Zestimate_zestimate.response.links.homedetails.cdata
+print "Value $%s" % xml.Zestimate_zestimate.response.zestimate.amount.cdata

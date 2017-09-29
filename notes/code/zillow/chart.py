@@ -2,11 +2,12 @@
 # API REGISTER: https://www.zillow.com/webservice/Registration.htm
 # API DOC: http://www.zillow.com/howto/api/APIOverview.htm
 
-# Run with args: yourzipid "190 7th St APT 4" "San Francisco, CA"
+# Seems not to hit captcha Sept 2017
+
+# Run with args: yourzipid
 import sys
 import untangle
-import urllib2
-import urllib
+import requests
 
 KEY = sys.argv[1]                       # your zillow api key/id as argument to script
 
@@ -14,15 +15,15 @@ KEY = sys.argv[1]                       # your zillow api key/id as argument to 
 SearchURL = "http://www.zillow.com/webservice/GetChart.htm?zws-id=%s&zpid=%s&unit-type=percent&width=500&height=250&chartDuration=10years"
 
 URL = SearchURL % (KEY, '64969892')
-response = urllib2.urlopen(URL)
-xmldata = response.read()
-print xmldata
+r = requests.get(URL)
+xmldata = r.text
+# print xmldata
 
 xml = untangle.parse(xmldata)
-code = xml.SearchResults_searchresults.message.code.cdata
+code = xml.Chart_chart.message.code.cdata
 if code=='0':
-    zpid = xml.SearchResults_searchresults.response.results.result.zpid.cdata
+    zpid = xml.Chart_chart.response.url.cdata
     print zpid
 else:
-    msg = xml.SearchResults_searchresults.message.text.cdata
+    msg = xml.Chart_chart.message.text.cdata
     print msg
