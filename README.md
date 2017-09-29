@@ -106,19 +106,18 @@ Now you know how to work with data files already sitting on your desk, we turn t
 
 With an understanding of how the Internet and web works, it's time to start pulling data from various web sources.  The difficulty of collecting data depends a great deal on the permissions and services available for a site or page.  A good analogy is: some doors are open, some doors are closed, some doors are locked, some "doors" are not doors but reinforced steel walls.
 
-* [Pulling data from (open) REST APIs](https://github.com/parrt/msan692/blob/master/notes/openapi.md) (Day 10)
+* [Pulling data from (open) REST APIs](https://github.com/parrt/msan692/blob/master/notes/openapi.md) (Day 10, 2nd part on Day 11)
   * Quandl stock data (*todo*: move to next section)
   * openpayments.us
   * IMDB movie data
 * Pull data from sites requiring an ID
-  * [Zillow](https://github.com/parrt/msan692/blob/master/notes/zillow.md)
-  * [Youtube](https://github.com/parrt/msan692/blob/master/notes/youtube.md)
-  * [Twitter](https://github.com/parrt/msan692/blob/master/notes/twitter.md)  (jump ahead here to sync with project Day 10)
-  * [San Francisco police activity heat map using google map API](https://github.com/parrt/msan692/blob/master/notes/heatmap.md)
+  * [Zillow](https://github.com/parrt/msan692/blob/master/notes/zillow.md) (Optional)
+  * [Twitter](https://github.com/parrt/msan692/blob/master/notes/twitter.md)  (jump ahead here to sync with project Day 10, more detail Day 11)
+  * [Youtube](https://github.com/parrt/msan692/blob/master/notes/youtube.md)  (Day 12)
 * [APIs requiring authentication/identification](https://github.com/parrt/msan692/blob/master/notes/authapi.md) (optional)
   * [LinkedIn](https://github.com/parrt/msan692/blob/master/notes/linkedin.md)
   * [Facebook](https://github.com/parrt/msan692/blob/master/notes/facebook.md)
-* [Extracting data from web pages](https://github.com/parrt/msan692/blob/master/notes/scraping.md)
+* [Extracting data from web pages](https://github.com/parrt/msan692/blob/master/notes/scraping.md) (Day 12)
   * [Crawling](https://github.com/parrt/msan692/blob/master/notes/crawling.md)
   * [buzzfeed](https://github.com/parrt/msan692/blob/master/notes/buzzfeed.md)
   * [Amazon](https://github.com/parrt/msan692/blob/master/notes/amazon.md)
@@ -127,4 +126,5 @@ With an understanding of how the Internet and web works, it's time to start pull
 
 ## Misc
 
+* [San Francisco police activity heat map using google map API](https://github.com/parrt/msan692/blob/master/notes/heatmap.md)
 * [San Francisco police incidents word clouds](https://github.com/parrt/msan692/blob/master/notes/sfpd.md)
