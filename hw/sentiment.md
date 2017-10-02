@@ -145,7 +145,9 @@ As part of your submission, you must launch a Linux instance at Amazon and insta
 
 Creating a server that has all the appropriate software can be tricky so I have recorded a sequence that works for me.
 
-The first thing is to launch a server with different software than the simple  Amazon linux we have been using in class. We need one that has, for example, `numpy` and friends so let's use an *image* (snapshot of a disk with a bunch of stuff installed) that already has machine learning software installed: Use the basic "*Amazon Linux AMI 2017.03.1 (HVM), SSD Volume Type*".
+The first thing is to launch a server with different software than the simple  Amazon linux we have been using in class. We need one that has, for example, `numpy` and friends so let's use an *image* (snapshot of a disk with a bunch of stuff installed) that already has machine learning software installed: Use "*Deep Learning AMI Amazon Linux Version 3.1_Sep2017 - ami-bde90fc7*":
+
+<img src=figures/aws-ami.png width=500>
 
 Create a `t2.small` size computer (in Oregon; it's cheaper)!
 
