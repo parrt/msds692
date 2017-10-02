@@ -10,7 +10,6 @@ from googleapiclient.discovery import build
 
 DEVELOPER_KEY = sys.argv[1]
 QUERY = sys.argv[2] # e.g., "cats and dogs"
-QUERY = urllib.quote(QUERY)
 YOUTUBE_API_SERVICE_NAME = "youtube"
 YOUTUBE_API_VERSION = "v3"
 
