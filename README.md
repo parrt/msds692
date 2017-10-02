@@ -109,11 +109,11 @@ With an understanding of how the Internet and web works, it's time to start pull
 * [Pulling data from (open) REST APIs](https://github.com/parrt/msan692/blob/master/notes/openapi.md) (Day 10, 2nd part on Day 11)
   * Quandl stock data (*todo*: move to next section)
   * openpayments.us
-  * IMDB movie data
+  * IMDB movie data (*todo*: damn, now this one uses an API key also and mine is currently not working that are received by email)
 * Pull data from sites requiring an ID
   * [Zillow](https://github.com/parrt/msan692/blob/master/notes/zillow.md) (Optional)
   * [Twitter](https://github.com/parrt/msan692/blob/master/notes/twitter.md)  (jump ahead here to sync with project Day 10, more detail Day 11)
-  * [Youtube](https://github.com/parrt/msan692/blob/master/notes/youtube.md)  (Day 12)
+  * [Youtube](https://github.com/parrt/msan692/blob/master/notes/youtube.md)  (Day 11)
 * [APIs requiring authentication/identification](https://github.com/parrt/msan692/blob/master/notes/authapi.md) (optional)
   * [LinkedIn](https://github.com/parrt/msan692/blob/master/notes/linkedin.md)
   * [Facebook](https://github.com/parrt/msan692/blob/master/notes/facebook.md)
