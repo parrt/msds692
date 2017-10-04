@@ -16,6 +16,7 @@ for link in html.findAll(lambda tag: tag.name=='a' and 'data-bfa' in tag.attrs):
     if not 'post_category' in attr: continue
     ...
 ``` 
+
 That lambda is just a function that would normally look like:
 
 ```python
