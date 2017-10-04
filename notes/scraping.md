@@ -6,16 +6,21 @@ We already know how to fetch a webpage using `requests.get(...)`. The question i
 
 ## Baby steps
 
-**Exercise**: Go manually grab the latest news from Hacker News in your browser, part of the Y Combinator startup incubator: `https://news.ycombinator.com/`. Parse the data with BeautifulSoup and then find all of the links to news.  You can either look at the page source in your browser to see what HTML renders those links or you can use chrome browser. Right-click over one of the links and say "inspect". It will show you the HTML associated with that link:
+**Exercise**: Write Python code (`requests` lib) to grab the latest news from Hacker News in your browser, part of the Y Combinator startup incubator: `https://news.ycombinator.com/`. Parse the data with BeautifulSoup and then find all of the links to news.  You can either look at the page source in your browser to see what HTML renders those links or you can use chrome browser. Right-click over one of the links and say "inspect". It will show you the HTML associated with that link:
 
 <img src=figures/hn-element.png width=500>
 
-Notice that the link has a CSS class: `class="storylink"`. Fantastic, now that is convenient.  Write a Python script using `requests.get()` to fetch that page content and then figure out how to get BeautifulSoup to search for all tags that have that CSS class then print the link and link text:
+Notice that the link has a CSS class: `class="storylink"`. Fantastic, now that is convenient.  So you just have to figure out how to get BeautifulSoup to search for all tags that have that CSS class then print the link and link text:
 
 ```python
 for link in html.find_all(...):
     print link['href'], link.text
 ```
+
+*Hint:* Search for "beautifulsoup find all class."
+
+If you want to get fancy, you can make a list of tuples, where each tumble is a (*link*,*link text*), and then print the list.
+
 
 ## Mimicking a "human using a browser"
 
@@ -58,7 +63,7 @@ or some other header value. You will pass in a dictionary with that keyvalue pai
 
 Verify that you can still get the hacker news page.
 
-**Exercise**:  Create a function that extracts all of the news links and put into a list, rather than printing them out.
+**Exercise**:  Create a function that extracts all of the news links and puts them into a list, rather than printing them out.
 
 ```python
 def parseHN():
@@ -69,7 +74,7 @@ def parseHN():
 
 ## Reddit
 
-Ok, so Hacker News might shut us down. As a back up, you can scan [reddit news](https://www.reddit.com/r/all). By inspecting a link on that page with the browser (using developer tools), it looks like links have `class="title may-blank outbound"`:
+Ok, so Hacker News might shut us down. As a back up, you can scan [reddit news](https://www.reddit.com/r/all). By inspecting a link on that page with the browser (using developer tools), it looks like links have `class="title may-blank outbound"` or just `class="title may-blank"`:
 
 ```html
 <a class="title may-blank outbound "
@@ -105,3 +110,13 @@ $ curl --user-agent "Resistance is futile" https://www.reddit.com/r/all/
 ```
 
 (Note the / on the end of the URL. Without that you get a redirect message.)
+
+The HTTP protocol from the client side looks then like:
+
+```
+> GET /r/all/ HTTP/1.1
+> Host: www.reddit.com
+> User-Agent: Resistance is futile
+> Accept: */*
+
+```
