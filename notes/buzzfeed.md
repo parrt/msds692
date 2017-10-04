@@ -11,7 +11,7 @@ Note the `post_category` thing inside of the weird `data-bfa` attribute of the `
 To get all `a` tags that has an attribute with `post_category`, we have to do something fancy. Were going to pass in a function to `findAll`:
 
 ```python
-for link in html.findAll(lambda tag: tag.name=='a' and 'data-bfa' in tag.attrs):
+for link in soup.findAll(lambda tag: tag.name=='a' and 'data-bfa' in tag.attrs):
     attr = link['data-bfa']
     if not 'post_category' in attr: continue
     ...
@@ -27,7 +27,7 @@ def f(tag):
 Then we would use this loop instead:
 
 ```python
-for link in html.findAll(f):
+for link in soup.findAll(f):
     ...
 ```
 
