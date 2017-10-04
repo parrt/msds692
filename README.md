@@ -119,7 +119,7 @@ With an understanding of how the Internet and web works, it's time to start pull
   * [Facebook](https://github.com/parrt/msan692/blob/master/notes/facebook.md)
 * [Extracting data from web pages](https://github.com/parrt/msan692/blob/master/notes/scraping.md) (Day 12)
   * [Crawling](https://github.com/parrt/msan692/blob/master/notes/crawling.md)
-  * [buzzfeed](https://github.com/parrt/msan692/blob/master/notes/buzzfeed.md)
+  * [buzzfeed](https://github.com/parrt/msan692/blob/master/notes/buzzfeed.md) (Day 12)
   * [Amazon](https://github.com/parrt/msan692/blob/master/notes/amazon.md)
   * [Scraping data from tables](https://github.com/parrt/msan692/blob/master/notes/scraping-tables.md)
 * [Selenium](https://github.com/parrt/msan692/blob/master/notes/selenium.md)

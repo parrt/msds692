@@ -7,14 +7,14 @@ def parseBF():
     html = BeautifulSoup(response.text, "html.parser")
 
     topics = defaultdict(list)
-    for link in html.find_all('a', {'rel:gt_act':'post/title'}):
-        if 'rel:gt_label' in link.attrs:
-            topic = link.attrs['rel:gt_label']
-            topics[topic].append(link['href'])
-            # print link['href'], link.attrs['rel:gt_label'], link.text
-        else:
-            topics['topstories'].append(link['href'])
-            # print '###', link['href'], link.text
+    for link in html.findAll(lambda tag: tag.name=='a' and 'data-bfa' in tag.attrs):
+        attr = link['data-bfa']
+        if not 'post_category' in attr: continue
+        values = attr.split(',')
+        topic = [v.split(':')[1] for v in values if v.startswith('post_category')]
+        topic = topic[0]
+        # print topic, link['href']
+        topics[topic].append(link['href'])
     return topics
 
 """
