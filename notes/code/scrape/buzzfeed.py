@@ -17,11 +17,6 @@ def parseBF():
         topics[topic].append(link['href'])
     return topics
 
-"""
-<a href="/katherinemiller/obama-jokes-i-am-so-relieved-that-the-birther-thing-is-over"
-data-bfa="@a:Title;@d:politics;" rel:gt_act="post/title" rel:gt_label="politics" class="xs-block link-gray">Obama Jokes: "I Am So Relieved That The Birther Thing Is Over"</a>
-"""
-
 topics = parseBF()
 for t in topics:
     print t
