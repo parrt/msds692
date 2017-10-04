@@ -31,7 +31,7 @@ for link in soup.findAll(f):
     ...
 ```
 
-**Exercise**: Write a `parseBF` function that fetches `https://www.buzzfeed.com/news`, purses with beautiful soup, and then uses the `for` loop above to find all of the appropriate tags. While debugging, you can print out `link['href']` to show the link, or of course you can print the whole `link`. Next, extract to the `post_category` from the `data-bfa` attribute.  Fill and return a dictionary that maps category/topic two a list of `href` likes.  Using the following main script to print out the dictionary
+**Exercise**: Write a `parseBF` function that fetches `https://www.buzzfeed.com/news`, purses with beautiful soup, and then uses the `for` loop above to find all of the appropriate tags. While debugging, you can print out `link['href']` to show the link, or of course you can print the whole `link`. Next, extract to the `post_category` from the `data-bfa` attribute.  Fill and return a dictionary that maps category/topic two a set of `href` links.  Using the following main script to print out the dictionary
 
 ```python
 topics = parseBF()
