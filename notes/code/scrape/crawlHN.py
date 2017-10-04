@@ -15,9 +15,9 @@ def fetch(url,delay=(2,5)):
     except ValueError as e:
         print str(e)
         return '', BeautifulSoup('', "html.parser")
-    page = response.text
-    html = BeautifulSoup(page, "html.parser")
-    return (page,html)
+    html = response.text
+    soup = BeautifulSoup(html, "html.parser")
+    return (html,soup)
 
 def crawl(links, outputdir):
     i = 0

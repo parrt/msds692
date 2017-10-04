@@ -39,7 +39,7 @@ def fetch(url,delay=(2,5)):
     """
     time.sleep(random.randint(delay[0],delay[1])) # wait random seconds
     ... fetch data from URL and parse with beautiful soup ...
-    return (pagedata,html)
+    return (html,soup)
 ```
 
 Of course, you have to alter your code that does the `requests.get()` to call this function now instead. This is a way to guarantee that we don't pound somebody's server and get cut off. It's also a good example of a failsafe (give example from jguru with email on/off switch at the outgoing SMTP client).
