@@ -6,7 +6,7 @@ def parseBF():
     response = requests.get("https://www.buzzfeed.com/news")
     html = BeautifulSoup(response.text, "html.parser")
 
-    topics = defaultdict(list)
+    topics = defaultdict(set)
     for link in html.findAll(lambda tag: tag.name=='a' and 'data-bfa' in tag.attrs):
         attr = link['data-bfa']
         if not 'post_category' in attr: continue
@@ -14,7 +14,7 @@ def parseBF():
         topic = [v.split(':')[1] for v in values if v.startswith('post_category')]
         topic = topic[0]
         # print topic, link['href']
-        topics[topic].append(link['href'])
+        topics[topic].add(link['href'])
     return topics
 
 topics = parseBF()

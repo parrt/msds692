@@ -45,12 +45,10 @@ you will get output that looks like:
 ```
 Business
 	/venessawong/americas-biggest-egg-company-is-rethinking-its-cage-free
-	/venessawong/americas-biggest-egg-company-is-rethinking-its-cage-free
 USNews
-	/amberjamieson/everything-we-know-about-marilou-danley
-	/buzzfeednews/live-updates-two-people-are-dead-as-police-investigate
+	/tasneemnashrulla/weird-moments-from-trumps-puerto-rico-vist
+	/salvadorhernandez/trump-wants-to-wipe-out-puerto-rico-debt
 	/rosebuchanan/las-vegas-shooter
-	/coralewis/these-are-the-victims-of-the-las-vegas-shooting
-	/jimdalrympleii/eerie-silence-inside-the-las-vegas-hotel-turned-into-a
+	/buzzfeednews/maria-2
 ...
 ```

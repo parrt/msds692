@@ -13,7 +13,7 @@ We already know how to fetch a webpage using `requests.get(...)`. The question i
 Notice that the link has a CSS class: `class="storylink"`. Fantastic, now that is convenient.  So you just have to figure out how to get BeautifulSoup to search for all tags that have that CSS class then print the link and link text:
 
 ```python
-for link in html.find_all(...):
+for link in soup.find_all(...):
     print link['href'], link.text
 ```
 
@@ -35,7 +35,7 @@ Many websites would prefer that you did not scrape their data using a program, s
 def fetch(url,delay=(2,5)):
     """
     Simulate human random clicking 2..5 seconds then fetch URL.
-    Returns the actual page source fetched and the HTML object.
+    Returns the actual page source fetched and the beautiful soup object.
     """
     time.sleep(random.randint(delay[0],delay[1])) # wait random seconds
     ... fetch data from URL and parse with beautiful soup ...
@@ -67,7 +67,7 @@ Verify that you can still get the hacker news page.
 
 ```python
 def parseHN():
-    page,html = fetch("https://news.ycombinator.com/")
+    html,soup = fetch("https://news.ycombinator.com/")
     links = ...
     return links
 ```
