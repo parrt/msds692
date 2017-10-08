@@ -11,7 +11,7 @@ driver = webdriver.Chrome('/usr/local/bin/chromedriver')
 # driver.implicitly_wait(10) # seconds
 
 def login_and_show_channel(channel):
-    user,password = "parrt@usfca.edu", "Slack15901590!"#login()
+    user,password = login()
     
     driver.get('https://msan-usf.slack.com/')
     userfield = driver.find_element_by_id('email')
