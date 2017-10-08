@@ -49,7 +49,7 @@ from selenium import webdriver
 
 driver = webdriver.Chrome('/usr/local/bin/chromedriver')  # Optional argument, if not specified will search path.
 # or, fill in your ANACONDA_INSTALL_DIR and try this:
-driver = webdriver.Chrome('ANACONDA_INSTALL_DIR/chromedriver-Darwin')
+# driver = webdriver.Chrome('ANACONDA_INSTALL_DIR/chromedriver-Darwin')
 
 driver.get('http://www.google.com')
 
@@ -294,12 +294,8 @@ for user,msg in msgs:
 
 There is a tricky thing to worry about: We have to wait 5 seconds or so for the brower to load our page and for the javascript to load data from slack's servers and populate the page.
 
-Find the messages using tag name `ts-message`. Within each of those, get the message text by finding class name `message_body`. 
+Find the messages using tag name `ts-message`; I used xpath `//ts-message`. Within each of those tags, get the message text by finding tags with class name `message_body`. You'll need a `try`/`except` around that as some don't seem to have a body. Just `continue` if that tag is not found.
 
-Get the user by finding the `message_icon` class under the `ts-message` node. Under that, find the `a` tag and grab the `href` attribute. Use a regex to pull out the user name:
+Get the user by finding the tag with `message_sender` class (an `a` tag) under the `ts-message` node. The text of that `a` tag is the user name.
 
-```python
-user = re.search(r'/team/([a-zA-Z0-9]+)', href).group(1)
-```
-
-That groups user names after the `/team/` in `href` and then asks for the first (and only) group value.  Add the user and message as a tuple to a list and return from `parse_slack` when done.
+Add the user and message as a tuple to a list and return from `parse_slack` when done.

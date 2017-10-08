@@ -11,32 +11,36 @@ driver = webdriver.Chrome('/usr/local/bin/chromedriver')
 # driver.implicitly_wait(10) # seconds
 
 def login_and_show_channel(channel):
-    user,password = login()
-    driver.get('https://lang-wichteam.slack.com/')
+    user,password = "parrt@usfca.edu", "Slack15901590!"#login()
+    
+    driver.get('https://msan-usf.slack.com/')
     userfield = driver.find_element_by_id('email')
     userfield.send_keys(user)
     passwordfield = driver.find_element_by_id('password')
     passwordfield.send_keys(password)
     passwordfield.submit()
 
-    driver.get('https://lang-wichteam.slack.com/messages/'+channel)
+    driver.get('https://msan-usf.slack.com/messages/'+channel)
 
 def parse_slack():
     "Return list of (user,messages)"
     time.sleep(5) # have to wait for slack app to pull data from server and render it.
-    msgs = driver.find_elements_by_tag_name('ts-message')
-    # msgs = driver.find_elements_by_xpath("//*[@data-member-id]")
+    #msg_wrappers = driver.find_elements_by_class_name('message')
+    msg_wrappers = driver.find_elements_by_xpath("//ts-message")
     data = []
-    for wrapper in msgs:
-        msg = wrapper.find_element_by_class_name("message_body").text
-        user_icon_div = wrapper.find_element_by_class_name("message_icon")
-        user_link = user_icon_div.find_element_by_tag_name('a')
-        href = user_link.get_attribute('href')
-        user = re.search(r'/team/([a-zA-Z0-9]+)', href).group(1)
-        data.append((user,msg))
+    for wrapper in msg_wrappers:
+	print wrapper
+        try:
+            msg = wrapper.find_element_by_class_name("message_body")
+        except:
+            print "can't find message body"
+            continue
+        user_link = wrapper.find_element_by_class_name("message_sender")
+        user = user_link.text
+        data.append((user,msg.text))
     return data
 
-login_and_show_channel("lang-wich")
+login_and_show_channel("general")
 msgs = parse_slack()
 for user,msg in msgs:
     print "%s: %s" % (user, msg)
