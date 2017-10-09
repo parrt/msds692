@@ -149,6 +149,8 @@ passwordfield = driver.find_element_by_css_selector('.js-password-field')
 
 The `data-nav=following` appears to be unique.  Find that with seleniums functions and then `click()` it.
 
+Or, just tell the driver to go to `https://twitter.com/DataInstituteSF/following`
+
 **Exercise**:  Alter the script so that it (i) pages down twice to see more users followed by the Data Institute using: `driver.execute_script("window.scrollTo(0, 10000);")` and (ii) collects all of the `following` `a` tags into a list of tuples with (*link*,*link text*). I get:
 
 ```
@@ -192,7 +194,7 @@ The links are of the form:
 and you can select them by using:
  
 ```python
-links = driver.find_elements_by_css_selector('a.ProfileNameTruncated-link')
+links = driver.find_elements_by_class_name('ProfileNameTruncated-link')
 ```
 
 ## Demo of JavaScript creating HTML
