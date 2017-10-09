@@ -109,13 +109,6 @@ if __name__ == '__main__':
     print login()
 ```
 
-If you get an error that Tkinter is not a valid package, verify you are using the right python. If you are, then you might try:
-
-```bash
-brew uninstall python
-brew install python --with-brewed-tk
-```
-
 **Exercise**: Run that program and verify that it prints out a sample (meaningless) username and password.
  
 ## Log in to twitter, pull a following list
