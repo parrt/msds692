@@ -106,6 +106,8 @@ TCP (_Transmission Control Protocol_) is another protocol, a reliable but slower
 
 TCP is like a phone connection versus the simple "fire and forget" letter stateless style of IP.  TCP connections are open for the duration of a communication (i.e., until you close the connection).
 
+[joke about back/forth with TCP/IP](https://twitter.com/KirkBater/status/953673704734683136)
+
 ## What is a socket?
 
 If the IP address is like an office building's main phone number, sockets are like the extension numbers for offices.  So the IP and socket, often called the port, uniquely identify an "office" (server process).  You will see unique identifiers like `192.168.2.100:80` where 80 is the port.  We open sockets to these ports in order to communicate with servers.
