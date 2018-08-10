@@ -1,4 +1,4 @@
-MSAN692 Data acquisition
+MSDS692 Data acquisition
 =======
 
 
@@ -15,16 +15,17 @@ This course is part of the [MS in Analytics program at the University of San Fra
 
 **SPATIAL COORDINATES:**<br>
 
-* Class is held at 101 Howard in 5th floor classroom 529.
-* Exams are held on first floor, 152/154. Both sections meet together.
+* Class is held at 101 Howard in 5th floor classroom 527.
+* Exams are held in 527 and 529. Both sections meet together.
+* My office is room 607 @ 101 Howard up on mezzanine
 
-**TEMPORAL COORDINATES.** Wed Aug 23 - Wed Oct 11.
+**TEMPORAL COORDINATES.** Wed Aug 21 - Wed Oct 10.
 
 * Section 01: Mon/Wed 10-11:50AM
 * Section 02: Mon/Wed 1:15-3:05PM 
-* My office is room 608 @ 101 Howard (which I share with Prof. John Veitch).
+* Exams: 3 Wednesdays, 9:15 - 9:55AM
 
-**INSTRUCTION FORMAT**. Class runs for 1:50 hours, 2 days/week. Instructor-student interaction during lecture is encouraged and we'll mix in mini-exercises / labs during class. All programming will be done in the Python 2 programming language, unless otherwise specified.
+**INSTRUCTION FORMAT**. Class runs for 1:50 hours, 2 days/week. Instructor-student interaction during lecture is encouraged and we'll mix in mini-exercises / labs during class. All programming will be done in the Python 3 programming language, unless otherwise specified.
 
 **TARDINESS.** Please be on time for class. It is a big distraction if you come in late.
 
@@ -36,22 +37,43 @@ If you ever have questions about what constitutes plagiarism, cheating, or acade
 
 **Note:** Leaving your laptop unattended is a common means for another student to take your work. It is your responsibility to guard your work. Do not leave your printouts laying around or in the trash. *All persons with common code are likely to be considered at fault.*
 
-**ON DISABILITIES.** If you are a student with a disability or disabling condition, or if you think you may have a disability, please contact USF Student Disability Services (SDS) at 415/422-2613 within the first week of class, or immediately upon onset of the disability, to speak with a disability specialist. If you are determined eligible for reasonable accommodations, please meet with your disability specialist so they can arrange to have your accommodation letter sent to me, and we will discuss your needs for this course. For more information, please visit http://www.usfca.edu/sds/ or call 415/422-2613.
+**USF USF policies and legal declarations**
+
+*Students with Disabilities*
+
+If you are a student with a disability or disabling condition, or if you think you may have a disability, please contact <a href="/sds">USF Student Disability Services</a> (SDS) for information about accommodations.
+
+*Behavioral Expectations*
+
+All students are expected to behave in accordance with the <a href="/fogcutter">Student Conduct Code</a> and other University policies.
+
+*Academic Integrity*
+
+USF upholds the standards of honesty and integrity from all members of the academic community. All students are expected to know and adhere to the University's <a href="/academic-integrity/">Honor Code</a>.
+
+*Counseling and Psychological Services (CAPS)*
+
+CAPS provides confidential, free <a href="/student-health-safety/caps">counseling</a> to student members of our community.
+
+*Confidentiality, Mandatory Reporting, and Sexual Assault*
+
+For information and resources regarding sexual misconduct or assault visit the <a href="/TITLE-IX">Title IX</a> coordinator or USFs <a href="http://usfca.callistocampus.org" target="_blank">Callisto website</a>.
 
 ## Student evaluation
 
 | Artifact | Grade Weight | Due date |
 |--------|--------|--------|
-|[Data pipeline](https://github.com/parrt/msan692/blob/master/hw/pipeline.md)| 5%| Fri, Sep 1 11:59pm |
-|[Search Engine Implementation](https://github.com/parrt/msan692/blob/master/hw/search.md)| 12% | Wed, Sep 13 |
-|[TFIDF document summarization](https://github.com/parrt/msan692/blob/master/hw/tfidf.md)| 8%| Wed, Sep 20 |
-|[Recommending Articles](https://github.com/parrt/msan692/blob/master/hw/recommender.md)| 5% | Wed, Sep 27 |
-|[Tweet Sentiment Analysis](https://github.com/parrt/msan692/blob/master/hw/sentiment.md)| 10% | Sun, Oct 8 11:59pm |
-|Midterm Exam| 30%| 10AM-12PM Fri, Sep 15 |
-|Final Exam| 30%| 10AM-12PM Fri, Oct 13 |
+|[Data pipeline](https://github.com/parrt/msds692/blob/master/hw/pipeline.md)| 4%| Fri, Sep 1 11:59pm |
+|[Search Engine Implementation](https://github.com/parrt/msds692/blob/master/hw/search.md)| 10% | Wed, Sep 13 |
+|[TFIDF document summarization](https://github.com/parrt/msds692/blob/master/hw/tfidf.md)| 6%| Wed, Sep 20 |
+|[Recommending Articles](https://github.com/parrt/msds692/blob/master/hw/recommender.md)| 5% | Wed, Sep 27 |
+|[Tweet Sentiment Analysis](https://github.com/parrt/msds692/blob/master/hw/sentiment.md)| 10% | Mon, Oct 8 11:59pm |
+|Exam 1| 21%| 10AM-12PM Fri, Sep 15 |
+|Exam 2| 22%| 10AM-12PM Fri, Sep 15 |
+|Exam 3| 22%| 10AM-12PM Fri, Oct 13 |
 
 <!--
-|[Group project](https://github.com/parrt/msan692/blob/master/hw/group.md)| 15%| Wed, Oct 12 midnight |
+|[Group project](https://github.com/parrt/msds692/blob/master/hw/group.md)| 15%| Wed, Oct 12 midnight |
 -->
 
 All projects will be graded with the specific input or tests given in the project description, so you understand precisely what is expected of your program. Consequently, projects will be graded in binary fashion: They either work or they do not.  My hope is that everyone will get 100% on the projects.
@@ -66,65 +88,65 @@ Each project has a hard deadline and only those projects working correctly befor
 
 Most data you encounter will be in the form of human readable text, such as comma-separated value (CSV) files. We begin the course by studying how characters are stored in files and learning about the key data formats.
 
-* [representing text in a computer](https://github.com/parrt/msan692/blob/master/notes/chars.ipynb); see also [7-bit ascii codes](http://www.asciitable.com/), [unicode vs ascii in python](https://docs.python.org/2/howto/unicode.html) (Day 1)
-* [Data pipeline project](https://github.com/parrt/msan692/blob/master/hw/pipeline.md) (Converting stock history from Quandl to various formats) (**project**) (Day 1)
+* [representing text in a computer](https://github.com/parrt/msds692/blob/master/notes/chars.ipynb); see also [7-bit ascii codes](http://www.asciitable.com/), [unicode vs ascii in python](https://docs.python.org/2/howto/unicode.html) (Day 1)
+* [Data pipeline project](https://github.com/parrt/msds692/blob/master/hw/pipeline.md) (Converting stock history from Quandl to various formats) (**project**) (Day 1)
 	* reading delimited data; tsv, csv
-	* reading/generating XML (we'll load complicated XML in [TFIDF project](https://github.com/parrt/msan692/blob/master/hw/tfidf.md))
+	* reading/generating XML (we'll load complicated XML in [TFIDF project](https://github.com/parrt/msds692/blob/master/hw/tfidf.md))
 	* reading/generating json
 * (git intro)
-* [PDF using pdf2txt.py](https://github.com/parrt/msan692/blob/master/notes/pdf.ipynb) (Expecting text from Eisenhower's presidential library) (Day 2)
-* [Excel and CSV data](https://github.com/parrt/msan692/blob/master/notes/excel.ipynb) (Saving as CSV, stripping non-ASCII stuff, processing CSV with Python) (Day 2)
-* [HTML](https://github.com/parrt/msan692/blob/master/notes/html.md) (Parsing Tesla's IPO prospectus) (Day 3)
-* [Parsing web access log files](https://github.com/parrt/msan692/blob/master/notes/logs.md) (Optional)
+* [PDF using pdf2txt.py](https://github.com/parrt/msds692/blob/master/notes/pdf.ipynb) (Expecting text from Eisenhower's presidential library) (Day 2)
+* [Excel and CSV data](https://github.com/parrt/msds692/blob/master/notes/excel.ipynb) (Saving as CSV, stripping non-ASCII stuff, processing CSV with Python) (Day 2)
+* [HTML](https://github.com/parrt/msds692/blob/master/notes/html.md) (Parsing Tesla's IPO prospectus) (Day 3)
+* [Parsing web access log files](https://github.com/parrt/msds692/blob/master/notes/logs.md) (Optional)
 
-There are also plenty of nontext, binary formats. You can learn more from the MSAN501 boot camp material for [audio processing](https://github.com/parrt/msan501/blob/master/notes/sound.ipynb) and [image processing](https://github.com/parrt/msan501/raw/master/projects/images.pdf).
+There are also plenty of nontext, binary formats. You can learn more from the msds501 boot camp material for [audio processing](https://github.com/parrt/msds501/blob/master/notes/sound.ipynb) and [image processing](https://github.com/parrt/msds501/raw/master/projects/images.pdf).
 
 ## Text feature extraction
 
 * [Associations and dictionaries](notes/dict.ipynb) (Day 3)
-* [Search Engine Implementation](https://github.com/parrt/msan692/blob/master/hw/search.md) (**project**) (Day 3)
+* [Search Engine Implementation](https://github.com/parrt/msds692/blob/master/hw/search.md) (**project**) (Day 3)
 * (code review of sample jsontable functions, more htable discussion)
 * [CSV command-line kung fu](notes/bashcsv.ipynb) (Day 4)
-* [Intro to information extraction from text](https://github.com/parrt/msan692/blob/master/notes/text.ipynb) (Day 5)
-* [Computing TFIDF](https://github.com/parrt/msan692/blob/master/notes/tfidf.pdf) (Day 5)
-* [TFIDF document summarization](https://github.com/parrt/msan692/blob/master/hw/tfidf.md) (**project**) (Day 6)
+* [Intro to information extraction from text](https://github.com/parrt/msds692/blob/master/notes/text.ipynb) (Day 5)
+* [Computing TFIDF](https://github.com/parrt/msds692/blob/master/notes/tfidf.pdf) (Day 5)
+* [TFIDF document summarization](https://github.com/parrt/msds692/blob/master/hw/tfidf.md) (**project**) (Day 6)
 
 ## How the web works
 
 Now you know how to work with data files already sitting on your desk, we turn towards a study of computer networking and web infrastructure.
 
-* [Network sockets](https://github.com/parrt/msan692/blob/master/notes/sockets.md), DNS, email (Day 6)
-* [client/server architecture](https://github.com/parrt/msan692/blob/master/notes/client-server.md) (Day 6)
-* [HTTP](https://github.com/parrt/msan692/blob/master/notes/http.md) (Day 7)
-* [flask](https://github.com/parrt/msan692/blob/master/notes/flask.md) (Day 7)
+* [Network sockets](https://github.com/parrt/msds692/blob/master/notes/sockets.md), DNS, email (Day 6)
+* [client/server architecture](https://github.com/parrt/msds692/blob/master/notes/client-server.md) (Day 6)
+* [HTTP](https://github.com/parrt/msds692/blob/master/notes/http.md) (Day 7)
+* [flask](https://github.com/parrt/msds692/blob/master/notes/flask.md) (Day 7)
 * Review exam, launch AWS box, launch flask server at port 80 (Day 8)
-* [Web analytics](https://github.com/parrt/msan692/blob/master/notes/webanalytics.md) (Day 9)
-* [Cookies](https://github.com/parrt/msan692/blob/master/notes/cookies.md), logging in/out (Day 9)
-* [Building web servers](https://github.com/parrt/msan692/blob/master/hw/server.md) (**optional project**)
+* [Web analytics](https://github.com/parrt/msds692/blob/master/notes/webanalytics.md) (Day 9)
+* [Cookies](https://github.com/parrt/msds692/blob/master/notes/cookies.md), logging in/out (Day 9)
+* [Building web servers](https://github.com/parrt/msds692/blob/master/hw/server.md) (**optional project**)
 
 ## Data sources
 
 With an understanding of how the Internet and web works, it's time to start pulling data from various web sources.  The difficulty of collecting data depends a great deal on the permissions and services available for a site or page.  A good analogy is: some doors are open, some doors are closed, some doors are locked, some "doors" are not doors but reinforced steel walls.
 
-* [Pulling data from (open) REST APIs](https://github.com/parrt/msan692/blob/master/notes/openapi.md) (Day 10, skip IMDB; new key mech fails)
+* [Pulling data from (open) REST APIs](https://github.com/parrt/msds692/blob/master/notes/openapi.md) (Day 10, skip IMDB; new key mech fails)
   * Quandl stock data (*todo*: move to next section)
   * openpayments.us
   * IMDB movie data (*todo*: damn, now this one uses an API key also and mine is currently not working that are received by email)
 * Pull data from sites requiring an ID
-  * [Zillow](https://github.com/parrt/msan692/blob/master/notes/zillow.md) (Optional)
-  * [Twitter](https://github.com/parrt/msan692/blob/master/notes/twitter.md)  (jump ahead here to sync with project Day 10, more detail Day 11)
-  * [Youtube](https://github.com/parrt/msan692/blob/master/notes/youtube.md)  (Day 11)
-* [APIs requiring authentication/identification](https://github.com/parrt/msan692/blob/master/notes/authapi.md) (optional)
-  * [LinkedIn](https://github.com/parrt/msan692/blob/master/notes/linkedin.md)
-  * [Facebook](https://github.com/parrt/msan692/blob/master/notes/facebook.md)
-* [Extracting data from web pages](https://github.com/parrt/msan692/blob/master/notes/scraping.md) (Day 12)
-  * [Crawling](https://github.com/parrt/msan692/blob/master/notes/crawling.md)
-  * [buzzfeed](https://github.com/parrt/msan692/blob/master/notes/buzzfeed.md) (Day 12)
-  * [Amazon](https://github.com/parrt/msan692/blob/master/notes/amazon.md)
-  * [Scraping data from tables](https://github.com/parrt/msan692/blob/master/notes/scraping-tables.md)
-* [Selenium](https://github.com/parrt/msan692/blob/master/notes/selenium.md)
+  * [Zillow](https://github.com/parrt/msds692/blob/master/notes/zillow.md) (Optional)
+  * [Twitter](https://github.com/parrt/msds692/blob/master/notes/twitter.md)  (jump ahead here to sync with project Day 10, more detail Day 11)
+  * [Youtube](https://github.com/parrt/msds692/blob/master/notes/youtube.md)  (Day 11)
+* [APIs requiring authentication/identification](https://github.com/parrt/msds692/blob/master/notes/authapi.md) (optional)
+  * [LinkedIn](https://github.com/parrt/msds692/blob/master/notes/linkedin.md)
+  * [Facebook](https://github.com/parrt/msds692/blob/master/notes/facebook.md)
+* [Extracting data from web pages](https://github.com/parrt/msds692/blob/master/notes/scraping.md) (Day 12)
+  * [Crawling](https://github.com/parrt/msds692/blob/master/notes/crawling.md)
+  * [buzzfeed](https://github.com/parrt/msds692/blob/master/notes/buzzfeed.md) (Day 12)
+  * [Amazon](https://github.com/parrt/msds692/blob/master/notes/amazon.md)
+  * [Scraping data from tables](https://github.com/parrt/msds692/blob/master/notes/scraping-tables.md)
+* [Selenium](https://github.com/parrt/msds692/blob/master/notes/selenium.md)
 
 ## Misc
 
-* [San Francisco police activity heat map using google map API](https://github.com/parrt/msan692/blob/master/notes/heatmap.md)
-* [San Francisco police incidents word clouds](https://github.com/parrt/msan692/blob/master/notes/sfpd.md)
+* [San Francisco police activity heat map using google map API](https://github.com/parrt/msds692/blob/master/notes/heatmap.md)
+* [San Francisco police incidents word clouds](https://github.com/parrt/msds692/blob/master/notes/sfpd.md)
