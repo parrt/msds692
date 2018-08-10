@@ -18,11 +18,10 @@ testfiles = [
 
 zipfilename = sys.argv[1]
 corpus = load_corpus(zipfilename)
-print "Loaded %d files from %s" % (len(corpus), zipfilename)
+print("Loaded %d files from %s" % (len(corpus), zipfilename))
 
-input = open('corpus.pkl', 'rb')
-truth = pickle.load(input)
-input.close()
+with open('corpus.pkl', 'rb') as input:
+    truth = pickle.load(input)
 
 tfidf = compute_tfidf(corpus)
 
@@ -31,10 +30,10 @@ for fname in testfiles:
     scores = summarize(tfidf, corpus[fname], 20)
     if len(scores)!=len(truth[fname]):
         failures += 1
-        print '-----------------\nFAIL %s: EXPECTED %d scores FOUND %d' % (fname, len(truth[fname]),len(scores))
+        print('-----------------\nFAIL %s: EXPECTED %d scores FOUND %d' % (fname, len(truth[fname]),len(scores)))
     elif scores!=truth[fname]:
         failures += 1
-        print '-----------------\nFAIL %s: EXPECTED %s\nFOUND %s' % (fname, str(truth[fname]),str(scores))
+        print('-----------------\nFAIL %s: EXPECTED %s\nFOUND %s' % (fname, str(truth[fname]),str(scores)))
 
 if not failures:
-    print "All tests pass"
+    print("All tests pass")

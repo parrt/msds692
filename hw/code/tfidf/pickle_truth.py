@@ -19,7 +19,7 @@ testfiles = [
 
 zipfilename = sys.argv[1]
 corpus = load_corpus(zipfilename)
-print "Loaded %d files from %s" % (len(corpus), zipfilename)
+print("Loaded %d files from %s" % (len(corpus), zipfilename))
 
 tfidf = compute_tfidf(corpus)
 
@@ -28,6 +28,5 @@ for fname in testfiles:
     scores = summarize(tfidf, corpus[fname], 20)
     m[fname] = scores
 
-output = open('corpus.pkl', 'wb')
-pickle.dump(m, output)
-output.close()
+with open('corpus.pkl', 'wb') as output:
+    pickle.dump(m, output)
