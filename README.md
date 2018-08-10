@@ -88,16 +88,17 @@ Each project has a hard deadline and only those projects working correctly befor
 
 Most data you encounter will be in the form of human readable text, such as comma-separated value (CSV) files. We begin the course by studying how characters are stored in files and learning about the key data formats.
 
-* [representing text in a computer](https://github.com/parrt/msds692/blob/master/notes/chars.ipynb); see also [7-bit ascii codes](http://www.asciitable.com/), [unicode vs ascii in python](https://docs.python.org/2/howto/unicode.html) (Day 1)
+* [representing text in a computer](notes/chars.ipynb); see also [7-bit ascii codes](http://www.asciitable.com/), [unicode vs ascii in python](https://docs.python.org/2/howto/unicode.html) (Day 1)
 * [Data pipeline project](https://github.com/parrt/msds692/blob/master/hw/pipeline.md) (Converting stock history from Quandl to various formats) (**project**) (Day 1)
 	* reading delimited data; tsv, csv
 	* reading/generating XML (we'll load complicated XML in [TFIDF project](https://github.com/parrt/msds692/blob/master/hw/tfidf.md))
 	* reading/generating json
 * (git intro)
-* [PDF using pdf2txt.py](https://github.com/parrt/msds692/blob/master/notes/pdf.ipynb) (Expecting text from Eisenhower's presidential library) (Day 2)
-* [Excel and CSV data](https://github.com/parrt/msds692/blob/master/notes/excel.ipynb) (Saving as CSV, stripping non-ASCII stuff, processing CSV with Python) (Day 2)
-* [HTML](https://github.com/parrt/msds692/blob/master/notes/html.md) (Parsing Tesla's IPO prospectus) (Day 3)
-* [Parsing web access log files](https://github.com/parrt/msds692/blob/master/notes/logs.md) (Optional)
+* [PDF using pdf2txt.py](notes/pdf.ipynb) (Expecting text from Eisenhower's presidential library) (Day 2)
+* [Excel and CSV data](notes/excel.ipynb) (Saving as CSV, stripping non-ASCII stuff, processing CSV with Python) (Day 2)
+* [HTML](notes/html.md) (Parsing Tesla's IPO prospectus) (Day 3)
+* [Parsing web access log files](notes/logs.md) (Optional)
+* [Data structure basics](notes/datastructures.ipynb)
 
 There are also plenty of nontext, binary formats. You can learn more from the msds501 boot camp material for [audio processing](https://github.com/parrt/msds501/blob/master/notes/sound.ipynb) and [image processing](https://github.com/parrt/msds501/raw/master/projects/images.pdf).
 
@@ -107,46 +108,46 @@ There are also plenty of nontext, binary formats. You can learn more from the ms
 * [Search Engine Implementation](https://github.com/parrt/msds692/blob/master/hw/search.md) (**project**) (Day 3)
 * (code review of sample jsontable functions, more htable discussion)
 * [CSV command-line kung fu](notes/bashcsv.ipynb) (Day 4)
-* [Intro to information extraction from text](https://github.com/parrt/msds692/blob/master/notes/text.ipynb) (Day 5)
-* [Computing TFIDF](https://github.com/parrt/msds692/blob/master/notes/tfidf.pdf) (Day 5)
+* [Intro to information extraction from text](notes/text.ipynb) (Day 5)
+* [Computing TFIDF](notes/tfidf.pdf) (Day 5)
 * [TFIDF document summarization](https://github.com/parrt/msds692/blob/master/hw/tfidf.md) (**project**) (Day 6)
 
 ## How the web works
 
 Now you know how to work with data files already sitting on your desk, we turn towards a study of computer networking and web infrastructure.
 
-* [Network sockets](https://github.com/parrt/msds692/blob/master/notes/sockets.md), DNS, email (Day 6)
-* [client/server architecture](https://github.com/parrt/msds692/blob/master/notes/client-server.md) (Day 6)
-* [HTTP](https://github.com/parrt/msds692/blob/master/notes/http.md) (Day 7)
-* [flask](https://github.com/parrt/msds692/blob/master/notes/flask.md) (Day 7)
+* [Network sockets](notes/sockets.md), DNS, email (Day 6)
+* [client/server architecture](notes/client-server.md) (Day 6)
+* [HTTP](notes/http.md) (Day 7)
+* [flask](notes/flask.md) (Day 7)
 * Review exam, launch AWS box, launch flask server at port 80 (Day 8)
-* [Web analytics](https://github.com/parrt/msds692/blob/master/notes/webanalytics.md) (Day 9)
-* [Cookies](https://github.com/parrt/msds692/blob/master/notes/cookies.md), logging in/out (Day 9)
+* [Web analytics](notes/webanalytics.md) (Day 9)
+* [Cookies](notes/cookies.md), logging in/out (Day 9)
 * [Building web servers](https://github.com/parrt/msds692/blob/master/hw/server.md) (**optional project**)
 
 ## Data sources
 
 With an understanding of how the Internet and web works, it's time to start pulling data from various web sources.  The difficulty of collecting data depends a great deal on the permissions and services available for a site or page.  A good analogy is: some doors are open, some doors are closed, some doors are locked, some "doors" are not doors but reinforced steel walls.
 
-* [Pulling data from (open) REST APIs](https://github.com/parrt/msds692/blob/master/notes/openapi.md) (Day 10, skip IMDB; new key mech fails)
+* [Pulling data from (open) REST APIs](notes/openapi.md) (Day 10, skip IMDB; new key mech fails)
   * Quandl stock data (*todo*: move to next section)
   * openpayments.us
   * IMDB movie data (*todo*: damn, now this one uses an API key also and mine is currently not working that are received by email)
 * Pull data from sites requiring an ID
-  * [Zillow](https://github.com/parrt/msds692/blob/master/notes/zillow.md) (Optional)
-  * [Twitter](https://github.com/parrt/msds692/blob/master/notes/twitter.md)  (jump ahead here to sync with project Day 10, more detail Day 11)
-  * [Youtube](https://github.com/parrt/msds692/blob/master/notes/youtube.md)  (Day 11)
-* [APIs requiring authentication/identification](https://github.com/parrt/msds692/blob/master/notes/authapi.md) (optional)
-  * [LinkedIn](https://github.com/parrt/msds692/blob/master/notes/linkedin.md)
-  * [Facebook](https://github.com/parrt/msds692/blob/master/notes/facebook.md)
-* [Extracting data from web pages](https://github.com/parrt/msds692/blob/master/notes/scraping.md) (Day 12)
-  * [Crawling](https://github.com/parrt/msds692/blob/master/notes/crawling.md)
-  * [buzzfeed](https://github.com/parrt/msds692/blob/master/notes/buzzfeed.md) (Day 12)
-  * [Amazon](https://github.com/parrt/msds692/blob/master/notes/amazon.md)
-  * [Scraping data from tables](https://github.com/parrt/msds692/blob/master/notes/scraping-tables.md)
-* [Selenium](https://github.com/parrt/msds692/blob/master/notes/selenium.md)
+  * [Zillow](notes/zillow.md) (Optional)
+  * [Twitter](notes/twitter.md)  (jump ahead here to sync with project Day 10, more detail Day 11)
+  * [Youtube](notes/youtube.md)  (Day 11)
+* [APIs requiring authentication/identification](notes/authapi.md) (optional)
+  * [LinkedIn](notes/linkedin.md)
+  * [Facebook](notes/facebook.md)
+* [Extracting data from web pages](notes/scraping.md) (Day 12)
+  * [Crawling](notes/crawling.md)
+  * [buzzfeed](notes/buzzfeed.md) (Day 12)
+  * [Amazon](notes/amazon.md)
+  * [Scraping data from tables](notes/scraping-tables.md)
+* [Selenium](notes/selenium.md)
 
 ## Misc
 
-* [San Francisco police activity heat map using google map API](https://github.com/parrt/msds692/blob/master/notes/heatmap.md)
-* [San Francisco police incidents word clouds](https://github.com/parrt/msds692/blob/master/notes/sfpd.md)
+* [San Francisco police activity heat map using google map API](notes/heatmap.md)
+* [San Francisco police incidents word clouds](notes/sfpd.md)
