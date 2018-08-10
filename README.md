@@ -6,7 +6,7 @@ There are lots of exciting and interesting problems in analytics, such as figuri
 
 The title of this course is "Data Acquisition" but of course, once we get the data, we have to organize it into handy data structures and typically have to extract information from the raw data. For example, we might need to boil down a Twitter stream into a single positive or negative sentiment score for a given user.  This course teaches you how to collect, organize, coalesce, and extract information from multiple sources in preparation for your analysis work. 
 
-This course is part of the [MS in Analytics program at the University of San Francisco](http://analytics.usfca.edu).
+This course is part of the [MS in Data Science program at the University of San Francisco](https://www.usfca.edu/arts-sciences/graduate-programs/data-science).
 
 
 # Administrivia
@@ -19,7 +19,7 @@ This course is part of the [MS in Analytics program at the University of San Fra
 * Exams are held in 527 and 529. Both sections meet together.
 * My office is room 607 @ 101 Howard up on mezzanine
 
-**TEMPORAL COORDINATES.** Wed Aug 21 - Wed Oct 10.
+**TEMPORAL COORDINATES.** Wed Aug 22 - Wed Oct 10.
 
 * Section 01: Mon/Wed 10-11:50AM
 * Section 02: Mon/Wed 1:15-3:05PM 
@@ -63,14 +63,14 @@ For information and resources regarding sexual misconduct or assault visit the <
 
 | Artifact | Grade Weight | Due date |
 |--------|--------|--------|
-|[Data pipeline](https://github.com/parrt/msds692/blob/master/hw/pipeline.md)| 4%| Fri, Sep 1 11:59pm |
-|[Search Engine Implementation](https://github.com/parrt/msds692/blob/master/hw/search.md)| 10% | Wed, Sep 13 |
-|[TFIDF document summarization](https://github.com/parrt/msds692/blob/master/hw/tfidf.md)| 6%| Wed, Sep 20 |
-|[Recommending Articles](https://github.com/parrt/msds692/blob/master/hw/recommender.md)| 5% | Wed, Sep 27 |
-|[Tweet Sentiment Analysis](https://github.com/parrt/msds692/blob/master/hw/sentiment.md)| 10% | Mon, Oct 8 11:59pm |
-|Exam 1| 21%| 10AM-12PM Fri, Sep 15 |
-|Exam 2| 22%| 10AM-12PM Fri, Sep 15 |
-|Exam 3| 22%| 10AM-12PM Fri, Oct 13 |
+|[Data pipeline](https://github.com/parrt/msds692/blob/master/hw/pipeline.md)| 4%| Fri, Aug 31 11:59pm |
+|[Search Engine Implementation](https://github.com/parrt/msds692/blob/master/hw/search.md)| 10% | Mon, Sep 10 |
+|[TFIDF document summarization](https://github.com/parrt/msds692/blob/master/hw/tfidf.md)| 6%| Mon, Sep 17 |
+|[Recommending Articles](https://github.com/parrt/msds692/blob/master/hw/recommender.md)| 5% | Mon, Sep 24 |
+|[Tweet Sentiment Analysis](https://github.com/parrt/msds692/blob/master/hw/sentiment.md)| 10% | Mon, Oct 8 |
+|Exam 1| 15%| 9AM-9:55AM Wed, Sep 5 |
+|Exam 2| 22%| 9AM-9:55AM Wed, Sep 19 |
+|Exam 3| 28%| 10-11AM, 1:15-2:15PM Wed, Oct 10 |
 
 <!--
 |[Group project](https://github.com/parrt/msds692/blob/master/hw/group.md)| 15%| Wed, Oct 12 midnight |
@@ -78,7 +78,7 @@ For information and resources regarding sexual misconduct or assault visit the <
 
 All projects will be graded with the specific input or tests given in the project description, so you understand precisely what is expected of your program. Consequently, projects will be graded in binary fashion: They either work or they do not.  My hope is that everyone will get 100% on the projects.
 
-Each project has a hard deadline and only those projects working correctly before the deadline get credit.  My grading script pulls from github at the deadline.
+Each project has a hard deadline and only those projects working correctly before the deadline get credit.  My grading script pulls from github at the deadline.  *All projects are due at the start of class on the day indicated, unless otherwise specified.*
 
 **Grading standards**. I consider an **A** grade to be above and beyond what most students have achieved. A **B** grade is an average grade for a student or what you could call "competence" in a business setting. A **C** grade means that you either did not or could not put forth the effort to achieve competence. Below **C** implies you did very little work or had great difficulty with the class compared to other students.
 
