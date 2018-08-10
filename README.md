@@ -23,7 +23,7 @@ This course is part of the [MS in Data Science program at the University of San 
 
 * Section 01: Mon/Wed 10-11:50AM
 * Section 02: Mon/Wed 1:15-3:05PM 
-* Exams: 3 Wednesdays, 9:15 - 9:55AM
+* Exams: Wednesdays, 9:15 - 9:55AM and (last exam) 3-4PM
 
 **INSTRUCTION FORMAT**. Class runs for 1:50 hours, 2 days/week. Instructor-student interaction during lecture is encouraged and we'll mix in mini-exercises / labs during class. All programming will be done in the Python 3 programming language, unless otherwise specified.
 
@@ -70,7 +70,7 @@ For information and resources regarding sexual misconduct or assault visit the <
 |[Tweet Sentiment Analysis](https://github.com/parrt/msds692/blob/master/hw/sentiment.md)| 10% | Mon, Oct 8 |
 |Exam 1| 15%| 9AM-9:55AM Wed, Sep 5 |
 |Exam 2| 22%| 9AM-9:55AM Wed, Sep 19 |
-|Exam 3| 28%| 10-11AM, 1:15-2:15PM Wed, Oct 10 |
+|Exam 3| 28%| 3-4PM Wed, Oct 10 |
 
 <!--
 |[Group project](https://github.com/parrt/msds692/blob/master/hw/group.md)| 15%| Wed, Oct 12 midnight |
