@@ -1,7 +1,5 @@
 # Search Engine Implementation
 
-*TODO*: add replace test in test_htable.py
-
 The goal of this project is to learn how hashtables work and to *feel* just how much slower a linear search is. Along the way, you'll learn the basic mechanics of implementing a search engine, including displaying search results in a browser window and being able to navigate to documents. You'll also learn a tiny bit of HTML.
 
 ## Discussion
@@ -205,7 +203,7 @@ def htable_put(table, key, value):
     If the bucket for key already has a (key,value) pair with that key,
     then replace the tuple with the new (key,value).
     Make sure that you are only adding (key,value) associations to the buckets.
-    The type(value) can be anything. Could be a set, list, number, string, anything!
+    The type(value) can be anything. Could be a set, list, number, string, or anything!
     """
 ```
 
@@ -268,7 +266,7 @@ You must complete and add these to root of your `search-`*userid* repository:
 * htable.py
 * index_search.py
 * linear_search.py
-* myhtable_search.py (**no `dict`s allowed in this file!**)
+* myhtable_search.py (**no `dict` objects allowed in this file!**)
 * words.py
 * search.py (copy this from starterkit unchanged)
 * test_htable.py (copy this from starterkit unchanged)
@@ -279,34 +277,42 @@ You must complete and add these to root of your `search-`*userid* repository:
 Ultimately, you want the test results to look like the following.
 
 ```bash
-$ python -m pytest -v test_berlitz.py ~/data/berlitz1
+$ python -m pytest -v test_berlitz.py your-berlitz-dirname
 ...
-test_berlitz.py::test_linear_berlitz_none PASSED
-test_berlitz.py::test_index_berlitz_none PASSED
-test_berlitz.py::test_myhtable_berlitz_none PASSED
-test_berlitz.py::test_hawaii_linear PASSED
-test_berlitz.py::test_hawaii_index PASSED
-test_berlitz.py::test_hawaii_myhtable PASSED
-test_berlitz.py::test_greek_linear PASSED
-test_berlitz.py::test_greek_index PASSED
-test_berlitz.py::test_greek_myhtable PASSED
-test_berlitz.py::test_lisbon_linear PASSED
-test_berlitz.py::test_lisbon_index PASSED
-test_berlitz.py::test_lisbon_myhtable PASSED
-test_berlitz.py::test_india_linear PASSED
-test_berlitz.py::test_india_index PASSED
-test_berlitz.py::test_india_myhtable PASSED
-test_berlitz.py::test_dublin_and_hawaii_linear PASSED
-test_berlitz.py::test_dublin_and_hawaii_index PASSED
-test_berlitz.py::test_dublin_and_hawaii_myhtable PASSED
+test_berlitz.py::test_linear_berlitz_none PASSED                         [  5%]
+test_berlitz.py::test_index_berlitz_none PASSED                          [ 11%]
+test_berlitz.py::test_myhtable_berlitz_none PASSED                       [ 16%]
+test_berlitz.py::test_hawaii_linear PASSED                               [ 22%]
+test_berlitz.py::test_hawaii_index PASSED                                [ 27%]
+test_berlitz.py::test_hawaii_myhtable PASSED                             [ 33%]
+test_berlitz.py::test_greek_linear PASSED                                [ 38%]
+test_berlitz.py::test_greek_index PASSED                                 [ 44%]
+test_berlitz.py::test_greek_myhtable PASSED                              [ 50%]
+test_berlitz.py::test_lisbon_linear PASSED                               [ 55%]
+test_berlitz.py::test_lisbon_index PASSED                                [ 61%]
+test_berlitz.py::test_lisbon_myhtable PASSED                             [ 66%]
+test_berlitz.py::test_india_linear PASSED                                [ 72%]
+test_berlitz.py::test_india_index PASSED                                 [ 77%]
+test_berlitz.py::test_india_myhtable PASSED                              [ 83%]
+test_berlitz.py::test_dublin_and_hawaii_linear PASSED                    [ 88%]
+test_berlitz.py::test_dublin_and_hawaii_index PASSED                     [ 94%]
+test_berlitz.py::test_dublin_and_hawaii_myhtable PASSED                  [100%]
+
+========================== 18 passed in 11.14 seconds ==========================
+```
+
+```bash
 $ python -m pytest -v test_htable.py 
 ...
-test_htable.py::test_empty PASSED
-test_htable.py::test_single PASSED
-test_htable.py::test_singleon PASSED
-test_htable.py::test_int_to_int PASSED
-test_htable.py::test_str_to_str PASSED
-test_htable.py::test_str_to_set PASSED
+test_htable.py::test_empty PASSED                                        [ 14%]
+test_htable.py::test_single PASSED                                       [ 28%]
+test_htable.py::test_singleon PASSED                                     [ 42%]
+test_htable.py::test_int_to_int PASSED                                   [ 57%]
+test_htable.py::test_str_to_str PASSED                                   [ 71%]
+test_htable.py::test_str_to_list PASSED                                  [ 85%]
+test_htable.py::test_replace_str PASSED                                  [100%]
+
+=========================== 7 passed in 0.02 seconds ===========================
 ```
 
 (You might need to install `pytest` with `pip`.)

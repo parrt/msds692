@@ -24,12 +24,12 @@ files = filelist(rootdir)
 # Uncomment the next line to test just the first 100 files instead of all files
 # files = files[:100]
 N = len(files)
-print N, "files"
+print(N, "files")
 
 index = None
 
 while True:
-    terms = raw_input("Search terms: ")
+    terms = input("Search terms: ")
     terms = words(terms)
 
     if impl=='linear':
@@ -37,18 +37,17 @@ while True:
     elif impl == 'index':
         if index is None:
             index = create_index(files)
-            print "Index complete"
+            print("Index complete")
         docs = index_search(files, index, terms)
     elif impl == 'myhtable':
         if index is None:
             index = myhtable_create_index(files)
-            print "Index complete"
+            print("Index complete")
         docs = myhtable_index_search(files, index, terms)
     else:
-        print "Invalid search type:", impl
+        print("Invalid search type:", impl)
         break
     page = results(docs, terms)
-    f = open("/tmp/results.html", "w")
-    f.write(page)
-    f.close()
+    with open("/tmp/results.html", "w") as f:
+        f.write(page)
     webbrowser.open_new_tab("file:///tmp/results.html")
