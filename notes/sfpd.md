@@ -187,4 +187,4 @@ Run the `wordcloud.py` script on those files to get an idea of the types of crim
 
 Hmm..ok, so parking in the Mission is ok, but Northern, Central, and Southern precincts are bad news.
 
-If you get stuck in any of these exercises, you can look at the [code associated with this notes](https://github.com/parrt/msan692/tree/master/notes/code/sfpd).
+If you get stuck in any of these exercises, you can look at the [code associated with this notes](https://github.com/parrt/msds692/tree/master/notes/code/sfpd).

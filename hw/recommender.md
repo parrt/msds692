@@ -18,7 +18,7 @@ You will do your work in `recommender-`*userid*.
 
 ### Article word-vector centroids
 
-Those of you who were not in the [MSAN501 computational boot camp](https://github.com/parrt/msan501) should read the project description [Word similarity and relationships](https://github.com/parrt/msan501/blob/master/projects/wordsim.md). The document explains word vectors enough to complete this project.
+Those of you who were not in the [MSAN501 computational boot camp](https://github.com/parrt/msds501) should read the project description [Word similarity and relationships](https://github.com/parrt/msds501/blob/master/projects/wordsim.md). The document explains word vectors enough to complete this project.
 
 In a nutshell, each word has a vector of, say, 300 floating-point numbers that somehow capture the meaning of the word, at least as it relates to other words within a corpus. These vectors are derived from a neural network that learns to map a word to an output vector such that neighboring words in some large corpus are close in 300-space. ("The main intuition underlying the model is the simple observation that ratios of word-word co-occurrence probabilities have the potential for encoding some form of meaning." see [GloVe project](https://nlp.stanford.edu/projects/glove/).)
 
@@ -137,7 +137,7 @@ Anyway, the upshot is you don't have to worry about these attacks but it's somet
 
 ## Getting started
 
-Download the [starterkit](https://github.com/parrt/msan692/tree/master/hw/code/recommender), which has the following files and structure:
+Download the [starterkit](https://github.com/parrt/msds692/tree/master/hw/code/recommender), which has the following files and structure:
 
 ```
 ├── doc2vec.py
@@ -185,8 +185,8 @@ cd recommender-parrt
 Now, download the data you need and unzip:
 
 ```bash
-wget https://s3-us-west-1.amazonaws.com/msan692/glove.6B.300d.txt
-wget https://s3-us-west-1.amazonaws.com/msan692/bbc.7z
+wget https://s3-us-west-1.amazonaws.com/msds692/glove.6B.300d.txt
+wget https://s3-us-west-1.amazonaws.com/msds692/bbc.7z
 7z x bbc.7z
 ```
 
@@ -232,14 +232,14 @@ Note that I you must give fully-qualified pathnames to the word vectors and the 
 
 ## Evaluation
 
-To evaluate your projects, the grader and I will run the [test_server.py](https://github.com/parrt/msan692/blob/master/hw/code/recommender/test_server.py) script, from your repo root directory, that automatically pulls your article list page and a selection of article pages to check that your recommendations match our solution.
+To evaluate your projects, the grader and I will run the [test_server.py](https://github.com/parrt/msds692/blob/master/hw/code/recommender/test_server.py) script, from your repo root directory, that automatically pulls your article list page and a selection of article pages to check that your recommendations match our solution.
 
 **Without the IP.txt file at the root of your repository, we cannot test your server and you get a zero!**  Our script reads your IP.txt file with:
  `with open("IP.txt") as f: host = f.read().strip()`
 
 The starterkit has `localhost:5000` in it so you can test locally before deploying to your server.
 
-It also reads some pickled "truth" data structures that encode the articles from my solution's web server. That data was generated with [pickle_truth.py](https://github.com/parrt/msan692/blob/master/hw/code/recommender/pickle_truth.py).
+It also reads some pickled "truth" data structures that encode the articles from my solution's web server. That data was generated with [pickle_truth.py](https://github.com/parrt/msds692/blob/master/hw/code/recommender/pickle_truth.py).
 
 Here is a sample test run:
 

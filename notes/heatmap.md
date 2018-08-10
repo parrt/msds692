@@ -11,7 +11,7 @@ Take a look at [Google maps API doc](https://developers.google.com/maps/document
 **Getting a google API key**. Google requires that you get a so-called API key for use with every Google Maps request. Follow these steps to get set up:
 
 * Get a google account if you don't already have one.
-* Go to the [Google API Console](https://console.developers.google.com/apis/dashboard) and create a project. I call mine msan692-test or something like that.
+* Go to the [Google API Console](https://console.developers.google.com/apis/dashboard) and create a project. I call mine msds692-test or something like that.
 * Enable the " Google Maps JavaScript API" API from your console (click the "Enable APIs and services" link).
 
 **Exercise**: Using the template below, fill in the `...` latitude and longitude for any place that you'd like to see. And also change `YOUR_API_KEY` to your Google API key.  For example, we can grab a location from the police data. Column 10 (from 0) is the latitude and column 9 is the longitude: 37.7981336020854, -122.427270640646. Save the file as `map.html` and then open it with your browser. Here is the HTML file containing the JavaScript necessary to create a map with a marker:
@@ -67,7 +67,7 @@ We are going to base our crime heat map on the [Heatmap example](https://develop
 {lat:37.7765080370233, lng:-122.414457764634},
 ```
 
-I have split Google's heat map example into two files with a small modification so that we can combine [`heatmap-start.txt`](https://github.com/parrt/msan692/blob/master/notes/code/sfpd/heatmap-start.txt) + those longitude and latitude lines + [`heatmap-end.txt`](https://github.com/parrt/msan692/blob/master/notes/code/sfpd/heatmap-end.txt) into a `heatmap.html` file and then view it in the browser.
+I have split Google's heat map example into two files with a small modification so that we can combine [`heatmap-start.txt`](https://github.com/parrt/msds692/blob/master/notes/code/sfpd/heatmap-start.txt) + those longitude and latitude lines + [`heatmap-end.txt`](https://github.com/parrt/msds692/blob/master/notes/code/sfpd/heatmap-end.txt) into a `heatmap.html` file and then view it in the browser.
 
 **Exercise**: Write a small Python program called `latlng.py` that processes the file specified as an argument and prints out column 10, column 9 but in the format above. It should look like:
 
@@ -233,4 +233,4 @@ And the next? Yep, Fifth and Market St.
 
 <hr>
 
-If you get stuck in any of these exercises, you can look at the [code associated with this notes](https://github.com/parrt/msan692/tree/master/notes/code/sfpd).
+If you get stuck in any of these exercises, you can look at the [code associated with this notes](https://github.com/parrt/msds692/tree/master/notes/code/sfpd).

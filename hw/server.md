@@ -145,7 +145,7 @@ Now go back into your web app configuration and tell it to reload. Then go back 
 
 We will run your server locally and then use `wget` or `curl` from the commandline to pull data from your `server.py` at 127.0.0.1. We will also check that your website lives at `userid.pythonanywhere.com` and that it gives the same results.
 
-For convenience, here is a [testing script](https://github.com/parrt/msan692/blob/master/hw/code/web/testserver.sh) and output:
+For convenience, here is a [testing script](https://github.com/parrt/msds692/blob/master/hw/code/web/testserver.sh) and output:
 
 ```bash
 $ ./testserver.sh output
@@ -159,4 +159,4 @@ output/VBK.html and /tmp/post-VBK.html same
 output/VBK.json and /tmp/VBK.json same
 ```
 
-Note that the [sample html/json output](https://github.com/parrt/msan692/tree/master/hw/code/web/output) will differ from fresh fetches as stock data gets updated everyday. I will test with fresh data.
+Note that the [sample html/json output](https://github.com/parrt/msds692/tree/master/hw/code/web/output) will differ from fresh fetches as stock data gets updated everyday. I will test with fresh data.

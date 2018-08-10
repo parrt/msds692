@@ -38,7 +38,7 @@ $ python xml2csv.py data.xml | python csv2json.py > data.json
 
 It's also good idea to learn how to generate HTML for display in a browser, so we will create a CSV to HTML translator as well.
 
-You will work in git repo pipeline-*userid*.  Some [starter kit files](https://github.com/parrt/msan692/blob/master/hw/code/pipeline) are available.
+You will work in git repo pipeline-*userid*.  Some [starter kit files](https://github.com/parrt/msds692/blob/master/hw/code/pipeline) are available.
 
 ## Description
 
@@ -55,14 +55,14 @@ http://ichart.finance.yahoo.com/table.csv?s=AAPL
 The data is a CSV file with 8996 lines, which we can discover easily with `wc`:
  
 ```bash
-$ wc ~/github/msan692/data/AAPL.csv
-    8996    8997  583817 /Users/parrt/github/msan692/data/AAPL.csv
+$ wc ~/github/msds692/data/AAPL.csv
+    8996    8997  583817 /Users/parrt/github/msds692/data/AAPL.csv
 ```
 
 The first thing to notice is that there is a header row that describes the data in the various columns.
  
 ```bash
-$ head ~/github/msan692/data/AAPL.csv
+$ head ~/github/msds692/data/AAPL.csv
 Date,Open,High,Low,Close,Volume,Adj Close
 2016-08-12,107.779999,108.440002,107.779999,108.18,18612300,108.18
 2016-08-11,108.519997,108.93,107.849998,107.93,27484500,107.93
@@ -315,9 +315,9 @@ $ diff /tmp/t.json /tmp/t2.json
 
 Each of the five translators will be tested automatically. Any programming errors or invalid output will result in a zero for that particular test. Each of the translators gets 20% of the score.  Note, however, that if your CSV `readcsv()` function doesn't work, your `csv*.py` scripts will not work either so make sure you get that working correctly first.
 
-You will find some [sample input](https://github.com/parrt/msan692/blob/master/hw/code/pipeline/data) and [expected output](https://github.com/parrt/msan692/blob/master/hw/code/pipeline/output) in this course repository.
+You will find some [sample input](https://github.com/parrt/msds692/blob/master/hw/code/pipeline/data) and [expected output](https://github.com/parrt/msds692/blob/master/hw/code/pipeline/output) in this course repository.
 
-I provide a [test shell script](https://github.com/parrt/msan692/blob/master/hw/code/pipeline/testdata.sh) that you can use to test your data format generation and conversion.  Your project will be graded by running the AAPL, TSLA, and simple t data files:
+I provide a [test shell script](https://github.com/parrt/msds692/blob/master/hw/code/pipeline/testdata.sh) that you can use to test your data format generation and conversion.  Your project will be graded by running the AAPL, TSLA, and simple t data files:
 
 ```bash
 $ ./testdata.sh data output
@@ -347,6 +347,6 @@ Test t
    json2csv|csv2json: output/t.json and /tmp/t.json same
 ```
 
-`data` should have AAPL.csv, TSLA.csv, and t.csv files; `output` is directory containing the [expected output](https://github.com/parrt/msan692/tree/master/hw/code/pipeline/output).
+`data` should have AAPL.csv, TSLA.csv, and t.csv files; `output` is directory containing the [expected output](https://github.com/parrt/msds692/tree/master/hw/code/pipeline/output).
 
 To get credit for the various deliverables, all related tests must pass, as shown here.

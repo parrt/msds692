@@ -6,21 +6,21 @@ The goal of this project is to learn how hashtables work and to *feel* just how 
 
 ## Discussion
 
-A **search engine** accepts one or more **terms** and searches a corpus for files matching all of those terms.  A **corpus** is just a directory and possibly subdirectories full of text files. If you go to the [American National corpus](http://www.anc.org/data/oanc/contents/), you'll see lots of fun text data. I have extracted articles from [Slate](https://github.com/parrt/msan692/blob/master/data/slate.7z) magazine and also from [Berlitz travelogues](https://github.com/parrt/msan692/blob/master/data/berlitz1.7z).  These are your data sets.  Berlitz is smaller and so I use that in some of my [unit tests](https://github.com/parrt/msan692/tree/master/hw/code/search/test_search.py).  Here is a fragment of a sample search results page as displayed in Chrome (activated from Python); clicking on a link brings up the actual file.
+A **search engine** accepts one or more **terms** and searches a corpus for files matching all of those terms.  A **corpus** is just a directory and possibly subdirectories full of text files. If you go to the [American National corpus](http://www.anc.org/data/oanc/contents/), you'll see lots of fun text data. I have extracted articles from [Slate](https://github.com/parrt/msds692/blob/master/data/slate.7z) magazine and also from [Berlitz travelogues](https://github.com/parrt/msds692/blob/master/data/berlitz1.7z).  These are your data sets.  Berlitz is smaller and so I use that in some of my [unit tests](https://github.com/parrt/msds692/tree/master/hw/code/search/test_search.py).  Here is a fragment of a sample search results page as displayed in Chrome (activated from Python); clicking on a link brings up the actual file.
 
 | HTML output        | File Content |
 | ---------- | -----
 | <img src="figures/search-page.png" width=300> |<img src="figures/search-file-page.png" width=350>|
 
-In repo `search-`*userid*, you're going to implement 3 different search mechanisms using code derived from the [starter kit files](https://github.com/parrt/msan692/tree/master/hw/code/search). The actual search   mechanism of your code goes in these three files:
+In repo `search-`*userid*, you're going to implement 3 different search mechanisms using code derived from the [starter kit files](https://github.com/parrt/msds692/tree/master/hw/code/search). The actual search   mechanism of your code goes in these three files:
 
-1. Linear search; file [linear_search.py](https://github.com/parrt/msan692/tree/master/hw/code/search/linear_search.py)
-2. Hashtable via built in Python `dict` objects; file [index_search.py](https://github.com/parrt/msan692/tree/master/hw/code/search/index_search.py)
-3. Hashtable that you implement yourself; file [myhtable_search.py](https://github.com/parrt/msan692/tree/master/hw/code/search/myhtable_search.py)
+1. Linear search; file [linear_search.py](https://github.com/parrt/msds692/tree/master/hw/code/search/linear_search.py)
+2. Hashtable via built in Python `dict` objects; file [index_search.py](https://github.com/parrt/msds692/tree/master/hw/code/search/index_search.py)
+3. Hashtable that you implement yourself; file [myhtable_search.py](https://github.com/parrt/msds692/tree/master/hw/code/search/myhtable_search.py)
 
 All three mechanism should give exactly the same results, but you will notice that the linear search is extremely slow. On my really fast machine with an SSD, it takes about five seconds to search through the Slate data. It has to open and search about 4500 files. With either of the hash tables, it's a matter of milliseconds.
 
-File [search.py](https://github.com/parrt/msan692/tree/master/hw/code/search/search.py) is the main program, which you execute like this from the `search-`*userid* directory:
+File [search.py](https://github.com/parrt/msds692/tree/master/hw/code/search/search.py) is the main program, which you execute like this from the `search-`*userid* directory:
 
 ```bash
 $ python search.py linear ~/data/slate
@@ -46,7 +46,7 @@ After you enter the search terms and hit return, the Python program pops up your
 
 Your first task is to perform a brain-dead linear search, which looks at each file in turn to see if it contains all of the search terms. If it does, that filename is included in the list (not `set`) of matching documents. The time complexity is *O(n)* for *n* total words in all files.
 
-Given a list of fully-qualified filenames for files containing the search terms, the main program in [search.py](https://github.com/parrt/msan692/tree/master/hw/code/search/search.py) uses function `results()` to get a string containing HTML, which `search.py` writes to file `/tmp/results.html`. It then requests, via `webbrowser.open_new_tab()`, that your default browser open that page.
+Given a list of fully-qualified filenames for files containing the search terms, the main program in [search.py](https://github.com/parrt/msds692/tree/master/hw/code/search/search.py) uses function `results()` to get a string containing HTML, which `search.py` writes to file `/tmp/results.html`. It then requests, via `webbrowser.open_new_tab()`, that your default browser open that page.
 
 ### HTML output
 
@@ -57,13 +57,13 @@ You can create whatever fancy HTML you want to show search results, but here is 
 <body>
 <h2>Search results for <b>ronald reagan</b> in 164 files</h2>
     
-<p><a href="file:///Users/parrt/github/msan692/data/slate/1/Article247_42.txt">/Users/parrt/github/msan692/data/slate/1/Article247_42.txt</a><br>
+<p><a href="file:///Users/parrt/github/msds692/data/slate/1/Article247_42.txt">/Users/parrt/github/msds692/data/slate/1/Article247_42.txt</a><br>
 A Shared Vision pairs Ronald Reagan and Margaret Thatcher. Yes, they<br><br>
     
-<p><a href="file:///Users/parrt/github/msan692/data/slate/10/Article247_3363.txt">/Users/parrt/github/msan692/data/slate/10/Article247_3363.txt</a><br>
+<p><a href="file:///Users/parrt/github/msds692/data/slate/10/Article247_3363.txt">/Users/parrt/github/msds692/data/slate/10/Article247_3363.txt</a><br>
 wartime. "I hope that neither President Carter or Governor Reagan, if he should<br>pay $5,000 and $3,500, respectively. After Ronald Reagan, who was elected<br><br>
     
-<p><a href="file:///Users/parrt/github/msan692/data/slate/11/Article247_3408.txt">/Users/parrt/github/msan692/data/slate/11/Article247_3408.txt</a><br>
+<p><a href="file:///Users/parrt/github/msds692/data/slate/11/Article247_3408.txt">/Users/parrt/github/msds692/data/slate/11/Article247_3408.txt</a><br>
 Gary Bauer Soft-spoken but effective. His
 tribute to Ronald Reagan brought the hall to its feet. The best of social
 conservatives. "Campaigns aren't supposed to be about how much one guy has
@@ -74,10 +74,10 @@ futures."<br><br>
 </html>
 ```      
 
-Notice that the links are URLs just like you see going to websites except they refer to a file on the local disk instead of another machine because of the `file://` prefix.  For example, if my data is in the `github/msan692/data` subdirectory of my home directory, we see URLs like:
+Notice that the links are URLs just like you see going to websites except they refer to a file on the local disk instead of another machine because of the `file://` prefix.  For example, if my data is in the `github/msds692/data` subdirectory of my home directory, we see URLs like:
  
 ```
-file:///Users/parrt/github/msan692/data/slate/10/Article247_3363.txt
+file:///Users/parrt/github/msds692/data/slate/10/Article247_3363.txt
 ```
 
 (My data is stored in a slightly different spot than yours will be.)
@@ -255,9 +255,9 @@ Now look at the example where we map `'ronald'` to `{9,3}`.  That set is mutable
 
 ## Getting started
 
-Please go to the [Search starterkit](https://github.com/parrt/msan692/tree/master/hw/code/search) and grab all the python files.  Store these in your repo `search-`*userid*, wherever you store that directory.
+Please go to the [Search starterkit](https://github.com/parrt/msds692/tree/master/hw/code/search) and grab all the python files.  Store these in your repo `search-`*userid*, wherever you store that directory.
 
-Store the [Slate](https://github.com/parrt/msan692/blob/master/data/slate.7z) and [Berlitz](https://github.com/parrt/msan692/blob/master/data/berlitz1.7z) data sets outside of your repo so that you are not tempted to add that data to the repository. Perhaps you can make a general data directory for use in lots of classes such as `~/data` or just for this class `~/msan692/data`.
+Store the [Slate](https://github.com/parrt/msds692/blob/master/data/slate.7z) and [Berlitz](https://github.com/parrt/msds692/blob/master/data/berlitz1.7z) data sets outside of your repo so that you are not tempted to add that data to the repository. Perhaps you can make a general data directory for use in lots of classes such as `~/data` or just for this class `~/msds692/data`.
 
 I recommend that you start by getting the simple linear search to work, which involves computing HTML and all of the basic machinery for extracting words from file content. So start by fleshing out `words.py` and `linear_search.py`.  You can use the unit tests in `test_search.py`, although the tests will fail for the indexed-based searches until you get those implemented. 
 

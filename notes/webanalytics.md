@@ -209,7 +209,7 @@ Ok, so we need a server that answers:
 
 (Our flask servers by default pop up at URL `http://127.0.0.1:5000`.)
 
-For the purposes of this exercise, you can use this [directory of files](https://github.com/parrt/msan692/tree/master/notes/code/webanalytics/static). Put that `static` directory in the same directory as your Python code.  For example, the `static/index.html` file looks like:
+For the purposes of this exercise, you can use this [directory of files](https://github.com/parrt/msds692/tree/master/notes/code/webanalytics/static). Put that `static` directory in the same directory as your Python code.  For example, the `static/index.html` file looks like:
 
 ```html
 <html>

@@ -309,7 +309,7 @@ This shows that removing stop words is a waste of time for TFIDF as we get essen
 
 ## Getting started
 
-I have provided a [starter kit](https://github.com/parrt/msan692/tree/master/hw/code/tfidf) with all of the commented function definitions you need. Also download the `reuters-vol1-disk1-subset.zip` file from the files area of Canvas. You will be processing that file as a zip but you can unzip it as well so that you can test individual files.
+I have provided a [starter kit](https://github.com/parrt/msds692/tree/master/hw/code/tfidf) with all of the commented function definitions you need. Also download the `reuters-vol1-disk1-subset.zip` file from the files area of Canvas. You will be processing that file as a zip but you can unzip it as well so that you can test individual files.
 
 ## Deliverables
 

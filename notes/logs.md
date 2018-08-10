@@ -1,6 +1,6 @@
 # Parsing log files
 
-Most servers generate log information to so-called log files. One of the most common is the access log for a Web server such as this [sample log file](https://github.com/parrt/msan501/blob/master/data/access.log):
+Most servers generate log information to so-called log files. One of the most common is the access log for a Web server such as this [sample log file](https://github.com/parrt/msds501/blob/master/data/access.log):
 
 ```
 64.221.136.91 - - [02/Sep/2003:00:00:09 -0700] "GET / HTTP/1.1" 200 11690 "-" "Mozilla/4.0 (compatible; MSIE 6.0; Windows 98; Win 9x 4.90; Q312461)"
@@ -70,7 +70,7 @@ records.append( [ip,date]+quoted_strings )
 The records look like:
 
 ```bash
-$ python load.py ~/github/msan501/data/access.log
+$ python load.py ~/github/msds501/data/access.log
 ['64.221.136.91', '[02/Sep/2003:00:00:09 -0700]', '"GET / HTTP/1.1"', '"-"', '"Mozilla/4.0 (compatible; MSIE 6.0; Windows 98; Win 9x 4.90; Q312461)"']
 ['64.221.136.91', '[02/Sep/2003:00:00:10 -0700]', '"GET /images/shim.gif HTTP/1.1"', '"http://www.antlr.org/"', '"Mozilla/4.0 (compatible; MSIE 6.0; Windows 98; Win 9x 4.90; Q312461)"']
 ...

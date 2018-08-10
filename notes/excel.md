@@ -64,7 +64,7 @@ The first two rows should look like:
 ['1', '3', '10/13/10', 'Low', '6', '261.54', '0.04', 'Regular Air', '-213.25', '38.94', '35', 'Muhammed MacIntyre', 'Nunavut', 'Nunavut', 'Small Business', 'Office Supplies', 'Storage & Organization', 'Eldon Base for stackable storage shelf, platinum', 'Large Box', '0.8', '10/20/10']
 ```
 
-We can extend that a little bit if we want that data in a numpy `array` (See the full [csv2numpy.py](https://github.com/parrt/msan692/blob/master/notes/code/csv2numpy.py)):
+We can extend that a little bit if we want that data in a numpy `array` (See the full [csv2numpy.py](https://github.com/parrt/msds692/blob/master/notes/code/csv2numpy.py)):
  
 ```python
 data = np.array(data)
@@ -87,7 +87,7 @@ print data
  ['7914' '56581' '2/8/09' ..., 'Medium Box' '0.65' '2/11/09']]
 ```
 
-**Exercise**: Extract the quantity and unit price columns and multiply them together to get the sale value. My solution uses a list comprehension across the list of lists, one per column I need. Then I create a numpy array of those and simply multiply them with `*`. Remember that `data[1:]` gives you all but the first element (a row in this case) of a list. `float(x)` converts string or integer `x` to a floating point number. If you get stuck, see [readcsv.py](https://github.com/parrt/msan692/blob/master/notes/code/readcsv.py).
+**Exercise**: Extract the quantity and unit price columns and multiply them together to get the sale value. My solution uses a list comprehension across the list of lists, one per column I need. Then I create a numpy array of those and simply multiply them with `*`. Remember that `data[1:]` gives you all but the first element (a row in this case) of a list. `float(x)` converts string or integer `x` to a floating point number. If you get stuck, see [readcsv.py](https://github.com/parrt/msds692/blob/master/notes/code/readcsv.py).
 
 ## Pandas Data frames
 

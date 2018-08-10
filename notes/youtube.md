@@ -7,7 +7,7 @@ YouTube, like Zillow, will allow us to use its data spigot without authenticatio
 Follow these steps to get set up:
  
 1. [Get a google account](https://www.google.com/accounts) if you don't already have one.
-2. Go to the [Google API Console](https://console.developers.google.com/) and create a project. I call mine msan692-test or something like that.
+2. Go to the [Google API Console](https://console.developers.google.com/) and create a project. I call mine msds692-test or something like that.
 3. Enable the "YouTube Data API v3" API from your console.
 
 Familiarize yourself with the [API documentation](https://developers.google.com/youtube/v3/) and install some Python code that will make our lives easier:

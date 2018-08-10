@@ -86,7 +86,7 @@ This information is needed to generate the HTML for the two different kinds of p
  
 ### Generating HTML pages
 
-In the starter kit, I provide sample HTML files, [sample-parrt-tweets.html](https://github.com/parrt/msan692/blob/master/hw/code/sentiment/sample-parrt-tweets.html) and [sample-parrt-following.html](https://github.com/parrt/msan692/blob/master/hw/code/sentiment/sample-parrt-following.html).
+In the starter kit, I provide sample HTML files, [sample-parrt-tweets.html](https://github.com/parrt/msds692/blob/master/hw/code/sentiment/sample-parrt-tweets.html) and [sample-parrt-following.html](https://github.com/parrt/msds692/blob/master/hw/code/sentiment/sample-parrt-following.html).
 
 We use the template engine [jinja2](http://jinja.pocoo.org/docs/2.9/) that is built-in with flask. When you call `render_template()` from within a flask route method, it looks in the `templates` subdirectory for the file indicated in that function call. You need to pass in appropriate arguments to the two different page templates so the pages fill with data.
  
@@ -121,7 +121,7 @@ You must update the `templates/following.html` HTML template to generate user re
 
 ## Getting started
 
-Download the [starterkit](https://github.com/parrt/msan692/tree/master/hw/code/sentiment), which has the following files and structure (from `tree` commandline tool):
+Download the [starterkit](https://github.com/parrt/msds692/tree/master/hw/code/sentiment), which has the following files and structure (from `tree` commandline tool):
 
 ```
 $ tree

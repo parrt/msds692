@@ -2,7 +2,7 @@
 
 ## Getting access to twitter data
 
-Sign in with your twitter account at [apps.twitter.com](https://apps.twitter.com/). Click on "Create New App". I made mine `USF-parrt-teaching`.  Click on that new app when it appears, then the "Keys and Access Tokens" tab. You should find and copy into a secure file on your laptop the *consumer_key, consumer_secret, access_token, access_token_secret*.  I store them in a one-line CSV file for convenient use in apps. We never want to expose these by putting into source code literally. More info in the [sentiment project description](https://github.com/parrt/msan692/blob/master/hw/sentiment.md).
+Sign in with your twitter account at [apps.twitter.com](https://apps.twitter.com/). Click on "Create New App". I made mine `USF-parrt-teaching`.  Click on that new app when it appears, then the "Keys and Access Tokens" tab. You should find and copy into a secure file on your laptop the *consumer_key, consumer_secret, access_token, access_token_secret*.  I store them in a one-line CSV file for convenient use in apps. We never want to expose these by putting into source code literally. More info in the [sentiment project description](https://github.com/parrt/msds692/blob/master/hw/sentiment.md).
 
 ## Tweet feeds
 
@@ -68,6 +68,6 @@ for status in tweepy.Cursor(api.user_timeline, id='realDonaldTrump').items(100):
 
 From tweepy doc: "*The Twitter streaming API is used to download twitter messages in real time. It is useful for obtaining a high volume of tweets, or for creating a live feed using a site stream or user stream.*"
 
-Stephen Hsu, MSAN2017, sent me this nice snippet to [listen in on the twitter feed](https://github.com/parrt/msan692/blob/master/notes/code/twitter/tweetstream.py).
+Stephen Hsu, MSAN2017, sent me this nice snippet to [listen in on the twitter feed](https://github.com/parrt/msds692/blob/master/notes/code/twitter/tweetstream.py).
 
 Here is a [nice tutorial on the streaming API](https://www.dataquest.io/blog/streaming-data-python/).
