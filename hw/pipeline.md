@@ -50,7 +50,7 @@ Grab Apple's 35 year stock history using this URL
 http://ichart.finance.yahoo.com/table.csv?s=AAPL
 ```
 
-*This API was taken down in 2017 so just grab the file from the data dir of the course repo*. Or, register for an API key at [Quandl](https://blog.quandl.com/api-for-stock-data) and then use `https://www.quandl.com/api/v3/datasets/EOD/AAPL.csv?api_key=YOURAPIKEY`.
+*This API was taken down in 2017 so just grab [the file](https://github.com/parrt/msds692/blob/master/hw/code/pipeline/data/AAPL.csv) from the data dir of the course repo*. Or, register for an API key at [Quandl](https://blog.quandl.com/api-for-stock-data) and then use `https://www.quandl.com/api/v3/datasets/EOD/AAPL.csv?api_key=YOURAPIKEY`.
 
 The data is a CSV file with 8996 lines, which we can discover easily with `wc`:
  
@@ -81,7 +81,7 @@ when,a,b
 2016-08-13,3.99003,4.3
 ```
 
-To parse that, we read the file and convert it to a list of lines and then we split each line on commas. That gives us a list of lists. Of course, the first line of the file is special; it is the header row. Let's get this first task out of the way then by completing the following code in `mycsv.py` (a library to be used by your other files):
+To parse that, we read the file and convert it to a list of lines and then we split each line on commas. That gives us a list of lists. Of course, the first line of the file is special; it is the header row. Let's get this first task out of the way then by completing the following code in [mycsv.py](https://github.com/parrt/msds692/blob/master/hw/code/pipeline/mycsv.py) (a library to be used by your other files):
 
 ```python
 import sys
@@ -110,8 +110,8 @@ Here is a sample Python test script that prints out the results of our `readcsv`
 ```python
 import mycsv
 header, data = mycsv.readcsv(mycsv.getdata())
-print header
-print data
+print(header)
+print(data)
 ```
 
 Running with my simple test file, we'd generate this output:
@@ -125,9 +125,9 @@ $ python test_readcsv.py < testdata.csv
 Or, if you want to go back to csv format, you could use the following Python code:
 
 ```python
-print "header =", ','.join(header)
+print("header =", ','.join(header))
 for row in data:
-    print ','.join(row)
+    print(','.join(row))
 ```
 
 Ok, so at this point, you can read in CSV files into a list of column names and a list of rows. The rest of the Python files will import `mycsv.py`.
@@ -239,7 +239,7 @@ You can add the Chrome extension [JSONView](https://chrome.google.com/webstore/d
  
 In file `csv2json.py`, write a small script that reads in the CSV using `getdata()` and then prints out the data in JSON. It also must specifically use the keys I have above: `headers`, `data`. Note that the `when` key and the others within a record are not hardcoded: they depend on the headers from the CSV input.
 
-You can use the template engine [jinja2](http://jinja.pocoo.org/docs/2.9/) or just combine strengths manually to generate JSON.
+You can use the template engine [jinja2](http://jinja.pocoo.org/docs/2.9/) or just combine strengths manually to generate JSON. (Please limit yourself to anaconda standard libs.)
 
 The program should read from standard input or from a filename parameter to the script (this is handled automatically for you by `getdata()`:
 
@@ -256,7 +256,14 @@ Parsing XML is beyond the scope of this class, but we still need to know how to 
 $ python xml2csv.py < /tmp/t.xml
 ```
 
-There are a number of XML libraries for Python, but the simplest one to use is [untangle](https://github.com/stchris/untangle). From some text, you can get a tree representation of the XML like this:
+There are a number of XML libraries for Python, but the simplest one to use is [untangle](https://github.com/stchris/untangle). You'll need to install `xmltodict ` as well as I use that for testing:
+
+```bash
+pip install untangle
+pip install xmltodict
+```
+
+From some text, you can get a tree representation of the XML like this:
 
 ```python
 xml = untangle.parse(xmltxt)
@@ -311,6 +318,8 @@ $ diff /tmp/t.json /tmp/t2.json
 * json2csv.py
 * xml2csv.py
 
+You shouldn't add data to the repo. We'll test it using [sample input](https://github.com/parrt/msds692/blob/master/hw/code/pipeline/data) and compare to [expected output](https://github.com/parrt/msds692/blob/master/hw/code/pipeline/output).
+
 ## Evaluation
 
 Each of the five translators will be tested automatically. Any programming errors or invalid output will result in a zero for that particular test. Each of the translators gets 20% of the score.  Note, however, that if your CSV `readcsv()` function doesn't work, your `csv*.py` scripts will not work either so make sure you get that working correctly first.
@@ -347,6 +356,6 @@ Test t
    json2csv|csv2json: output/t.json and /tmp/t.json same
 ```
 
-`data` should have AAPL.csv, TSLA.csv, and t.csv files; `output` is directory containing the [expected output](https://github.com/parrt/msds692/tree/master/hw/code/pipeline/output).
+When testing, the `data` dir should have files AAPL.csv, TSLA.csv, and t.csv. When testing, the `output` directory is some place where your program can write files. After testing, it should contain the [expected output](https://github.com/parrt/msds692/tree/master/hw/code/pipeline/output).
 
 To get credit for the various deliverables, all related tests must pass, as shown here.
