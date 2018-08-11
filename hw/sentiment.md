@@ -50,7 +50,7 @@ Under the Permissions tab, make sure that you have your access as "Read only" fo
 The server then takes a commandline argument indicating the file name of this data. For example, I pass in my secrets via
 
 ```bash
-$ sudo python server.py ~/Dropbox/licenses/twitter.csv
+$ gunicorn -D --threads 4 -b 0.0.0.0:5000 --access-logfile server.log server:app ~/Dropbox/licenses/twitter.csv
 ```
 
 Please keep in mind the [limits imposed by the twitter API](https://dev.twitter.com/rest/public/rate-limits). For example, you can only do 15 follower list fetches per 15 minute window, but you can do 900 user timeline fetches.
@@ -171,7 +171,7 @@ Now, clone your repository into the home directory:
 
 ```bash
 cd ~
-git clone https://github.com/USF-MSAN692/sentiment-parrt.git
+git clone https://github.com/USF-MSDS692/sentiment-parrt.git
 cd sentiment-parrt
 ```
 

@@ -51,6 +51,14 @@ def add_color(tweets):
         ...
 
 
+@app.route("/favicon.ico")
+def favicon():
+    """
+    Open and return a 16x16 or 32x32 .png or other image file in binary mode.
+    This is the icon shown in the browser tab next to the title.
+    """
+
+
 @app.route("/<name>")
 def tweets(name):
     "Display the tweets for a screen name color-coded by sentiment score"

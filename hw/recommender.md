@@ -18,7 +18,7 @@ You will do your work in `recommender-`*userid*.
 
 ### Article word-vector centroids
 
-Those of you who were not in the [MSAN501 computational boot camp](https://github.com/parrt/msds501) should read the project description [Word similarity and relationships](https://github.com/parrt/msds501/blob/master/projects/wordsim.md). The document explains word vectors enough to complete this project.
+Those of you who were not in the [MSDS501 computational boot camp](https://github.com/parrt/msds501) should read the project description [Word similarity and relationships](https://github.com/parrt/msds501/blob/master/projects/wordsim.md). The document explains word vectors enough to complete this project.
 
 In a nutshell, each word has a vector of, say, 300 floating-point numbers that somehow capture the meaning of the word, at least as it relates to other words within a corpus. These vectors are derived from a neural network that learns to map a word to an output vector such that neighboring words in some large corpus are close in 300-space. ("The main intuition underlying the model is the simple observation that ratios of word-word co-occurrence probabilities have the potential for encoding some form of meaning." see [GloVe project](https://nlp.stanford.edu/projects/glove/).)
 
@@ -46,14 +46,15 @@ The description of those functions is in `doc2vec.py` from the starter kit, but 
 ```python
 def load_articles(articles_dirname, gloves):
     """
-    Load all .txt files under articles_dirname and return a table (list of lists/tuples)
+    Load all .txt files under articles_dirname and return a table (list of tuples)
     where each record is a list of:
 
-      [filename, title, article-text-minus-title, wordvec-centroid-for-article-text]
+      (filename, title, article-text-minus-title, wordvec-centroid-for-article-text)
 
     We use gloves parameter to compute the word vectors and centroid.
-    
-    The filename is stripped of the prefix of the articles_dirname pulled in as script parameter sys.argv[2]. E.g., filename will be "business/223.txt"
+
+    The filename is stripped of the prefix of the articles_dirname pulled in as
+    script parameter sys.argv[2]. E.g., filename will be "business/223.txt"
     """
     ...
 ```
@@ -68,9 +69,32 @@ def recommended(article, articles, n):
     ...
 ```
 
+### Testing your library
+
+At this point you should test your library. There's no point in trying to build a server that uses this library if we're not confident it works. It is much easier to debug a simple main program rather than a web server.  For example, with a main in `doc2vec.py`, you can run it like this:
+
+```bash
+python doc2vec.py ~/data/glove.6B/glove.6B.300d.txt ~/github/msds692/bbc
+```
+
+Here is the start of a suitable main:
+
+```python
+if __name__ == '__main__':
+    glove_filename = sys.argv[1]
+    articles_dirname = sys.argv[2]
+
+    gloves = load_glove(glove_filename)
+    articles = load_articles(articles_dirname, gloves)
+    
+    print(gloves['dog'])
+    ...
+```
+
+
 ### Web server
 
-Besides those core functions, you need to build a web server as well using flask. See the video on [how to launch a flask web server at Amazon](https://www.youtube.com/watch?v=qQncEJL6NHs&t=156s) that I made for you. The server should respond to two different URLs: the list of articles is at `/` and each article is at something like `/article/business/353.txt`. The BBC corpus in directory `bbc` is organized with topic subdirectories and then a list of articles as text files:
+Besides those core functions, you need to build a web server as well using flask. See the video on [how to launch a flask web server at Amazon](https://www.youtube.com/watch?v=qQncEJL6NHs&t=156s) that I made, but which uses the simple flask web server not gunicorn. We need to use [gunicorn](http://gunicorn.org/) because the "... *Flask’s built-in server is not suitable for production as it doesn’t scale well and by default serves only one request at a time.*" (from the doc). See [Standalone WSGI Containers](http://flask.pocoo.org/docs/1.0/deploying/wsgi-standalone/) for more on using flask with gunicorn. The server should respond to two different URLs: the list of articles is at `/` and each article is at something like `/article/business/353.txt`. The BBC corpus in directory `bbc` is organized with topic subdirectories and then a list of articles as text files:
 
 <img src="figures/bbc.png" width=300>
 
@@ -178,7 +202,7 @@ Now, clone your repository into the home directory:
 
 ```bash
 cd ~
-git clone https://github.com/USF-MSAN692/recommender-parrt.git
+git clone https://github.com/USF-MSDS692/recommender-parrt.git
 cd recommender-parrt
 ```
 
@@ -244,12 +268,12 @@ It also reads some pickled "truth" data structures that encode the articles from
 Here is a sample test run:
 
 ```bash
-$ cd ~/grading/MSAN692/recommender-parrt
+$ cd ~/grading/MSDS692/recommender-parrt
 $ python -m pytest -v test_server.py
 ============================================ test session starts =============================================
 platform darwin -- Python 2.7.12, pytest-2.9.2, py-1.4.31, pluggy-0.3.1 -- /Users/parrt/anaconda2/bin/python
 cachedir: .cache
-rootdir: /Users/parrt/grading/MSAN692/recommender-parrt, inifile: 
+rootdir: /Users/parrt/grading/MSDS692/recommender-parrt, inifile: 
 collected 2 items 
 
 test_server.py::test_links PASSED
