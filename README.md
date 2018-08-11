@@ -37,7 +37,7 @@ If you ever have questions about what constitutes plagiarism, cheating, or acade
 
 **Note:** Leaving your laptop unattended is a common means for another student to take your work. It is your responsibility to guard your work. Do not leave your printouts laying around or in the trash. *All persons with common code are likely to be considered at fault.*
 
-**USF USF policies and legal declarations**
+**USF policies and legal declarations**
 
 *Students with Disabilities*
 
