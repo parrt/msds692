@@ -94,7 +94,7 @@ Most data you encounter will be in the form of human readable text, such as comm
 	* reading/generating XML (we'll load complicated XML in [TFIDF project](https://github.com/parrt/msds692/blob/master/hw/tfidf.md))
 	* reading/generating json
 * (git intro; clone, add, commit, push, pull; see [Using git revision control](https://github.com/parrt/msds501/blob/master/notes/git.md) from Boot camp)
-* [PDF using pdf2txt.py](notes/pdf.ipynb) (Expecting text from Eisenhower's presidential library) (Day 2)
+* [PDF using pdftotext](notes/pdf.ipynb) (Extracting text from Tesla's marketing brochure) (Day 2)
 * [Excel and CSV data](notes/excel.ipynb) (Day 2)
 * [HTML](notes/html.md) (Parsing Tesla's IPO prospectus) (Day 3)
 * [Parsing web access log files](notes/logs.md) (Optional)

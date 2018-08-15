@@ -1,6 +1,6 @@
 # Extracting text from HTML file
 
-There are lots of data sources from which we might want to extract information, such as initial public offerings for various companies. E.g., [Tesla's IPO prospectus](https://www.sec.gov/Archives/edgar/data/1318605/000119312510017054/ds1.htm). One can imagine trying to mine such documents in an effort to predict which IPOs will flop.
+There are lots of data sources from which we might want to extract information, such as initial public offerings for various companies. E.g., [Tesla's IPO prospectus](https://www.sec.gov/Archives/edgar/data/1318605/000119312510017054/ds1.htm). One can imagine trying to mine such documents in an effort to predict which IPOs will do poorly or well.
 
 HTML has both text as well as so-called markup like `<b>`, which is used to specify formatting information.
 
