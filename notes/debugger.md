@@ -146,3 +146,48 @@ If you click on the "View as Array", then you will see the matrix in the scienti
 Now, keep hitting the F8 button to continue single stepping through the loop and watch the values in that matrix change, either in the variables area or in the scientific view. After one more single step, we can see that 5.0 has appeared in the `0,0` location of the matrix. 
 
 As we keep single stepping, `i,j` becomes `0,1`. That means we should be updating that position in the `Z` matrix. Step over the `Z[i][i]` line and you see that the `0,0` position got updated not `0,1`. Oops. Now we discovered our bug. That should be `Z[i][j]`! At this point we can stop the program using the square box.
+
+## Stepping into a function
+
+Let's modify our program so that the matrix addition occurs within the function. Create a program file called `funcadd.py`:
+
+```python
+import numpy as np
+
+def add(X,Y):
+    Z = np.zeros((3,3))
+    for i in range(3):
+       for j in range(3):
+           Z[i][j] = X[i][j] + Y[i][j]
+
+    return X
+
+X = np.array(
+    [[1, 8, 3],
+     [4, 2, 6],
+     [13, 8, 1]])
+
+Y = np.array(
+    [[4, 8, 4],
+     [8, 2, 4],
+     [5, 1, 10]])
+
+Z = add(X,Y)
+print(f"Z={Z}")
+```
+
+Set a breakpoint at the function call to  `add()` and hit the debug button. You should see variables `X` and `Y` available within the variables windowpane.
+
+If you would like to do some interactive testing of variables and expressions, you can use the calculator button just above the variables windowpane to pop up a dialog box:
+
+<img src="figures/dbg12.png" width="250">
+
+Now, lets *step into* the `add()` function using F7 or "Run>Step into" menu option.  Notice that we have a new frame pushed onto the stack of frames:
+
+<img src="figures/dbg13.png" width="450">
+
+We moved from line 21 in the `funcadd.py` module to line 4 in the `add()` function.  Notice also that we have the `A` and `B` arguments to the function shown as local to `add`. If we click on the `funcadd.py` line, the debugger shifts its context to our main program, which has the same data but named differently:
+
+<img src="figures/dbg14.png" width="450">
+
+Frames are just contexts or scopes and all variables are created in the current scope. For example, if we create a variable such as `C` within function `add()`, it will be created within `add`'s frame (the current frame).

@@ -97,12 +97,12 @@ Most data you encounter will be in the form of human readable text, such as comm
 * [PDF using pdftotext](notes/pdf.ipynb) (Extracting text from Tesla's marketing brochure) (Day 2)
 * [Excel and CSV data](notes/excel.ipynb) (Day 2)
 * [HTML](notes/html.md) (Parsing Tesla's IPO prospectus) (Day 3)
-* [Parsing web access log files](notes/logs.md) (Optional)
 
 There are also plenty of nontext, binary formats. You can learn more from the msds501 boot camp material for [audio processing](https://github.com/parrt/msds501/blob/master/notes/sound.ipynb) and [image processing](https://github.com/parrt/msds501/raw/master/projects/images.pdf).
 
 ## Organizing data in memory into structures
 
+* [Debugging with PyCharm](notes/debugger.md) (Day ?)
 * [Associations and dictionaries](notes/dict.ipynb) (Day 3)
 * [Data structure basics](notes/datastructures.ipynb) (Day 4)
 
