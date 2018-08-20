@@ -199,3 +199,5 @@ From our previous debugging, we know that the computation is correct now so it m
 <img src="figures/dbg15.png" width="400">
 
 But oh shoot!  We are returning the wrong matrix!  Problem solved and we can hit the red box to stop the program.
+
+This just scratches the surface of what you can do with the debugger and the PyCharm development environment. I encourage you to get familiar with it so that you can be more productive as a programmer. Naturally, if you're just doing some machine learning scripts, it's easier to use jupyter notebooks. But, for larger programs, you will likely need to start building Python files rather than notebooks.  PyCharm will make you much more productive than simply using a text file editor.
