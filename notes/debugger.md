@@ -154,14 +154,14 @@ Let's modify our program so that the matrix addition occurs within the function.
 ```python
 import numpy as np
 
-def add(X,Y):
-    Z = np.zeros((3,3))
+def add(A, B):
+    C = np.zeros((3,3))
     for i in range(3):
        for j in range(3):
-           Z[i][j] = X[i][j] + Y[i][j]
+           C[i][j] = A[i][j] + B[i][j]
 
-    return X
-
+    return A
+    
 X = np.array(
     [[1, 8, 3],
      [4, 2, 6],
@@ -176,6 +176,8 @@ Z = add(X,Y)
 print(f"Z={Z}")
 ```
 
+If we run the program, we get the wrong answer however. We can probably figure this out by inspection, but let's use the debugger.
+ 
 Set a breakpoint at the function call to  `add()` and hit the debug button. You should see variables `X` and `Y` available within the variables windowpane.
 
 If you would like to do some interactive testing of variables and expressions, you can use the calculator button just above the variables windowpane to pop up a dialog box:
@@ -191,3 +193,9 @@ We moved from line 21 in the `funcadd.py` module to line 4 in the `add()` functi
 <img src="figures/dbg14.png" width="450">
 
 Frames are just contexts or scopes and all variables are created in the current scope. For example, if we create a variable such as `C` within function `add()`, it will be created within `add`'s frame (the current frame).
+
+From our previous debugging, we know that the computation is correct now so it must be something in the return statement or the set up. Let's set a breakpoint on the return statement, which we can do while the program is idle in the debugger. Then hit the F9 resume program button. We can inspect the variables and see that `C` looks right:
+
+<img src="figures/dbg15.png" width="400">
+
+But oh shoot!  We are returning the wrong matrix!  Problem solved and we can hit the red box to stop the program.
