@@ -1,16 +1,14 @@
-# code derived from:
-# https://www.programiz.com/python-programming/examples/add-matrix
 import numpy as np
 
 X = np.array(
-    [[12, 7, 3],
-     [4, 5, 6],
-     [7, 8, 9]])
+    [[1, 8, 3],
+     [4, 2, 6],
+     [13, 8, 1]])
 
 Y = np.array(
-    [[5, 8, 1],
-     [6, 7, 3],
-     [4, 5, 9]])
+    [[4, 8, 4],
+     [8, 2, 4],
+     [5, 1, 10]])
 
 Z = np.zeros((3,3))
 for i in range(3):
