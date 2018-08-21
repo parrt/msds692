@@ -2,7 +2,9 @@
 
 ## Goal
 
-The goal of this  homework is to study the most common text-based data formats: `csv`, `xml`, `json`, and `html`. Parsing data files can be tricky, but generating them is easy and teaches you to speak in those languages. In this first homework, you will therefore be generating data in multiple formats but using standard Python libraries to read that data back in. The exception is that you will be parsing comma-separated value (CSV) files the hard way. 
+The goal of this  homework is to study the most common text-based data formats: `csv`, `xml`, `json`, and `html`.  Parsing data files can be tricky, but generating them is easy and teaches you to speak in those languages.  In this first homework, you will therefore be generating data in multiple formats but using standard Python libraries to read that data back in. The exception is that you will be parsing comma-separated value (CSV) files the hard way.  You will generate output using Python strings or a template engine like jinja2.
+
+You will be working with Python scripts rather than notebooks because we want a set of executable commands.
 
 The basic idea is that you will be able to read in some data in csv format and pass it  along a pipeline of data conversions, ultimately getting it back to the original format:
 
@@ -19,6 +21,8 @@ $ cat data.csv | \
 $ diff data.csv samedata.csv | wc
        0       0       0
 ```
+
+The `|` pipes the output of one command to the input of another. The `>` redirects the output of the command to a file. To learn about I/O redirection and pipes from the command line, see some of the tutorials, such as [Piping and Redirection](https://ryanstutorials.net/linuxtutorial/piping.php) and [An Introduction to Linux I/O Redirection](https://www.digitalocean.com/community/tutorials/an-introduction-to-linux-i-o-redirection).
 
 The last command just checks to make sure that there is no difference between the original file and the data after it's been pushed through the pipeline.
 
