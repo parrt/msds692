@@ -320,6 +320,8 @@ $ diff /tmp/t.json /tmp/t2.json
 
 You shouldn't add data to the repo. We'll test it using [sample input](https://github.com/parrt/msds692/blob/master/hw/code/pipeline/data) and compare to [expected output](https://github.com/parrt/msds692/blob/master/hw/code/pipeline/output).
 
+Please be aware that the point of this exercise is to teach you about generating structured text.  There are plenty of libraries out there already that will generate data in any format we want. Please don't call them because otherwise you are not actually solving the problem, but rather simply calling somebody else's solution. Learning a language is a matter of learning to speak it and it defeats the purpose of this exercise if you call someone else's JSON or XML dumping routine.
+
 ## Evaluation
 
 Each of the five translators will be tested automatically. Any programming errors or invalid output will result in a zero for that particular test. Each of the translators gets 20% of the score.  Note, however, that if your CSV `readcsv()` function doesn't work, your `csv*.py` scripts will not work either so make sure you get that working correctly first.
