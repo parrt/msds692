@@ -275,11 +275,11 @@ xml = untangle.parse(xmltxt)
 
 At this point, we need to know about the actual structure of the XML before we can pull data out. The root of the structure is the `file` tag so `xml.file` will get us that node in the tree. From there, you need to iterate over the `record` elements underneath the `data` tag. Pull out the individual values by their name such as `Date`.  Be careful how you fill in the CSV "table" for output: the order of the columns must be the order given in the headers tag.
 
+Notice that there are no spaces in the tag names but the `headers` tag includes the real header names like `Adj Close`. You will have to take this into consideration when looking for tags in the XML.
+
 We can visualize XML trees easily with [xmlviewer.org](http://www.xmlviewer.org/), such as the start of the Telsa data:
  
 <img src="figures/tsla-xml.png" width="250">
-
-Notice that there are no spaces in the tag names but the `headers` tag includes the real header names like `Adj Close`. You will have to take this into consideration when looking for tags in the XML.
 
 You can check your work with:
  
@@ -328,7 +328,7 @@ $ diff /tmp/t.json /tmp/t2.json
 
 You shouldn't add data to the repo. We'll test it using [sample input](https://github.com/parrt/msds692/blob/master/hw/code/pipeline/data) and compare to [expected output](https://github.com/parrt/msds692/blob/master/hw/code/pipeline/output).
 
-Please be aware that the point of this exercise is to teach you about generating structured text.  There are plenty of libraries out there already that will generate data in any format we want. Please don't call them because otherwise you are not actually solving the problem, but rather simply calling somebody else's solution. Learning a language is a matter of learning to speak it and it defeats the purpose of this exercise if you call someone else's JSON or XML dumping routine.
+Please be aware that the point of this exercise is to teach you about generating structured text.  There are plenty of libraries out there already that will generate data in any format we want. Please don't call them because, unless directed to in the notes above. Otherwise you are not actually solving the problem but rather simply calling somebody else's solution. Learning a language is a matter of learning to speak it and it defeats the purpose of this exercise if you call someone else's JSON or XML dumping routine.
 
 ## Evaluation
 
