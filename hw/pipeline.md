@@ -129,7 +129,7 @@ $ python test_readcsv.py < testdata.csv
 Or, if you want to go back to csv format, you could use the following Python code:
 
 ```python
-print("header =", ','.join(header))
+print(f"header = {','.join(header)}")
 for row in data:
     print(','.join(row))
 ```
@@ -206,7 +206,7 @@ From within the chrome browser, the real XML data from the AAPL history looks li
 
 In file `csv2xml.py`, write a small script that reads in the CSV using `getdata()` and then prints out the data in XML. It also must specifically use the tags I have above: `file`, `headers`, `data`, `record`. Note that the `when` tag and the others within a record are not hardcoded: they depend on the headers from the CSV input.
 
-Again, you can use the template engine [jinja2](http://jinja.pocoo.org/docs/2.9/) or just combine strengths manually to generate XML.
+Again, you can use the template engine [jinja2](http://jinja.pocoo.org/docs/2.9/) or just combine strings manually to generate XML.
 
 The program should read from standard input or from a filename parameter to the script (this is handled automatically for you by `getdata()`:
 
@@ -274,6 +274,10 @@ xml = untangle.parse(xmltxt)
 ```
 
 At this point, we need to know about the actual structure of the XML before we can pull data out. The root of the structure is the `file` tag so `xml.file` will get us that node in the tree. From there, you need to iterate over the `record` elements underneath the `data` tag. Pull out the individual values by their name such as `Date`.  Be careful how you fill in the CSV "table" for output: the order of the columns must be the order given in the headers tag.
+
+We can visualize XML trees easily with [xmlviewer.org](http://www.xmlviewer.org/), such as the start of the Telsa data:
+ 
+<img src="figures/tsla-xml.png" width="250">
 
 Notice that there are no spaces in the tag names but the `headers` tag includes the real header names like `Adj Close`. You will have to take this into consideration when looking for tags in the XML.
 
