@@ -2,7 +2,7 @@
 
 INPUT=$1
 OUTPUT=$2
-MYSRC=~/courses/msan692-private/hw/pipeline
+MYSRC=.  # current directory
 
 for f in $INPUT/*.csv
 do

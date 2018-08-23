@@ -10,4 +10,4 @@ xml2 = xmltodict.parse(open(f2).read())
 if xml1 != xml2:
     sys.stderr.write("%s and %s differ\n" % (f1,f2))
 else:
-    print "%s and %s same" % (f1, f2)
+    print("%s and %s same" % (f1, f2))
