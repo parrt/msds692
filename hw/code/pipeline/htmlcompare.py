@@ -13,9 +13,6 @@ soup2 = BeautifulSoup(s2, 'html.parser')
 s1 = soup1.prettify()
 s2 = soup2.prettify()
 
-s1 = s1.replace(' ', '').replace('\t', '').replace('\n', '').replace('\r', '')
-s2 = s2.replace(' ', '').replace('\t', '').replace('\n', '').replace('\r', '')
-
 if s1 != s2:
     sys.stderr.write("%s and %s differ\n" % (f1,f2))
 else:
