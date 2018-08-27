@@ -20,10 +20,10 @@ From jupyter notebooks, you are use to being able to display data frames in a ni
 import pandas as pd
 
 df = pd.read_csv("../../data/SampleSuperstoreSales.csv")
+print(df)
 N = len(df)
 sales = df['Sales']
-print(df)
-```
+print(sales)```
 If we just run this with the run button or right-click and select run, we see typical output:
 
 ```
