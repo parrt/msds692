@@ -102,7 +102,7 @@ There are also plenty of nontext, binary formats. You can learn more from the ms
 
 ## Organizing data in memory into structures
 
-* [Debugging with PyCharm](notes/debugger.md) (Day ?)
+* [Debugging with PyCharm](notes/debugger.md) (Day 2)
 * [Associations and dictionaries](notes/dict.ipynb) (Day 3)
 * [Data structure basics](notes/datastructures.ipynb) (Day 4)
 
