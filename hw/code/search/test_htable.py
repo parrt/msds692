@@ -26,11 +26,11 @@ def test_single():
 def test_singleon():
     table = htable(5)
     htable_put(table, "parrt", set([99]))
-    assert htable_str(table) == "{parrt:set([99])}"
+    assert htable_str(table) == "{parrt:{99}}"
     assert htable_buckets_str(table) == """0000->
 0001->
 0002->
-0003->parrt:set([99])
+0003->parrt:{99}
 0004->
 """
 
@@ -69,7 +69,7 @@ def test_str_to_str():
 """
 
 
-def test_str_to_set():
+def test_str_to_list():
     table = htable(5)
     htable_put(table, "parrt", [2, 99, 3942])
     htable_put(table, "tombu", [6, 3, 1024, 99, 102342])
@@ -78,5 +78,23 @@ def test_str_to_set():
 0001->tombu:[6, 3, 1024, 99, 102342]
 0002->
 0003->parrt:[2, 99, 3942]
+0004->
+"""
+
+def test_replace_str():
+    table = htable(5)
+    htable_put(table, "a", "x")
+    htable_put(table, "b", "y")
+    htable_put(table, "a", "z")
+    htable_put(table, "a", "i")
+    htable_put(table, "g", "j")
+    htable_put(table, "g", "k")
+    s = htable_str(table)
+    assert s == '{a:i, b:y, g:k}', "found " + s
+    s = htable_buckets_str(table)
+    assert s == """0000->
+0001->
+0002->a:i
+0003->b:y, g:k
 0004->
 """

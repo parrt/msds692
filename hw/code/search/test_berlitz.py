@@ -23,7 +23,7 @@ $
 
 rootdir = sys.argv[len(sys.argv) - 1]
 
-print "testing with dir", rootdir
+print("testing with dir", rootdir)
 
 
 def test_linear_berlitz_none():
@@ -70,11 +70,11 @@ def test_myhtable_berlitz_none():
 def dotest(terms, expected, which):
     files = filelist(rootdir)
     terms = words(terms)
-    # print terms
+    # print(terms)
 
     if which == 0:
         linear_docs = linear_search(files, terms)
-        # print filenames(linear_docs)
+        # print(filenames(linear_docs))
         names = filenames(linear_docs)
         names.sort()
         expected.sort()	
@@ -83,7 +83,7 @@ def dotest(terms, expected, which):
     elif which == 1:
         index = create_index(files)
         index_docs = index_search(files, index, terms)
-        # print filenames(index_docs)
+        # print(filenames(index_docs))
         names = filenames(index_docs)
         names.sort()
         expected.sort()
@@ -92,7 +92,7 @@ def dotest(terms, expected, which):
     else:
         index = myhtable_create_index(files)
         index_docs = myhtable_index_search(files, index, terms)
-        # print filenames(index_docs)
+        # print(filenames(index_docs))
         names = filenames(index_docs)
         names.sort()
         expected.sort()
