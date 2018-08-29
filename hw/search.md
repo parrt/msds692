@@ -179,7 +179,7 @@ Different hash codes can hash to the same bucket because of the modulo operation
 
 ```python
 key = 'f'
-value = 99
+value = 'mary'
 print "hashcode =", hashcode(key)
 bucket_index = hashcode(key) % len(table)
 print "bucket_index =", bucket_index
