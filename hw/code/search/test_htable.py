@@ -23,7 +23,7 @@ def test_single():
 0004->
 """
 
-def test_singleon():
+def test_singleton():
     table = htable(5)
     htable_put(table, "parrt", set([99]))
     assert htable_str(table) == "{parrt:{99}}"
