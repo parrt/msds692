@@ -95,8 +95,8 @@ Most data you encounter will be in the form of human readable text, such as comm
 	* reading/generating json
 * (git intro; clone, add, commit, push, pull; see [Using git revision control](https://github.com/parrt/msds501/blob/master/notes/git.md) from Boot camp)
 * [Excel and CSV data](notes/excel.ipynb) (Day 2)
-* [PDF using pdftotext](notes/pdf.ipynb) (Extracting text from Tesla's marketing brochure) (Day 3)
-* [HTML](notes/html.ipynb) (Parsing Tesla's IPO prospectus) (Day 3)
+* [PDF using pdftotext](notes/pdf.ipynb) (Extracting text from Tesla's marketing brochure) (Day ?)
+* [HTML](notes/html.ipynb) (Parsing Tesla's IPO prospectus) (Day ?)
 
 There are also plenty of nontext, binary formats. You can learn more from the msds501 boot camp material for [audio processing](https://github.com/parrt/msds501/blob/master/notes/sound.ipynb) and [image processing](https://github.com/parrt/msds501/raw/master/projects/images.pdf).
 
@@ -104,7 +104,7 @@ There are also plenty of nontext, binary formats. You can learn more from the ms
 
 * [Debugging with PyCharm](notes/debugger.md) (Day 2)
 * [Associations and dictionaries](notes/dict.ipynb) (Day 3)
-* [Data structure basics](notes/datastructures.ipynb) (Day 4)
+* [Data structure basics](notes/datastructures.ipynb) (Day 3, Day 4)
 
 ## Text feature extraction
 
