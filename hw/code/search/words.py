@@ -8,7 +8,7 @@ def filelist(root):
 
 
 def get_text(fileName):
-    f = open(fileName)
+    f = open(fileName, encoding='UTF-8')
     s = f.read()
     f.close()
     return s
