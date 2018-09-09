@@ -48,6 +48,6 @@ while True:
         print("Invalid search type:", impl)
         break
     page = results(docs, terms)
-    with open("/tmp/results.html", "w") as f:
+    with open("/tmp/results.html", "w", encoding='UTF-8') as f:
         f.write(page)
     webbrowser.open_new_tab("file:///tmp/results.html")
