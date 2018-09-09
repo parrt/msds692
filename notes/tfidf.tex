@@ -213,9 +213,9 @@ From this table, we can conclude that most important terms in each document are 
 
 \section{Exercise}
 
-To get a feel for computing these scores, let's use Excel or some other spreadsheet to build a model we can play with. Or, for Fall 2018, I added a \href{http://nlp.stanford.edu/IR-book/html/htmledition/term-frequency-and-weighting-1.html}{Introduction to Information Retrieval}
+To get a feel for computing these scores, let's use Excel or some other spreadsheet to build a model we can play with. Or, for Fall 2018, I added a \href{https://github.com/parrt/msds692/blob/master/notes/tfidf.ipynb}{TFIDF example using a Pandas data frame}.
 
- I created a number of ``tables'' as you can see from this figure:
+For the Excel approach, I created a number of ``tables'' as you can see from this figure:
 
 \begin{figure}[H]
 \begin{center}
@@ -231,5 +231,7 @@ Then make a document-word table that represents the word vectors for each docume
 Create another document-word table that multiplies the term frequency by the inverse (log) document frequency from the first table. The term frequencies are the count in the word vectors divided by their length.
 
 Once you have this in place, you can tweak the documents by changing word counts to see what happens to the various scores.
+
+The \href{https://github.com/parrt/msds692/raw/master/notes/tfidf.xlsx}{Excel solution} is available.
 
 \end{document}
