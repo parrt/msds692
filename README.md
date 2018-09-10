@@ -96,7 +96,7 @@ Most data you encounter will be in the form of human readable text, such as comm
 * (git intro; clone, add, commit, push, pull; see [Using git revision control](https://github.com/parrt/msds501/blob/master/notes/git.md) from Boot camp)
 * [Excel and CSV data](notes/excel.ipynb) (Day 2)
 * [PDF using pdftotext](notes/pdf.ipynb) (Extracting text from Tesla's marketing brochure) (Day 4)
-* [HTML](notes/html.ipynb) (Parsing Tesla's IPO prospectus) (Day ?)
+* [HTML](notes/html.ipynb) (Parsing Tesla's IPO prospectus) (Day 5)
 
 There are also plenty of nontext, binary formats. You can learn more from the msds501 boot camp material for [audio processing](https://github.com/parrt/msds501/blob/master/notes/sound.ipynb) and [image processing](https://github.com/parrt/msds501/raw/master/projects/images.pdf).
 
@@ -110,7 +110,7 @@ There are also plenty of nontext, binary formats. You can learn more from the ms
 
 * [Search Engine Implementation](https://github.com/parrt/msds692/blob/master/hw/search.md) (**project**) (Day 3)
 * (code review of sample jsontable functions, more htable discussion)
-* [CSV command-line kung fu](notes/bashcsv.ipynb) (Day 4)
+* [CSV command-line kung fu](notes/bashcsv.ipynb) (Day ?)
 * [Intro to information extraction from text](notes/text.ipynb) (Day 5)
 * [Computing TFIDF](notes/tfidf.pdf) (Day 5)
 * [TFIDF document summarization](https://github.com/parrt/msds692/blob/master/hw/tfidf.md) (**project**) (Day 6)
