@@ -55,19 +55,19 @@ Now that we understand about networks, sockets, and the HTTP protocol, let's use
 ```python
 import requests
 r = requests.get('http://www.cnn.com')
-print r.text
+print(r.text)
 ```
 
-Or, with `urllib2`:
+Or, optionally, with `urllib2`:
 
 ```python
 import urllib2
 response = urllib2.urlopen("http://www.cnn.com")
 html = response.read()
-print html
+print(html)
 ```
 
-In case you need it, here's how you would do that from the commandline:
+Here's how you do that from the commandline:
 
 ```bash
 $ curl http://www.cnn.com > cnn.html
