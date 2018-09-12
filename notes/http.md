@@ -70,13 +70,13 @@ print(html)
 Here's how you do that from the commandline:
 
 ```bash
-$ curl http://www.cnn.com > cnn.html
+$ curl https://www.cnn.com > cnn.html
 ```
 
 or
 
 ```bash
-$ wget -O cnn.html http://www.cnn.com
+$ wget -O cnn.html https://www.cnn.com
 ```
 
 **Exercise**: Using what you learned from previous lectures on extracting text from HTML, extract the text from URL `http://docs.python-requests.org/en/master` and print that out.
