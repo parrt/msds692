@@ -64,11 +64,19 @@ IP uses _IP addresses_ to define source/target.  IPs are 32 bit numbers represen
 
 A good security feature is to hide your machines from outside.  For example, all machines from within IBM's firewall probably look like the exact same IP address to the outside world (such as in web server log files).  That is one reason you cannot use an IP address to identify "sessions" for a web server application.
 
-**Exercise**: Use package `netifaces` and print the result of importing `import netifaces as ni` then calling `ni.ifaddresses('en0')[ni.AF_INET][0]['addr']` (on linux it might be `eth0` not `en0`; on mac might be en1) (or on el capitan mac and earlier, you can do just `socket.gethostbyname(socket.gethostname())`) to figure out what your IP address is. If this pops up with 127.0.0.1 ("localhost") then you will need to go to your laptop network configurationto find your IP address.
+**Exercise**: Install and use package `netifaces` via `import netifaces as ni` then call `ni.ifaddresses('en0')[ni.AF_INET][0]['addr']` (on linux it might be `eth0` not `en0`; on mac might be en1) (or on el capitan mac and earlier, you can do just `socket.gethostbyname(socket.gethostname())`) to figure out what your IP address is. If this pops up with 127.0.0.1 ("localhost") then you will need to go to your laptop network configurationto find your IP address.
 
 <center>
 <img src=figures/net-config.png width=300>
 </center>
+
+**Solution**: 
+
+```python
+import netifaces as ni
+ip = ni.ifaddresses('en0')[ni.AF_INET][0]['addr']
+print(ip)
+```
 
 ### DNS -- Domain Name Service
 
@@ -91,6 +99,14 @@ $ hostname
 beast.local
 ```
 
+**Solution**: 
+
+```python
+import socket
+print(socket.gethostbyname("www.usfca.edu"))
+print(socket.gethostname())
+```
+
 DNS lookup is distributed so there isn't a single point of failure. A single server would also get absolutely pounded by requests from the net and would be extremely expensive to maintain. There are caches etc. that reduce the load on the DNS servers.
 
 If we didn't have DNS, we would all have to memorize a constantly shifting set of IP addresses.  This reminds me of the state of the world before smart phones where you had to remember lots of phone numbers.
@@ -106,13 +122,13 @@ TCP (_Transmission Control Protocol_) is another protocol, a reliable but slower
 
 TCP is like a phone connection versus the simple "fire and forget" letter stateless style of IP.  TCP connections are open for the duration of a communication (i.e., until you close the connection).
 
-[joke about back/forth with TCP/IP](https://twitter.com/KirkBater/status/953673704734683136)
+[A joke about back/forth with TCP/IP](https://twitter.com/KirkBater/status/953673704734683136)
 
 ## What is a socket?
 
-If the IP address is like an office building's main phone number, sockets are like the extension numbers for offices.  So the IP and socket, often called the port, uniquely identify an "office" (server process).  You will see unique identifiers like `192.168.2.100:80` where 80 is the port.  We open sockets to these ports in order to communicate with servers.
+If the IP address is like an office building's main phone number, sockets are like the extension numbers for offices and are often called the *port*.  So the IP and socket uniquely identify an "office" (server process).  You will see unique identifiers like `192.168.2.100:80` where 80 is the port.  We open sockets to these ports in order to communicate with servers.
 
-Ports range from 1..65535.  1..1024 require root privileges to use and ports 1..255 are reserved for common, publicly-defined server ports like:
+Ports range from 1..65535.  1..1024 require root/superuser privileges to use and ports 1..255 are reserved for common, publicly-defined server ports like:
 
 * 80: HTTP (web)
 * 110: POP (mail)
