@@ -30,7 +30,6 @@ for fname in testfiles:
     scores = summarize(tfidf, corpus[fname], 20)
     # sort first by score then by word in case of identical scores
     scores = sorted(scores, key=lambda item : f"{item[1]:.3f} {item[0]}", reverse=True)
-    print(scores)
 
     if len(scores)!=len(truth[fname]):
         failures += 1
