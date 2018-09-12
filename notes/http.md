@@ -15,12 +15,12 @@ Host: www.cnn.com
 The first line tells the server what page we are interested in (the root `/`). The `Host:` line indicates what server we think we are talking to. Then, we have to have a blank line which indicates we are done talking/handshaking. Please try out this sample session:
 
 ```
-$ telnet www.cnn.com 80
+$ telnet www.antlr.org 80
 Trying 151.101.41.67...
-Connected to turner-tls.map.fastly.net.
+Connected to ...
 Escape character is '^]'.
 GET / HTTP/1.1
-Host: www.cnn.com
+Host: www.antlr.org
 
 ```
 
