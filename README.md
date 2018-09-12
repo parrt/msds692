@@ -121,7 +121,7 @@ Now you know how to work with data files already sitting on your desk, we turn t
 
 * [Network sockets](notes/sockets.md), DNS, email (Day 6)
 * [client/server architecture](notes/client-server.md) (Day 6)
-* [HTTP](notes/http.md) (Day 7)
+* [HTTP](notes/http.md) (Day 6)
 * [flask](notes/flask.md) (Day 7)
 * Review exam, launch AWS box, launch flask server at port 80 (Day 8)
 * [Web analytics](notes/webanalytics.md) (Day 9)
