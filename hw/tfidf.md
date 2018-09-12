@@ -324,7 +324,13 @@ In your repository `tfidf-`*userid*, you must have the following files in the ro
 We will test your TFIDF functionality using `test_tfidf.py`, which uses the entire corpus for "training" but then uses just a small subset of the files for testing. For example, on my machine:
 
 ```bash
-$ python test_tfidf.py  ~/data/reuters-vol1-disk1-subset.zip 
+$ time python test_tfidf.py  ~/data/reuters-vol1-disk1-subset.zip 
+Loaded 9164 files from /Users/parrt/data/reuters-vol1-disk1-subset.zip
+All tests pass
+
+real	0m32.524s
+user	0m32.372s
+sys	0m0.350s
 ```
 
 Any difference in words or TFIDF scores are treated as a 0 for that test. There are 12 randomly-selected test files used and you must get everything right for each file. I have computed the right values and store them in a pickled file, `corpus.pkl`, which is how the test compares your work for correctness. (It compares the filename to list of (value,tfidf score) tuples).
