@@ -18,7 +18,7 @@ This model doesn't scale very well however. Imagine 10,000 people are calling th
 
 One question comes up: How can multiple users can connect via the same "port and IP address" to multiple physical servers or processes?   By analogy: when a customer calls the main bank number, the operator (now an automated menu/choice system) routes/transfers the call to the appropriate department, such as fraud, web support, mortgages, etc. The main phone number then can go back to waiting for another call after handing off the connection.  
 
-The server that answers at the main port number responds a new thread or process for each incoming request.
+The server that answers at the main port number responds by spinning up a new thread or process for each incoming request.
 
 Another important detail: bank service employees do not waste time, running in place, when no calls are coming in. They "sleep" until a call comes in. Analogously, the server blocks waiting on a request at the port rather than sitting in a spin loop, "picking up the phone" to see if anybody is there--it waits for a "telephone ring."
 
@@ -43,14 +43,14 @@ serversocket.listen(5) # 5 is number of clients that can queue up before failure
 (clientsocket, address) = serversocket.accept()
 
 # Send a welcome
-clientsocket.send("hello\n")
+clientsocket.send("hello from server\n".encode())
 
 # Get up to 1000 bytes
-data = clientsocket.recv(1000)
-print data
+data = clientsocket.recv(1000).decode()
+print(data)
 
 # Echo it back to client
-clientsocket.send(data)
+clientsocket.send(data.encode())
 
 clientsocket.close()
 ```
@@ -71,9 +71,9 @@ $ telnet YOUR-IP-ADDRESS 8000
 Trying YOUR-IP-ADDRESS...
 Connected to localhost.
 Escape character is '^]'.
-hello         <--- handshake hello message from server
-hi back atcha <--- what I type
-hi back atcha <--- echoed back from the server
+hello from server  <--- handshake hello message from server
+hi back atcha      <--- what I type
+hi back atcha      <--- echoed back from the server
 Connection closed by foreign host.
 ```
 
