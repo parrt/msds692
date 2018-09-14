@@ -23,7 +23,7 @@ def tokenize(text):
     """
     Tokenize text and return a non-unique list of tokenized words
     found in the text. Normalize to lowercase, strip punctuation,
-    remove stop words, drop words of length < 3.
+    remove stop words, drop words of length < 3, strip digits.
     """
 
 
