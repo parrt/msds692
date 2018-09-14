@@ -28,15 +28,23 @@ tfidf = compute_tfidf(corpus)
 failures = 0
 for fname in testfiles:
     scores = summarize(tfidf, corpus[fname], 20)
-    # sort first by score then by word in case of identical scores
-    scores = sorted(scores, key=lambda item : f"{item[1]:.3f} {item[0]}", reverse=True)
+
+    # round to str with 3 decimals
+    scores = [f"{item[1]:.3f} {item[0]}" for item in scores]
+    truth[fname] = [f"{item[1]:.3f} {item[0]}" for item in truth[fname]] # round truth
+
+    # sort both
+    scores = sorted(scores, reverse=True)
+    truth[fname] = sorted(truth[fname], reverse=True)
 
     if len(scores)!=len(truth[fname]):
         failures += 1
-        print('-----------------\nFAIL %s: EXPECTED %d scores FOUND %d' % (fname, len(truth[fname]),len(scores)))
+        print(f'-----------------\nFAIL {fname} EXPECTED {len(truth[fname])} scores FOUND {len(scores)}')
     elif scores!=truth[fname]:
         failures += 1
-        print('-----------------\nFAIL %s: EXPECTED %s\nFOUND %s' % (fname, str(truth[fname]),str(scores)))
+        print(f'-----------------\nFAIL {fname}')
+        print(f"\t{'EXPECTED':<25s}\tFOUND")
+        print('\t'+'\n\t'.join([f"{pair[0]:<25s}\t{pair[1]:<25s}" for pair in zip(truth[fname], scores)]))
 
 if not failures:
     print("All tests pass")
