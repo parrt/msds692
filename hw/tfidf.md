@@ -101,15 +101,15 @@ Then you can walk the `counts` and print the most common 10 words out. Note that
 ```
 $ python common.py ~/data/reuters-vol1-disk1-subset/33313newsML.xml
 gener 19
-transmiss 14
 power 14
-said 12
+transmiss 14
 new 12
+said 12
 electr 11
 cost 10
 zealand 9
 signal 8
-tran 7	
+tran 7
 ```
 
 Note that `generation`, `generated`, `generator` all stem to `gener`. It nicely summarizes the article!
@@ -149,17 +149,16 @@ For file `33312newsML.xml`, I get the following final output:
 ```
 $ python common.py ~/data/reuters-vol1-disk1-subset/33312newsML.xml
 awb 8
+wheat 6
 tonn 6
 said 6
-wheat 6
-crop 4
-price 4
 steadi 4
-queensland 3
+price 4
+crop 4
 report 3
-hard 2
+queensland 3
+australian 2
 ```
-
 
 For file `131705newsML.xml`, I get the following final output:
 
@@ -167,14 +166,14 @@ For file `131705newsML.xml`, I get the following final output:
 $ python common.py ~/data/reuters-vol1-disk1-subset/131705newsML.xml 
 seita 4
 share 3
-cancer 2
-go 2
 franc 2
-fell 2
+cancer 2
 link 2
 tobacco 2
+fell 2
 cigarett 2
-ad 1
+go 2
+affect 1
 ```
 
 This works great but can we do better? 
