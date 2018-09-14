@@ -49,7 +49,8 @@ def compute_tfidf(corpus):
 def summarize(tfidf, text, n):
     """
     Given a trained TfidfVectorizer object and some XML text, return
-    up to n (word,score) pairs in a list.
+    up to n (word,score) pairs in a list. Discard any terms with
+    scores < 0.09.
     """
 
 
