@@ -33,14 +33,14 @@ $ curl http://127.0.0.1:5000
 Hello MSAN692!
 ```
 
-**Exercise**: run your previous python "get" code using this URL to fetch the data. Now you have a server and a client on same machine talking to each other.
+**Exercise**: run your [previous python "get" code](https://github.com/parrt/msds692/blob/master/notes/http.md) using this URL to fetch the data. Now you have a server and a client on same machine talking to each other.
 
 **Exercise**: Add this code so server spits out its IP address and have a partner use browser and python code from previous exercise to connect to your server. Then switch.
 
 ```python
 import netifaces as ni
 ip = ni.ifaddresses('en0')[ni.AF_INET][0]['addr']
-print "I'm at IP "+ip
+print("I'm at IP "+ip)
 ...
 app.run('0.0.0.0')
 ```
@@ -117,11 +117,10 @@ Hello Xue!
 
 *If you get error "address in use" or something like that, that means that you have a previous version of the program running somewhere. Or, sometimes you have to kill the program with control-C and then wait a minute or two for it to release that port.*
 
-Try adding another function that return some text data with an annotation so that that there will be two URLs operating.
+Try adding another function that returns some text data with an annotation so that that there will be two URLs operating.
 
 ```pythhon
-mydata = """
-parrt, 10, 134.983
+mydata = """parrt, 10, 134.983
 tombu, 11, 99.001
 """
 
@@ -163,8 +162,7 @@ Now restart your server and visit the URL. You should see some nicely formatted 
 ```python
 from flask import request
 ...
-mydata = """
-parrt, 10, 134.983
+mydata = """parrt, 10, 134.983
 tombu, 11, 99.001
 """
 mydata_html = """
