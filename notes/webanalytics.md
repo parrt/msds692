@@ -221,7 +221,7 @@ A fake home page with <a href="anotherpage.html">link to some other page</a>.
 </html>
 ```
 
-The `img` tag will contact our server, indicating that somebody has accessed page `index.html`.  Recall that the browser makes another socket connection to some remote server for each image tag.
+If you open that file in a browser, the `img` tag will contact our server, indicating that somebody has accessed page `index.html`.  Recall that the browser makes another socket connection to some remote server for each image tag.
 
 Here is a starter kit for your `server.py` file:
 
@@ -230,7 +230,7 @@ from flask import Flask
 from flask import request
 import netifaces as ni
 ip = ni.ifaddresses('en0')[ni.AF_INET][0]['addr']
-print "This machines IP address is "+ip
+print("This machines IP address is "+ip)
 
 app = Flask(__name__)
 
@@ -239,7 +239,7 @@ def track():
     # get the 'page' request argument (google it)
     page = ...
     if len(page)>0:
-        print "Visit to page "+page
+        print("Visit to page "+page)
     # return the result of calling app.send_static_file on 'images/shim.gif'
 
 app.run(host='0.0.0.0')
@@ -285,6 +285,8 @@ r.th("Count")
 r.th("Page name")
 ...
 ```
+
+The [solution](https://github.com/parrt/msds692/blob/master/notes/code/webanalytics/server.py) is available.
 
 ### Going further
 
