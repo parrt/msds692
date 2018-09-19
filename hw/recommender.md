@@ -209,8 +209,8 @@ cd recommender-parrt
 Now, download the data you need and unzip:
 
 ```bash
-wget https://s3-us-west-1.amazonaws.com/msds692/glove.6B.300d.txt
-wget https://s3-us-west-1.amazonaws.com/msds692/bbc.7z
+wget https://s3-us-west-1.amazonaws.com/msan692/glove.6B.300d.txt
+wget https://s3-us-west-1.amazonaws.com/msan692/bbc.7z
 7z x bbc.7z
 ```
 
