@@ -177,7 +177,7 @@ There are predefined functions with comments indicating the required functionali
 
 Creating a server that has all the appropriate software can be tricky so I have recorded a sequence that works for me.
 
-The first thing is to launch a server with different software than the simple  Amazon linux we have been using in class. We need one that has, for example, `numpy` and friends so let's use an *image* (snapshot of a disk with a bunch of stuff installed) that already has machine learning software installed: Use "*Deep Learning AMI Amazon Linux Version 3.1_Sep2017 - ami-bde90fc7*":
+The first thing is to launch a server with different software than the simple  Amazon linux we have been using in class. We need one that has, for example, `numpy` and friends so let's use an *image* (snapshot of a disk with a bunch of stuff installed) that already has machine learning software installed: Use "*Deep Learning AMI Amazon Linux Version 3.1_Sep2017 - ami-bde90fc7*" (DAMN: this has disappeared. working on solution 9/20/2018):
 
 <img src=figures/aws-ami.png width=500>
 
@@ -209,9 +209,10 @@ cd recommender-parrt
 Now, download the data you need and unzip:
 
 ```bash
-wget https://s3-us-west-1.amazonaws.com/msan692/glove.6B.300d.txt
-wget https://s3-us-west-1.amazonaws.com/msan692/bbc.7z
-7z x bbc.7z
+wget https://s3-us-west-1.amazonaws.com/msan692/glove.6B.300d.txt.zip
+wget https://s3-us-west-1.amazonaws.com/msan692/bbc.zip
+unzip msan692/glove.6B.300d.txt.zip
+unzip bbc.zip
 ```
 
 You should now be able to run your server:
