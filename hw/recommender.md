@@ -211,7 +211,7 @@ Now, download the data you need and unzip:
 ```bash
 wget https://s3-us-west-1.amazonaws.com/msan692/glove.6B.300d.txt.zip
 wget https://s3-us-west-1.amazonaws.com/msan692/bbc.zip
-unzip msan692/glove.6B.300d.txt.zip
+unzip glove.6B.300d.txt.zip
 unzip bbc.zip
 ```
 
