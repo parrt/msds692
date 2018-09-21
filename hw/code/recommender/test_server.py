@@ -54,7 +54,7 @@ def fetch_sample_articles(artlist):
 
 def test_links():
     host = sys.argv[len(sys.argv) - 1]  # host is last arg
-    print "TESTING article list at " + host
+    print("TESTING article list at " + host)
 
     f = open('articles.pkl', 'rb')
     true_links = set(pickle.load(f))
@@ -65,12 +65,12 @@ def test_links():
             assert False, "FAIL: article links missing: "+str(true_links.difference(links))
         if links.issuperset(true_links):
             assert False, "FAIL: article links has extra: "+str(links.difference(true_links))
-    print "Article links OK"
+    print("Article links OK")
 
 
 def test_sample_articles():
     host = sys.argv[len(sys.argv) - 1]  # host is last arg
-    print "TESTING Recommended articles at " + host
+    print("TESTING Recommended articles at " + host)
 
     f = open('recommended.pkl', 'rb')
     true_recommended = pickle.load(f)
@@ -88,7 +88,7 @@ def test_sample_articles():
             if links.issuperset(true_links):
                 assert False, "FAIL: recommended articles has extra: "+str(links.difference(true_links))
 
-    print "Recommended articles OK"
+    print("Recommended articles OK")
 
 
 def getIP():
