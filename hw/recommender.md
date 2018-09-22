@@ -197,11 +197,19 @@ There are predefined functions with comments indicating the required functionali
 
 Creating a server that has all the appropriate software can be tricky so I have recorded a sequence that works for me.
 
-The first thing is to launch a server with different software than the simple  Amazon linux we have been using in class. We need one that has, for example, `numpy` and friends so let's use an *image* (snapshot of a disk with a bunch of stuff installed) that already has machine learning software installed: Use "*Deep Learning AMI Amazon Linux Version 3.1_Sep2017 - ami-bde90fc7*" (DAMN: this has disappeared. working on solution 9/20/2018):
+The first thing is to launch a server with different software than the simple  Amazon linux we have been using in class. We need one that has, for example, `numpy` and friends so let's use an *image* (snapshot of a disk with a bunch of stuff installed) that already has machine learning software installed: Use "*Deep Learning AMI Amazon Linux Version 3.1_Sep2017 - ami-bde90fc7*" (DAMN: this has disappeared. working on solution 9/20/2018). Ok, so grab the basic linux image and then install Anaconda:
 
-<img src=figures/aws-ami.png width=500>
+```bash
+wget https://repo.anaconda.com/archive/Anaconda3-5.2.0-Linux-x86_64.sh
+```
 
-Create a `t2.medium` size computer (in Oregon; it's cheaper)!  The cost is $0.047 per Hour, which is only $1.12 per day.
+(Or whatever the latest version is). Then execute that script to install:
+
+```bash
+bash Anaconda3-5.2.0-Linux-x86_64.sh
+```
+
+Create a `t2.medium` size computer (in Oregon; it's cheaper)!  The cost is 0.047 dollars per Hour, which is only 1.12 dollars per day.
 
 When you try to connect, it will tell you to use user `root` but use `ec2-user` like we did for the other machines.  In other words, here's how I login:
  
