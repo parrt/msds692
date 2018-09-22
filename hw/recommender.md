@@ -130,14 +130,34 @@ def article(topic,filename):
 
 Also note that we are using the template engine [jinja2](http://jinja.pocoo.org/docs/2.9/) that is built-in with flask. When you call `render_template()` from within a flask route method, it looks in the `templates` subdirectory for the file indicated in that function call. You need to pass in appropriate arguments to the two different page templates so the pages fill with data.
 
+Now that we are using green unicorn, you don't want to use `app.run()` anymore in your server.py file. Also note that using `-D` option on green unicorn makes it create a daemon process sitting in the background. To kill all of those processes you need to do a few steps:
+
+```bash
+beast:master:~/courses/msds692-private/hw/recommender $ gunicorn -D --threads 1 -b 0.0.0.0:5000 --access-logfile server.log --timeout 60 server:app ~/data/glove.6B/glove.6B.50d.txt ~/github/msds692/data/bbc
+
+beast:master:~/courses/msds692-private/hw/recommender $ ps aux | grep gunicorn
+parrt            71972   0.0  0.0  4267768   1028 s003  S+   11:01AM   0:00.00 grep gunicorn
+parrt            71743   0.0  1.1  4657032 354216   ??  S    11:01AM   0:06.19 /Users/parrt/anaconda3/bin/python /Users/parrt/anaconda3/bin/gunicorn -D --threads 1 -b 0.0.0.0:5000 --access-logfile server.log --timeout 60 server:app /Users/parrt/data/glove.6B/glove.6B.50d.txt /Users/parrt/github/msds692/data/bbc
+parrt            71737   0.0  0.0  4310344  10396   ??  S    11:01AM   0:00.02 /Users/parrt/anaconda3/bin/python /Users/parrt/anaconda3/bin/gunicorn -D --threads 1 -b 0.0.0.0:5000 --access-logfile server.log --timeout 60 server:app /Users/parrt/data/glove.6B/glove.6B.50d.txt /Users/parrt/github/msds692/data/bbc
+
+beast:master:~/courses/msds692-private/hw/recommender $ kill -9 71737
+
+beast:master:~/courses/msds692-private/hw/recommender $ kill -9 71743
+
+beast:master:~/courses/msds692-private/hw/recommender $ ps aux | grep gunicorn
+parrt            72120   0.0  0.0  4267768   1028 s003  S+   11:02AM   0:00.00 grep gunicorn
+```
+
+As you can see, all of the processes for `gunicorn` are now dead. You kill the process ID to make them stop (the number in the second column from `ps`).
+
 ### Your server will be attacked
 
-*we moved back to port 5000 so might not be an issue*
+*we moved back to port 5000 this year so this should not be an issue*
 
 "Don't panic!" When you leave your web server up at port 80 for more than a few minutes, you will see people from around the web try to break into your computer. For example, you will see URLs like `/mysql/admin/`, `/phpmyadmin/`, `/dbadmin/`, `/mysql/`. The attacker is trying to use known exploits or default passwords for these various kinds of servers hoping to get in. You will see log entries printed from your flask server that look like this (138.202.1.109 was me):
 
 ```
-$ sudo python server.py
+$ gunicorn -D --threads 4 -b 0.0.0.0:80 --access-logfile server.log --timeout 60 server:app glove.6B.300d.txt bbc
  * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
 138.202.1.109 - - [20/Sep/2017 20:02:45] "GET / HTTP/1.1" 200 -
 138.202.1.109 - - [20/Sep/2017 20:03:07] "GET / HTTP/1.1" 200 -
