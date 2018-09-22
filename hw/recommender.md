@@ -209,6 +209,18 @@ wget https://repo.anaconda.com/archive/Anaconda3-5.2.0-Linux-x86_64.sh
 bash Anaconda3-5.2.0-Linux-x86_64.sh
 ```
 
+Or, another student had good luck with the following process:
+
+Use an `ubuntu` server, which already comes with python3; so just do:
+
+```
+sudo apt update
+sudo apt install python3-pip unzip
+pip3 install numpy gunicorn Flask
+```
+
+The other change is that for ubuntu server the user is *ubuntu* instead of *ec2-user*.
+
 Create a `t2.medium` size computer (in Oregon; it's cheaper)!  The cost is 0.047 dollars per Hour, which is only 1.12 dollars per day.
 
 When you try to connect, it will tell you to use user `root` but use `ec2-user` like we did for the other machines.  In other words, here's how I login:
