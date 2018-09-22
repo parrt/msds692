@@ -41,8 +41,11 @@ def tokenizer(text):
 def compute_tfidf(corpus):
     """
     Create and return a TfidfVectorizer object after training it on
-    the list of articles pulled from the corpus dictionary. The
-    corpus argument is a dictionary mapping file name to xml text.
+    the list of articles pulled from the corpus dictionary. Meaning,
+    call fit() on the list of document strings, which figures out
+    all the inverse document frequencies (IDF) for use later by
+    the transform() function. The corpus argument is a dictionary 
+    mapping file name to xml text.
     """
 
 

@@ -63,6 +63,10 @@ Now that we have some raw text without all of the XML, let's properly tokenize E
 5.  Removes stop words using SciKit-Learn's `ENGLISH_STOP_WORDS` set. 
 6.  Stem the words to help normalize the text.
 
+*The easiest way to do this is simply to reuse the code I provided for you in the last project.*
+
+Make sure to lower case everything before you try to stem the words.
+
 In `tfidf.py`, break this down into the two separate functions shown here:
 
 ```python
@@ -222,11 +226,13 @@ tfidf = TfidfVectorizer(input='content',
                         decode_error = 'ignore')
 ```                        
 
+You should take my recommendation and use the arguments to `TfidfVectorizer()` as-is.
+
 Function `gettext` is the imported function from `tfidf.py`.
 
 Some files might have non-ascii char so you need tell `TfidfVectorizer()` to not puke (raise an exception) upon decoding error characters. See the [doc](http://scikit-learn.org/dev/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html#sklearn.feature_extraction.text.CountVectorizer).
 
-Once you create that `tfidf` object, you can call functions `fit` and `transform` or together as `fit_transform`. That will return to you a sparse matrix containing the index of the various words from the argument to `transform` plus the TFIDF scores:
+Once you create that `tfidf` object, you can call function `fit` to compute all of the IDF (inverse document scores) for the corpus (list of doc strings) passed in. To get TFIDF scores for a document, call function `transform`, which returns a matrix whose rows are documents and whose columns are the words in the corpus vocabulary. It is actually a sparse matrix containing the (row,column) of the various words from the argument to `transform` plus the TFIDF scores:
 
 ```
   (0, 35257)	0.235473480686
@@ -236,7 +242,7 @@ Once you create that `tfidf` object, you can call functions `fit` and `transform
   ...
 ```
 
-Calling `nonzero` on that matrix gives you the word indexes as the 2nd element of tuples like: (0,*word-index-we-want*). So just walk those indexes and collect tuples with the feature names (the words) and the TFIDF.  Then sort them in reverse order according to the second element of the tuple, the TFIDF score.
+Calling `nonzero` on that matrix gives you the word indexes as the 2nd element of tuples like: (0,*word-index-we-want*). The "0" is because we've only passed in one document and so we only care about the word index which is the second index. So just walk those indexes and collect tuples with the feature names (the words) and the TFIDF.  Then sort them in reverse order according to the second element of the tuple, the TFIDF score.
 
 For file `33312newsML.xml`, I get the following final output:
 
