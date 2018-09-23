@@ -194,7 +194,7 @@ $ python omdb.py eeb26c5e | jq
     ...
 ```
 
-Look at `r.url` so you can see how it encodes the dictionary as GET arguments on the URL.
+Look at `r.url` so you can see how it encodes the dictionary as GET arguments on the URL. [Solutions](https://github.com/parrt/msds692/tree/master/notes/code/omdb)
 
 **Exercise**:  Write a small Python script using base URL `http://www.omdbapi.com` and parameters `t` (movie title) and `y` (movie year) to look up some of your favorite movies. The default output should come back in JSON.  Here is the structure of the argument dictionary:
 
@@ -218,6 +218,8 @@ args = {
 ```
 
 Replace the json conversion code with code that [untangle](https://untangle.readthedocs.io/en/latest/)'s the XML to print out the title and the plot. All of the REST parameters are explained in the [API document](http://www.omdbapi.com/).  Recall that untangle lets you refer to children of `x` with `x.childname`. Parse with `x = untangle.parse(testxml)`. Attributes of a specific node are stored in a dictionary so `x`'s attributes are `x['attributename']`. You will have to look at the structure of the XML to figure out how to dig down into the tree.
+
+[Solutions](https://github.com/parrt/msds692/tree/master/notes/code/omdb)
 
 ## CURLing for it
 
