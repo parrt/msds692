@@ -6,7 +6,7 @@ We have already seen how to use `requests` to fetch a webpage:
 
 ```python
 r = requests.get('http://www.cnn.com')
-print r.text
+print(r.text)
 ```
 
 If the URL is to a page that gives you HTML, we would say that we are fetching a webpage. On the other hand, if the URL is returning data in some form, we would say that we are accessing a *REST* api.
@@ -49,7 +49,7 @@ name = sys.argv[1]
 r = requests.get(URL % name)
 data = json.loads(r.text)
 
-print json.dumps(data)
+) json.dumps(data)
 ```
 
 A **technical detail** related to valid strings you can include as part of a URL.  Spaces are not allowed so `John Chan` has to be encoded or "quoted".  Fortunately, `requests` does this automatically for us. If you ever need to quote URLs, use `urllib`:
@@ -105,7 +105,7 @@ APIKEY = sys.argv[2]  # your key
 url = HistoryURL % (ticker,APIKEY)
 r = requests.get(url)
 csvdata = r.text
-print csvdata
+print(csvdata)
 ```
 
 The CSV you get back looks like:
@@ -121,7 +121,7 @@ AAPL,1980-12-15,27.38,27.38,27.25,27.25,785200.0,0.0,1.0,0.40256306006259,0.4025
 # csv is easy to handle ourselves:
 for row in csvdata.strip().split("\n"):
     cols = row.split(',')
-    print ', '.join(cols)
+    print(', '.join(cols))
 ```
 
 **Exercise:** By looking at the [quandl usage doc](https://docs.quandl.com/docs/in-depth-usage-1) and [quandl parameter doc](https://docs.quandl.com/docs/parameters-1) fetch and fetch stock history for TSLA for just 2015 and only get columns `data` and `open`.
@@ -155,6 +155,8 @@ Let's try to pull down some more interesting data using the [OMDb API](http://ww
 
 > The OMDb API is a free web service to obtain movie information, all content and images on the site are contributed and maintained by our users.
 
+Hmmm...as of 2018, you have to [get an API key](http://www.omdbapi.com/apikey.aspx). They will send you a key by email that you must activate.
+
 Let's also learn a more convenient way to specify URL parameters (with a dictionary).
 
 ```python
@@ -162,13 +164,37 @@ URL = "http://www.omdbapi.com/?"
 
 args = {
 	's' : 'cats',
-	'r' : 'json'
+	'r' : 'json',
+   'apikey' : YOUR_OMDB_API_KEY
 }
 
-r = requests.get(URL, params=args)
+r = requests.get(EURL, params=args)
 ```
 
-**Exercise**: Use this code as a starting point and extract data from the movie database. You can change the search string to anything you want. Print out `r.url` so you can see how it encodes the dictionary as GET arguments on the URL.
+**Exercise**: Use this code as a starting point and extract data from the movie database. You can change the search string to anything you want.  My output looks like:
+
+```bash
+$ python omdb.py eeb26c5e | jq
+{
+  "Search": [
+    {
+      "Title": "Cats & Dogs",
+      "Year": "2001",
+      "imdbID": "tt0239395",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BY2JmMDJlMmEtYTk4OS00YWQ5LTk2NzMtM2M3NzhkMjI4MGJkL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg"
+    },
+    {
+      "Title": "The Truth About Cats & Dogs",
+      "Year": "1996",
+      "imdbID": "tt0117979",
+      "Type": "movie",
+      "Poster": "https://ia.media-imdb.com/images/M/MV5BOWM0MTA4NjItMzM3ZS00NDJmLTg3NWItNGE5ODIyOGJhNzQ0L2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg"
+    },
+    ...
+```
+
+Look at `r.url` so you can see how it encodes the dictionary as GET arguments on the URL.
 
 **Exercise**:  Write a small Python script using base URL `http://www.omdbapi.com` and parameters `t` (movie title) and `y` (movie year) to look up some of your favorite movies. The default output should come back in JSON.  Here is the structure of the argument dictionary:
 
@@ -176,6 +202,7 @@ r = requests.get(URL, params=args)
 args = {
 	't' : movie_title,
 	'y' : movie_year,
+   'apikey' : YOUR_OMDB_API_KEY
 }
 ```
 
@@ -185,7 +212,8 @@ Now, change your program so that it requests data back in XML format:
 args = {
 	't' : movie_title,
 	'y' : movie_year,
-	'r' : 'xml'
+	'r' : 'xml',
+   'apikey' : YOUR_OMDB_API_KEY
 }
 ```
 
