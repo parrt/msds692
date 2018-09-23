@@ -241,9 +241,9 @@ Now imagine I go to the pet food company that also has a hidden image reference 
 
 <img src="figures/fb-ads.png" width=400>
 
-The next time I visit facebook.com, the FB server quickly asks ads.com to send it an advertisement from one of its customers, in this case hotelfoo and petfoo. Those customers bid in an auction to show me an ad on Facebook. The ad company tells the hotel or pet food company which pages I have visited, which lets them decide whether to sell me an ad and also what ad to show. This all happens very quickly and in essence is just another image reference on the Facebook page.
+The next time I visit facebook.com I receive an HTML page but also a ref to `ads.com`. Then, the FB server quickly asks `ads.com` to send it an advertisement from one of the `ads.com` clients, in this case `hotelfoo` and `petfoo`. Those customers bid in an auction to show me an ad on Facebook. The ad company tells the hotel or pet food company which pages I have visited, which lets them decide whether to sell me an ad and also what ad to show. This all happens very quickly and in essence is just another image reference on the Facebook page.
 
-This technology is scary but not all bad. Obviously, Google analytics requires a tiny little image the embedded in your webpages so that it can track things and give you statistics.
+This technology is scary but not all bad. Obviously, Google analytics requires a tiny little image or JavaScript to be embedded in your webpages so that it can track things and give you statistics.
 
 # Accessing cookies in Python
 
@@ -268,24 +268,14 @@ def cookie_insertion():
 Then look at the cookies and data coming back:
 
 ```bash
-$ curl -v http://localhost:5000/setcookie
-*   Trying 127.0.0.1...
-* Connected to localhost (127.0.0.1) port 5000 (#0)
-> GET /setcookie HTTP/1.1
-> Host: localhost:5000
-> User-Agent: curl/7.49.0
-> Accept: */*
-> 
-* HTTP 1.0, assume close after body
-< HTTP/1.0 200 OK
-< Content-Type: text/html; charset=utf-8
-< Content-Length: 26
-< Set-Cookie: ID=212392932; Path=/
-< Server: Werkzeug/0.11.11 Python/2.7.12
-< Date: Sat, 22 Apr 2017 17:30:01 GMT
-< 
-i set some cookies. haha!
-* Closing connection 0
+$ curl --head http://localhost:5000/setcookie
+HTTP/1.0 200 OK
+Content-Type: text/html; charset=utf-8
+Content-Length: 26
+Set-Cookie: ID=212392932; Path=/
+Server: Werkzeug/0.14.1 Python/3.6.5
+Date: Sun, 23 Sep 2018 21:03:31 GMT
+
 ```
 
 Try doing the same thing in the browser using the developer tools to see the cookies:
