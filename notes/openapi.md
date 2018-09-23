@@ -174,7 +174,7 @@ r = requests.get(EURL, params=args)
 **Exercise**: Use this code as a starting point and extract data from the movie database. You can change the search string to anything you want.  My output looks like:
 
 ```bash
-$ python omdb.py eeb26c5e | jq
+$ python omdb.py YOUR_OMDB_API_KEY | jq
 {
   "Search": [
     {
