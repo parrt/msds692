@@ -49,7 +49,7 @@ name = sys.argv[1]
 r = requests.get(URL % name)
 data = json.loads(r.text)
 
-json.dumps(data)
+print(json.dumps(data))
 ```
 
 A **technical detail** related to valid strings you can include as part of a URL.  Spaces are not allowed so `John Chan` has to be encoded or "quoted".  Fortunately, `requests` does this automatically for us. If you ever need to quote URLs, use `urllib`:
