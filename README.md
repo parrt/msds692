@@ -132,10 +132,10 @@ Now you know how to work with data files already sitting on your desk, we turn t
 
 With an understanding of how the Internet and web works, it's time to start pulling data from various web sources.  The difficulty of collecting data depends a great deal on the permissions and services available for a site or page.  A good analogy is: some doors are open, some doors are closed, some doors are locked, some "doors" are not doors but reinforced steel walls.
 
-* [Pulling data from (open) REST APIs](notes/openapi.md) (Day 10, skip IMDB; new key mech fails)
+* [Pulling data from (open) REST APIs](notes/openapi.md) (Day 9, 10)
   * Quandl stock data (*todo*: move to next section)
   * openpayments.us
-  * IMDB movie data (*todo*: damn, now this one uses an API key also and mine is currently not working that are received by email)
+  * OMDb movie data 
 * Pull data from sites requiring an ID
   * [Zillow](notes/zillow.md) (Optional)
   * [Twitter](notes/twitter.md)  (jump ahead here to sync with project Day 10, more detail Day 11)
