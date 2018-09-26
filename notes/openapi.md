@@ -168,7 +168,7 @@ args = {
    'apikey' : YOUR_OMDB_API_KEY
 }
 
-r = requests.get(EURL, params=args)
+r = requests.get(URL, params=args)
 ```
 
 **Exercise**: Use this code as a starting point and extract data from the movie database. You can change the search string to anything you want.  My output looks like:
