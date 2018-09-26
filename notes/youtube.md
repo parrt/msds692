@@ -133,9 +133,9 @@ Then the main program can just print out a list of comments for each video, putt
 allcomments = comments(QUERY)
 for vid in allcomments.keys()[:5]: # just 5 videos
     comments = allcomments[vid]
-    print "Video "+vid
-    print "\t",
-    print '\n\t'.join(comments)
+    print("Video "+vid)
+    print("\t",)
+    print('\n\t'.join(comments))
 ```
 
 Sample output:
