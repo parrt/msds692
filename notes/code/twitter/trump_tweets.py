@@ -21,7 +21,7 @@ auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)
 
 user = api.get_user('realDonaldTrump')
-print "followers", user.followers_count
+print("followers", user.followers_count)
 
 for status in tweepy.Cursor(api.user_timeline, id='realDonaldTrump').items(100):
-    print status
+    print(status)

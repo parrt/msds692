@@ -29,4 +29,4 @@ search_response = youtube.search().list(
 items = search_response['items']
 for vid in search_response['items']:
     if vid["id"]["kind"] == "youtube#video":
-        print vid['snippet']['title'], "https://www.youtube.com/watch?v="+vid['id']['videoId']
+        print(vid['snippet']['title'], "https://www.youtube.com/watch?v="+vid['id']['videoId'])

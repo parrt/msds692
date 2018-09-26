@@ -14,4 +14,4 @@ jsondata = r.text
 
 data = json.loads(jsondata)             # dictionary version
 
-print json.dumps(data, indent=4)
+print(json.dumps(data, indent=4))

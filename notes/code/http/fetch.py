@@ -7,4 +7,4 @@ html = response.content
 soup = BeautifulSoup(html, 'html.parser')
 text = soup.get_text()
 
-print text
+print(text)

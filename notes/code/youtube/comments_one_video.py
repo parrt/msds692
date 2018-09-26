@@ -21,4 +21,4 @@ for item in results["items"]:
     comment = item["snippet"]["topLevelComment"]
     author = comment["snippet"]["authorDisplayName"]
     text = comment["snippet"]["textDisplay"]
-    print "Comment by %s: %s" % (author, text)
+    print("Comment by %s: %s" % (author, text))
