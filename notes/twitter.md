@@ -22,7 +22,7 @@ api = tweepy.API(auth)
 
 public_tweets = api.home_timeline()
 for tweet in public_tweets:
-    print tweet.text
+    print(tweet.text)
 ```
 
 That assumes that you have set variables `consumer_key, consumer_secret, access_token, access_token_secret`. To do that, I have it read directly from my secret file:
@@ -59,7 +59,7 @@ For very large results, we need to use [cursors](http://tweepy.readthedocs.io/en
 
 ```python
 for status in tweepy.Cursor(api.user_timeline, id='realDonaldTrump').items(100):
-    print status
+    print(status)
 ```
 
 **Exercise**: Pick another user and print out there most recent tweets.
