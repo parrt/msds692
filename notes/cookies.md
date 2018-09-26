@@ -79,7 +79,7 @@ GET / HTTP/1.1
 Host: www.cnn.com
 User-Agent: curl/7.49.0
 Accept: */*
-Cookie: countryCode=US; geoData=san francisco|CA|94117|US|NA; tryThing00=0838; tryThing01=1348; tryThing02=6478;
+Cookie: countryCode=US; geoData=atlanta|GA|30303|US|NA; tryThing00=0838; tryThing01=1348; tryThing02=6478;
 
 ```
 
