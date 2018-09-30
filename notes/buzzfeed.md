@@ -8,7 +8,7 @@ Using Chrome's "inspect" again, we see that news link `a` tags have a number of 
 
 Note the `post_category` thing inside of the weird `data-bfa` attribute of the `a` tag. We need to grab both the `href` and the topic/category from this `a` tag. Unfortunately it's a lot trickier than looking for a simple `class` attribute as we did with HackerNews.
 
-To get all `a` tags that has an attribute with `post_category`, we have to do something fancy. Were going to pass in a function to `findAll`:
+To get all `a` tags that has an attribute with `post_category`, we have to do something fancy. We're going to pass in a function to `findAll`:
 
 ```python
 for link in soup.findAll(lambda tag: tag.name=='a' and 'data-bfa' in tag.attrs):
@@ -36,19 +36,23 @@ for link in soup.findAll(f):
 ```python
 topics = parseBF()
 for t in topics:
-    print t
-    print '\t'+'\n\t'.join(topics[t])
+    print(t)
+    print('\t'+'\n\t'.join(topics[t]))
 ```
 
 you will get output that looks like:
 
 ```
-Business
-	/venessawong/americas-biggest-egg-company-is-rethinking-its-cage-free
+World
+	https://www.buzzfeednews.com/article/karlazabludovsky/venezuela-women-fleeing-colombia-give-birth-refugee
+	https://www.buzzfeednews.com/article/emilytamkin/kosovo-land-swap-serbia-warns-against-prime-minister
+...
 USNews
-	/tasneemnashrulla/weird-moments-from-trumps-puerto-rico-vist
-	/salvadorhernandez/trump-wants-to-wipe-out-puerto-rico-debt
-	/rosebuchanan/las-vegas-shooter
-	/buzzfeednews/maria-2
+	https://www.buzzfeednews.com/article/tasneemnashrulla/juanita-broaddrick-who-accused-bill-clinton-of-rape-says
+	https://www.buzzfeednews.com/article/gabrielsanchez/this-is-what-americas-first-shopping-mall-looked-like-when
+	https://www.buzzfeednews.com/article/davidmack/cristiano-ronaldo-says-a-rape-accusation-against-him-is
+	https://www.buzzfeednews.com/article/paulmcleod/kavanaugh-vote-jeff-flake-fbi-investigation-delay
 ...
 ```
+
+[Solutions](https://github.com/parrt/msds692/tree/master/notes/code/scrape)
