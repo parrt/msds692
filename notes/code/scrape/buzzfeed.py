@@ -4,10 +4,10 @@ from collections import defaultdict
 
 def parseBF():
     response = requests.get("https://www.buzzfeed.com/news")
-    html = BeautifulSoup(response.text, "html.parser")
+    soup = BeautifulSoup(response.text, "html.parser")
 
     topics = defaultdict(set)
-    for link in html.findAll(lambda tag: tag.name=='a' and 'data-bfa' in tag.attrs):
+    for link in soup.findAll(lambda tag: tag.name=='a' and 'data-bfa' in tag.attrs):
         attr = link['data-bfa']
         if not 'post_category' in attr: continue
         values = attr.split(',')
