@@ -1,30 +1,51 @@
 # Capturing the bestseller list from Amazon
 
-Let's capture the [bestseller list from Amazon](https://www.amazon.com/gp/bestsellers/books/ref=sv_b_2). The HTML coming out is extremely complicated and contains lots of JavaScript, but the HTML is very organized using `div` tags. Using Chrome, I can also inspect elements. Notice that `div` tag with `class=zg_itemWrapper` nicely groups each element in the bestseller list:
+Let's capture the [bestseller list from Amazon](https://www.amazon.com/gp/bestsellers/books/ref=sv_b_2). The HTML coming out is extremely complicated and contains lots of JavaScript, but the HTML is very organized using `span` tags. Using Chrome, I can also inspect elements. Notice that `span` tag with `class="aok-inline-block zg-item"` nicely groups each element in the bestseller list:
 
-<img src="figures/amz-book-item.png" width=300>
+<img src="figures/amz-book-item.png" width=500>
 
-To collect information about each book, we just have to look at the child nodes of that `div`.
+To collect information about each book, we just have to look at the child nodes of that `span`.
 
 **Exercise**:  Create a function that returns a list of tuples, one per book. The tuple should contain `(price, title, author, href)`. I have given you the algorithm in pseudocode here:
 
 ```python
 def parseAmazonBestSellers():
-    fetch "https://www.amazon.com/gp/bestsellers/books/ref=sv_b_2"
+    fetch "https://www.amazon.com/gp/bestsellers/books"
     with params={'User-Agent': "Resistance is futile"})
-    soup = ...
+    soup = BeautifulSoup(htmltext, 'lxml') # 'html.parser' doesn't work here!
     books = []
-    for each item with class="zg_itemWrapper":
-        link = tag under item with class "a-link-normal"
-        priceitem = tag under item with class "a-size-base a-color-price"
-        if not priceitem: continue
-        price = ...
-        href = link['href'].strip()
-        title = ...
-        auth = tag under item with class "a-size-small a-link-child"
-        if auth:
-            author = ...
-            books.append((price, title, author, href))
+    for item in soup.find_all('span', {'class':"aok-inline-block zg-item"}):
+	    # Link
+	    link = item.a
+	
+	    # Image
+	    img = ...
+	
+	    # Author
+	    'Author like this: <span class ="a-size-small a-color-base" >Craig Smith</span>'
+	    'OR <a class="a-size-small a-link-child" ...>Bob Woodward</a>'
+	    authtag = item.find(class that is "a-size-small a-color-base")
+	    if not authtag:
+	        authtag = item.find(class that is "a-size-small a-link-child")
+	    if authtag:
+	        auth = text of authtag
+	    else:
+	        auth = "unknown"
+	
+	    # Price
+	    pricetag = item.find(class that is "a-size-base a-color-price")
+	    price = text of pricetag
+	
+	    # Rating
+	    ratingtag = item.find(class that is "a-icon-alt")
+	    rating = None
+	    if ratingtag:
+	        rating = text of ratingtag # e.g., 4.7 out of 5 stars
+	        rating = extract rating
+	
+	    # Pack together as tuple
+	    info = (auth, img alt attribute, price, rating, link href)
+	    books.append(info)
     return books
 ```
 
@@ -52,3 +73,6 @@ https://www.amazon.com/Cooking-Jeffrey-Barefoot-Contessa-Cookbook/dp/030746489X/
 ...
 ```
 
+**Exercise**:Alter your code so that it generates a CSV file suitable for Excel called `/tmp/bestsellers.csv`. Write out a header row and then iterate through your records in `books` list to create the comma separated columns. If you open that file it should look something like:
+
+<img src="figures/amz-books-excel.png" width="500">

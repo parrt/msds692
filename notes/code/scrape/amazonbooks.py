@@ -18,6 +18,8 @@ bestsellers = []
 for item in soup.find_all('span', {'class':"aok-inline-block zg-item"}):
     # Link
     link = item.a
+
+    # Image
     img = link.div.img
 
     # Author
@@ -48,11 +50,8 @@ for item in soup.find_all('span', {'class':"aok-inline-block zg-item"}):
     bestsellers.append(info)
 
 # ok, now write to a csv file in excel format
-f = open("/tmp/bestsellers.csv", "w")
-fw = csv.writer(f, dialect='excel')
-
-fw.writerow(['author', 'title', 'price', 'rating', 'link'])
-for book in bestsellers:
-    fw.writerow(book)
-
-f.close()
+with open("/tmp/bestsellers.csv", "w") as f:
+    fw = csv.writer(f, dialect='excel')
+    fw.writerow(['author', 'title', 'price', 'rating', 'link'])
+    for book in bestsellers:
+        fw.writerow(book)
