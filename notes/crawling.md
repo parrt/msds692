@@ -8,12 +8,26 @@ To crawl a webpage means to extract links of interest and then fetch those pages
 def crawl(links, outputdir):
     N = 0
     for link in links:
-        page,html = ... fetch link ...
+        # no need to delay; pulling from random sites
+        page,html = fetch(link,delay=(0,0)) 
         ... save page into file outputdir/pageN.html ...
         N += 1
 ```
 
-As you try to crawl the links from hacker news, inevitably one of them will be bad and so we must check for this so the program doesn't crash. Python will "raise an exception" upon bad URL and so we need to catch that exception.
+As you try to crawl the links from hacker news, inevitably one of them will be bad and so we must check for this so the program doesn't crash. Python will "raise an exception" upon bad URL and so we need to catch that exception. Make sure your `fetch` function wraps the `get()` in a `raise`...`except`:
+
+```python
+    try:
+        response = requests.get(url, headers={'User-Agent': "Resistance is futile"})
+    except ValueError as e:
+        print(str(e))
+        return '', BeautifulSoup('', "html.parser")
+    html = response.text
+    soup = BeautifulSoup(html, "html.parser")
+    return (html,soup)
+```
+
+Upon exception, this will return an empty page rather than crashing the whole program. [Solutions](https://github.com/parrt/msds692/tree/master/notes/code/scrape)
 
 You can test your program with something like:
 
@@ -21,22 +35,7 @@ You can test your program with something like:
 crawl(['https://news.ycombinator.com/'], "/tmp")
 ```
 
-which will fetch the home page of hacker news and store it in `/tmp/page0.html`.
-
-**Exercise**: Alter your `fetch` function so that the `urlopen` is wrapped in a `raise`...`except`:
-
-```python
-    try:
-        request = urllib2.Request(...)
-        response = urllib2.urlopen(req)
-    except ValueError as e:
-        print str(e)
-        return '', BeautifulSoup('', "html.parser")
-    except: # toss out any other issue
-        return '', BeautifulSoup('', "html.parser")    
-```
-
-Upon exception, this will return an empty page rather than crashing the whole program.
+which will fetch the home page of hacker news, get all the embedded links, fetch the data at each one of those links and store the data in file `/tmp/pagei.html` for i=0..N-1 for N links.
 
 ## Getting more out of life
 
@@ -88,6 +87,3 @@ morelink = ...
 print "PAGE 3"
 print links
 ```
-
-
-

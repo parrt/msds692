@@ -66,13 +66,14 @@ or some other header value. You will pass in a dictionary with that keyvalue pai
 
 Verify that you can still get the hacker news page. [Solutions](https://github.com/parrt/msds692/tree/master/notes/code/scrape)
 
-
 **Exercise**:  Create a function that extracts all of the news links and puts them into a list, rather than printing them out.
 
 ```python
 def parseHN():
     html,soup = fetch("https://news.ycombinator.com/")
-    links = ...
+    links = []
+    link in html.find_all(...):
+        links.append(...)
     return links
 ```
 
