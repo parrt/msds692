@@ -144,9 +144,9 @@ With an understanding of how the Internet and web works, it's time to start pull
   * [LinkedIn](notes/linkedin.md) (Optional)
   * [Facebook](notes/facebook.md) (Optional)
 * [Extracting data from web pages](notes/scraping.md) (Day 11)
-  * [Crawling](notes/crawling.md)
+  * [Crawling](notes/crawling.md) (Day 11)
   * [buzzfeed](notes/buzzfeed.md) (Day 12)
-  * [Amazon](notes/amazon.md)
+  * [Amazon](notes/amazon.md) (Day 12)
   * [Scraping data from tables](notes/scraping-tables.md)
 * [Selenium](notes/selenium.md) (Day 13)
 
