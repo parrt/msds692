@@ -19,5 +19,5 @@ def parseBF():
 
 topics = parseBF()
 for t in topics:
-    print t
-    print '\t'+'\n\t'.join(topics[t])
+    print(t)
+    print('\t'+'\n\t'.join(topics[t]))

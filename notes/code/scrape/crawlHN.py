@@ -13,7 +13,7 @@ def fetch(url,delay=(2,5)):
     try:
         response = requests.get(url, params={'User-Agent': "Resistance is futile"})
     except ValueError as e:
-        print str(e)
+        print(str(e))
         return '', BeautifulSoup('', "html.parser")
     html = response.text
     soup = BeautifulSoup(html, "html.parser")
@@ -42,7 +42,7 @@ if not os.path.exists(outputdir):
     os.makedirs(outputdir)
 
 links = parseHN()
-print links
+print(links)
 crawl(links, outputdir)
 
 

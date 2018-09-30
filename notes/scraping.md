@@ -32,9 +32,9 @@ Many websites would prefer that you did not scrape their data using a program, s
 **Exercise**: Alter your script to use a new function called `fetch` that waits a random amount of time in between two integer number of seconds:
 
 ```python
-def fetch(url,delay=(2,5)):
+def fetch(url,delay=(1,3)):
     """
-    Simulate human random clicking 2..5 seconds then fetch URL.
+    Simulate human random clicking 1..3 seconds then fetch URL.
     Returns the actual page source fetched and the beautiful soup object.
     """
     time.sleep(random.randint(delay[0],delay[1])) # wait random seconds
@@ -59,7 +59,7 @@ Request forbidden by administrative rules. Please make sure your request has a U
 User-Agent: Resistance is futile
 ```
 
-or some other header value. You will pass in a dictionary with that keyvalue pair as the `params` argument of `requests.get()`.
+or some other header value. You will pass in a dictionary with that keyvalue pair as the `headers` argument of `requests.get()`.
 
 Verify that you can still get the hacker news page.
 
@@ -74,21 +74,13 @@ def parseHN():
 
 ## Reddit
 
-Ok, so Hacker News might shut us down. As a back up, you can scan [reddit news](https://www.reddit.com/r/all). By inspecting a link on that page with the browser (using developer tools), it looks like links have `class="title may-blank outbound"` or just `class="title may-blank"`:
+Ok, so Hacker News might shut us down. As a back up, you can scan [reddit news](https://www.reddit.com/r/all).
 
-```html
-<a class="title may-blank outbound "
- href="http://imgur.com/wJqUthV" 
- tabindex="1" 
- data-href-url="http://imgur.com/wJqUthV" 
- data-outbound-url="https://out.reddit.com/t3_54ts81?url=http%3A%2F%2Fimgur.com
-%2FwJqUthV&amp;token=AQAAoh7rVw1w9L81tgHr_XrmvIA01bcGQyOcWWbvU9jNqgetktoX" 
-data-outbound-expiration="1475026594000" 
-rel="nofollow">My former teacher posted this today.
- Said that "they always hug like this"</a>
-```
+See [Scraping reddit](https://www.datacamp.com/community/tutorials/scraping-reddit-python-scrapy).
 
-If you don't set the "user agent" (browser), you'll see this in response:
+### User agent
+
+First, let's try to grab the page. If you don't set the "user agent" (browser), you'll see this in response:
 
 ```bash
 $ curl https://www.reddit.com/r/all/
@@ -109,8 +101,6 @@ $ curl --user-agent "Resistance is futile" https://www.reddit.com/r/all/
 ...
 ```
 
-(Note the / on the end of the URL. Without that you get a redirect message.)
-
 The HTTP protocol from the client side looks then like:
 
 ```
@@ -120,3 +110,53 @@ The HTTP protocol from the client side looks then like:
 > Accept: */*
 
 ```
+
+### Parsing the data
+
+Ok, now that we know how to get the data, it's a good idea to create a small program to save that text or just use:
+
+```bash
+curl --user-agent "Resistance is futile" https://www.reddit.com/r/all > /tmp/t.html
+```
+
+Then we can parse / test that all we want without getting shut down by Reddit.
+
+#### 2017
+
+By inspecting a link on that page with the browser (using developer tools), it looks like links have `class="title may-blank outbound"` or just `class="title may-blank"`:
+
+
+```html
+<a class="title may-blank outbound "
+ href="http://imgur.com/wJqUthV" 
+ tabindex="1" 
+ data-href-url="http://imgur.com/wJqUthV" 
+ data-outbound-url="https://out.reddit.com/t3_54ts81?url=http%3A%2F%2Fimgur.com
+%2FwJqUthV&amp;token=AQAAoh7rVw1w9L81tgHr_XrmvIA01bcGQyOcWWbvU9jNqgetktoX" 
+data-outbound-expiration="1475026594000" 
+rel="nofollow">My former teacher posted this today.
+ Said that "they always hug like this"</a>
+```
+
+#### 2018
+
+Whoops. In 2018, the links are completely different:
+
+```
+<a rel="nofollow" data-click-id="comments" data-test-id="comments-page-link-num-comments" class="_1UoeAeSRhOKSNdY_h3iS1O _1Hw7tY9pMr-T1F4P1C-xNU _2qww3J5KKzsD7e5DO0BvvU" href="/r/gifs/comments/9k69g3/out_fishingand_getting_some_unexpected_results/">
+```
+
+After a lot of playing around, I decided to find all `a` tags and then filter for those starting with `/r/` and having `data-click-id` as `comments`.
+
+**Exercise**:  Given `t.html` from Reddit, pull out all of the links to comments and print them.  It should look something like this:
+
+```
+href: /r/funny/comments/9k83m9/when_it_rains/
+href: /r/DiWHY/comments/9k7j45/a_bowl_of_human_suffering/
+href: /r/oddlysatisfying/comments/9k7o66/gorgeous_wave/
+href: /r/pics/comments/9k777k/a_weeping_george_gillette_in_1940_witnessing_the/
+href: /r/aww/comments/9k7evd/the_most_adorable_duck_i_have_ever_seen/
+...
+```
+
+

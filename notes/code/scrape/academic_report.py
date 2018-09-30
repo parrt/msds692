@@ -57,8 +57,8 @@ def get_table_rows(soup):
                 data.append(datarow)
     return data
 
-print get_table_headers(soup)
+print(get_table_headers(soup))
 
 allrows = get_table_rows(soup)
 for row in allrows:
-    print row
+    print(row)
