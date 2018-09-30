@@ -21,6 +21,7 @@ for link in soup.find_all(...):
 
 If you want to get fancy, you can make a list of tuples, where each tumble is a (*link*,*link text*), and then print the list.
 
+[Solutions](https://github.com/parrt/msds692/tree/master/notes/code/scrape)
 
 ## Mimicking a "human using a browser"
 
@@ -46,6 +47,8 @@ Of course, you have to alter your code that does the `requests.get()` to call th
 
 Verify that you can still get the hacker news page.
 
+[Solutions](https://github.com/parrt/msds692/tree/master/notes/code/scrape)
+
 Next, we need to pretend to be a browser, which means setting a header that goes out with the HTTP protocol to the remote server. For example, if you view [this URL](https://api.github.com/meta) in your browser, it's no problem but a regular `requests.get()` without a `User-Agent` will get a 403 permissions error from the server. Here is an example from the command line:
 
 ```bash
@@ -61,7 +64,8 @@ User-Agent: Resistance is futile
 
 or some other header value. You will pass in a dictionary with that keyvalue pair as the `headers` argument of `requests.get()`.
 
-Verify that you can still get the hacker news page.
+Verify that you can still get the hacker news page. [Solutions](https://github.com/parrt/msds692/tree/master/notes/code/scrape)
+
 
 **Exercise**:  Create a function that extracts all of the news links and puts them into a list, rather than printing them out.
 
@@ -71,6 +75,8 @@ def parseHN():
     links = ...
     return links
 ```
+
+[Solutions](https://github.com/parrt/msds692/tree/master/notes/code/scrape)
 
 ## Reddit
 
@@ -159,4 +165,4 @@ href: /r/aww/comments/9k7evd/the_most_adorable_duck_i_have_ever_seen/
 ...
 ```
 
-
+[Solutions](https://github.com/parrt/msds692/tree/master/notes/code/scrape)
