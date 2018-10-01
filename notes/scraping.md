@@ -147,13 +147,18 @@ rel="nofollow">My former teacher posted this today.
 
 #### 2018
 
-Whoops. In 2018, the links are completely different:
+Whoops. In 2018, the links are completely different. Let's grab the comments links instead:
 
 ```
-<a rel="nofollow" data-click-id="comments" data-test-id="comments-page-link-num-comments" class="_1UoeAeSRhOKSNdY_h3iS1O _1Hw7tY9pMr-T1F4P1C-xNU _2qww3J5KKzsD7e5DO0BvvU" href="/r/gifs/comments/9k69g3/out_fishingand_getting_some_unexpected_results/">
+<a rel="nofollow" data-click-id="comments" data-test-id="comments-page-link-num-comments"
+  class="_1UoeAeSRhOKSNdY_h3iS1O _1Hw7tY9pMr-T1F4P1C-xNU _2qww3J5KKzsD7e5DO0BvvU"
+  href="/r/gifs/comments/9k69g3/out_fishingand_getting_some_unexpected_results/"
+>
 ```
 
 After a lot of playing around, I decided to find all `a` tags and then filter for those starting with `/r/` and having `data-click-id` as `comments`.
+
+To find all outgoing links we could just filter links for `http:` prefixes.
 
 **Exercise**:  Given `t.html` from Reddit, pull out all of the links to comments and print them.  It should look something like this:
 
