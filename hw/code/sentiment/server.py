@@ -1,7 +1,7 @@
 """
 A server that responds with two pages, one showing the most recent
-100 tweets for given user and the other showing the followers
-of a given user (sorted by the number of followers those users have).
+100 tweets for given user and the other showing the people that follow
+that given user (sorted by the number of followers those users have).
 
 For authentication purposes, the server takes a commandline argument
 that indicates the file containing Twitter data in a CSV file format:
