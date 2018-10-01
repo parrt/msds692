@@ -19,7 +19,6 @@ def fetch(url,delay=(1,3)):
     return (html,soup)
 
 html,soup = fetch("https://news.ycombinator.com/newest")
-html = BeautifulSoup(html, "html.parser")
 
-for link in html.find_all("a", {"class":"storylink"}):
+for link in soup.find_all("a", {"class":"storylink"}):
         print(link['href'], link.text)
