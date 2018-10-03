@@ -1,6 +1,6 @@
 # Pulling news from buzzfeed
 
-[Buzzfeed](https://www.buzzfeed.com/news) is an interesting news site that also still provides webpages as HTML we can parse easily. The difference between this and hacker news is that we are going to group links by category from the website.
+[Buzzfeed](https://www.buzzfeednews.com/news) is an interesting news site that also still provides webpages as HTML we can parse easily. The difference between this and hacker news is that we are going to group links by category from the website.
 
 Using Chrome's "inspect" again, we see that news link `a` tags have a number of interesting attributes:
 
