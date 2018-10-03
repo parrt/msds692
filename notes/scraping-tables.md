@@ -44,3 +44,32 @@ allrows = get_table_rows(soup)
 for row in allrows:
     print row
 ```
+
+Thanks to 2018 MSDS student Eddie Owens, we have the following cools solution that combines beautiful soup with pandas:
+
+```python
+from bs4 import BeautifulSoup
+import requests
+import pandas as pd
+
+html = requests.get('https://data1.cde.ca.gov/dataquest/Acnt2013/2013GrthStAPI.aspx')
+page = html.content
+soup = BeautifulSoup(page, "lxml")
+tables = soup.find_all('table')
+growthapi = pd.read_html(str(tables[1]))[0]
+growthapi = growthapi.drop(growthapi.shape[1]-1, axis=1)
+growthapi.iloc[1,0] = 'category'
+growthapi.columns = growthapi.iloc[1,:]
+growthapi = growthapi.drop([0,1,3], axis=0)
+growthapi.set_index('category')
+
+students = pd.read_html(str(tables[2]))[0]
+students = students.drop(students.shape[1]-1, axis=1)
+students.iloc[1,0] = 'category'
+students.columns = students.iloc[1,:]
+students = students.drop([0,1,3], axis=0)
+students.set_index('category')
+
+print(growthapi)
+print(students)
+```
