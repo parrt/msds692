@@ -19,23 +19,21 @@ pip install -U selenium
 pip install chromedriver
 ```
 
-(*The last install failed for some students but they were still able to do the exercises.*)
-
 Step 3. Download [Chrome driver binary](https://sites.google.com/a/chromium.org/chromedriver/downloads) using your browser.
-The pip stuff just makes the python packages but the real meat is in the binary download. Now, move the executable binaries to a standard place:
+The pip stuff just makes the python packages but the real meat is in the binary download. Now, unzip the `chromedriver_mac64.zip` file (or whatever for your platform) and move the executable binary to the standard place:
 
 ```bash
 mv ~/Downloads/chromedriver /usr/local/bin
 ```
 
-I also noticed that after installing chromedriver with pip, it was sitting in my Anaconda directory: `/Users/parrt/anaconda2/chromedriver-Darwin` so you might be able to avoid the extra download. I did notice that the version numbers were different:
+I also noticed that after installing chromedriver with pip, it was sitting in my Anaconda directory: `/Users/parrt/anaconda3/chromedriver-Darwin` so you might be able to avoid the extra download. I did notice that the version numbers were different:
 
 ```bash
 $ /Users/parrt/anaconda2/chromedriver-Darwin
 Starting ChromeDriver 2.24.417412 (ac882d3ce7c0d99292439bf3405780058fcca0a6) on port 9515
 Only local connections are allowed.
 $ /usr/local/bin/chromedriver 
-Starting ChromeDriver 2.29.461585 (0be2cd95f834e9ee7c46bcc7cf405b483f5ae83b) on port 9515
+Starting ChromeDriver 2.42.591059 (0be2cd95f834e9ee7c46bcc7cf405b483f5ae83b) on port 9515
 Only local connections are allowed.
 ```
 
@@ -55,7 +53,7 @@ driver.get('http://www.google.com')
 
 # here is where some useful work would typically happen
 
-raw_input("Press Enter to quit")
+input("Press Enter to quit")
 driver.quit() # close browser
 ```
 
@@ -65,7 +63,7 @@ Notice that this is creating an entirely new instance of the browser (You'll see
 
 ## Puppeteering with Chrome Browser
 
-Let's start by asking chrome to perform a search for `USF Analytics`. The
+Let's start by asking chrome to perform a search for `USF data science`. The
 [Selenium python API doc](http://selenium-python.readthedocs.io/locating-elements.html#locating-elements) shows us that we can find elements by name. Conveniently the name of the search entry box is `q`, determined by using `inspect` functionality in the chrome browser itself:
 
 <img src=figures/google-searchbox.png width=500>
@@ -74,7 +72,7 @@ Let's start by asking chrome to perform a search for `USF Analytics`. The
 
 ```python
 search_box = driver.find_element_by_name('q')
-search_box.send_keys('USF Analytics')
+search_box.send_keys('USF data science')
 search_box.submit()
 ```
 
@@ -113,7 +111,11 @@ if __name__ == '__main__':
  
 ## Log in to twitter, pull a following list
 
- In order to login to twitter, we can go directly to `https://twitter.com/login`, where we see `form` fields:
+In order to login to twitter, we can go directly to `https://twitter.com/login`, where we see `form` fields:
+
+<img src="figures/twitter-login.png" width="600">
+
+The input elements are:
 
 ```html
 <input class="js-username-field email-input js-initial-focus"
@@ -175,26 +177,28 @@ Or, just tell the driver to go to `https://twitter.com/DataInstituteSF/following
 (u'https://twitter.com/kdnuggets', u'Gregory Piatetsky')]
 ```
 
-The links are of the form:
+The links you want to collect are of the form:
  
 ```html
-<a class="ProfileNameTruncated-link u-textInheritColor js-nav js-action-profile-name"
+<a class="fullname ProfileNameTruncated-link u-textInheritColor js-nav js-action-profile-name"
  href="/Vungle"
  data-aria-label-part="">
  Vungle
 </a>
 ...
-<a class="ProfileNameTruncated-link u-textInheritColor js-nav js-action-profile-name"
+<a class="fullname  ProfileNameTruncated-link u-textInheritColor js-nav js-action-profile-name"
  href="/decodyng"
  data-aria-label-part="">
  Cody Wild
 </a>
+<a class="fullname ProfileNameTruncated-link u-textInheritColor js-nav" href="/avibryant" data-aria-label-part="">
+      Avi Bryant</a>
 ```    
 
 and you can select them by using:
  
 ```python
-links = driver.find_elements_by_class_name('ProfileNameTruncated-link')
+links = driver.find_elements_by_class_name('fullname ProfileNameTruncated-link')
 ```
 
 ## Demo of JavaScript creating HTML
@@ -227,31 +231,45 @@ The slack website is
 
 `https://msan-usf.slack.com`
 
-and has two text fields you can "inspect" and identify. The message list URL for `general` is:
+and has two text username/password fields you can "inspect" and identify for login.
+
+Once logged in, the message list URL for `general` is:
 
 `https://msan-usf.slack.com/messages/general/`
 
-The "inspect element" shows messages themselves to look like:
+The "inspect element" feature of the browser shows messages themselves to look like:
 
 ```html
-<span class="message_body">Whoooooooooops.</span>
+<span class="c-message__body">blah blah</span>
 ```
 
-Such `span`s are nested within an outer wrapper that also helps us identify the user:
+But we need to associate these with a user.  To do that we notice that such `span`s are nested within an outer wrapper that also helps us identify the user:
 
 ```html
-<ts-message id="msg_1449864508_000895" data-member-id="..." ...>
+<div class="c-message__content"
+     data-qa="message_content">
    ...
-   <div class="message_content ">
-   <a href="/team/parrt" target="/team/parrt" class="message_sender member member_preview_link color_U0A2V9N94 color_4bbe2e " data-member-id="U0A2V9N94">hanjoes</a>
-   ...
-   </div>
-</ts-message>
 ```
 
-That has a weird non-HTML tag but we can still search for it by tag name with selenium.
+Under that you'll find the sender like this:
 
-The links returned by selenium for the user look like `https://msan-usf.slack.com/team/parrt`.
+```html
+<span class="c-message__sender"
+      data-qa="message_sender">
+      <a class="c-message__sender_link"
+               href="/team/UBL5G4TT6" target="_blank"
+               rel="noopener noreferrer"
+               data-stringify-suffix=" "
+               data-message-sender="UBL5G4TT6"
+               data-qa="message_sender_name">
+          Nicole Kacirek
+      </a>
+</span>
+```
+
+We can easily search for class `c-message__sender`.
+
+The links returned by selenium for the user look like `/team/UBL5G4TT6`.
 
 **Exercise**: To get started, write a script to login to slack and jump to a specific channel like `general`. My outline looks like:
 
@@ -282,15 +300,53 @@ driver.quit() # close browser
 **Exercise**: Write a program to login to slack's website (not the API) using selenium and get messages from a channel with messages, such as our MSAN `general` channel.  Create a function `parse_slack` that returns list of tuples with (user,message) and then have your main code print the stuff out:
 
 ```python
+from login import login
+import time
+from selenium import webdriver
+
+driver = webdriver.Chrome('/usr/local/bin/chromedriver')
+
+def login_and_show_channel(channel):
+    user,password = login()
+    driver.get(...)
+    userfield = driver.find_element_by_id(...)
+    userfield.send_keys(user)
+    passwordfield = driver.find_element_by_id(...)
+    passwordfield.send_keys(password)
+    passwordfield.submit()
+
+    driver.get(...)
+
+def parse_slack():
+    "Return list of (user,messages)"
+    time.sleep(5) # have to wait for slack app to pull data from server and render it.
+    msg_wrappers = driver.find_elements_by_class_name(...)
+    data = []
+    for wrapper in msg_wrappers:
+        print(wrapper)
+        try:
+            msg = wrapper.find_element_by_class_name(...)
+        except:
+            print("can't find message body")
+            continue
+        try:
+            user_link = wrapper.find_element_by_class_name(...)
+            user = user_link.text
+        except:
+            # no user just means "previous user"
+            user = "previous-user"
+        data.append((user,msg.text))
+    return data
+
+login_and_show_channel("general")
 msgs = parse_slack()
 for user,msg in msgs:
-    print "%s: %s" % (user, msg)
+    print(f"{user}: {msg}")
+
+input("Press Enter to quit")
+driver.quit() # close browser
 ```
 
 There is a tricky thing to worry about: We have to wait 5 seconds or so for the brower to load our page and for the javascript to load data from slack's servers and populate the page.
-
-Find the messages using tag name `ts-message`; I used xpath `//ts-message`. Within each of those tags, get the message text by finding tags with class name `message_body`. You'll need a `try`/`except` around that as some don't seem to have a body. Just `continue` if that tag is not found.
-
-Get the user by finding the tag with `message_sender` class (an `a` tag) under the `ts-message` node. The text of that `a` tag is the user name.
 
 Add the user and message as a tuple to a list and return from `parse_slack` when done.

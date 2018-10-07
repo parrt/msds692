@@ -25,25 +25,31 @@ def login_and_show_channel(channel):
 def parse_slack():
     "Return list of (user,messages)"
     time.sleep(5) # have to wait for slack app to pull data from server and render it.
-    #msg_wrappers = driver.find_elements_by_class_name('message')
-    msg_wrappers = driver.find_elements_by_xpath("//ts-message")
+    msg_wrappers = driver.find_elements_by_class_name('c-message__content')
+    #msg_wrappers = driver.find_elements_by_xpath("//ts-message")
     data = []
     for wrapper in msg_wrappers:
-	print wrapper
+        print(wrapper)
         try:
-            msg = wrapper.find_element_by_class_name("message_body")
+            msg = wrapper.find_element_by_class_name("c-message__body")
         except:
-            print "can't find message body"
+            print("can't find message body")
             continue
-        user_link = wrapper.find_element_by_class_name("message_sender")
-        user = user_link.text
+        try:
+            user_link = wrapper.find_element_by_class_name("c-message__sender")
+            user = user_link.text
+        except:
+            # no user just means "previous user"
+            user = "previous-user"
         data.append((user,msg.text))
     return data
 
 login_and_show_channel("general")
 msgs = parse_slack()
 for user,msg in msgs:
-    print "%s: %s" % (user, msg)
+    if user!='previous user':
+        print()
+    print(f"{user}: {msg}")
 
-raw_input("Press Enter to quit")
+input("Press Enter to quit")
 driver.quit() # close browser

@@ -1,4 +1,4 @@
-from Tkinter import *
+from tkinter import *
 
 def login():
     master = Tk()
@@ -21,4 +21,4 @@ def login():
     return u, p
 
 if __name__ == '__main__':
-    print login()
+    print(login())

@@ -21,8 +21,8 @@ links = driver.find_elements_by_class_name('ProfileNameTruncated-link')
 
 links = [(link.get_attribute('href'),link.text) for link in links]
 
-print links
+print('\n'.join(links))
 
-raw_input("Press Enter to quit")
+input("Press Enter to quit")
 
 driver.quit() # close browser
