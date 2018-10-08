@@ -211,7 +211,7 @@ The links you want to collect are of the form:
 and you can select them by using:
  
 ```python
-links = driver.find_elements_by_class_name('fullname ProfileNameTruncated-link')
+links = driver.find_elements_by_class_name('ProfileNameTruncated-link')
 ```
 
 ## Demo of JavaScript creating HTML
