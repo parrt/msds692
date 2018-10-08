@@ -26,7 +26,11 @@ The pip stuff just makes the python packages but the real meat is in the binary 
 mv ~/Downloads/chromedriver /usr/local/bin
 ```
 
-I also noticed that after installing chromedriver with pip, it was sitting in my Anaconda directory: `/Users/parrt/anaconda3/chromedriver-Darwin` so you might be able to avoid the extra download. I did notice that the version numbers were different:
+(You might have to create `/usr/local/bin` dir.)
+
+(Do *not* call your program `selenium.py` or you won't be able to import selenium.)
+
+I also noticed that after installing chromedriver with pip, it was sitting in my Anaconda directory: `/Users/parrt/anaconda3/chromedriver-Darwin` but don't use this one as it is out of date: the version numbers are different:
 
 ```bash
 $ /Users/parrt/anaconda2/chromedriver-Darwin
