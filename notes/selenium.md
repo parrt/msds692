@@ -28,7 +28,11 @@ mv ~/Downloads/chromedriver /usr/local/bin
 
 (You might have to create `/usr/local/bin` dir.)
 
-(Do *not* call your program `selenium.py` or you won't be able to import selenium.)
+*todo* this appears to work also instead of manual download:
+
+```bash
+brew cask install chromedriver
+```
 
 I also noticed that after installing chromedriver with pip, it was sitting in my Anaconda directory: `/Users/parrt/anaconda3/chromedriver-Darwin` but don't use this one as it is out of date: the version numbers are different:
 
@@ -41,9 +45,13 @@ Starting ChromeDriver 2.42.591059 (0be2cd95f834e9ee7c46bcc7cf405b483f5ae83b) on 
 Only local connections are allowed.
 ```
 
+**On mac, make sure Chrome browser is installed here:** `/Applications/Google Chrome.app/`.
+
 ## Launching a Chrome Browser
 
 Here is the boilerplate code that launches a chrome browser to the Google search page, waits for a keypress, and then closes the browser.
+
+(Do *not* call your program `selenium.py` or you won't be able to import selenium.)
 
 ```python
 import time
