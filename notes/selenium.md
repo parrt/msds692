@@ -108,7 +108,7 @@ def login():
     return u, p
 
 if __name__ == '__main__':
-    print login()
+    print(login())
 ```
 
 **Exercise**: Run that program and verify that it prints out a sample (meaningless) username and password.
