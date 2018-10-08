@@ -94,7 +94,7 @@ search_box.submit()
 We don't ever want to store a username and password in our source code. Also, if we hardcoded info like that, we could not use software for different users. Instead, I built a little dialog box in `login.py` that asks for a username and password from the user. The `login()` returns when the user clicks on the `Login` button:
 
 ```python
-from Tkinter import *
+from tkinter import *
 
 def login():
     master = Tk()
