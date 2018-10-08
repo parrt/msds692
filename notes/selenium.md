@@ -19,22 +19,23 @@ pip install -U selenium
 pip install chromedriver
 ```
 
-Step 3. Download [Chrome driver binary](https://sites.google.com/a/chromium.org/chromedriver/downloads) using your browser.
-The pip stuff just makes the python packages but the real meat is in the binary download. Now, unzip the `chromedriver_mac64.zip` file (or whatever for your platform) and move the executable binary to the standard place:
+Step 3. Install chrome driver binary executable (non-Python code):
+
+```bash
+brew cask install chromedriver
+```
+
+<hr>
+If that `brew` doesn't work, manually download [Chrome driver binary](https://sites.google.com/a/chromium.org/chromedriver/downloads) using your browser. The pip stuff just makes the python packages but the real meat is in the binary download. Now, unzip the `chromedriver_mac64.zip` file (or whatever for your platform) and move the executable binary to the standard place:
 
 ```bash
 mv ~/Downloads/chromedriver /usr/local/bin
 ```
 
 (You might have to create `/usr/local/bin` dir.)
+<hr>
 
-*todo* this appears to work also instead of manual download:
-
-```bash
-brew cask install chromedriver
-```
-
-I also noticed that after installing chromedriver with pip, it was sitting in my Anaconda directory: `/Users/parrt/anaconda3/chromedriver-Darwin` but don't use this one as it is out of date: the version numbers are different:
+I also noticed that the driver was sitting in my Anaconda directory: `/Users/parrt/anaconda3/chromedriver-Darwin` but don't use this one as it is out of date: the version numbers are different:
 
 ```bash
 $ /Users/parrt/anaconda2/chromedriver-Darwin
@@ -45,7 +46,7 @@ Starting ChromeDriver 2.42.591059 (0be2cd95f834e9ee7c46bcc7cf405b483f5ae83b) on 
 Only local connections are allowed.
 ```
 
-**On mac, make sure Chrome browser is installed here:** `/Applications/Google Chrome.app/`.
+*On mac, make sure Chrome browser is installed in the usual spot:* `/Applications/Google Chrome.app/`.
 
 ## Launching a Chrome Browser
 
