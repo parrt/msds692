@@ -4,6 +4,8 @@
 
 Sign in with your twitter account at [https://developer.twitter.com/](https://developer.twitter.com/). Click on "Create New App". I made mine `USF-parrt-teaching`.  Click on that new app when it appears, then the "Keys and Access Tokens" tab. You should find and copy into a secure file on your laptop the *consumer_key, consumer_secret, access_token, access_token_secret*.  I store them in a one-line CSV file for convenient use in apps. We never want to expose these by putting into source code literally. More info in the [sentiment project description](https://github.com/parrt/msds692/blob/master/hw/sentiment.md).
 
+[Never store your API key in your code](https://www.zdnet.com/article/over-100000-github-repos-have-leaked-api-or-cryptographic-keys/).
+
 ## Tweet feeds
 
 Twitter provides [URLs that allow us to search recent tweets](https://developer.twitter.com/en/docs/tweets/search/overview) but it's fairly inconvenient and so we use library called [tweepy](http://tweepy.readthedocs.io/en/v3.5.0/).  You will likely have to install that.

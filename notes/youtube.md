@@ -10,6 +10,8 @@ Follow these steps to get set up:
 2. Go to the [Google API Console](https://console.developers.google.com/) and create a project. I call mine msds692-test or something like that.
 3. Enable the "YouTube Data API v3" API from your console.
 
+[Never store your API key in your code](https://www.zdnet.com/article/over-100000-github-repos-have-leaked-api-or-cryptographic-keys/).
+
 Familiarize yourself with the [API documentation](https://developers.google.com/youtube/v3/) and install some Python code that will make our lives easier:
 
 ```bash

@@ -155,7 +155,7 @@ Let's try to pull down some more interesting data using the [OMDb API](http://ww
 
 > The OMDb API is a free web service to obtain movie information, all content and images on the site are contributed and maintained by our users.
 
-Hmmm...as of 2018, you have to [get an API key](http://www.omdbapi.com/apikey.aspx). They will send you a key by email that you must activate.
+Hmmm...as of 2018, you have to [get an API key](http://www.omdbapi.com/apikey.aspx). They will send you a key by email that you must activate. [Never store your API key in your code](https://www.zdnet.com/article/over-100000-github-repos-have-leaked-api-or-cryptographic-keys/).
 
 Let's also learn a more convenient way to specify URL parameters (with a dictionary).
 
