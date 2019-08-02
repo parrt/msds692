@@ -145,26 +145,21 @@ As part of your submission, you must launch a Linux instance at Amazon and insta
 
 Creating a server that has all the appropriate software can be tricky so I have recorded a sequence that works for me.
 
-The first thing is to launch a server with different software than the simple  Amazon linux we have been using in class. We need one that has, for example, `numpy` and friends so let's use an *image* (snapshot of a disk with a bunch of stuff installed) that already has machine learning software installed: Use "*Deep Learning AMI Amazon Linux Version 3.1_Sep2017 - ami-bde90fc7*":
+The first thing is to launch a server with different software than the simple Amazon linux we have been using in class. We need one that has, for example, `numpy` and friends so let's use an *image* (snapshot of a disk with a bunch of stuff installed) that already has machine learning software installed. As of August 2019, the following sequence works. Select a t2.medium instance with "*Deep Learning AMI (Ubuntu) Version 24.0 - ami-004852354728c0e51*".  Create a `t2.medium` size computer (in Oregon; it's cheaper)!  The cost is 0.047 dollars per Hour, which is only 1.12 dollars per day.
 
-<img src=figures/aws-ami.png width=500>
-
-Create a `t2.small` size computer (in Oregon; it's cheaper)!
-
-When you try to connect, it will tell you to use user `root` but use `ec2-user` like we did for the other machines.  In other words, here's how I login:
+ere's how I login:
  
 ```bash
-$ ssh -i "parrt.pem" ec2-user@34.203.194.19
+$ ssh -i "parrt.pem" ubuntu@somemachineIPorname
 ```
 
 Then install software we need:
 
 ```bash
-sudo pip install flask
-sudo pip install tweepy
-sudo pip install gunicorn
-sudo pip install vaderSentiment
-sudo pip install colour
+source activate pytorch_p36
+sudo pip install --upgrade pip
+sudo pip install flask tweepy vaderSentiment colour
+conda install gunicorn # regular pip install won't work it seems
 ```
 
 Now, clone your repository into the home directory:
