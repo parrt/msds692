@@ -201,48 +201,34 @@ There are predefined functions with comments indicating the required functionali
 
 Creating a server that has all the appropriate software can be tricky so I have recorded a sequence that works for me.
 
-The first thing is to launch a server with different software than the simple  Amazon linux we have been using in class. We need one that has, for example, `numpy` and friends so let's use an *image* (snapshot of a disk with a bunch of stuff installed) that already has machine learning software installed: Use "*Deep Learning AMI Amazon Linux Version 3.1_Sep2017 - ami-bde90fc7*" (DAMN: this has disappeared. working on solution 9/20/2018). Ok, so grab the basic linux image and then install Anaconda:
+The first thing is to launch a server with different software than the simple  Amazon linux we have been using in class. We need one that has, for example, `numpy` and friends so let's use an *image* (snapshot of a disk with a bunch of stuff installed) that already has machine learning software installed.  As of August 2019, the following sequence works. Select a t2.medium instance with "*Deep Learning AMI (Ubuntu) Version 24.0 - ami-004852354728c0e51*".  Create a `t2.medium` size computer (in Oregon; it's cheaper)!  The cost is 0.047 dollars per Hour, which is only 1.12 dollars per day.
 
-```bash
-wget https://repo.anaconda.com/archive/Anaconda3-5.2.0-Linux-x86_64.sh
-```
-
-(Or whatever the latest version is). Then execute that script to install:
-
-```bash
-bash Anaconda3-5.2.0-Linux-x86_64.sh
-```
-
-Or, another student had good luck with the following process:
-
-Use an `ubuntu` server, which already comes with python3; so just do:
-
-```
-sudo apt update
-sudo apt install python3-pip unzip
-pip3 install numpy gunicorn Flask
-```
-
-The other change is that for ubuntu server the user is *ubuntu* instead of *ec2-user*.
-
-Create a `t2.medium` size computer (in Oregon; it's cheaper)!  The cost is 0.047 dollars per Hour, which is only 1.12 dollars per day.
-
-When you try to connect, it will tell you to use user `root` but use `ec2-user` like we did for the other machines.  In other words, here's how I login:
+Here's how I login:
  
 ```bash
-$ ssh -i "parrt.pem" ec2-user@34.203.194.19
+$ ssh -i "parrt.pem" ubuntu@somemachineIPorname
 ```
 
-Then install software we need:
+Then from that remote machine:
 
 ```bash
-sudo pip install flask
-sudo pip install gunicorn
-sudo yum install -y p7zip.x86_64
-sudo cp /usr/bin/7za /usr/bin/7z
+source activate pytorch_p36
+sudo pip3 install --upgrade pip
+sudo pip3 install numpy Flask
+conda install gunicorn # regular pip install won't work it seems
 ```
 
-Now, clone your repository into the home directory:
+It seems to want `python3` not `python` as the Python executor name.  Numpy and friends should be installed already:
+
+```bash
+(pytorch_p36) ubuntu@ip-172-30-0-156:~$ python3
+Python 3.6.5 |Anaconda, Inc.| (default, Apr 29 2018, 16:14:56) 
+[GCC 7.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import numpy as np
+```
+
+After logging in, clone your repository into the home directory:
 
 ```bash
 cd ~
