@@ -1,3 +1,4 @@
+# BUG needs else clause if !=
 """
 Given an IP address or machine name, pull in the list of articles
 from the root / URL.  Collect the list of links and compare to the
@@ -87,6 +88,7 @@ def test_sample_articles():
                 assert False, "FAIL: recommended articles missing: "+str(true_links.difference(links))
             if links.issuperset(true_links):
                 assert False, "FAIL: recommended articles has extra: "+str(links.difference(true_links))
+            assert f"FAIL: recommended articles mismatch: your {links} != true {true_links}"
 
     print("Recommended articles OK")
 
@@ -94,6 +96,6 @@ def test_sample_articles():
 def getIP():
     with open("IP.txt") as f:
         host = f.read().strip()
-        if not host.index(':'):
+        if ':' not in host:
             host += ':5000'
     return host
