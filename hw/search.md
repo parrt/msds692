@@ -52,21 +52,17 @@ You can create whatever fancy HTML you want to show search results, but here is 
 
 ```
 <html>
-<body>
-<h2>Search results for <b>ronald reagan</b> in 164 files</h2>
+    <body>
+    <h2>Search results for <b>ronald reagan</b> in 164 files</h2>
     
-<p><a href="file:///Users/parrt/github/msds692/data/slate/1/Article247_42.txt">/Users/parrt/github/msds692/data/slate/1/Article247_42.txt</a><br>
-A Shared Vision pairs Ronald Reagan and Margaret Thatcher. Yes, they<br><br>
-    
-<p><a href="file:///Users/parrt/github/msds692/data/slate/10/Article247_3363.txt">/Users/parrt/github/msds692/data/slate/10/Article247_3363.txt</a><br>
-wartime. "I hope that neither President Carter or Governor Reagan, if he should<br>pay $5,000 and $3,500, respectively. After Ronald Reagan, who was elected<br><br>
-    
-<p><a href="file:///Users/parrt/github/msds692/data/slate/11/Article247_3408.txt">/Users/parrt/github/msds692/data/slate/11/Article247_3408.txt</a><br>
-Gary Bauer Soft-spoken but effective. His
-tribute to Ronald Reagan brought the hall to its feet. The best of social
-conservatives. "Campaigns aren't supposed to be about how much one guy has
-raised and another guy has inherited. Campaigns are supposed to be about our
-futures."<br><br>    
+        <p><a href="file:///Users/parrt/github/msds692/data/slate/51/ArticleIP_38825.txt">/Users/parrt/github/msds692/data/slate/51/ArticleIP_38825.txt</a><br>
+         such barry goldwater and <b>ronald</b> <b>reagan</b> gradually that conservatism has<br><br>
+        
+        <p><a href="file:///Users/parrt/github/msds692/data/slate/50/ArticleIP_27730.txt">/Users/parrt/github/msds692/data/slate/50/ArticleIP_27730.txt</a><br>
+         united states should pull out unilaterally when <b>ronald</b> <b>reagan</b> saw that had<br><br>
+        
+        <p><a href="file:///Users/parrt/github/msds692/data/slate/20/Article247_4335.txt">/Users/parrt/github/msds692/data/slate/20/Article247_4335.txt</a><br>
+         will lead any good when <b>ronald</b> <b>reagan</b> introduced similar device his<br><br>  
 ...    
 </body>
 </html>
@@ -80,7 +76,7 @@ file:///Users/parrt/github/msds692/data/slate/10/Article247_3363.txt
 
 (My data is stored in a slightly different spot than yours will be.)
 
-Also notice that in my search results, I am showing up to 2 lines containing at least one of the search term(s).
+Also notice that in my search results, I am showing up to 2 lines containing at least one of the search term(s). You must also wrap any search terms in `<b>` (bold) tags.
 
 You can use the template engine [jinja2](http://jinja.pocoo.org/docs/2.9/), which is part of the flask webserver that we will use later, or just slap together strings in order to create the HTML.
 
