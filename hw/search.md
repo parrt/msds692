@@ -278,6 +278,28 @@ You must complete and add these to root of your `search-`*userid* repository:
 
 **Please do not add the data to your repository!**
 
+
+## Submission
+
+To submit your project, ensure that all of your Python files are submitted to your repository. Those files should be in the root of your `search`-*userid* repository.
+
+**Use of any `dict` objects within your `myhtable_search.py` file yields a 0 for that part of the project.**
+
+Do not define any Python `class`es.
+
+*Please do not add the data sets to your repository as it is a waste of space and network bandwidth.*
+
+## Evaluation
+
+To evaluate your projects, we will run the following tests (with an appropriate path to the Berlitz data):
+
+```bash
+$ python -m pytest -v test_berlitz.py ~/data/berlitz1
+$ python -m pytest -v test_htable.py 
+```
+
+The hash table implementation is worth 60% and the Berlitz data search tests are worth 40%. Again, we will attempt to grade in a binary fashion (works or doesn't) because you have all of the known tests.
+
 Ultimately, you want the test results to look like the following.
 
 ```bash
@@ -320,24 +342,3 @@ test_htable.py::test_replace_str PASSED                                  [100%]
 ```
 
 (You might need to install `pytest` with `pip`.)
-
-## Submission
-
-To submit your project, ensure that all of your Python files are submitted to your repository. Those files should be in the root of your `search`-*userid* repository.
-
-**Use of any `dict` objects within your `myhtable_search.py` file yields a 0 for that part of the project.**
-
-Do not define any Python `class`es.
-
-*Please do not add the data sets to your repository as it is a waste of space and network bandwidth.*
-
-## Evaluation
-
-To evaluate your projects, we will run the following tests (with an appropriate path to the Berlitz data):
-
-```bash
-$ python -m pytest -v test_berlitz.py ~/data/berlitz1
-$ python -m pytest -v test_htable.py 
-```
-
-The hash table implementation is worth 60% and the Berlitz data search tests are worth 40%. Again, we will attempt to grade in a binary fashion (works or doesn't) because you have all of the known tests.
