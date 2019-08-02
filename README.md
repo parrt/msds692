@@ -15,15 +15,15 @@ This course is part of the [MS in Data Science program at the University of San 
 
 **SPATIAL COORDINATES:**<br>
 
-* Class is held at 101 Howard in 5th floor classroom 527.
-* Exams are held in 527 and 529. Both sections meet together.
+* Class is held at 101 Howard in 5th floor classroom 529.
+* Exams are held in the big room on the main floor. Both sections meet together.
 * My office is room 607 @ 101 Howard up on mezzanine
 
-**TEMPORAL COORDINATES.** Wed Aug 22 - Wed Oct 10.
+**TEMPORAL COORDINATES.** Tue Aug 20 - Thu Oct 10.
 
 * Section 01: Mon/Wed 10-11:50AM
 * Section 02: Mon/Wed 1:15-3:05PM 
-* Exams: Wednesdays, 9:00 - 9:55AM and (last exam) 3:00-4:00PM
+* Exam 1: ...
 
 **INSTRUCTION FORMAT**. Class runs for 1:50 hours, 2 days/week. Instructor-student interaction during lecture is encouraged and we'll mix in mini-exercises / labs during class. All programming will be done in the Python 3 programming language, unless otherwise specified.
 
@@ -63,20 +63,15 @@ For information and resources regarding sexual misconduct or assault visit the <
 
 | Artifact | Grade Weight | Due date |
 |--------|--------|--------|
-|[Data pipeline](https://github.com/parrt/msds692/blob/master/hw/pipeline.md)| 4%| Fri, Aug 31 11:59pm |
-|[Search Engine Implementation](https://github.com/parrt/msds692/blob/master/hw/search.md)| 10% | Mon, Sep 10 |
-|[TFIDF document summarization](https://github.com/parrt/msds692/blob/master/hw/tfidf.md)| 6%| Mon, Sep 17 |
-|[Recommending Articles](https://github.com/parrt/msds692/blob/master/hw/recommender.md)| 5% | Mon, Sep 24 |
-|[Tweet Sentiment Analysis](https://github.com/parrt/msds692/blob/master/hw/sentiment.md)| 10% | Mon, Oct 8 |
-|Exam 1| 15%| 9AM-9:55AM Wed, Sep 5 |
-|Exam 2| 22%| 9AM-9:55AM Wed, Sep 19 |
-|Exam 3| 28%| 3-4PM Wed, Oct 10 |
+|[Data pipeline](https://github.com/parrt/msds692/blob/master/hw/pipeline.md)| 4%| Fri, Aug 30 11:59pm |
+|[Search Engine Implementation](https://github.com/parrt/msds692/blob/master/hw/search.md)| 10% | Tue, Sep 10 |
+|[TFIDF document summarization](https://github.com/parrt/msds692/blob/master/hw/tfidf.md)| 6%| Tue, Sep 17 |
+|[Recommending Articles](https://github.com/parrt/msds692/blob/master/hw/recommender.md)| 5% | Tue, Sep 24 |
+|[Tweet Sentiment Analysis](https://github.com/parrt/msds692/blob/master/hw/sentiment.md)| 10% | Tue, Oct 8 |
+|Exam 1| 15%| 8:45AM-9:45AM ??, ?? |
+|Exam 2| 22%| 10AM-11:30AM Fri, Oct 11? |
 
-<!--
-|[Group project](https://github.com/parrt/msds692/blob/master/hw/group.md)| 15%| Wed, Oct 12 midnight |
--->
-
-All projects will be graded with the specific input or tests given in the project description, so you understand precisely what is expected of your program. Consequently, projects will be graded in binary fashion: They either work or they do not. The only exception is when your program does not run on the grader's or my machine because of some cross-platform issue. This is typically because a student has hardcoded some file name or directory into their program. In that case, we will take off just 20% instead of giving you a 0. Please go to github and verify that the website has the proper files for your solution. That is what I will download for testing.
+All projects will be graded with the specific input or tests given in the project description, so you understand precisely what is expected of your program. Consequently, projects will be graded in binary fashion: They either work or they do not. The only exception is when your program does not run on the grader's or my machine because of some cross-platform issue. This is typically because a student has hardcoded some file name or directory into their program. In that case, we will take off *a minimum* of 10% instead of giving you a 0, depending on the severity of the mistake.  Please go to github and verify that the website has the proper files for your solution. That is what I will download for testing.
 
 Each project has a hard deadline and only those projects working correctly before the deadline get credit.  My grading script pulls from github at the deadline.  *All projects are due at the start of class on the day indicated, unless otherwise specified.*
 
