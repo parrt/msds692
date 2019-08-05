@@ -97,7 +97,7 @@ There are also plenty of nontext, binary formats. You can learn more from the ms
 
 ## Organizing data in memory into structures
 
-* [Debugging with PyCharm](notes/debugger.md) (Self-study / optional)
+* [Review object definition / usage](notes/OO.ipynb)
 * [Associations and dictionaries](notes/dict.ipynb) (Day 3)
 * [Data structure basics](notes/datastructures.ipynb) (Day 3, Day 4)
 
@@ -149,3 +149,4 @@ With an understanding of how the Internet and web works, it's time to start pull
 
 * [San Francisco police activity heat map using google map API](notes/heatmap.md)
 * [San Francisco police incidents word clouds](notes/sfpd.md)
+* [Debugging with PyCharm](notes/debugger.md)
