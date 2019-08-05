@@ -4,19 +4,20 @@ San Francisco has one of the most "open data" policies of any large city. In thi
 
 ## Getting started
 
-Download all [San Francisco police department incident since 1 January 2003](https://data.sfgov.org/Public-Safety/SFPD-Incidents-from-1-January-2003/tmnf-yvry). Save in "CSV for Excel" format.
+Download [Police Department Incident Reports: Historical 2003 to May 2018](https://data.sfgov.org/Public-Safety/Police-Department-Incident-Reports-2018-to-Present/wg3w-h783) or all [San Francisco police department incident since 1 January 2003](https://data.sfgov.org/Public-Safety/SFPD-Incidents-from-1-January-2003/tmnf-yvry). Save in "CSV for Excel" format.
 
 We can easily figure out how many records there are:
 
 ```bash
-$ wc -l ~/data/SFPD_Incidents_from_1_January_2003.csv 
- 1968081 /Users/parrt/data/SFPD_Incidents_from_1_January_2003.csv
+$ wc -l Police_Department_Incident_Reports__2018_to_Present.csv 
+  238457
+Police_Department_Incident_Reports__2018_to_Present.csv
 ```
 
-So 1,968,080 not including the header row.  Let's kill that first row using `tail`:
+So 238456 not including the header row.  Let's kill that first row using `tail`:
 
 ```bash
-$ tail +2 SFPD_Incidents_from_1_January_2003.csv > SFPD.csv
+$ tail +2 Police_Department_Incident_Reports__2018_to_Present.csv > SFPD.csv
 ```
 
 In Python, that would be equivalent to `data[1:]` (it counts from 0 not 1 like `tail`). You can name that data file whatever you want but I will call it `SFPD.csv` for these exercises.

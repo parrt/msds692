@@ -102,6 +102,7 @@ There are also plenty of nontext, binary formats. You can learn more from the ms
 
 ## Text feature extraction
 
+* [San Francisco police incidents word clouds](notes/sfpd.md)
 * Introduction to hash table construction and discussion of [Search Engine Implementation](https://github.com/parrt/msds692/blob/master/hw/search.md) (**project**) (Day 3)
 * (code review of sample jsontable functions, more htable discussion)
 * [CSV command-line kung fu](notes/bashcsv.ipynb) (Day ?)
@@ -147,5 +148,4 @@ With an understanding of how the Internet and web works, it's time to start pull
 ## Misc
 
 * [San Francisco police activity heat map using google map API](notes/heatmap.md)
-* [San Francisco police incidents word clouds](notes/sfpd.md)
 * [Debugging with PyCharm](notes/debugger.md)

@@ -1,18 +1,26 @@
-from cloud import WordCloud
-from csvcols import get_column
+from wordcloud import WordCloud
 import matplotlib.pyplot as plt
+from collections import Counter
+import pandas as pd
 import sys
 
-neighborhoods = get_column(sys.argv[1], col=6)
+df_sfpd = pd.read_csv(sys.argv[1])
 
-wordcloud = WordCloud(width=1800,
+if len(sys.argv)>1:
+	df_sfpd = df_sfpd[df_sfpd['Incident Category']==sys.argv[2]]
+
+df_sfpd = df_sfpd[~df_sfpd['Analysis Neighborhood'].isnull()]
+
+neighborhoods = Counter(df_sfpd['Analysis Neighborhood'])
+
+cloud = WordCloud(width=1800,
                       height=1400,
                       max_words=10000,
                       random_state=1,
                       relative_scaling=0.25)
-wordcloud.fit_words(neighborhoods.most_common(len(neighborhoods)))
+cloud.fit_words(neighborhoods)
 
-plt.imshow(wordcloud)
+plt.imshow(cloud)
 plt.axis("off")
-wordcloud.to_file("SFPD-hood-wordcloud.png")
+cloud.to_file("SFPD-hood-wordcloud.png")
 plt.show()
