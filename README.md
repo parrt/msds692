@@ -99,11 +99,10 @@ There are also plenty of nontext, binary formats. You can learn more from the ms
 
 * [Review object definition / usage](notes/OO.ipynb)
 * [Associations and dictionaries](notes/dict.ipynb) (Day 3)
-* [Data structure basics](notes/datastructures.ipynb) (Day 3, Day 4)
 
 ## Text feature extraction
 
-* [Search Engine Implementation](https://github.com/parrt/msds692/blob/master/hw/search.md) (**project**) (Day 3)
+* Introduction to hash table construction and discussion of [Search Engine Implementation](https://github.com/parrt/msds692/blob/master/hw/search.md) (**project**) (Day 3)
 * (code review of sample jsontable functions, more htable discussion)
 * [CSV command-line kung fu](notes/bashcsv.ipynb) (Day ?)
 * [Intro to information extraction from text](notes/text.ipynb) (Day 5)
