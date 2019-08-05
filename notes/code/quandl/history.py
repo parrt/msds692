@@ -9,4 +9,4 @@ APIKEY = sys.argv[2]
 url = HistoryURL % (ticker,APIKEY)
 r = requests.get(url)
 csvdata = r.text
-print csvdata
+print(csvdata)

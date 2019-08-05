@@ -226,7 +226,6 @@ Replace the json conversion code with code that [untangle](https://untangle.read
 Now that we've done it the hard way in Python, let's repeat the exercises from above using one-liners on the shell. The `curl` program is your friend and can do all sorts of amazing things. Here are the 4 GETs using curl:
 
 ```bash
-curl "http://ichart.finance.yahoo.com/table.csv?s=TSLA"
 curl "http://openpayments.us/data?query=John+Chan"
 curl "http://www.omdbapi.com/?s=cats&r=json"
 curl "http://www.omdbapi.com/?t=Star+Wars"
