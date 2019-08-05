@@ -97,13 +97,13 @@ There are also plenty of nontext, binary formats. You can learn more from the ms
 
 ## Organizing data in memory into structures
 
-* [Review object definition / usage](notes/OO.ipynb)
+* [Review object definition / usage](notes/OO.ipynb) (Day 3)
 * [Associations and dictionaries](notes/dict.ipynb) (Day 3)
 
 ## Text feature extraction
 
-* [San Francisco police incidents word clouds](notes/sfpd.ipynb)
-* Introduction to hash table construction and discussion of [Search Engine Implementation](https://github.com/parrt/msds692/blob/master/hw/search.md) (**project**) (Day 3)
+* [San Francisco police incidents word clouds](notes/sfpd.ipynb) (Day 3)
+* Introduction to hash table construction and discussion of [Search Engine Implementation](https://github.com/parrt/msds692/blob/master/hw/search.md) (**project**) (Day 3? 4?)
 * (code review of sample jsontable functions, more htable discussion)
 * [CSV command-line kung fu](notes/bashcsv.ipynb) (Day ?)
 * [Intro to information extraction from text](notes/text.ipynb) (Day 5)
