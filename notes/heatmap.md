@@ -1,5 +1,7 @@
 # San Francisco police activity heat map using google map API
 
+*It looks like you have to pay to use the Google maps API now, at least through Python*
+
 Clouds are pretty cool for showing the relative size of various terms but sometimes it's more interesting to look at crimes per fine-grained area. For this, we can use Google's map API.  As far as I can tell, the easiest way to do a heat map on a real live map is using Google's map API but via a small JavaScript program in a webpage. 
 
 ## Dropping a marker on a Google map
