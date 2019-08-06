@@ -159,4 +159,12 @@ If there is no error you get `<code>0</code>` in the message, whereas here you c
   ...
 ```
 
-You want to print out the `url` tag in `response` tag: `xml.Chart_chart.response.url.cdata` via untangle. Then click on it and you will see a nice chart.
+Get the URL with the historical chart from the `url` field of the `response` object.  Then use
+
+```
+webbrowser.open_new(xml.Chart_chart.response.url.cdata)
+```
+
+to open a web browser showing the image, such as:
+
+<img src="figures/zillow-history.png" width="60%">

@@ -1,75 +1,32 @@
 ## Extracting a table of data
 
-Let's see if we can pull academic performance data from [2012-13 Accountability Progress Reporting (APR)](http://data1.cde.ca.gov/dataquest/Acnt2013/2013GrthStAPI.aspx).
+Let's see if we can pull academic performance data from [2011–12 Accountability Progress Reporting System:
+Summary of Results](https://www.cde.ca.gov/nr/ne/yr12/yr12rel96.asp).   The tables embedded in the page look like:
 
-**Exercise**: Create a list of lists representation for the `2013 Growth API` table and another for the `Number of Students Included in the 2013 Growth API` table. You can start out by combining all rows from both tables. Or try list of dictionary representation. *This one is challenging*!
+<img src="figures/cal-edu-results.png" width="50%">
 
-To get you started, here is how I extract the header and columns:
+and the associated HTML is not too hard to pull apart:
+ 
+<img src="figures/cal-edu-html.png" width="50%">
 
-```python
-def get_table_headers(soup):
-    headers = set()
-    for h in soup.find_all('th', {'class': 'medium_center'}):
-        s = ''
-        for c in h.contents:
-            if c.string:
-                s += c.string.strip()
-        if len(s)>0:
-            headers.add(s)
-    return headers
+On the other hand, it's a hassle to do manually. Fortunately, Pandas as an amazingly-useful method called `pd.read_html(s)` that knows how to extract the data from an HTML table into a data frame.
+
+**Exercise**:  Write a program to get the tables out of that page and then use pandas to extract dataframes, printing out the results. Your output should look something like
+
+```
+Table 1
+   School Type 2001 –02 2002 –03 2003 –04 2004 –05 2005 –06 2006 –07 2007 –08 2008 –09 2009 –10 2010 –11 2011 –12
+0   Elementary      23%      26%      27%      32%      35%      36%      41%      48%      51%      55%      59%
+1       Middle      16%      14%      18%      21%      24%      25%      30%      36%      40%      43%      49%
+2         High       6%       7%       8%      12%      14%      15%      17%      21%      25%      28%      30%
+3  All Schools      20%      21%      23%      27%      30%      31%      36%      42%      46%      49%      53%
+
+Table 2
+                                   Type  2011 Base API  2012 Growth API  2011–12 API Point Growth
+0                             Statewide            778              788                        10
+1             Black or African American            696              710                        14
+2      American Indian or Alaska Native            733              742                         9
+...
 ```
 
-Your function looks like (it collects all rows from both tables):
 
-```python
-def get_table_rows(soup):
-    data = []
-    for tbl in table tags:
-        for row in tr tags within tbl:
-            cols = all td tags within row
-            grab the rowname from cols[0]
-            for col in cols[1:]:
-                if col has span tag underneath:
-                    add col.span text to current row
-            add current row to data
-    return data
-```
-
-Then I dump everything out with the following main program:
-
-```python
-print get_table_headers(soup)
-
-allrows = get_table_rows(soup)
-for row in allrows:
-    print row
-```
-
-Thanks to 2018 MSDS student Eddie Owens, we have the following cools solution that combines beautiful soup with pandas:
-
-```python
-from bs4 import BeautifulSoup
-import requests
-import pandas as pd
-
-html = requests.get('https://data1.cde.ca.gov/dataquest/Acnt2013/2013GrthStAPI.aspx')
-page = html.content
-soup = BeautifulSoup(page, "lxml")
-tables = soup.find_all('table')
-growthapi = pd.read_html(str(tables[1]))[0]
-growthapi = growthapi.drop(growthapi.shape[1]-1, axis=1)
-growthapi.iloc[1,0] = 'category'
-growthapi.columns = growthapi.iloc[1,:]
-growthapi = growthapi.drop([0,1,3], axis=0)
-growthapi.set_index('category')
-
-students = pd.read_html(str(tables[2]))[0]
-students = students.drop(students.shape[1]-1, axis=1)
-students.iloc[1,0] = 'category'
-students.columns = students.iloc[1,:]
-students = students.drop([0,1,3], axis=0)
-students.set_index('category')
-
-print(growthapi)
-print(students)
-```

@@ -128,26 +128,7 @@ curl --user-agent "Resistance is futile" https://www.reddit.com/r/all > /tmp/t.h
 
 Then we can parse / test that all we want without getting shut down by Reddit.
 
-#### 2017
-
-By inspecting a link on that page with the browser (using developer tools), it looks like links have `class="title may-blank outbound"` or just `class="title may-blank"`:
-
-
-```html
-<a class="title may-blank outbound "
- href="http://imgur.com/wJqUthV" 
- tabindex="1" 
- data-href-url="http://imgur.com/wJqUthV" 
- data-outbound-url="https://out.reddit.com/t3_54ts81?url=http%3A%2F%2Fimgur.com
-%2FwJqUthV&amp;token=AQAAoh7rVw1w9L81tgHr_XrmvIA01bcGQyOcWWbvU9jNqgetktoX" 
-data-outbound-expiration="1475026594000" 
-rel="nofollow">My former teacher posted this today.
- Said that "they always hug like this"</a>
-```
-
-#### 2018
-
-Whoops. In 2018, the links are completely different. Let's grab the comments links instead:
+By inspecting a comment link on that page with the browser (using developer tools), we can find its distinguishing characteristics:
 
 ```
 <a rel="nofollow" data-click-id="comments" data-test-id="comments-page-link-num-comments"

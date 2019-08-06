@@ -8,6 +8,8 @@
 import sys
 import untangle
 import requests
+import webbrowser
+
 
 KEY = sys.argv[1]                       # your zillow api key/id as argument to script
 
@@ -17,13 +19,15 @@ SearchURL = "http://www.zillow.com/webservice/GetChart.htm?zws-id=%s&zpid=%s&uni
 URL = SearchURL % (KEY, '64969892')
 r = requests.get(URL)
 xmldata = r.text
-# print xmldata
+#print(xmldata)
 
 xml = untangle.parse(xmldata)
 code = xml.Chart_chart.message.code.cdata
 if code=='0':
     zpid = xml.Chart_chart.response.url.cdata
-    print zpid
+    print(zpid)
 else:
     msg = xml.Chart_chart.message.text.cdata
-    print msg
+    print(msg)
+
+webbrowser.open_new(zpid)

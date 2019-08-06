@@ -25,7 +25,7 @@ def crawl(links, outputdir):
         page,html = fetch(link,delay=(0,0)) # no need to delay; pulling from random sites
         filename = f"page{i}.html"
         i += 1
-        print("Writing {filename}")
+        print(f"Writing {filename}")
         with open(os.path.join(outputdir,filename), "w") as f:
             f.write(page)
 

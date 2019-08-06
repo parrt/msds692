@@ -137,7 +137,7 @@ With an understanding of how the Internet and web works, it's time to start pull
   * [Zillow](notes/zillow.md) ()
 * [APIs requiring authentication/identification](notes/authapi.md) (Optional)
   * [Twitter](notes/twitter.md)  (Day 10 to sync with project)
-  * [LinkedIn](notes/linkedin.md) (Optional)
+  * [LinkedIn](notes/linkedin.md) ()
   * [Facebook](notes/facebook.md) (Optional)
 * [Extracting data from web pages](notes/scraping.md) (Day 11)
   * [Crawling](notes/crawling.md) (Day 11)
