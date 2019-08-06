@@ -99,13 +99,13 @@ There are also plenty of nontext, binary formats. You can learn more from the ms
 
 * [Review object definition / usage](notes/OO.ipynb) (Day 3)
 * [Associations and dictionaries](notes/dict.ipynb) (Day 3)
+* Introduction to hash table construction and discussion of [Search Engine Implementation](https://github.com/parrt/msds692/blob/master/hw/search.md) (**project**) (Day 3? 4?)
 
 ## Text feature extraction
 
-* [San Francisco police incidents word clouds](notes/sfpd.ipynb) (Day 3)
-* Introduction to hash table construction and discussion of [Search Engine Implementation](https://github.com/parrt/msds692/blob/master/hw/search.md) (**project**) (Day 3? 4?)
+* [San Francisco police incidents word clouds](notes/sfpd.ipynb) (Day 4)
 * (code review of sample jsontable functions, more htable discussion)
-* [CSV command-line kung fu](notes/bashcsv.ipynb) (Day ?)
+* [CSV command-line kung fu](notes/bashcsv.ipynb) (Day 4)
 * [Intro to information extraction from text](notes/text.ipynb) (Day 5)
 * [Spacy NLP library](notes/spacy.ipynb) (Day 5)
 * [Computing TFIDF](notes/tfidf.pdf) (Day 6)
@@ -130,11 +130,11 @@ With an understanding of how the Internet and web works, it's time to start pull
 
 * [Pulling data from (open) REST APIs](notes/openapi.md) (Day 10)
   * openpayments.us (Day 10)
-* Pull data from sites requiring an ID
+* [Pull data from sites requiring an API key](notes/apikey.md)
+  * Quandl stock data (Day 10)
   * OMDb movie data (Day 10)
-  * Quandl stock data (optional)
-  * [Youtube](notes/youtube.md) (Optional)
-  * [Zillow](notes/zillow.md) (Optional)
+  * [Youtube](notes/youtube.md) ()
+  * [Zillow](notes/zillow.md) ()
 * [APIs requiring authentication/identification](notes/authapi.md) (Optional)
   * [Twitter](notes/twitter.md)  (Day 10 to sync with project)
   * [LinkedIn](notes/linkedin.md) (Optional)
