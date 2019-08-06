@@ -107,15 +107,16 @@ There are also plenty of nontext, binary formats. You can learn more from the ms
 * (code review of sample jsontable functions, more htable discussion)
 * [CSV command-line kung fu](notes/bashcsv.ipynb) (Day ?)
 * [Intro to information extraction from text](notes/text.ipynb) (Day 5)
-* [Computing TFIDF](notes/tfidf.pdf) (Day 5)
+* [Spacy NLP library](notes/spacy.ipynb) (Day 5)
+* [Computing TFIDF](notes/tfidf.pdf) (Day 6)
 * [TFIDF document summarization](https://github.com/parrt/msds692/blob/master/hw/tfidf.md) (**project**) (Day 6)
 
 ## How the web works
 
 Now you know how to work with data files already sitting on your desk, we turn towards a study of computer networking and web infrastructure.
 
-* [Network sockets](notes/sockets.md), DNS, email (Day 6)
-* [client/server architecture](notes/client-server.md) (Day 6)
+* [Network sockets](notes/sockets.md), DNS, email (Day ?)
+* [client/server architecture](notes/client-server.md) (Day ?)
 * [HTTP](notes/http.md) (Day 6)
 * [flask](notes/flask.md) (Day 7)
 * [Launch AWS box (MSDS501 notes)](https://github.com/parrt/msds501/blob/master/notes/aws.md), launch flask server at port 80 (Day 8)
