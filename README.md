@@ -23,7 +23,10 @@ This course is part of the [MS in Data Science program at the University of San 
 
 * Section 01: Mon/Wed 10-11:50AM
 * Section 02: Mon/Wed 1:15-3:05PM 
-* Exam 1: ...
+* Exam 1: Thur Sept 12
+* Exam 2: Fri Oct 11?
+
+Please note Pitch day conflicts with Thur Sept 19 so we have class Monday ???
 
 **INSTRUCTION FORMAT**. Class runs for 1:50 hours, 2 days/week. Instructor-student interaction during lecture is encouraged and we'll mix in mini-exercises / labs during class. All programming will be done in the Python 3 programming language, unless otherwise specified.
 
