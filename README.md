@@ -65,7 +65,7 @@ For information and resources regarding sexual misconduct or assault visit the <
 |--------|--------|--------|
 |[Data pipeline](https://github.com/parrt/msds692/blob/master/hw/pipeline.md)| 6%| Fri, Aug 30 11:59pm |
 |[Search Engine Implementation](https://github.com/parrt/msds692/blob/master/hw/search.md)| 15% | Tue, Sep 10 |
-|[TFIDF document summarization](https://github.com/parrt/msds692/blob/master/hw/tfidf.md)| 12%| Tue, Sep 17 |
+|[TFIDF document summarization](https://github.com/parrt/msds692/blob/master/hw/tfidf.md)| 12%| Wed 11:59PM, Sep 18 |
 |[Recommending Articles](https://github.com/parrt/msds692/blob/master/hw/recommender.md)| 12% | Tue, Sep 24 |
 |[Tweet Sentiment Analysis](https://github.com/parrt/msds692/blob/master/hw/sentiment.md)| 15% | Tue, Oct 8 |
 |Exam 1| 15%| 8:45AM-9:45AM Thu, Sept 12 or 19 |
