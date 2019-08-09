@@ -71,7 +71,7 @@ For information and resources regarding sexual misconduct or assault visit the <
 |[TFIDF document summarization](https://github.com/parrt/msds692/blob/master/hw/tfidf.md)| 12%| Wed 11:59PM, Sep 18 |
 |[Recommending Articles](https://github.com/parrt/msds692/blob/master/hw/recommender.md)| 12% | Tue, Sep 24 |
 |[Tweet Sentiment Analysis](https://github.com/parrt/msds692/blob/master/hw/sentiment.md)| 15% | Tue, Oct 8 |
-|Exam 1| 15%| 8:45AM-9:45AM Thu, Sept 12 or 19 |
+|Exam 1| 15%| 8:45AM-9:45AM Thu, Sept 12 |
 |Exam 2| 25%| 10AM-11:30AM Fri, Oct 11? |
 
 All projects will be graded with the specific input or tests given in the project description, so you understand precisely what is expected of your program. Consequently, projects will be graded in binary fashion: They either work or they do not. The only exception is when your program does not run on the grader's or my machine because of some cross-platform issue. This is typically because a student has hardcoded some file name or directory into their program. In that case, we will take off *a minimum* of 10% instead of giving you a 0, depending on the severity of the mistake.  Please go to github and verify that the website has the proper files for your solution. That is what I will download for testing.
