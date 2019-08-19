@@ -29,7 +29,7 @@ This course is part of the [MS in Data Science program at the University of San 
 * Section 01: Mon/Wed 10-11:50AM
 * Section 02: Mon/Wed 1:15-3:05PM 
 * Exam 1: 8:55AM-9:55AM, Thur Sept 12
-* Exam 2: Fri Oct 11?
+* Exam 2: 10AM-11:30AM, Thur, Oct 10 (last day of class)
 
 *Please note Pitch day conflicts with Thur Sept 19 so we have class Monday Sept 23 3:15 - 5:05 in room 154-156.*
 
@@ -77,7 +77,7 @@ For information and resources regarding sexual misconduct or assault visit the <
 |[Recommending Articles](https://github.com/parrt/msds692/blob/master/hw/recommender.md)| 12% | Tue, Sep 24 |
 |[Tweet Sentiment Analysis](https://github.com/parrt/msds692/blob/master/hw/sentiment.md)| 15% | Tue, Oct 8 |
 |Exam 1| 15%| 8:55AM-9:55AM Thu, Sept 12 |
-|Exam 2| 25%| 10AM-11:30AM Fri, Oct 11? |
+|Exam 2| 25%| 10AM-11:30AM Thu, Oct 10 |
 
 All projects will be graded with the specific input or tests given in the project description, so you understand precisely what is expected of your program. Consequently, projects will be graded in binary fashion: They either work or they do not. The only exception is when your program does not run on the grader's or my machine because of some cross-platform issue. This is typically because a student has hardcoded some file name or directory into their program. In that case, we will take off *a minimum* of 10% instead of giving you a 0, depending on the severity of the mistake.  Please go to github and verify that the website has the proper files for your solution. That is what I will download for testing.
 
