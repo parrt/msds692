@@ -4,7 +4,7 @@ MSDS692 Data acquisition
 There are lots of exciting and interesting problems in analytics, such as figuring out what the right question is, selecting features, training a model, and interpreting results. But all of that presupposes a tidy data set that is suitable for analysis or training models. Industry experts all agree that data collection and preparation is roughly 3/4 of any analysis effort.
 
 <center>
-<a href="https://mobile.twitter.com/kareem_carr/status/1157424261319069696?s=21"><img src="notes/figures/kareem.png" width="60%"></a>
+<a href="https://mobile.twitter.com/kareem_carr/status/1157424261319069696?s=21"><img src="notes/figures/kareem.png" width="50%"></a>
 </center>
 
 The title of this course is "Data Acquisition" but of course, once we get the data, we have to organize it into handy data structures and typically have to extract information from the raw data. For example, we might need to boil down a Twitter stream into a single positive or negative sentiment score for a given user.  This course teaches you how to collect, organize, coalesce, and extract information from multiple sources in preparation for your analysis work. Along the way, you'll learn about networks, the internet protocols, and your own building web servers.
