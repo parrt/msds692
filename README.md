@@ -4,8 +4,8 @@ MSDS692 Data acquisition
 There are lots of exciting and interesting problems in analytics, such as figuring out what the right question is, selecting features, training a model, and interpreting results. But all of that presupposes a tidy data set that is suitable for analysis or training models. Industry experts all agree that data collection and preparation is roughly 3/4 of any analysis effort. Or, as Kareem Carr puts it (I'm guessing he includes data acquisition and organization in the term "cleaning"):
 
 <table border="0">
-<tr valign="top">
-<td><a href="https://mobile.twitter.com/kareem_carr/status/1157424261319069696?s=21"><img src="notes/figures/kareem.png" width="100%"></a></td><td><a href="https://mobile.twitter.com/kareem_carr/status/1160570947621048328"><img src="notes/figures/kareem2.png" width="100%"></a></td>
+<tr valign="top" border="0">
+<td border="0"><a href="https://mobile.twitter.com/kareem_carr/status/1157424261319069696?s=21"><img src="notes/figures/kareem.png" width="100%"></a></td><td border="0"><a href="https://mobile.twitter.com/kareem_carr/status/1160570947621048328"><img src="notes/figures/kareem2.png" width="100%"></a></td>
 </tr>
 </table>
 
