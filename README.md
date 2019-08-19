@@ -5,7 +5,7 @@ There are lots of exciting and interesting problems in analytics, such as figuri
 
 <table>
 <tr valign="top">
-<td><a href="https://mobile.twitter.com/kareem_carr/status/1157424261319069696?s=21"><img src="notes/figures/kareem.png" width="50%"></a></td><td><a href="https://mobile.twitter.com/kareem_carr/status/1160570947621048328"><img src="notes/figures/kareem2.png" width="50%"></a></td>
+<td><a href="https://mobile.twitter.com/kareem_carr/status/1157424261319069696?s=21"><img src="notes/figures/kareem.png" width="100%"></a></td><td><a href="https://mobile.twitter.com/kareem_carr/status/1160570947621048328"><img src="notes/figures/kareem2.png" width="100%"></a></td>
 </tr>
 </table>
 
