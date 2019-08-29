@@ -123,7 +123,7 @@ Then in `histo.py`, we can use it to get a particular column:
 categories = get_column(sys.argv[1],col=1)
 ```
 
-Print out the histograms as shown above for categories and descriptions to finish off the exercise.
+Print out the histograms as shown above for categories and descriptions to finish off the exercise. [Solutions](https://github.com/parrt/msds692/tree/master/notes/code/sfpd)
 
 ## Word clouds
 
@@ -159,6 +159,8 @@ plt.imshow(wordcloud)
 plt.axis("off")
 plt.show()
 ```
+
+[Solutions](https://github.com/parrt/msds692/tree/master/notes/code/sfpd)
 
 ### Which neighborhood is the "worst"?
 
