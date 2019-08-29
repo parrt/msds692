@@ -61,7 +61,7 @@ def load_corpus(zipfilename):
     """
     Given a zip file containing root directory reuters-vol1-disk1-subset
     and a bunch of *.xml files, read them from the zip file into
-    a dictionary of (word,xmltext) associations. Use namelist() from
+    a dictionary of (filename,xmltext) associations. Use namelist() from
     ZipFile object to get list of xml files in that zip file.
     Convert filename reuters-vol1-disk1-subset/foo.xml to foo.xml
     as the keys in the dictionary. The values in the dictionary are the
