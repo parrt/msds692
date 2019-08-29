@@ -106,8 +106,8 @@ There are also plenty of nontext, binary formats. You can learn more from the ms
 ## Organizing data in memory into structures
 
 * [Review object definition / usage](notes/OO.ipynb) (Day 3)
-* [Associations and dictionaries](notes/dict.ipynb) (Day 3)
-* Introduction to hash table construction and discussion of [Search Engine Implementation](https://github.com/parrt/msds692/blob/master/hw/search.md) (**project**) (Day 3? 4?)
+* [Associations and dictionaries](notes/dict.ipynb) (Day 3, 4)
+* Introduction to hash table construction and discussion of [Search Engine Implementation](https://github.com/parrt/msds692/blob/master/hw/search.md) (**project**) (Day 4)
 
 ## Text feature extraction
 

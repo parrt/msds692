@@ -187,7 +187,7 @@ Gives:
 
 <img src=figures/hashtable4.png width=250>
 
-The straight in-line code to add those two elements would look likeL
+The straight in-line code to add those two elements would look like:
  
 ```pytnon
 table[ord('a')%5].append( ('a','tom') )  # 'a'==97
