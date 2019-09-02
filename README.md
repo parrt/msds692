@@ -113,9 +113,9 @@ There are also plenty of nontext, binary formats. You can learn more from the ms
 
 * [San Francisco police incidents word clouds](notes/sfpd.ipynb) (Day 4)
 * (code review of sample jsontable functions, more htable discussion)
-* [CSV command-line kung fu](notes/bashcsv.ipynb) (Day 4)
+* [CSV command-line kung fu](notes/bashcsv.ipynb) (Day 5)
 * [Intro to information extraction from text](notes/text.ipynb) (Day 5)
-* [Spacy NLP library](notes/spacy.ipynb) (Day 5)
+* [Spacy NLP library](notes/spacy.ipynb) (Day 6)
 * [Computing TFIDF](notes/tfidf.pdf) (Day 6)
 * [TFIDF document summarization](https://github.com/parrt/msds692/blob/master/hw/tfidf.md) (**project**) (Day 6)
 
