@@ -67,13 +67,15 @@ df(t,N) = \frac{|\{d_i : t \in d_i, \ i = 1..N\}|}{N}
 
 \noindent The document frequency is higher for words used in many documents. For example, ``the'' will have very high document frequency because it is present in just about every document. On the other hand, a word specific to a few articles such as ``simulation'' will have much lower document frequency.
 
-The goal is to find words that helped to distinguish one document from the others. To do that we want to amplify the words used commonly in that document but attenuate that word frequency if the word is used across documents frequently.  Quantifying that information per word is called the TFIDF score. A simple division of term frequency within a document by document frequency is a simple but effective starting point:
+The goal is to find words that help to distinguish one document from the others. To do that we want to amplify the words used commonly in that document but attenuate that word frequency if the word is used across documents frequently.  Quantifying that information per word is called the TFIDF score. A simple division of term frequency within a document by document frequency is a simple but effective starting point:
 
 \[\tag{First approximation to TFIDF}
 \text{\em tfidf}(t,d,N) = \frac{tf(t,d)}{df(t,N)}
 \]
 
-This formula is  meaningful but gives a poor score because the document frequency tends to overwhelm the term frequency in the numerator, so we take the log of the denominator first. Here's the formula slightly rewritten as it is normally shown:
+Heavy use of $t$ in $d$ bumps the score up, but heavy use of $t$ across other documents pulls the score down.
+
+This formula is meaningful but gives a poor score because the document frequency tends to overwhelm the term frequency in the numerator, so we take the log of the denominator first. Here's the formula slightly rewritten as it is normally shown:
 
 \[\tag{TFIDF with attenuated document frequency}
 \text{\em tfidf}(t,d,N) = tf(t,d) \times log(\frac{1}{df(t,N)})
@@ -109,7 +111,13 @@ To compute TFIDF using code, we would need an overall index that maps term $t$ t
 
 \begin{center}
 \fbox{\begin{minipage}{40em}
-{\bf Aside.} To prevent division by 0 errors when a term does not exist in a corpus (e.g., $df(t,N)=0$ in search applications where we pass unknown term(s) $t$), we can simply add 1 to the denominator. This is similar to {\em additive smoothing} that you will see when estimating term probabilities in document classifiers. The technique is like pretending there is an imaginary document with every unknown word (and, indeed, every possible word). To keep document frequencies in $[0..1]$, we can to bump the document count, $N$, as well.
+{\bf Aside.} We need to prevent division by 0 errors when a term does not exist in a corpus (e.g., $df(t,N)=0$ in search applications where we pass unknown term(s) $t$). If $df(t,N)=0$, then $\frac{1}{df(t,N)}$ will be a problem.  To fix this, we can simply add 1 to the numerator of the document frequency definition:
+
+\[
+df(t,N) = \frac{|\{d_i : t \in d_i, \ i = 1..N\}|+1}{N}
+\]
+
+This is similar to {\em additive smoothing} that you will see when estimating term probabilities in document classifiers. The technique is like pretending there is an imaginary document with every unknown word (and, indeed, every possible word). To keep document frequencies in $[0..1]$, we can to bump the document count, $N$, in the denominator as well.
 
 \[\tag{$df$ with smoothing}
 df(t,N) = \frac{|\{d_i : t \in d_i, \ i = 1..N\}| + 1}{N+1}
@@ -213,7 +221,7 @@ From this table, we can conclude that most important terms in each document are 
 
 \section{Exercise}
 
-To get a feel for computing these scores, let's use Excel or some other spreadsheet to build a model we can play with. Or, for Fall 2018, I added a \href{https://github.com/parrt/msds692/blob/master/notes/tfidf.ipynb}{TFIDF example using a Pandas data frame}.
+To get a feel for computing these scores, use Excel or some other spreadsheet to build a model you can play with. Or, go through \href{https://github.com/parrt/msds692/blob/master/notes/tfidf.ipynb}{TFIDF example using a Pandas data frame}.  The {\bf key} to learning this stuff though is to do some examples by hand!
 
 For the Excel approach, I created a number of ``tables'' as you can see from this figure:
 

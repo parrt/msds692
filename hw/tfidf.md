@@ -338,6 +338,6 @@ user	0m32.372s
 sys	0m0.350s
 ```
 
-Any difference in words or TFIDF scores are treated as a 0 for that test. There are 12 randomly-selected test files used and you must get everything right for each file. I have computed the right values and store them in a pickled file, `corpus.pkl`, which is how the test compares your work for correctness. (It compares the filename to list of (value,tfidf score) tuples).
+Any difference in words or TFIDF scores are treated as a 0 for that test. There are 12 randomly-selected test files used and you must get everything right for each file. I have computed the right values and stored them in a pickled file, `corpus.pkl`, which is how the test compares your work for correctness. (It compares the filename to list of (value,tfidf score) tuples).
 
 We will also make a quick check that your `common.py` and `summarize.py` scripts generate the right output.

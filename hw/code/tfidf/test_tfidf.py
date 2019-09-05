@@ -1,19 +1,25 @@
 from tfidf import *
 import pickle
+import sys
 
 testfiles = [
-    "131679newsML.xml",
-    "31930newsML.xml",
-    "134529newsML.xml",
-    "25775newsML.xml",
-    "25828newsML.xml",
-    "134424newsML.xml",
-    "135959newsML.xml",
-    "31902newsML.xml",
-    "133023newsML.xml",
-    "133062newsML.xml",
-    "33313newsML.xml",
-    "134130newsML.xml"
+	"33214newsML.xml",
+	"33232newsML.xml",
+	"33029newsML.xml",
+	"32899newsML.xml",
+	"32775newsML.xml",
+	"32770newsML.xml",
+	"32664newsML.xml",
+	"32611newsML.xml",
+	"32351newsML.xml",
+	"32238newsML.xml",
+	"3214newsML.xml",
+	"32030newsML.xml",
+	"2878newsML.xml",
+	"2900newsML.xml",
+	"2804newsML.xml",
+	"2433newsML.xml",
+	"198798newsML.xml"
 ]
 
 zipfilename = sys.argv[1]
