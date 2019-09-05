@@ -117,7 +117,7 @@ There are also plenty of nontext, binary formats. You can learn more from the ms
 * [Intro to information extraction from text](notes/text.ipynb) (Day 5)
 * [Spacy NLP library](notes/spacy.ipynb) (Day 6)
 * [Computing TFIDF](notes/tfidf.pdf) (Day 6)
-* [TFIDF notebookd](notes/tfidf.ipynb)
+* [TFIDF notebook](notes/tfidf.ipynb)
 * [TFIDF document summarization](https://github.com/parrt/msds692/blob/master/hw/tfidf.md) (**project**) (Day 6)
 
 ## How the web works
