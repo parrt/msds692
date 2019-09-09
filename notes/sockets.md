@@ -25,7 +25,7 @@ pipes the output of `ls` to the input of `grep` using the UNIX `pipe()` function
 <img src=figures/ls-grep.png width=180>
 </center>
 
-But, what about connecting processes on separate computers? Python provides access to OS _sockets_ that allow two or more processes on the same or different computers to send/receive data. 
+But, what about connecting processes on separate computers? Python provides access to OS _sockets_ that allow two or more processes on the same or different computers to send/receive data very much like a 2-way phone connection. 
 
 <center>
 <img src=figures/browser-server.png width=250>
@@ -35,9 +35,15 @@ The good news is that we can treat sockets just like files or any other stream o
 
 ## Background
 
+### Physical layer
+
+Most of your laptops are connected by radio (WiFi) to a radio transceiver that sends data over a wired connection (Ethernet) down to a central server room that has a fiber-optic connection to an Internet service provider. The data from there could go by satellite or fiber-optic cable under the ocean, depending on source and target locations. You can think of this as the electrical plumbing of the Internet.
+
+This layer we can simply assume exists and knows how to transmit data, albeit at different rates and with different latency (time to first data).
+
 ### IP
 
-First, we need to talk about the IP protocol, which is really the lowest level abstraction above the hardware (at least from my point of view).  *Please distinguish IP protocol from ethernet, wireless, or any other physical networking mechanism.* This is a data protocol that sits on top of some physical network.
+Next, we need to talk about the IP protocol, which is really the lowest level abstraction above the hardware (at least from my point of view).  *Please distinguish IP protocol from ethernet, wireless, or any other physical networking mechanism.* This is a data protocol that sits on top of some physical network.
 
 **IP** is an addressing and fragmentation protocol:
 
@@ -53,16 +59,16 @@ One way to think of IP communication is by analogy to communications via a lette
 <img src=figures/IP-packets.png width=480>
 </center>
 
-You write the letter (this is the data you are sending); put the letter inside an envelope (the IP packet); address the envelope (using an IP address); put your return address on the envelope (your local IP address); and then you send the letter.  Like a real letter, you have no way of knowing whether an IP packet was received. If you send a second letter one day after the first, the second one may be received before the first. Or, the second one may never be received.
+You write a mutli-page letter (this is the data you are sending); put each page of the letter inside a different envelope (the IP packet); address the envelope (using an IP address); put your return address on the envelope (your local IP address); and then send the letter.  Like a real letter, you have no way of knowing whether an IP packet was received. If you send a second letter one day after the first, the second one may be received before the first. Or, the second one may never be received.
 
 ### IP Addresses
 
-IP uses _IP addresses_ to define source/target.  IPs are 32 bit numbers represented as 4 8-bit numbers separated by periods.  When you try to visit `www.cnn.com` in your browser, the computer must first translate `www.cnn.com` to an IP address.  Then the browser can make a connection to the web server on the target machine identified by the IP address.  You can think of this as the "phone number" of a machine.  There are some special IPs:
+IP uses _IP addresses_ to define source/target.  IPs are 32 bit numbers represented as 4 8-bit numbers separated by periods, such as `172.16.198.184`.  When you try to visit `www.cnn.com` in your browser, the computer must first translate `www.cnn.com` to an IP address.  Then the browser can make a connection to the web server on the target machine identified by the IP address.  You can think of this as the "phone number" of a machine.  There are some special IPs:
 
 * Behind firewalls, people often use 192.168.x.y and use NAT (_network address translation_) in their firewall to translate an outside address (a real IP) to the special IPs behind the wall. In this case there is an external or public IP address and a private IP address. My `varmint.cs.usfca.edu` machine has public IP 138.202.170.154 but internal IP 10.10.10.51 or something like that.
-* 127.0.0.1 is `localhost` or "my machine"
+* 127.0.0.1 is a way to say `localhost` or "my machine"
 
-A good security feature is to hide your machines from outside.  For example, all machines from within IBM's firewall probably look like the exact same IP address to the outside world (such as in web server log files).  That is one reason you cannot use an IP address to identify "sessions" for a web server application.
+A good security feature is to hide your machines from outside.  For example, all machines from within IBM's firewall probably look like the exact same IP address to the outside world (such as in web server log files).  That is one reason you cannot use an IP address to identify users for a web server application.
 
 **Exercise**: Install and use package `netifaces` via `import netifaces as ni` then call `ni.ifaddresses('en0')[ni.AF_INET][0]['addr']` (on linux it might be `eth0` not `en0`; on mac might be en1) (or on el capitan mac and earlier, you can do just `socket.gethostbyname(socket.gethostname())`) to figure out what your IP address is. If this pops up with 127.0.0.1 ("localhost") then you will need to go to your laptop network configurationto find your IP address.
 
@@ -70,13 +76,7 @@ A good security feature is to hide your machines from outside.  For example, all
 <img src=figures/net-config.png width=300>
 </center>
 
-**Solution**: 
-
-```python
-import netifaces as ni
-ip = ni.ifaddresses('en0')[ni.AF_INET][0]['addr']
-print(ip)
-```
+[Solution](https://github.com/parrt/msds692/tree/master/notes/code/sockets)
 
 ### DNS -- Domain Name Service
 
@@ -99,13 +99,7 @@ $ hostname
 beast.local
 ```
 
-**Solution**: 
-
-```python
-import socket
-print(socket.gethostbyname("www.usfca.edu"))
-print(socket.gethostname())
-```
+[Solution](https://github.com/parrt/msds692/tree/master/notes/code/sockets)
 
 DNS lookup is distributed so there isn't a single point of failure. A single server would also get absolutely pounded by requests from the net and would be extremely expensive to maintain. There are caches etc. that reduce the load on the DNS servers.
 
