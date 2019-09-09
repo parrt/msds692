@@ -70,13 +70,11 @@ IP uses _IP addresses_ to define source/target.  IPs are 32 bit numbers represen
 
 A good security feature is to hide your machines from outside.  For example, all machines from within IBM's firewall probably look like the exact same IP address to the outside world (such as in web server log files).  That is one reason you cannot use an IP address to identify users for a web server application.
 
-**Exercise**: Install and use package `netifaces` via `import netifaces as ni` then call `ni.ifaddresses('en0')[ni.AF_INET][0]['addr']` (on linux it might be `eth0` not `en0`; on mac might be en1) (or on el capitan mac and earlier, you can do just `socket.gethostbyname(socket.gethostname())`) to figure out what your IP address is. If this pops up with 127.0.0.1 ("localhost") then you will need to go to your laptop network configurationto find your IP address.
+**Exercise**: Install and use package `netifaces` via `import netifaces as ni` then call `ni.ifaddresses('en0')[ni.AF_INET][0]['addr']` (on linux it might be `eth0` not `en0`; on mac might be en1) (or on el capitan mac and earlier, you can do just `socket.gethostbyname(socket.gethostname())`) to figure out what your IP address is. If this pops up with 127.0.0.1 ("localhost") then you will need to go to your laptop network configurationto find your IP address. [Solution](https://github.com/parrt/msds692/tree/master/notes/code/sockets)
 
 <center>
 <img src=figures/net-config.png width=300>
 </center>
-
-[Solution](https://github.com/parrt/msds692/tree/master/notes/code/sockets)
 
 ### DNS -- Domain Name Service
 
@@ -92,14 +90,12 @@ Name:	www.usfca.edu
 Address: 104.239.221.147
 ```
 
-**Exercise**: use `gethostbyname` from the Python `socket` package to look up `www.usfca.edu`'s IP address. The IP address should be the same you get from the commandline with `nslookup`.  It'll be something like `104.239.221.147`.  Use `gethostname()` to determine your laptop's hostname. Confirm it's the same as what `hostname` from the commandline prints:
+**Exercise**: use `gethostbyname` from the Python `socket` package to look up `www.usfca.edu`'s IP address. The IP address should be the same you get from the commandline with `nslookup`.  It'll be something like `104.239.221.147`.  Use `gethostname()` to determine your laptop's hostname. [Solution](https://github.com/parrt/msds692/tree/master/notes/code/sockets) Confirm it's the same as what `hostname` from the commandline prints:
 
 ```bash
 $ hostname
 beast.local
 ```
-
-[Solution](https://github.com/parrt/msds692/tree/master/notes/code/sockets)
 
 DNS lookup is distributed so there isn't a single point of failure. A single server would also get absolutely pounded by requests from the net and would be extremely expensive to maintain. There are caches etc. that reduce the load on the DNS servers.
 
@@ -116,11 +112,13 @@ TCP (_Transmission Control Protocol_) is another protocol, a reliable but slower
 
 TCP is like a phone connection versus the simple "fire and forget" letter stateless style of IP.  TCP connections are open for the duration of a communication (i.e., until you close the connection).
 
-[A joke about back/forth with TCP/IP](https://twitter.com/KirkBater/status/953673704734683136)
+[A joke about back/forth with TCP/IP](https://twitter.com/KirkBater/status/953673704734683136):
+
+<img src="https://pbs.twimg.com/media/DTwhKGHU8AAjDh-?format=jpg&name=small" width="50%">
 
 ## What is a socket?
 
-If the IP address is like an office building's main phone number, sockets are like the extension numbers for offices and are often called the *port*.  So the IP and socket uniquely identify an "office" (server process).  You will see unique identifiers like `192.168.2.100:80` where 80 is the port.  We open sockets to these ports in order to communicate with servers.
+If the IP address is like an office building's main phone number, socket numbers are like the extension numbers for offices and are often called the *port*.  So the IP address and socket number uniquely identify an "office" (server process).  You will see unique identifiers like `192.168.2.100:80` where 80 is the port.  We open sockets to these ports in order to communicate with servers.
 
 Ports range from 1..65535.  1..1024 require root/superuser privileges to use and ports 1..255 are reserved for common, publicly-defined server ports like:
 
@@ -160,7 +158,7 @@ Continuing the office analogy further, just because you can open a connection to
 
 ### Sending mail the hard way
 
-*Our firewall from within USF is blocking port 25 SMTP traffic it appears (to hush spambots).*
+*Our firewall from within USF is blocking port 25 SMTP traffic it appears (to hush spambots). TODO: try from wired connection via ssh from desktop; seems ok*
 
 To send a piece of email, you need a mail client (even if it's telnet) that connects to an *SMTP* (Simple Mail Transfer Protocol by Jonathan B. Postel, 1982) and provides a packet of email with a target email address `user@domain.com`.
 
