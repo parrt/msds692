@@ -114,7 +114,7 @@ TCP is like a phone connection versus the simple "fire and forget" letter statel
 
 [A joke about back/forth with TCP/IP](https://twitter.com/KirkBater/status/953673704734683136):
 
-<img src="https://pbs.twimg.com/media/DTwhKGHU8AAjDh-?format=jpg&name=small" width="50%">
+<img src="https://pbs.twimg.com/media/DTwhKGHU8AAjDh-?format=jpg&name=small" width="40%">
 
 ## What is a socket?
 
