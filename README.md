@@ -124,10 +124,10 @@ There are also plenty of nontext, binary formats. You can learn more from the ms
 
 Now you know how to work with data files already sitting on your desk, we turn towards a study of computer networking and web infrastructure.
 
-* [Network sockets](notes/sockets.md), DNS, email (Day ?)
-* [client/server architecture](notes/client-server.md) (Day ?)
-* [HTTP](notes/http.md) (Day 6)
-* [flask](notes/flask.md) (Day 7)
+* [Network sockets](notes/sockets.md), DNS, email (Day 7)
+* [client/server architecture](notes/client-server.md) (Day 7)
+* [HTTP](notes/http.md) (Day ?)
+* [flask](notes/flask.md) (Day ?)
 * [Launch AWS box (MSDS501 notes)](https://github.com/parrt/msds501/blob/master/notes/aws.md), launch flask server at port 80 (Day 8)
 * [Building web servers](https://github.com/parrt/msds692/blob/master/hw/server.md) (**optional project**)
 * [Web analytics](notes/webanalytics.md) (Day 8) (Did about half of this)
