@@ -147,10 +147,10 @@ telnet: connect to address 104.239.221.147: Connection refused
 telnet: Unable to connect to remote host
 ```
 
-**Exercise**: use the `telnet` program from the commandline to connect to the following ports:
+**Exercise**: First, `brew install telnet` then use the `telnet` program from the commandline to connect to the following ports:
 
-* www.usfca.edu:80
-* stargate.cs.usfca.edu:22
+* www.usfca.edu 80
+* www.cnn.com 80
 
 Continuing the office analogy further, just because you can open a connection to a port doesn't mean you can speak the right language.  Processes at ports all speak a specific, predefined, agreed-upon protocol like HTTP. To effectively communicate you need to know both the address and the protocol.
 
