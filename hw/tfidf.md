@@ -63,7 +63,7 @@ Now that we have some raw text without all of the XML, let's properly tokenize E
 5.  Removes stop words using SciKit-Learn's `ENGLISH_STOP_WORDS` set. 
 6.  Stem the words to help normalize the text.
 
-*The easiest way to do this is simply to reuse the code I provided for you in the last project.*
+*The easiest way to do this is to use the code I have placed in the starter kit.*
 
 Make sure to lower case everything before you try to stem the words.
 

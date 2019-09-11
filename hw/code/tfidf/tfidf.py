@@ -25,6 +25,18 @@ def tokenize(text):
     found in the text. Normalize to lowercase, strip punctuation,
     remove stop words, drop words of length < 3, strip digits.
     """
+    text = text.lower()
+    text = re.sub('[' + string.punctuation + '0-9\\r\\t\\n]', ' ', text)
+    tokens = nltk.word_tokenize(text)
+    tokens = [w for w in tokens if len(w) > 2]  # ignore a, an, to, at, be, ...
+    ...
+
+def tokenize(text):
+    """
+    Tokenize text and return a non-unique list of tokenized words
+    found in the text. Normalize to lowercase, strip punctuation,
+    remove stop words, drop words of length < 3, strip digits.
+    """
 
 
 def stemwords(words):
