@@ -33,7 +33,7 @@ $ curl http://127.0.0.1:5000
 Hello MSAN692!
 ```
 
-**Exercise**: run your [previous python "get" code](https://github.com/parrt/msds692/blob/master/notes/http.md) using this URL to fetch the data. Now you have a server and a client on same machine talking to each other.
+**Exercise**: run your [previous python "requests.get()" code](https://github.com/parrt/msds692/blob/master/notes/http.md) using this `http://127.0.0.1:5000` URL to fetch the data. Now you have a server and a client on same machine talking to each other.  Try launching the server in one terminal and use another terminal to fetch the "data".
 
 **Exercise**: Add this code so server spits out its IP address and have a partner use browser and python code from previous exercise to connect to your server. Then switch.
 
