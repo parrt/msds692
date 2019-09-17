@@ -128,9 +128,9 @@ Now you know how to work with data files already sitting on your desk, we turn t
 * [client/server architecture](notes/client-server.md) (Day 7)
 * [HTTP](notes/http.md) (Day 7)
 * [flask](notes/flask.md) (Day 8)
-* [Launch AWS box (MSDS501 notes)](https://github.com/parrt/msds501/blob/master/notes/aws.md), launch flask server at port 80 (Day 8)
+* [Launch AWS box (MSDS501 notes)](https://github.com/parrt/msds501/blob/master/notes/aws.md), launch flask server at port 80 (Day 9)
 * [Building web servers](https://github.com/parrt/msds692/blob/master/hw/server.md) (**optional project**)
-* [Web analytics](notes/webanalytics.md) (Day 8) (Did about half of this)
+* [Web analytics](notes/webanalytics.md) (Day 9)
 * [Cookies](notes/cookies.md), logging in/out (Day 9)
 
 ## Data sources

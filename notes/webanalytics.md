@@ -74,7 +74,7 @@ Work with a partner on this. One person makes an html page called `t.html` that 
 </html>
 ```
 
-You can view that file with `open t.html` from a mac command line.
+You can view that file with `open t.html` from a mac command line. You are doing this from **your** laptop, not your partners.
 
 The partner has to have a flask server running with URL `/track` available (in perhaps `server.py`):
 
@@ -100,15 +100,15 @@ $ python server.py
 ...
 ```
 
-where `172.16.198.184` is my computer's IP address.  Pay attention to this because that is the IP address that the HTML file's `img` tag should reference. The HTML file is on another person's computer.
+where `172.16.198.184` is the partner's computer's IP address.  Pay attention to this because that is the IP address that the HTML file's `img` tag should reference on your laptop. The HTML file is on another person's computer.
 
-Every time you refresh the browser, your partner should see a log entry such as the following appear on their screen:
+Every time you refresh the browser on your laptop, your partner should see a log entry such as the following appear on their screen:
 
 ```
 172.16.198.180 - - [17/Sep/2017 12:42:05] "GET /track HTTP/1.1" 200 -
 ```
 
-where perhaps the `172.16.198.180` is the IP address of your partner, not the laptop running the server.
+where perhaps the `172.16.198.180` is the IP address of your laptop (the one showing the `t.html` file), not the laptop running the server.
 
 ### What is JavaScript?
 
