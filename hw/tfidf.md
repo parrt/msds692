@@ -326,6 +326,8 @@ In your repository `tfidf-`*userid*, you must have the following files in the ro
 
 ## Evaluation
 
+*You must read xml files from the .zip file; don't extract then read nor assume files have been extracted!*
+
 We will test your TFIDF functionality using `test_tfidf.py`, which uses the entire corpus for "training" but then uses just a small subset of the files for testing. For example, on my machine:
 
 ```bash
