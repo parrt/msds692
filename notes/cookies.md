@@ -308,6 +308,8 @@ http://127.0.0.1:5000/getcookie
 
 You should see `Welcome ID 212392932` in the browser. The key thing to note here is that there is no visible setting and getting of cookies in the URL or the displayed page. The displayed page magically knows the ID Because the cookies go back and forth as headers of the protocol, not the URL.
 
+You can also try incrementing the ID upon each page fetch or something like that to see cookies being updated.
+
 ## Kill cookie
 
 Servers need the ability to remove cookies from a browser's dictionary. To do that, we set the expiration date to "immediately":
