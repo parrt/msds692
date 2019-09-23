@@ -1,6 +1,6 @@
 # Pulling data from (open) REST APIs
 
-[Huge source of public APIs](https://www.publicapis.com/)
+[Big source of public APIs](https://rapidapi.com/collection/list-of-free-apis)
 
 We have already seen how to use `requests` to fetch a webpage:
 
