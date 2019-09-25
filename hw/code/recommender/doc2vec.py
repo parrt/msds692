@@ -62,6 +62,8 @@ def load_glove(filename):
     So split each line on spaces into a list; the first element is the word
     and the remaining elements represent factor components. The length of the vector
     should not matter; read vectors of any length.
+
+    When computing the vector for each document, use just the text, not the text and title.
     """
 
 

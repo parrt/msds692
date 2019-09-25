@@ -71,6 +71,18 @@ def recommended(article, articles, n):
     ...
 ```
 
+### Efficiency of loading the glove file
+
+It's important to be efficient with memory usage when loading the glove file because as a process runs out of memory it starts to slow down. We call this thrashing because it is swapping things in and out of memory to the disk and back to try to operate within the constraints given to it. For example, don't use list and dictionary comprehensions to split up the glove file as it will require too much memory. (t2.medium machines at Amazon only have 4G RAM). Instead, process the glove file one line at a time and build the dictionary in that loop; for example:
+
+```
+d = {}
+for line in f.readlines():
+    d[...] = ...
+```
+
+If your system requires too much memory, your Amazon server will appear to freeze and not respond because it is taking too much time to process the glove file.
+ 
 ### Testing your library
 
 At this point you should test your library. There's no point in trying to build a server that uses this library if we're not confident it works. It is much easier to debug a simple main program rather than a web server.  For example, with a main in `doc2vec.py`, you can run it like this:
@@ -249,7 +261,7 @@ You should now be able to run your server:
 $ gunicorn -D --threads 4 -b 0.0.0.0:5000 --access-logfile server.log --timeout 60 server:app glove.6B.300d.txt bbc
 ```
 
-All output goes into `server.log`, even after you log out. The `-D` means put the server in daemon mode, which runs the background.
+All output goes into `server.log`, even after you log out. The `-D` means put the server in daemon mode, which runs the background. During development, it's a good idea to not use that `-D` option so that error messages come to the standard output.
 
 Don't forget to open up port 5000 in the firewall for the server so that the outside world can access it. Make sure that you test from your laptop!
 
@@ -290,7 +302,7 @@ To evaluate your projects, the grader and I will run the [test_server.py](https:
 **Without the IP.txt file at the root of your repository, we cannot test your server and you get a zero!**  Our script reads your IP.txt file with:
  `with open("IP.txt") as f: host = f.read().strip()`
 
-The starterkit has `localhost:5000` in it so you can test locally before deploying to your server.
+The starterkit has `localhost:5000` in it so you can test locally before deploying to your server. You must replace `localhost` with the **public** IP address of your server.
 
 It also reads some pickled "truth" data structures that encode the articles from my solution's web server. That data was generated with [pickle_truth.py](https://github.com/parrt/msds692/blob/master/hw/code/recommender/pickle_truth.py).
 
