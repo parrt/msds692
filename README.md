@@ -131,17 +131,17 @@ Now you know how to work with data files already sitting on your desk, we turn t
 * [Launch AWS box (MSDS501 notes)](https://github.com/parrt/msds501/blob/master/notes/aws.md), AWS launch notes from [Recommending Articles Project](https://github.com/parrt/msds692/blob/master/hw/recommender.md) (Day 9)
 * [Building web servers](https://github.com/parrt/msds692/blob/master/hw/server.md) (**optional project**)
 * [Web analytics](notes/webanalytics.md) (Day 10)
-* [Cookies](notes/cookies.md), logging in/out (Day 10)
+* [Cookies](notes/cookies.md), logging in/out (Day 11)
 
 ## Data sources
 
 With an understanding of how the Internet and web works, it's time to start pulling data from various web sources.  The difficulty of collecting data depends a great deal on the permissions and services available for a site or page.  A good analogy is: some doors are open, some doors are closed, some doors are locked, some "doors" are not doors but reinforced steel walls.
 
-* [Pulling data from (open) REST APIs](notes/openapi.md) (Day 11)
-  * openpayments.us (Day 11)
+* [Pulling data from (open) REST APIs](notes/openapi.md) (Day 12)
+  * openpayments.us (Day 12)
 * [Pull data from sites requiring an API key](notes/apikey.md)
-  * Quandl stock data (Day 11)
-  * OMDb movie data (Day 11)
+  * Quandl stock data (Day 12)
+  * OMDb movie data (Day 12)
   * [Youtube](notes/youtube.md) ()
   * [Zillow](notes/zillow.md) ()
 * [APIs requiring authentication/identification](notes/authapi.md) (Optional)
