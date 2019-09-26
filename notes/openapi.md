@@ -52,7 +52,7 @@ data = json.loads(r.text)
 print(json.dumps(data))
 ```
 
-A **technical detail** related to valid strings you can include as part of a URL.  Spaces are not allowed so `John Chan` has to be encoded or "quoted".  Fortunately, `requests` does this automatically for us. If you ever need to quote URLs, use `urllib`:
+A **technical detail** related to valid strings you can include as part of a URL.  Spaces are not allowed so `John Chan` has to be encoded or "quoted".  Fortunately, `requests` does this automatically for us. If you ever need to quote URLs, you can do this:
 
 ```python
 from requests.utils import quote
