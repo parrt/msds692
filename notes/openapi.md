@@ -62,7 +62,6 @@ query = quote(query)
 Because `&` is the separator between parameters, it is also invalid in a parameter name or value. Here are some example conversions:
 
 ```python
->>> import urllib
 >>> quote("john chan")
 'john%20chan'
 >>> quote("john&chan")
