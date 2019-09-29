@@ -10,7 +10,7 @@ As another example URL `/realdonaldtrump` yields:
 
 <img src=figures/trump-tweets.png width=750>
 
-Next you will create a page responding to URLs, such as `/following/the_antlr_guy`, that displays the list of users followed by a given user:
+Next you will create a page responding to URLs, such as `/following/the_antlr_guy`, that displays up to 100 users followed by a given user:
 
 <img src=figures/parrt-follows.png width=320>
 
@@ -18,7 +18,9 @@ Or:
 
 <img src=figures/trump-follows.png width=350>
 
-Note that the users should be sorted in reverse order by their number of followers. Just to be clear, `/following/the_antlr_guy` shows the list of users that I follow sorted by how many followers those users have. Clearly, Guido has the most followers and so he is shown first in my list of people I follow.
+Note that the users should be sorted in reverse order by their number of followers. Just to be clear, `/following/the_antlr_guy` shows the list of users that I follow sorted by how many followers those users have. Clearly, Guido has the most followers and so he is shown first in my list of people I follow. 
+
+The one issue is that some users have huge following lists. For our unit tests, they don't but in general they could. Select the first 100 friend IDs returned by the API and *then* get the user info for just those IDs to avoid chasing an endless list of users. Reverse sort those by number of followers.
 
 You will do your work in repository `sentiment-`*userid*.
 
