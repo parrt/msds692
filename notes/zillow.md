@@ -34,11 +34,11 @@ KEY = sys.argv[1]  # your zillow api key/id as argument to script
 # Find out how much property 64969892 is worth
 zpid = '64969892'
 URL = "http://www.zillow.com/webservice/GetZestimate.htm?zws-id=%s&zpid=%s" % (KEY,zpid)
-print URL
+print(URL)
 response = requests.get(URL)
 xmldata = unicode.encode(response.text, encoding='ascii', errors='ignore')
 
-print xmldata
+print(xmldata)
 ```
 
 That will give us XML data back that looks like:
