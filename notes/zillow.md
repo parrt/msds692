@@ -27,7 +27,7 @@ You have to pass your ID and the property ID.
 
 ```python
 import sys
-import untangle
+import requests
 
 KEY = sys.argv[1]  # your zillow api key/id as argument to script
 
@@ -35,10 +35,8 @@ KEY = sys.argv[1]  # your zillow api key/id as argument to script
 zpid = '64969892'
 URL = "http://www.zillow.com/webservice/GetZestimate.htm?zws-id=%s&zpid=%s" % (KEY,zpid)
 print(URL)
-response = requests.get(URL)
-xmldata = unicode.encode(response.text, encoding='ascii', errors='ignore')
-
-print(xmldata)
+r = requests.get(URL)
+print(r.text)
 ```
 
 That will give us XML data back that looks like:
