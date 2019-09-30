@@ -23,7 +23,7 @@ QuoteURL = "http://www.zillow.com/webservice/GetZestimate.htm?zws-id=%s&zpid=%s"
 
 You have to pass your ID and the property ID.
 
-**Exercise**: Enter the following code to verify that you can access their API.
+**Exercise**: Enter the following code to verify that you can access their API. [Solutions](https://github.com/parrt/msds692/tree/master/notes/code/zillow)
 
 ```python
 import sys
@@ -34,7 +34,7 @@ KEY = sys.argv[1]  # your zillow api key/id as argument to script
 # Find out how much property 64969892 is worth
 zpid = '64969892'
 URL = "http://www.zillow.com/webservice/GetZestimate.htm?zws-id=%s&zpid=%s" % (KEY,zpid)
-print(URL)
+#print(URL)
 r = requests.get(URL)
 print(r.text)
 ```
@@ -80,7 +80,7 @@ In order to get the estimate, we have to navigate the XML tree using `untangle` 
 zestimate = xml.Zestimate_zestimate.response.zestimate.amount.cdata
 ```
 
-**Exercise**: Use untangle to also print out the URL of the property. The link is under the `links` tag. You should get a price and link something like this:
+**Exercise**: Use untangle to also print out the URL of the property. The link is under the `links` tag. You should get a price and link something like this: [Solutions](https://github.com/parrt/msds692/tree/master/notes/code/zillow)
 
 ```
 725896
@@ -116,9 +116,9 @@ $ python search.py yourzipid "190 7th St APT 4" "San Francisco, CA" | xmllint --
 ...
 ```
 
-**Exercise**: Using the code from your previous exercise as a base, create a new `search.py` file that searches for a property by address and prints out the `zpid` node (80734051, in this case).
+**Exercise**: Using the code from your previous exercise as a base, create a new `search.py` file that searches for a property by address and prints out the `zpid` node (80734051, in this case). [Solutions](https://github.com/parrt/msds692/tree/master/notes/code/zillow)
 
-**Exercise**: Alter your script so that it handles the situation where you have entered an invalid address. The XML you get back looks like:
+**Exercise**: Alter your script so that it handles the situation where you have entered an invalid address. The XML you get back looks like: [Solutions](https://github.com/parrt/msds692/tree/master/notes/code/zillow)
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -138,7 +138,7 @@ If there is no error you get `<code>0</code>` in the message, whereas here you c
 
 ## Historical price chart
 
-**Exercise**: Using the [GetChart](http://www.zillow.com/howto/api/GetChart.htm) API, print out a link to a chart containing data for a specific property, such as property ID 64969892. The XML you get back looks like:
+**Exercise**: Using the [GetChart](http://www.zillow.com/howto/api/GetChart.htm) API, print out a link to a chart containing data for a specific property, such as property ID 64969892. The XML you get back looks like: [Solutions](https://github.com/parrt/msds692/tree/master/notes/code/zillow)
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
