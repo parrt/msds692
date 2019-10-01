@@ -6,6 +6,14 @@ Sign in with your twitter account at [https://developer.twitter.com/](https://de
 
 [Never store your API key in your code](https://www.zdnet.com/article/over-100000-github-repos-have-leaked-api-or-cryptographic-keys/).
 
+Creating an account means answering some questions. First try add basic profile info to your account and follow a few people, such as me: `@the_antlr_guy`.   As of 2019, one student had trouble getting account verified until he answered questions as follows:
+
+* Q1: I attend the University of San Francisco. I am pursuing a master's in data science. The course I require Twitter data for is MSDS 692-Data Acquisition; the instructor for this course is Terence Parr. I intend to use Twitter data to complete a Sentiment analysis project for this course.
+* Q2: The tweets selected will be analyzed using the vaderSentiment library in python. The tweets will be colored on a scale from green to red depending on how the tweet's sentiment.
+* Q3: No
+* Q4: After completing the sentiment analysis, different tweets will be colored depending on how they are viewed. These tweets will be displayed on a server through AWS; the professor and the grader are the only people who will have the address.
+* Q5: No
+
 ## Tweet feeds
 
 Twitter provides [URLs that allow us to search recent tweets](https://developer.twitter.com/en/docs/tweets/search/overview) but it's fairly inconvenient and so we use library called [tweepy](http://tweepy.readthedocs.io/en/v3.5.0/).  You will likely have to install that.
