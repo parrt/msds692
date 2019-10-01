@@ -41,7 +41,7 @@ def comments(query):
     return comments
 
 allcomments = comments(QUERY)
-for vid in allcomments.keys()[:5]: # just 5 videos
+for vid in allcomments.keys(): # just 5 videos
     comments = allcomments[vid]
     print("Video "+vid)
     print("\t",)
