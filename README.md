@@ -145,15 +145,15 @@ With an understanding of how the Internet and web works, it's time to start pull
   * [Youtube](notes/youtube.md) (Day 13)
   * [Zillow](notes/zillow.md) (Day 13)
 * [APIs requiring authentication/identification](notes/authapi.md) (Optional)
-  * [Twitter](notes/twitter.md)  (Day 13)
+  * [Twitter](notes/twitter.md)  ()
   * [LinkedIn](notes/linkedin.md) ()
   * [Facebook](notes/facebook.md) (Optional)
-* [Extracting data from web pages](notes/scraping.md) (Day 12)
-  * [Crawling](notes/crawling.md) (Day 12)
-  * [buzzfeed](notes/buzzfeed.md) (Day 12)
-  * [Amazon](notes/amazon.md) (Day 12)
+* [Extracting data from web pages](notes/scraping.md) (Day 13)
+  * [Crawling](notes/crawling.md) (Day 13)
+  * [buzzfeed](notes/buzzfeed.md) (Day 13)
+  * [Amazon](notes/amazon.md) (Day 13)
   * [Scraping data from tables](notes/scraping-tables.md)
-* [Selenium](notes/selenium.md) (Day 13)
+* [Selenium](notes/selenium.md) (Day 14)
 
 ## Misc
 

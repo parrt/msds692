@@ -67,7 +67,7 @@ That will give us XML data back that looks like:
 ...      
 ```
 
-BTW, the XML comes back with no new lines, but we can use `xmllint` to format the output nicely like that:
+BTW, the XML comes back with no new lines, but we can use `xmllint` (`brew install xmlstarlet`) to format the output nicely like that:
 
 ```bash
 $ python zestimate.py | xmllint --format -
