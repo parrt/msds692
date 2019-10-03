@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 from collections import defaultdict
 
 def parseBF():
-    response = requests.get("https://www.buzzfeed.com/news")
+    response = requests.get("https://www.buzzfeed.com/")
     soup = BeautifulSoup(response.text, "html.parser")
 
     topics = defaultdict(set)
