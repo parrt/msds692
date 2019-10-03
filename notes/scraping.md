@@ -87,6 +87,8 @@ See [Scraping reddit](https://www.datacamp.com/community/tutorials/scraping-redd
 
 ### User agent
 
+*Grrrr...in 2019 reddit now works w/o a user-agent.*
+
 First, let's try to grab the page. If you don't set the "user agent" (browser), you'll see this in response:
 
 ```bash
@@ -128,7 +130,7 @@ curl --user-agent "Resistance is futile" https://www.reddit.com/r/all > /tmp/t.h
 
 Then we can parse / test that all we want without getting shut down by Reddit.
 
-By inspecting a comment link on that page with the browser (using developer tools), we can find its distinguishing characteristics:
+Let's say we want all the "Comments" links. By inspecting a comment link on that page with the browser (using developer tools), we can find its distinguishing characteristics:
 
 ```
 <a rel="nofollow" data-click-id="comments" data-test-id="comments-page-link-num-comments"
@@ -136,6 +138,8 @@ By inspecting a comment link on that page with the browser (using developer tool
   href="/r/gifs/comments/9k69g3/out_fishingand_getting_some_unexpected_results/"
 >
 ```
+
+<img src="figures/reddit.png" width="80%">
 
 After a lot of playing around, I decided to find all `a` tags and then filter for those starting with `/r/` and having `data-click-id` as `comments`.
 
