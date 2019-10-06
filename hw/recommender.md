@@ -211,8 +211,8 @@ Then from that remote machine:
 
 ```bash
 source activate pytorch_p36
-sudo pip install --upgrade pip
-sudo pip install numpy Flask
+pip install --upgrade pip
+pip install numpy Flask
 conda install gunicorn # regular pip install won't work it seems
 ```
 
