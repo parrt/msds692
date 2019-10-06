@@ -89,6 +89,8 @@ search_box.send_keys('USF data science')
 search_box.submit()
 ```
 
+[Solutions](https://github.com/parrt/msds692/tree/master/notes/code/selenium)
+
 ## Support code for logging in
 
 We don't ever want to store a username and password in our source code. Also, if we hardcoded info like that, we could not use software for different users. Instead, I built a little dialog box in `login.py` that asks for a username and password from the user. The `login()` returns when the user clicks on the `Login` button:
@@ -145,7 +147,8 @@ and
  placeholder="Password">
 ```
 
-That is where the user should enter their username and password. We need to launch a chrome browser at that URL and then inject characters into those two fields.  I tried selecting the input fields by `name` but it didn't work so I had to use the CSS `class` selector.
+That is where the user should enter their username and password. We need to launch a chrome browser at that URL and then inject characters into those two fields.  I tried selecting the input fields by `name` but it didn't work so I had to use the CSS `class` selector. [Solutions](https://github.com/parrt/msds692/tree/master/notes/code/selenium)
+
 
 **Exercise**:  Write a script to login to twitter. You need these statements to select the input fields:
 
@@ -153,6 +156,9 @@ That is where the user should enter their username and password. We need to laun
 userfield = driver.find_element_by_css_selector('.js-username-field.email-input.js-initial-focus')
 passwordfield = driver.find_element_by_css_selector('.js-password-field')
 ```
+
+[Solutions](https://github.com/parrt/msds692/tree/master/notes/code/selenium)
+
 
 **Exercise**: Next, alter the script to view the list of users followed by our Data Institute. You can get this information starting here `https://twitter.com/DataInstituteSF`. From that page, have the browser click on the `Following` link. I see this using the Chrome "inspect" feature:
 
@@ -165,6 +171,9 @@ passwordfield = driver.find_element_by_css_selector('.js-password-field')
 The `data-nav=following` appears to be unique.  Find that with seleniums functions and then `click()` it.
 
 Or, just tell the driver to go to `https://twitter.com/DataInstituteSF/following`
+
+[Solutions](https://github.com/parrt/msds692/tree/master/notes/code/selenium)
+
 
 **Exercise**:  Alter the script so that it (i) pages down twice to see more users followed by the Data Institute using: `driver.execute_script("window.scrollTo(0, 10000);")` and (ii) collects all of the `following` `a` tags into a list of tuples with (*link*,*link text*). I get:
 
@@ -213,6 +222,9 @@ and you can select them by using:
 ```python
 links = driver.find_elements_by_class_name('ProfileNameTruncated-link')
 ```
+
+[Solutions](https://github.com/parrt/msds692/tree/master/notes/code/selenium)
+
 
 ## Demo of JavaScript creating HTML
 
@@ -310,6 +322,8 @@ raw_input("Press Enter to quit")
 driver.quit() # close browser
 ```
 
+[Solutions](https://github.com/parrt/msds692/tree/master/notes/code/selenium)
+
 **Exercise**: Write a program to login to slack's website (not the API) using selenium and get messages from a channel with messages, such as our MSAN `general` channel.  Create a function `parse_slack` that returns list of tuples with (user,message) and then have your main code print the stuff out:
 
 ```python
@@ -363,3 +377,5 @@ driver.quit() # close browser
 There is a tricky thing to worry about: We have to wait 5 seconds or so for the brower to load our page and for the javascript to load data from slack's servers and populate the page.
 
 Add the user and message as a tuple to a list and return from `parse_slack` when done.
+
+[Solutions](https://github.com/parrt/msds692/tree/master/notes/code/selenium)
