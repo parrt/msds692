@@ -157,8 +157,8 @@ Then install software we need:
 
 ```bash
 source activate pytorch_p36
-sudo pip install --upgrade pip
-sudo pip install flask tweepy vaderSentiment colour
+pip install --upgrade pip
+pip install flask tweepy vaderSentiment colour
 conda install gunicorn # regular pip install won't work it seems
 ```
 
