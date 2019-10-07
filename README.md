@@ -148,12 +148,12 @@ With an understanding of how the Internet and web works, it's time to start pull
   * [Twitter](notes/twitter.md)  ()
   * [LinkedIn](notes/linkedin.md) ()
   * [Facebook](notes/facebook.md) (Optional)
-* [Extracting data from web pages](notes/scraping.md) (Day 13)
-  * [Crawling](notes/crawling.md) (Day 13)
-  * [buzzfeed](notes/buzzfeed.md) (Day 13)
-  * [Amazon](notes/amazon.md) (Day 13)
-  * [Scraping data from tables](notes/scraping-tables.md)
-* [Selenium](notes/selenium.md) (Day 14)
+* [Extracting data from web pages](notes/scraping.md) (Day 14)
+  * [Crawling](notes/crawling.md) (Day 14)
+  * [buzzfeed](notes/buzzfeed.md) (Day 14)
+  * [Amazon](notes/amazon.md) (Day 14)
+  * [Scraping data from tables](notes/scraping-tables.md) (Day 14)
+* [Selenium](notes/selenium.md) (Day 15)
 
 ## Misc
 
