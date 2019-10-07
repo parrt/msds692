@@ -275,7 +275,14 @@ The slack website is
 
 `https://msan-usf.slack.com`
 
-and has two text username/password fields you can "inspect" and identify for login.
+and has two text username/password fields you can "inspect" and identify for login:
+
+```
+<input type="email" id="email" name="email" size="40" value=""
+ placeholder="you@example.com" class="" aria-label="you@example.com">
+<input type="password" id="password" name="password" size="40"
+ placeholder="password" class="" aria-label="password">
+```
 
 Once logged in, the message list URL for `general` is:
 
