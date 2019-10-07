@@ -93,7 +93,27 @@ search_box.submit()
 
 ## Support code for logging in
 
-We don't ever want to store a username and password in our source code. Also, if we hardcoded info like that, we could not use software for different users. Instead, I built a little dialog box in `login.py` that asks for a username and password from the user. The `login()` returns when the user clicks on the `Login` button:
+*This broke Fall 2019 with 10.14.6 OS X due to tkinter causing OS X to crash. Thanks to Srikar Murali we have a simpler solution for typing username/password from command line. Leaving this here as it's useful to know how to build a GUI in Python.*
+
+We don't ever want to store a username and password in our source code. Also, if we hardcoded info like that, we could not use software for different users. Instead, we should read the info each time the program runs via `login.py` script:
+
+```
+from getpass import getpass
+
+def login():
+    user = input("Enter your username: ")
+    password = getpass()
+    return user, password
+
+if __name__ == '__main__':
+    print(login())
+```
+
+**Exercise**: Run that program and verify that it prints out a sample (meaningless) username and password.
+
+### GUI version
+
+I built a little dialog box in `login_gui.py` that asks for a username and password from the user. The `login()` returns when the user clicks on the `Login` button:
 
 ```python
 from tkinter import *
@@ -121,8 +141,6 @@ def login():
 if __name__ == '__main__':
     print(login())
 ```
-
-**Exercise**: Run that program and verify that it prints out a sample (meaningless) username and password.
  
 ## Log in to twitter, pull a following list
 
@@ -147,14 +165,15 @@ and
  placeholder="Password">
 ```
 
-That is where the user should enter their username and password. We need to launch a chrome browser at that URL and then inject characters into those two fields.  I tried selecting the input fields by `name` but it didn't work so I had to use the CSS `class` selector. [Solutions](https://github.com/parrt/msds692/tree/master/notes/code/selenium)
+That is where the user should enter their username and password. We need to launch a chrome browser at that URL and then inject characters into those two fields.  I tried selecting the input fields by `name` but it didn't work so I had to use the CSS `class` attribute. [Solutions](https://github.com/parrt/msds692/tree/master/notes/code/selenium)
 
 
 **Exercise**:  Write a script to login to twitter. You need these statements to select the input fields:
 
 ```python
-userfield = driver.find_element_by_css_selector('.js-username-field.email-input.js-initial-focus')
-passwordfield = driver.find_element_by_css_selector('.js-password-field')
+userfield = driver.find_element_by_class_name("js-username-field")
+userfield.send_keys(user)
+passwordfield = driver.find_element_by_class_name("js-password-field")
 ```
 
 [Solutions](https://github.com/parrt/msds692/tree/master/notes/code/selenium)
