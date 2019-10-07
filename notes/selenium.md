@@ -284,6 +284,14 @@ and has two text username/password fields you can "inspect" and identify for log
  placeholder="password" class="" aria-label="password">
 ```
 
+I found that I needed a delay to overcome a [bug](https://stackoverflow.com/questions/37200048/selenium-sendkeys-are-not-sending-all-characters):
+
+```
+userfield = driver.find_element_by_id('email')
+time.sleep(3)
+userfield.send_keys(user)
+```
+
 Once logged in, the message list URL for `general` is:
 
 `https://msan-usf.slack.com/messages/general/`
