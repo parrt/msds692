@@ -6,12 +6,12 @@ user,password = login()
 
 driver = webdriver.Chrome('/usr/local/bin/chromedriver')
 driver.get('http://www.twitter.com/login')
-userfield = driver.find_element_by_css_selector('.js-username-field.email-input.js-initial-focus')
+userfield = driver.find_element_by_class_name("js-username-field")
 userfield.send_keys(user)
-passwordfield = driver.find_element_by_css_selector('.js-password-field')
+passwordfield = driver.find_element_by_class_name("js-password-field")
 passwordfield.send_keys(password)
 passwordfield.submit()
 
 input("Press Enter to quit")
 
-driver.quit() # close browser
+driver.quit()
