@@ -13,14 +13,14 @@ passwordfield.send_keys(password)
 passwordfield.submit()
 
 driver.get('https://twitter.com/DataInstituteSF/following')
-
+time.sleep(2)
 driver.execute_script("window.scrollTo(0, 10000);") # scroll down
+time.sleep(2)
 driver.execute_script("window.scrollTo(0, 10000);") # scroll down some more
 
-links = driver.find_elements_by_class_name('ProfileNameTruncated-link')
+links = driver.find_elements_by_xpath('//a[@role="link"]')
 
-links = [(link.get_attribute('href'),link.text) for link in links]
-
+links = [(link.get_attribute("href"),link.text) for link in links if '@' in link.text]
 print(links)
 
 input("Press Enter to quit")

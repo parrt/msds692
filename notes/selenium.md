@@ -194,7 +194,7 @@ Or, just tell the driver to go to `https://twitter.com/DataInstituteSF/following
 [Solutions](https://github.com/parrt/msds692/tree/master/notes/code/selenium)
 
 
-**Exercise**:  Alter the script so that it (i) pages down twice to see more users followed by the Data Institute using: `driver.execute_script("window.scrollTo(0, 10000);")` and (ii) collects all of the `following` `a` tags into a list of tuples with (*link*,*link text*). I get:
+**Exercise**:  Alter the script so that it (i) pages down twice to see more users followed by the Data Institute using: `driver.execute_script("window.scrollTo(0, 10000);")` and (ii) collects all of the `following` `a` tags into a list of tuples with (*link*,*link text*). Make sure to do a `time.sleep(2)` before each `scrollTo` to get JavaScript have time to finish executing. Otherwise you get "stale element" errors. My output:
 
 ```
 [(u'https://twitter.com/DataInstituteSF', u''), 
@@ -221,26 +221,18 @@ Or, just tell the driver to go to `https://twitter.com/DataInstituteSF/following
 The links you want to collect are of the form:
  
 ```html
-<a class="fullname ProfileNameTruncated-link u-textInheritColor js-nav js-action-profile-name"
- href="/Vungle"
- data-aria-label-part="">
- Vungle
-</a>
+<a aria-haspopup="false" href="/willknight" role="link" data-focusable="true" class="css-4rbku5 css-18t94o4 css-1dbjc4n r-1loqt21 r-1wbh5a2 r-dnmrzs r-1ny4l3l"><div class="css-1dbjc4n r-1wbh5a2 r-dnmrzs r-1ny4l3l"><div class="css-1dbjc4n r-18u37iz r-dnmrzs"><div dir="auto" class="css-901oao css-bfa6kz r-hkyrab r-1qd0xha r-1b43r93 r-vw2c0b r-ad9z0x r-bcqeeo r-3s2u2q r-qvutc0">
 ...
-<a class="fullname  ProfileNameTruncated-link u-textInheritColor js-nav js-action-profile-name"
- href="/decodyng"
- data-aria-label-part="">
- Cody Wild
 </a>
-<a class="fullname ProfileNameTruncated-link u-textInheritColor js-nav" href="/avibryant" data-aria-label-part="">
-      Avi Bryant</a>
 ```    
 
 and you can select them by using:
  
 ```python
-links = driver.find_elements_by_class_name('ProfileNameTruncated-link')
+links = driver.find_elements_by_xpath('//a[@role="link"]')
 ```
+
+Then walk through all those links and get just those with `@` in the link text.
 
 [Solutions](https://github.com/parrt/msds692/tree/master/notes/code/selenium)
 
