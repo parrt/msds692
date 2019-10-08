@@ -179,20 +179,9 @@ passwordfield = driver.find_element_by_class_name("js-password-field")
 [Solutions](https://github.com/parrt/msds692/tree/master/notes/code/selenium)
 
 
-**Exercise**: Next, alter the script to view the list of users followed by our Data Institute. You can get this information starting here `https://twitter.com/DataInstituteSF`. From that page, have the browser click on the `Following` link. I see this using the Chrome "inspect" feature:
-
-```html
-<a ... data-nav="following" href="/DataInstituteSF/following" ...>
-  ...
-</a>
-```
-
-The `data-nav=following` appears to be unique.  Find that with seleniums functions and then `click()` it.
-
-Or, just tell the driver to go to `https://twitter.com/DataInstituteSF/following`
+**Exercise**: Next, alter the script to view the list of users followed by our Data Institute. You can get this information starting here `https://twitter.com/DataInstituteSF`. From that page, have the browser click on the `Following` link. Nothing obvious presents itself to search for using the Chrome "inspect" feature so you'll have to find all `a` tags and look for the one with `following` on the end of the `href` attribute. Find the right one and then `click()` it.
 
 [Solutions](https://github.com/parrt/msds692/tree/master/notes/code/selenium)
-
 
 **Exercise**:  Alter the script so that it (i) pages down twice to see more users followed by the Data Institute using: `driver.execute_script("window.scrollTo(0, 10000);")` and (ii) collects all of the `following` `a` tags into a list of tuples with (*link*,*link text*). Make sure to do a `time.sleep(2)` before each `scrollTo` to get JavaScript have time to finish executing. Otherwise you get "stale element" errors. My output:
 
