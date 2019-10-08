@@ -15,6 +15,7 @@ def login_and_show_channel(channel):
     
     driver.get('https://msan-usf.slack.com/')
     userfield = driver.find_element_by_id('email')
+    time.sleep(3)
     userfield.send_keys(user)
     passwordfield = driver.find_element_by_id('password')
     passwordfield.send_keys(password)
