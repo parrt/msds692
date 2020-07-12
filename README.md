@@ -20,18 +20,20 @@ This course is part of the [MS in Data Science program at the University of San 
 
 **SPATIAL COORDINATES:**<br>
 
-* Class is held at 101 Howard in 5th floor classroom 529.
-* Exams are held in the big room on the main floor. Both sections meet together.
-* My office is room 607 @ 101 Howard up on mezzanine
+* Class is hybrid this Fall; any live sessions held at 101 Howard on ground floor in big open classroom or on patio on 5th floor.
+* Exams are held in the big room on the ground floor. Both sections meet together.
+* My office is room 607 @ 101 Howard up on mezzanine but office hours will primarily be remote
 
-**TEMPORAL COORDINATES.** Tue Aug 20 - Thu Oct 10.
+**TEMPORAL COORDINATES.** Wed Oct 14, 2020 - Wed Dec 02, 2020
 
-* Section 01: Mon/Wed 10-11:50AM
-* Section 02: Mon/Wed 1:15-3:05PM 
-* Exam 1: 4-5PM, Thur Sept 12 (rooms 527/529)
-* Exam 2: 3:15-4:45PM, Thur, Oct 10 (last day of class, rooms 527/529)
+There are six 1-hour sessions on Mon and Wed each week and you'll be assigned to one of these sections
 
-*Please note Pitch day conflicts with Thur Sept 19 so we have class Monday Sept 23 3:15 - 5:05 in room 154-156.*
+* Section 1: Mon/Wed 1 - 2pm
+* Section 1: Mon/Wed 2:01 - 3pm
+* Section 1: Mon/Wed3:03 - 4pm
+
+* Exam 1:
+* Exam 2:
 
 **INSTRUCTION FORMAT**. Class runs for 1:50 hours, 2 days/week. Instructor-student interaction during lecture is encouraged and we'll mix in mini-exercises / labs during class. All programming will be done in the Python 3 programming language, unless otherwise specified.
 
