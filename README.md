@@ -1,6 +1,8 @@
 MSDS692 Data acquisition
 =======
 
+*todo*: check out [fastapi for server 2021](https://fastapi.tiangolo.com/).
+
 There are lots of exciting and interesting problems in analytics, such as figuring out what the right question is, selecting features, training a model, and interpreting results. But all of that presupposes a tidy data set that is suitable for analysis or training models. Industry experts all agree that data collection and preparation is roughly 3/4 of any analysis effort. Or, as Kareem Carr puts it (I'm guessing he includes data acquisition and organization in the term "cleaning"):
 
 <table border="0">
