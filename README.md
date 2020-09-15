@@ -53,8 +53,6 @@ The following items are even more important because all of us will be remote thi
 
 ## Student evaluation
 
-Shan: weekly assignments. 3-4 week final proj. due before final exam.
-
 | Artifact | Grade Weight | Due date |
 |--------|--------|--------|
 |[Data pipeline](https://github.com/parrt/msds692/blob/master/hw/pipeline.md)| 4%| Thu, Oct 22 |
