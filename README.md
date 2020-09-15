@@ -1,8 +1,6 @@
 MSDS692 Data acquisition
 =======
 
-*todo*: check out [fastapi for server 2021](https://fastapi.tiangolo.com/).
-
 There are lots of exciting and interesting problems in analytics, such as figuring out what the right question is, selecting features, training a model, and interpreting results. But all of that presupposes a tidy data set that is suitable for analysis or training models. Industry experts all agree that data collection and preparation is roughly 3/4 of any analysis effort. Or, as Kareem Carr puts it (I'm guessing he includes data acquisition and organization in the term "cleaning"):
 
 <table border="0">
@@ -16,63 +14,58 @@ The title of this course is "Data Acquisition" but of course, once we get the da
 This course is part of the [MS in Data Science program at the University of San Francisco](https://www.usfca.edu/arts-sciences/graduate-programs/data-science).
 
 
-# Administrivia
+# Course details
 
-**INSTRUCTOR.** [Terence Parr](http://parrt.cs.usfca.edu). I’m a professor in the computer science and [data science program](https://www.usfca.edu/arts-sciences/graduate-programs/data-science) departments and was founding director of the MS in Analytics program at USF (which became the MS data science program).  Please call me Terence or Professor (the use of “Terry” is a capital offense).
+**INSTRUCTOR.** [Terence Parr](http://parrt.cs.usfca.edu). I’m a professor in the computer science and [data science program](https://www.usfca.edu/arts-sciences/graduate-programs/data-science) departments and was founding director of the MS in Analytics program at USF (which became the MS data science program).  Please call me Terence or Professor (not “Terry”).
+
+**OFFICE HOURS**
+
+Terence is generally available on slack or email on-demand.
 
 **SPATIAL COORDINATES:**<br>
 
-* Class is hybrid this Fall; any live sessions held at 101 Howard on ground floor in big open classroom or on patio on 5th floor.
-* Exams are held in the big room on the ground floor. Both sections meet together.
-* My office is room 607 @ 101 Howard up on mezzanine but office hours will primarily be remote
+All classes are remote but live online, courtesy of COVID-19.
 
-**TEMPORAL COORDINATES.** Wed Oct 14, 2020 - Wed Dec 02, 2020
+**TEMPORAL COORDINATES.** Tue Oct 13, 2020 - Thur Dec 03, 2020
 
-There are six 1-hour sessions on Mon and Wed each week and you'll be assigned to one of these sections
+There are lectures on Tuesday and Thursday each week from 10am - 12 noon California time. Immediately following the lecture is "supplemental lab time" where Terence is available on demand for help with exercises from the lecture.
 
-* Section 1: Mon/Wed 1 - 2pm
-* Section 1: Mon/Wed 2:01 - 3pm
-* Section 1: Mon/Wed3:03 - 4pm
+* Live lecture: Tue/Thur 10:00AM - 12Noon
+* Supplemental lab time: Tue/Thur 12Noon - 1pm 
+* Live Q&A session: Tue/Thur 6PM-7PM<br/>(e.g., 9AM in Beijing, 6:30AM Mumbai)
 
-* Exam 1:
-* Exam 2:
+Exams:
 
-**INSTRUCTION FORMAT**. Class runs for 1:50 hours, 2 days/week. Instructor-student interaction during lecture is encouraged and we'll mix in mini-exercises / labs during class. All programming will be done in the Python 3 programming language, unless otherwise specified.
+* Exam 1: online, open-book and available for 24 hours
+* Exam 2: online, open-book and available for 24 hours
 
-**TARDINESS.** Please be on time for class. It is a big distraction if you come in late.
+**INSTRUCTION FORMAT**. Live class runs for 2 hours, 2 days/week. Instructor-student interaction during lecture is encouraged by speaking up in zoom. We'll often mix in mini-exercises / labs during class. All programming will be done in the Python 3 programming language, unless otherwise specified.
 
-**ACADEMIC HONESTY.** You must abide by the copyright laws of the United States and academic honesty policies of USF. You may not copy code from other current or previous students. All suspicious activity will be investigated and, if warranted, passed to the Dean of Sciences for action.  Copying answers or code from other students or sources during a quiz, exam, or for a project is a violation of the university’s honor code and will be treated as such. Plagiarism consists of copying material from any source and passing off that material as your own original work. Plagiarism is plagiarism: it does not matter if the source being copied is on the Internet, from a book or textbook, or from quizzes or problem sets written up by other students. Giving code or showing code to another student is also considered a violation.
+**PROFESSIONALISM**
 
-The golden rule: **You must never represent another person’s work as your own.**
-
-If you ever have questions about what constitutes plagiarism, cheating, or academic dishonesty in my course, please feel free to ask me.
-
-**Note:** Leaving your laptop unattended is a common means for another student to take your work. It is your responsibility to guard your work. Do not leave your printouts laying around or in the trash. *All persons with common code are likely to be considered at fault.*
-
-**USF policies and legal declarations**
-
-*Students with Disabilities*
-
-If you are a student with a disability or disabling condition, or if you think you may have a disability, please contact <a href="/sds">USF Student Disability Services</a> (SDS) for information about accommodations.
-
-*Behavioral Expectations*
-
-All students are expected to behave in accordance with the <a href="/fogcutter">Student Conduct Code</a> and other University policies.
-
-*Academic Integrity*
-
-USF upholds the standards of honesty and integrity from all members of the academic community. All students are expected to know and adhere to the University's <a href="/academic-integrity/">Honor Code</a>.
-
-*Counseling and Psychological Services (CAPS)*
-
-CAPS provides confidential, free <a href="/student-health-safety/caps">counseling</a> to student members of our community.
-
-*Confidentiality, Mandatory Reporting, and Sexual Assault*
-
-For information and resources regarding sexual misconduct or assault visit the <a href="/TITLE-IX">Title IX</a> coordinator or USFs <a href="http://usfca.callistocampus.org" target="_blank">Callisto website</a>.
+The following items are even more important because all of us will be remote this Fall:
+ 
+* Showing respect for your classmates and your professor
+* Getting to class on time every time
+* No cellphones, email, social media, slack, texting during the class
+* Turn off all of your various notifications so you are not distracted
+* Turn on your webcam on zoom
 
 ## Student evaluation
 
+Shan: weekly assignments. 3-4 week final proj. due before final exam.
+
+| Artifact | Grade Weight | Due date |
+|--------|--------|--------|
+|[Data pipeline](https://github.com/parrt/msds692/blob/master/hw/pipeline.md)| 4%| Thu, Oct 22 |
+|[Search Engine Implementation](https://github.com/parrt/msds692/blob/master/hw/search.md)| 12% | Tue, Nov 3 |
+|[TFIDF document summarization](https://github.com/parrt/msds692/blob/master/hw/tfidf.md)| 8%| Thu, Nov 12 |
+|[Recommending Articles](https://github.com/parrt/msds692/blob/master/hw/recommender.md)| 8% | Thu, Nov 19 |
+|[Tweet Sentiment Analysis](https://github.com/parrt/msds692/blob/master/hw/sentiment.md)| 8% | Tue, Dec 3 |
+|Exam 1| 25%| Tue, Nov 10 |
+|Exam 2| 35%| Mon, Dec 7|
+
+<!--
 | Artifact | Grade Weight | Due date |
 |--------|--------|--------|
 |[Data pipeline](https://github.com/parrt/msds692/blob/master/hw/pipeline.md)| 4%| Fri, Aug 30 11:59pm |
@@ -80,8 +73,9 @@ For information and resources regarding sexual misconduct or assault visit the <
 |[TFIDF document summarization](https://github.com/parrt/msds692/blob/master/hw/tfidf.md)| 8%| Wed 11:59PM, Sep 18 |
 |[Recommending Articles](https://github.com/parrt/msds692/blob/master/hw/recommender.md)| 8% | Tue, Sep 24 |
 |[Tweet Sentiment Analysis](https://github.com/parrt/msds692/blob/master/hw/sentiment.md)| 8% | Tue, Oct 8 |
-|Exam 1| 25%| Thu, Sept 12 |
-|Exam 2| 35%| Thu, Oct 10 |
+|Exam 1| 25%| Thu, Sep 12 |
+|Exam 2| 35%| Thu, Oct 10 | must be dec 4 or 7-10
+-->
 
 All projects will be graded with the specific input or tests given in the project description, so you understand precisely what is expected of your program. Consequently, projects will be graded in binary fashion: They either work or they do not. The only exception is when your program does not run on the grader's or my machine because of some cross-platform issue. This is typically because a student has hardcoded some file name or directory into their program. In that case, we will take off *a minimum* of 10% instead of giving you a 0, depending on the severity of the mistake.  Please go to github and verify that the website has the proper files for your solution. That is what I will download for testing.
 
@@ -163,3 +157,41 @@ With an understanding of how the Internet and web works, it's time to start pull
 
 * [San Francisco police activity heat map using google map API](notes/heatmap.md)
 * [Debugging with PyCharm](notes/debugger.md)
+
+## Administrative details
+
+**ACADEMIC HONESTY**. You must abide by the copyright laws of the United States and academic honesty policies of USF. You may not copy code from other current or previous students. All suspicious activity will be investigated and, if warranted, passed to the Dean of Sciences for action.  Copying answers or code from other students or sources during a quiz, exam, or for a project is a violation of the university’s honor code and will be treated as such. Plagiarism consists of copying material from any source and passing off that material as your own original work. Plagiarism is plagiarism: it does not matter if the source being copied is on the Internet, from a book or textbook, or from quizzes or problem sets written up by other students. Giving code or showing code to another student is also considered a violation.
+
+The golden rule: **You must never represent another person’s work as your own.**
+
+If you ever have questions about what constitutes plagiarism, cheating, or academic dishonesty in my course, please feel free to ask me.
+
+*All persons with common code are likely to be considered at fault.*
+
+### USF policies and legal declarations
+
+*Students with Disabilities*
+
+If you are a student with a disability or disabling condition, or if you think you may have a disability, please contact [USF Student Disability Services](https://myusf.usfca.edu/sds) (SDS) for information about accommodations.
+
+*Behavioral Expectations*
+
+All students are expected to behave in accordance with the [Student Conduct Code](https://myusf.usfca.edu/fogcutter/student-conduct) and other University policies.
+
+*Academic Integrity*
+
+USF upholds the standards of honesty and integrity from all members of the academic community. All students are expected to know and adhere to the University's [Honor Code](https://myusf.usfca.edu/academic-integrity/honor-code)
+
+*Counseling and Psychological Services (CAPS)*
+
+CAPS provides confidential, free [counseling](https://myusf.usfca.edu/caps) to student members of our community.
+
+*Confidentiality, Mandatory Reporting, and Sexual Assault*
+
+For information and resources regarding sexual misconduct or assault visit the <a href="https://myusf.usfca.edu/title-ix">Title IX</a> coordinator or USFs <a href="http://usfca.callistocampus.org">Callisto website</a>.
+
+## todo
+
+check out [fastapi for server 2021](https://fastapi.tiangolo.com/).
+
+
