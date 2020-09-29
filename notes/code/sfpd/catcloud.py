@@ -6,7 +6,7 @@ import sys
 
 df_sfpd = pd.read_csv(sys.argv[1])
 
-if len(sys.argv)>1:
+if len(sys.argv)>2:
 	df_sfpd = df_sfpd[df_sfpd['Analysis Neighborhood']==sys.argv[2]]
 
 df_sfpd = df_sfpd[~df_sfpd['Incident Category'].isnull()]
