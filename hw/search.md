@@ -298,7 +298,15 @@ $ python -m pytest -v test_berlitz.py ~/data/berlitz1
 $ python -m pytest -v test_htable.py 
 ```
 
-The hash table implementation is worth 60% and the Berlitz data search tests are worth 40%. Again, we will attempt to grade in a binary fashion (works or doesn't) because you have all of the known tests.
+Further, we will run
+
+```bash
+$ python -m pytest -v test_hidden.py 
+```
+
+that tests your hash table more rigorously. The hidden tests are worth 10%, so the maximum you can get is 90% if you fail all hidden tests.
+
+The hash table implementation is worth 60% (50+10) and the Berlitz data search tests are worth 40%. Again, we will attempt to grade in a binary fashion (works or doesn't) because you have most of the tests before submission.
 
 Ultimately, you want the test results to look like the following.
 

@@ -26,7 +26,7 @@ Terence is generally available on slack or email on-demand.
 
 All classes are remote but live online, courtesy of COVID-19.
 
-**TEMPORAL COORDINATES.** Tue Oct 13, 2020 - Thur Dec 03, 2020
+**TEMPORAL COORDINATES.** Tue Oct 13, 2020 - Thur Dec 1, 2020 (No lecture Dec 3)
 
 There are lectures on Tuesday and Thursday each week from 10am - 12 noon California time. Immediately following the lecture is "supplemental lab time" where Terence is available on demand for help with exercises from the lecture.
 
@@ -55,13 +55,13 @@ The following items are even more important because all of us will be remote thi
 
 | Artifact | Grade Weight | Due date |
 |--------|--------|--------|
-|[Data pipeline](https://github.com/parrt/msds692/blob/master/hw/pipeline.md)| 4%| Thu, Oct 22 |
+|[Data pipeline](https://github.com/parrt/msds692/blob/master/hw/pipeline.md)| 6%| Thu, Oct 22 |
 |[Search Engine Implementation](https://github.com/parrt/msds692/blob/master/hw/search.md)| 12% | Tue, Nov 3 |
-|[TFIDF document summarization](https://github.com/parrt/msds692/blob/master/hw/tfidf.md)| 8%| Thu, Nov 12 |
+|[TFIDF document summarization](https://github.com/parrt/msds692/blob/master/hw/tfidf.md)| 10%| Thu, Nov 12 |
 |[Recommending Articles](https://github.com/parrt/msds692/blob/master/hw/recommender.md)| 8% | Thu, Nov 19 |
-|[Tweet Sentiment Analysis](https://github.com/parrt/msds692/blob/master/hw/sentiment.md)| 8% | Tue, Dec 3 |
-|Exam 1| 25%| Tue, Nov 10 |
-|Exam 2| 35%| Mon, Dec 7|
+|[Tweet Sentiment Analysis](https://github.com/parrt/msds692/blob/master/hw/sentiment.md)| 10% | Tue, Dec 3 |
+|Exam 1| 27%| Tue, Nov 10 |
+|Exam 2| 27%| Mon, Dec 7|
 
 <!--
 | Artifact | Grade Weight | Due date |
