@@ -28,11 +28,11 @@ All classes are remote but live online, courtesy of COVID-19.
 
 **TEMPORAL COORDINATES.** Tue Oct 13, 2020 - Thur Dec 1, 2020 (No lecture Dec 3)
 
-There are lectures on Tuesday and Thursday each week from 10am - 12 noon California time. Immediately following the lecture is "supplemental lab time" where Terence is available on demand for help with exercises from the lecture.
+There are lectures on Tuesday and Thursday each week from 10am - 12 noon California time. 
 
-* Live lecture: Tue/Thur 10:00AM - 12Noon
-* Supplemental lab time: Tue/Thur 12Noon - 1pm 
-* Live Q&A session: Tue/Thur 6PM-7PM<br/>(e.g., 9AM in Beijing, 6:30AM Mumbai)
+* Live lecture: Tue and Thur 10:00AM - 12Noon
+
+Terence is generally available on-demand for help with exercises from the lecture or projects, even on weekends.
 
 Exams:
 
@@ -82,6 +82,8 @@ Each project has a hard deadline and only those projects working correctly befor
 **Grading standards**. I consider an **A** grade to be above and beyond what most students have achieved. A **B** grade is an average grade for a student or what you could call "competence" in a business setting. A **C** grade means that you either did not or could not put forth the effort to achieve competence. Below **C** implies you did very little work or had great difficulty with the class compared to other students.
 
 # Syllabus
+
+We're going to start the class with a cool [lab to extract coronavirus data from Wikipedia](notes/day-one-lab.ipynb).
 
 ## Data formats
 
