@@ -85,6 +85,13 @@ Each project has a hard deadline and only those projects working correctly befor
 
 We're going to start the class with a cool [lab to extract coronavirus data from Wikipedia](notes/day-one-lab.ipynb).
 
+## Tools
+
+Before we get to the meat of the course, we need to get familiar with some important tools: the commandline (`Terminal.app`) and `git`.
+ 
+* [Bash your way to victory](https://github.com/parrt/msds501/blob/master/notes/bash-intro.md)
+* [Using git revision control](https://github.com/parrt/msds501/blob/master/notes/git.md)
+
 ## Data formats
 
 Most data you encounter will be in the form of human readable text, such as comma-separated value (CSV) files. We begin the course by studying how characters are stored in files and learning about the key data formats.
