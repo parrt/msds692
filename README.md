@@ -1,7 +1,7 @@
 MSDS692 Data acquisition
 =======
 
-There are lots of exciting and interesting problems in analytics, such as figuring out what the right question is, selecting features, training a model, and interpreting results. But all of that presupposes a tidy data set that is suitable for analysis or training models. Industry experts all agree that data collection and preparation is roughly 3/4 of any analysis effort. Or, as Kareem Carr puts it (I'm guessing he includes data acquisition and organization in the term "cleaning"):
+There are lots of exciting and interesting problems in data science, such as figuring out what the right question is, selecting features, training a model, and interpreting results. But all of that presupposes a tidy data set that is suitable for analysis or training models. Industry experts all agree that data collection and preparation is roughly 3/4 of any analysis effort. Or, as Kareem Carr puts it (I'm guessing he includes data acquisition and organization in the term "cleaning"):
 
 <table border="0">
 <tr valign="top" border="0">
@@ -9,7 +9,7 @@ There are lots of exciting and interesting problems in analytics, such as figuri
 </tr>
 </table>
 
-The title of this course is "Data Acquisition" but of course, once we get the data, we have to organize it into handy data structures and typically have to extract information from the raw data. For example, we might need to boil down a Twitter stream into a single positive or negative sentiment score for a given user.  This course teaches you how to collect, organize, coalesce, and extract information from multiple sources in preparation for your analysis work. Along the way, you'll learn about networks, the internet protocols, and your own building web servers.
+The title of this course is "Data Acquisition" but of course, once we get the data, we have to organize it into handy data structures and typically have to extract information from the raw data. For example, we might need to boil down a Twitter stream into a single positive or negative sentiment score for a given user.  This course teaches you how to collect, organize, coalesce, and extract information from multiple sources in preparation for your analysis work. Along the way, you'll learn about the commandline, git, networks, the internet protocols, and building your own web servers.
 
 This course is part of the [MS in Data Science program at the University of San Francisco](https://www.usfca.edu/arts-sciences/graduate-programs/data-science).
 
@@ -55,11 +55,12 @@ The following items are even more important because all of us will be remote thi
 
 | Artifact | Grade Weight | Due date |
 |--------|--------|--------|
-|[Data pipeline](https://github.com/parrt/msds692/blob/master/hw/pipeline.md)| 6%| Thu, Oct 22 |
-|[Search Engine Implementation](https://github.com/parrt/msds692/blob/master/hw/search.md)| 12% | Tue, Nov 3 |
-|[TFIDF document summarization](https://github.com/parrt/msds692/blob/master/hw/tfidf.md)| 10%| Thu, Nov 12 |
-|[Recommending Articles](https://github.com/parrt/msds692/blob/master/hw/recommender.md)| 8% | Thu, Nov 19 |
-|[Tweet Sentiment Analysis](https://github.com/parrt/msds692/blob/master/hw/sentiment.md)| 10% | Tue, Dec 3 |
+|[Data pipeline](https://github.com/parrt/msds692/blob/master/hw/pipeline.md)| 5%| Thu, Oct 22 |
+|[Search Engine Implementation](https://github.com/parrt/msds692/blob/master/hw/search.md)| 11% | Tue, Nov 3 |
+|[TFIDF document summarization](https://github.com/parrt/msds692/blob/master/hw/tfidf.md)| 9%| Thu, Nov 12 |
+|[Recommending Articles](https://github.com/parrt/msds692/blob/master/hw/recommender.md)| 7% | Thu, Nov 19 |
+|[Tweet Sentiment Analysis](https://github.com/parrt/msds692/blob/master/hw/sentiment.md)| 9% | Tue, Dec 3 |
+| Code reviews for 5 projects | 5% | Due 11:59PM on day associated project is due |
 |Exam 1| 27%| Tue, Nov 10 |
 |Exam 2| 27%| Mon, Dec 7|
 
@@ -89,8 +90,8 @@ We're going to start the class with a cool [lab to extract coronavirus data from
 
 Before we get to the meat of the course, we need to get familiar with some important tools: the commandline (`Terminal.app`) and `git`.
  
-* [Bash your way to victory](https://github.com/parrt/msds501/blob/master/notes/bash-intro.md)
-* [Using git revision control](https://github.com/parrt/msds501/blob/master/notes/git.md)
+* [Bash your way to victory](https://github.com/parrt/msds501/blob/master/notes/bash-intro.md) (From [MSDS501](https://github.com/parrt/msds501))
+* [Using git revision control](https://github.com/parrt/msds501/blob/master/notes/git.md) (From [MSDS501](https://github.com/parrt/msds501))
 
 ## Data formats
 
@@ -101,7 +102,6 @@ Most data you encounter will be in the form of human readable text, such as comm
 	* reading delimited data; tsv, csv
 	* reading/generating XML (we'll load complicated XML in [TFIDF project](https://github.com/parrt/msds692/blob/master/hw/tfidf.md))
 	* reading/generating json
-* (git intro; clone, add, commit, push, pull; see [Using git revision control](https://github.com/parrt/msds501/blob/master/notes/git.md) from Boot camp)
 * [Excel and CSV data](notes/excel.ipynb) (Day 2)
 * [PDF using pdftotext](notes/pdf.ipynb) (Extracting text from Tesla's marketing brochure) (Day 2)
 * [HTML](notes/html.ipynb) (Parsing Tesla's IPO prospectus) (Day 3)
