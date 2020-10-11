@@ -60,7 +60,7 @@ The following items are even more important because all of us will be remote thi
 |[TFIDF document summarization](https://github.com/parrt/msds692/blob/master/hw/tfidf.md)| 9%| Thu, Nov 12 |
 |[Recommending Articles](https://github.com/parrt/msds692/blob/master/hw/recommender.md)| 7% | Thu, Nov 19 |
 |[Tweet Sentiment Analysis](https://github.com/parrt/msds692/blob/master/hw/sentiment.md)| 9% | Tue, Dec 3 |
-| Code reviews for 5 projects | 5% | Due 11:59PM on day associated project is due |
+| [Code reviews](hw/code-review.ipynb) for 5 projects | 5% | Due 11:59PM on day associated project is due |
 |Exam 1| 27%| Tue, Nov 10 |
 |Exam 2| 27%| Mon, Dec 7|
 
