@@ -1,5 +1,7 @@
 # Data translation pipeline
 
+*All projects in this class are individual projects, not group projects.  You may not look at or discuss code with others until after you have submitted your own individual effort.*
+
 ## Goal
 
 The goal of this  homework is to study the most common text-based data formats: `csv`, `xml`, `json`, and `html`.  Parsing data files can be tricky, but generating them is easy and teaches you to speak in those languages.  In this first homework, you will therefore be generating data in multiple formats but using standard Python libraries to read that data back in. The exception is that you will be parsing comma-separated value (CSV) files the hard way.  You will generate output using Python strings or a template engine like jinja2.
