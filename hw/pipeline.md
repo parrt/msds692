@@ -111,7 +111,7 @@ def readcsv(data):
     return header, data
 ```
 
-Here is a sample Python test script that prints out the results of our `readcsv` function:
+Here is a sample Python test script, `test_readcsv.py`, that prints out the results of our `readcsv` function:
 
 ```python
 import mycsv
@@ -239,7 +239,7 @@ JSON, a format typically used for the transmission of JavaScript data objects, i
 
 **For evaluation purposes, you must follow the order shown in that JSON. The records must be in the order of the rows found in the CSV and the order of the key names/data must follow the columns found in the CSV.**
 
-You can add the Chrome extension [JSONView](https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc), by the way, so that you can view JSON in the browser nicely.  You can also use `jq` to view things from the commandline:
+You can add the Chrome extension [JSONView](https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc), by the way, so that you can view JSON in the browser nicely.  You can also use `jq` (`brew install jq`) to view things from the commandline:
 
 <img src=figures/json-jq.png width=400>
  
