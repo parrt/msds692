@@ -194,8 +194,7 @@ def test_dublin_and_hawaii_index():
 def test_dublin_and_hawaii_myhtable():
     dotest(terms="hawaii dublin", expected=[], which=2)
 
-test_lisbon_myhtable()
-
+#test_lisbon_myhtable()
 #test_hawaii()
 #test_greek()
 #test_lisbon()
