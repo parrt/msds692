@@ -224,7 +224,7 @@ tfidf = TfidfVectorizer(input='content',
                         analyzer='word',
                         preprocessor=gettext,
                         tokenizer=tokenizer,
-                        stop_words='english',
+                        stop_words='english', # even more stop words
                         decode_error = 'ignore')
 ```                        
 
