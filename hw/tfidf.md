@@ -4,7 +4,7 @@
 
 ## Goal
 
-The goal of this homework is to learn a core technique used in text analysis called *TFIDF* or *term frequency, inverse document frequency*.  We will use what is called a *bag-of-words* representation where the order of words in a document don't matter--we care only about the words and how often they occur. A word's TFIDF value is often used as a feature for document clustering or classification. The more a term helps to distinguish its enclosing document from other documents, the higher its TFIDF score. As such, words with high TFIDF scores are often very good summarizing keywords for document.
+The goal of this homework is to learn a core technique used in text analysis called *TFIDF* or *term frequency, inverse document frequency*.  We will use what is called a *bag-of-words* representation where the order of words in a document doesn't matter--we care only about the words and how often they occur. A word's TFIDF value is often used as a feature for document clustering or classification. The more a term helps to distinguish its enclosing document from other documents, the higher its TFIDF score. As such, words with high TFIDF scores are often very good summarizing keywords for document.
 
 As a practical matter, you will learn how to process some real XML files (Reuters articles) in Python.
 
@@ -65,7 +65,7 @@ Now that we have some raw text without all of the XML, let's properly tokenize E
 5.  Removes stop words using SciKit-Learn's `ENGLISH_STOP_WORDS` set. 
 6.  Stem the words to help normalize the text.
 
-*The easiest way to do this is to use the code I have placed in the starter kit.*
+*The easiest way to do this is to use the code I have placed in the starter kit. It also make sure that we are comparing the same words in the unit test.*
 
 Make sure to lower case everything before you try to stem the words.
 
