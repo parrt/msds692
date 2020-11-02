@@ -2,7 +2,7 @@ import sys
 
 import nltk
 from nltk.stem.porter import *
-from sklearn.feature_extraction import stop_words
+from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
 import xml.etree.cElementTree as ET
 from collections import Counter
 import string

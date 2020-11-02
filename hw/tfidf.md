@@ -212,7 +212,7 @@ pricipl 0.096
 eastland 0.096
 ```
 
-So, we pass in the overall corpus and then a specific file for which we want the top TFIDF scored words. The output shows max 20 words and with **three decimals of precision**. Print only those words scoring >= 0.09. In your `summarize()` function, discard any terms with scores < 0.09 so that it is consistent with my "ground truth" and then your summarize.py file main program doesn't have to filter them.
+So, we pass in the overall corpus and then a specific file for which we want the top TFIDF scored words. The output shows max 20 words and with **three decimals of precision**. Print only those words scoring >= 0.09. In your `summarize()` function, discard any terms with scores < 0.09 so that it is consistent with my "ground truth" and then your `summarize.py` file main program doesn't have to filter them.
 
 We'll use `scikit-learn` to compute TFIDF for us.  There are lots of examples on the web how to use the `TfidfVectorizer` but the parameters I use are:
 
