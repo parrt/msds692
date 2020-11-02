@@ -186,7 +186,7 @@ This works great but can we do better?
 
 ### TFIDF
 
-Our "most common word" mechanism is simple and pretty effective but not as good as we can do.  We need to penalize words that are not only common in that article but common across articles. E.g., `said` and `price` probably don't help to summarize an article as they are very common words.
+Our "most common word" mechanism is simple and pretty effective but not as good as we can do.  We need to penalize words that are not only uncommon in that article but common across articles. E.g., `said` and `price` probably don't help to summarize an article as they are very common words.
 
 We need to use TFIDF on a corpus of articles from which we can compute the term frequency across articles.  Here is how we will execute our program (`summarize.py`):
 
