@@ -189,6 +189,8 @@ RCPT TO: <support@antlr.org>             <--
 250 Ok
 DATA                                     <--
 354 End data with <CR><LF>.<CR><LF>
+From: parrt@cs.usfca.edu                 <--  Needs this header
+                                         <--
 This is a test                           <--
 so nothing really                        <--
 .                                        <--
