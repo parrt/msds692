@@ -93,6 +93,8 @@ $ curl http://127.0.0.1:5000
 <p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
 ```
 
+**Exercise**: Use `curl -v` with URL `http://127.0.0.1:5000/hello`. Look at the `GET` line. What does it show? What is the relationship between the URL and what is sent as part of the HTTP protocol?
+
 We can also use part of the URL as kind of a parameter. Make the following change:
 
 ```python
@@ -107,6 +109,9 @@ Restart your server and visit URL `http://127.0.0.1:5000/hello/parrt` should giv
 $ curl http://127.0.0.1:5000/hello/parrt
 Hello parrt!
 ```
+
+**Exercise**: Use `curl -v` with URL `http://127.0.0.1:5000/hello`. Look at the
+ `GET` line again; how has it changed?
 
 Try it with different names after the `/hello/`:
 
@@ -177,3 +182,7 @@ def foo():
     else:
         return mydata_html
 ```
+
+**Exercise**: Create a server that responds to URL `/data` by sending back the data stored at URL `https://raw.githubusercontent.com/parrt/msds621/master/data/cars.csv`. Hint: use `requests` library to go get that data.
+
+**Exercise**:  Do the same thing except now use pandas to read the URL into a data frame and then use `to_html()` to create HTML. Send that HTML back from the response to URL `/data`.
