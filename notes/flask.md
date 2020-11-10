@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "Hello MSAN692!\n"
+    return "Hello MSDS692!\n"
 
 app.run()
 ```
@@ -26,11 +26,11 @@ $ python hello.py
 
 The default flask server listens at port 5000. To contact the server, we need the address of the machine, just our local host, and the port: 127.0.0.1:5000.
 
-Now go to URL `http://127.0.0.1:5000` in your favorite browser (or click on that link if you are in PyCharm) and it should show text `Hello MSAN692!` in the browser. Or test it from the command line:
+Now go to URL `http://127.0.0.1:5000` in your favorite browser (or click on that link if you are in PyCharm) and it should show text `Hello MSDS692!` in the browser. Or test it from the command line:
 
 ```bash
 $ curl http://127.0.0.1:5000
-Hello MSAN692!
+Hello MSDS692!
 ```
 
 **Exercise**: run your [previous python "requests.get()" code](https://github.com/parrt/msds692/blob/master/notes/http.md) using this `http://127.0.0.1:5000` URL to fetch the data. Now you have a server and a client on same machine talking to each other.  Try launching the server in one terminal and use another terminal to fetch the "data".
@@ -64,7 +64,7 @@ $ curl -v http://127.0.0.1:5000
 < Server: Werkzeug/0.11.11 Python/2.7.12
 < Date: Sun, 17 Sep 2017 19:11:27 GMT
 < 
-Hello MSAN692!
+Hello MSDS692!
 * Closing connection 0
 ```
 
@@ -80,7 +80,7 @@ Restart your server. If you go to URL `http://127.0.0.1:5000/hello`, you should 
 
 ```bash
 $ curl http://127.0.0.1:5000/hello
-Hello MSAN692!
+Hello MSDS692!
 ```
 
 If you don't have `/hello`, you will get a "Not Found" error:
