@@ -42,7 +42,7 @@ import netifaces as ni
 ip = ni.ifaddresses('en0')[ni.AF_INET][0]['addr']
 print("I'm at IP "+ip)
 ...
-app.run('0.0.0.0')
+app.run('0.0.0.0')  # NEEDED SO ANY IP ADDRESS CAN CONNECT TO YOU
 ```
 
 Ok, so that little Web server actually spits out lots of stuff that you don't see.  Using the `-v` option, you can see the entire conversation between the client, `curl`, and the server:
