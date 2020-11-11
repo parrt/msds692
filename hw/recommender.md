@@ -2,8 +2,6 @@
 
 *All projects in this class are individual projects, not group projects.  You may not look at or discuss code with others until after you have submitted your own individual effort.*
 
-*todo: add arg data types and data class for an article object*
-
 The goal of this project is to learn how to make a simple article recommendation engine using a semi-recent advance in natural language processing called [word2vec](http://arxiv.org/pdf/1301.3781.pdf) (or just *word vectors*). In particular, we're going to use a "database" from [Stanford's GloVe project](https://nlp.stanford.edu/projects/glove/) trained on a dump of Wikipedia. The project involves reading in a database of word vectors and a corpus of text articles then organizing them into a handy table (list of lists) for processing.
 
 Around the recommendation engine, you are going to build a web server that displays a list of [BBC](http://mlg.ucd.ie/datasets/bbc.html) articles for URL `http://localhost:5000` (testing) or whatever the IP address is of your Amazon server (deployment):
@@ -28,13 +26,22 @@ In a nutshell, each word has a vector of, say, 300 floating-point numbers that s
 
 Two words are related if their word vectors are close in 300 space. Similarly, if we compute the centroid of a document's cloud of word vectors, related articles should have centroids close in 300 space. Words that appear frequently in a document push the centroid in the direction of that word's vector. The centroid is just the sum of the vectors divided by the number of words in the article. Given an article, we can compute the distance from its centroid to every other article's centroid. The article centroids closest to the article of interest's centroid are the most similar articles. Surprisingly, this simple technique works well as you can see from the examples above.
 
-Given a word vector filename, such as `glove.6B.300d.txt`, and the root directory of the BBC article corpus, we will use the following functions from `doc2vec.py` in the main `server.py` file to load them into memory:
+Given a word vector filename, such as `glove.6B.300d.txt`, and the root directory of the BBC article corpus, we will use the following functions from `doc2vec.py` in the main `server.py` file to load them into memory. Finding the glove and articles arguments is trickier than usual because we are launching the Web server using gunicorn. For example:
+
+```
+gunicorn -D --threads 4 -b 0.0.0.0:5000 --access-logfile server.log --timeout 60 server:app glove.6B.300d.txt bbc
+```
+
+To find `glove.6B.300d.txt` and `bbc`, we look at just after the `server:app` argument:
 
 ```python
 # get commandline arguments
-i = sys.argv.index('server:app')
+i = sys.argv.index('server:app') # find out where arguments start
 glove_filename = sys.argv[i+1]
 articles_dirname = sys.argv[i+2]
+
+gloves = load_glove(glove_filename)
+articles = load_articles(articles_dirname, gloves)
 ```
 
 The `gloves` variable is the dictionary mapping a word to its 300-vector vector. The `articles` is a list of records, one for each article. An article record is just a list containing the fully-qualified file name, the article title, the text without the title, and the word vector computed from the text without the title.
@@ -45,7 +52,25 @@ Then to get the list of most relevant five articles, we'll do this:
 seealso = recommended(doc, articles, 5)
 ```
 
-The description of those functions is in `doc2vec.py` from the starter kit, but it's worth summarizing them here:
+The description of all those functions is in `doc2vec.py` from the starter kit, but it's worth summarizing them here:
+
+```python
+def load_glove(filename):
+    """
+    Read all lines from the indicated file and return a dictionary
+    mapping word:vector where vectors are of numpy `array` type.
+    GloVe file lines are of the form:
+
+    the 0.418 0.24968 -0.41242 0.1217 ...
+
+    So split each line on spaces into a list; the first element is the word
+    and the remaining elements represent factor components. The length of the vector
+    should not matter; read vectors of any length.
+
+    When computing the vector for each document, use just the text, not the text and title.
+    """
+    ...
+```
 
 ```python
 def load_articles(articles_dirname, gloves):
@@ -114,7 +139,7 @@ Besides those core functions, you need to build a web server as well using flask
 
 <img src="figures/bbc.png" width=300>
 
-So, if you are testing and from your laptop, you would go to the following URL in your browser to get the list of articles:
+So, if you are testing from your laptop, you would go to the following URL in your browser to get the list of articles:
 
 `http://localhost:5000/`
 
@@ -173,21 +198,21 @@ As you can see, all of the processes for `gunicorn` are now dead. You kill the p
 "Don't panic!" When you leave your web server up at port 80 for more than a few minutes, you will see people from around the web try to break into your computer. For example, you will see URLs like `/mysql/admin/`, `/phpmyadmin/`, `/dbadmin/`, `/mysql/`. The attacker is trying to use known exploits or default passwords for these various kinds of servers hoping to get in. You will see log entries printed from your flask server that look like this (138.202.1.109 was me):
 
 ```
-$ gunicorn -D --threads 4 -b 0.0.0.0:80 --access-logfile server.log --timeout 60 server:app glove.6B.300d.txt bbc
- * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+$ gunicorn -D --threads 4 -b 0.0.0.0:5000 --access-logfile server.log --timeout 60 server:app glove.6B.300d.txt bbc
+ * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
 138.202.1.109 - - [20/Sep/2017 20:02:45] "GET / HTTP/1.1" 200 -
 138.202.1.109 - - [20/Sep/2017 20:03:07] "GET / HTTP/1.1" 200 -
 138.202.1.109 - - [20/Sep/2017 20:03:09] "GET / HTTP/1.1" 200 -
 138.202.1.109 - - [20/Sep/2017 20:10:20] "GET / HTTP/1.1" 200 -
-89.133.128.188 - - [20/Sep/2017 20:12:31] "HEAD http://174.129.105.171:80/dbadmin/ HTTP/1.1" 404 -
-89.133.128.188 - - [20/Sep/2017 20:12:32] "HEAD http://174.129.105.171:80/pma/ HTTP/1.1" 404 -
-89.133.128.188 - - [20/Sep/2017 20:12:32] "HEAD http://174.129.105.171:80/db/ HTTP/1.1" 404 -
-89.133.128.188 - - [20/Sep/2017 20:12:32] "HEAD http://174.129.105.171:80/admin/ HTTP/1.1" 404 -
-89.133.128.188 - - [20/Sep/2017 20:12:32] "HEAD http://174.129.105.171:80/mysql/ HTTP/1.1" 404 -
-89.133.128.188 - - [20/Sep/2017 20:12:33] "HEAD http://174.129.105.171:80/database/ HTTP/1.1" 404 -
-89.133.128.188 - - [20/Sep/2017 20:12:33] "HEAD http://174.129.105.171:80/db/phpmyadmin/ HTTP/1.1" 404 -
-89.133.128.188 - - [20/Sep/2017 20:12:33] "HEAD http://174.129.105.171:80/db/phpMyAdmin/ HTTP/1.1" 404 -
-89.133.128.188 - - [20/Sep/2017 20:12:33] "HEAD http://174.129.105.171:80/sqlmanager/ HTTP/1.1" 404 -
+89.133.128.188 - - [20/Sep/2017 20:12:31] "HEAD http://174.129.105.171:5000/dbadmin/ HTTP/1.1" 404 -
+89.133.128.188 - - [20/Sep/2017 20:12:32] "HEAD http://174.129.105.171:5000/pma/ HTTP/1.1" 404 -
+89.133.128.188 - - [20/Sep/2017 20:12:32] "HEAD http://174.129.105.171:5000/db/ HTTP/1.1" 404 -
+89.133.128.188 - - [20/Sep/2017 20:12:32] "HEAD http://174.129.105.171:5000/admin/ HTTP/1.1" 404 -
+89.133.128.188 - - [20/Sep/2017 20:12:32] "HEAD http://174.129.105.171:5000/mysql/ HTTP/1.1" 404 -
+89.133.128.188 - - [20/Sep/2017 20:12:33] "HEAD http://174.129.105.171:5000/database/ HTTP/1.1" 404 -
+89.133.128.188 - - [20/Sep/2017 20:12:33] "HEAD http://174.129.105.171:5000/db/phpmyadmin/ HTTP/1.1" 404 -
+89.133.128.188 - - [20/Sep/2017 20:12:33] "HEAD http://174.129.105.171:5000/db/phpMyAdmin/ HTTP/1.1" 404 -
+89.133.128.188 - - [20/Sep/2017 20:12:33] "HEAD http://174.129.105.171:5000/sqlmanager/ HTTP/1.1" 404 -
 ...
 ```
 
@@ -213,7 +238,7 @@ There are predefined functions with comments indicating the required functionali
 
 Creating a server that has all the appropriate software can be tricky so I have recorded a sequence that works for me.
 
-The first thing is to launch a server with different software than the simple  Amazon linux we have been using in class. We need one that has, for example, `numpy` and friends so let's use an *image* (snapshot of a disk with a bunch of stuff installed) that already has machine learning software installed.  As of August 2019, the following sequence works. Select a t2.medium instance with "*Deep Learning AMI (Ubuntu) Version 24.0 - ami-004852354728c0e51*".  Create a `t2.medium` size computer (in Oregon; it's cheaper)!  The cost is 0.047 dollars per Hour, which is only 1.12 dollars per day.
+The first thing is to launch a server with different software than the simple  Amazon linux we have been using in class. We need one that has, for example, `numpy` and friends so let's use an *image* (snapshot of a disk with a bunch of stuff installed) that already has machine learning software installed.  As of October 2020, the following sequence works. Select image  "*AMI ID Deep Learning AMI (Ubuntu 18.04) Version 36.0 (ami-05fbe06ba1b862ef6)*".  Create a `t2.medium` size computer (in Oregon; it's cheaper)!  The cost is 0.0464 dollars per Hour, which is only 1.12 dollars per day.
 
 Here's how I login:
  
@@ -224,20 +249,21 @@ $ ssh -i "parrt.pem" ubuntu@somemachineIPorname
 Then from that remote machine:
 
 ```bash
-source activate pytorch_p36
 pip install --upgrade pip
 pip install numpy Flask
+conda update -n base conda
 conda install gunicorn # regular pip install won't work it seems
 ```
 
-It seems to want `python3` not `python` as the Python executor name.  Numpy and friends should be installed already:
+Numpy and friends should be installed already:
 
 ```bash
-(pytorch_p36) ubuntu@ip-172-30-0-156:~$ python3
-Python 3.6.5 |Anaconda, Inc.| (default, Apr 29 2018, 16:14:56) 
-[GCC 7.2.0] on linux
+ubuntu@ip-172-30-0-118:~$ python
+Python 3.7.6 (default, Jan  8 2020, 19:59:22) 
+[GCC 7.3.0] :: Anaconda, Inc. on linux
 Type "help", "copyright", "credits" or "license" for more information.
 >>> import numpy as np
+>>> 
 ```
 
 After logging in, clone your repository into the home directory:
@@ -265,9 +291,10 @@ $ gunicorn -D --threads 4 -b 0.0.0.0:5000 --access-logfile server.log --timeout 
 
 All output goes into `server.log`, even after you log out. The `-D` means put the server in daemon mode, which runs the background. During development, it's a good idea to not use that `-D` option so that error messages come to the standard output.
 
-Don't forget to open up port 5000 in the firewall for the server so that the outside world can access it. Make sure that you test from your laptop!
+Don't forget to open up port 5000 in the firewall for the server so that the outside world can access it. Make sure that you test from your laptop! If you go to `http://52.8.56.222:5000/` in your browser, you should see the main list of articles.
 
 Make sure the `IP.txt` file as the **public** IP address of your server with `:5000` on the line by itself, such as `54.198.43.135:5000`!
+
 
 ## Deliverables
 
@@ -285,7 +312,7 @@ In your github repository, you should submit the following:
 
 ### AWS
 
-As part of your submission, you must launch a Linux instanceBig enough to hold the 300-vectors  at Amazon and install your software + necessary data. Then launch your server and keep it running for the duration of our grading period. We will notify you when it's okay to terminate that instance. Choose a server that is only about 5 cents per hour (either medium or large; not sure).
+As part of your submission, you must launch a Linux instance big enough to hold the 300-vectors  at Amazon and install your software + necessary data. Then launch your server and keep it running for the duration of our grading period. We will notify you when it's okay to terminate that instance. Choose a server that is only about 5 cents per hour (either medium or large; not sure).
 
 Here is how I launch my server on AWS (see above) or locally:
  
@@ -295,14 +322,17 @@ $ gunicorn -D --threads 4 -b 0.0.0.0:5000 --access-logfile server.log --timeout 
 
 All output goes into `server.log`, even after you log out. The `-D` means put the server in daemon mode (the background).  It means we can still access the Web server even though you are not connected with ssh.
 
-Note that I you must give fully-qualified pathnames to the word vectors and the root of the BBC article corpus, if they are not in the same directory.
+Note that you must give fully-qualified pathnames to the word vectors and the root of the BBC article corpus, if they are not in the same directory.
 
 ## Evaluation
 
 To evaluate your projects, the grader and I will run the [test_server.py](https://github.com/parrt/msds692/blob/master/hw/code/recommender/test_server.py) script, from your repo root directory, that automatically pulls your article list page and a selection of article pages to check that your recommendations match our solution.
 
 **Without the IP.txt file at the root of your repository, we cannot test your server and you get a zero!**  Our script reads your IP.txt file with:
- `with open("IP.txt") as f: host = f.read().strip()`
+ ```python
+with open("IP.txt") as f:
+	host = f.read().strip()
+```
 
 The starterkit has `localhost:5000` in it so you can test locally before deploying to your server. You must replace `localhost` with the **public** IP address of your server.
 
@@ -328,3 +358,8 @@ test_server.py::test_sample_articles PASSED
 *Getting the article list right is worth 20% and getting the recommended articles right is worth 80%.* As you have the complete test, you should be able to get it working and we will grade in binary fashion (works or it doesn't).
 
 *Make sure that your web server process is still running after you break the `ssh` connection by using a browser to connect at your server's public IP address*.
+
+## parrt future notes
+
+*todo: add arg data types and data class for an article object*
+
