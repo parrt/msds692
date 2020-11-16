@@ -60,6 +60,10 @@ The HTML asks the browser to display a simple image:
 
 Your browser makes **two** web requests, one to xyz.com to get the page itself and **another** to www.antlr.org for the image.
 
+Using the inspector in Google Chrome, we can see that this page fetches the icon:
+
+<img src="network-traffic.png" width="600">
+
 Any page on the Internet that references this image would notify my antlr.org server every time a browser visited that page. Now imagine that the image is an invisible 1x1 image and you can see how it could be hidden in lots of websites. Antlr.org could then track references to pages all over the net.   The amount we can track from this image reference depends on how much information we add to the `img` tag URL. Here we are not adding anything but typically JavaScript is used to collect all sorts of information and pass it to the tracking server through URL parameters or cookies (more on this later).
 
 ### Exercise
