@@ -60,7 +60,7 @@ The HTML asks the browser to display a simple image:
 
 Your browser makes **two** web requests, one to xyz.com to get the page itself and **another** to www.antlr.org for the image.
 
-Using the inspector in Google Chrome, we can see that this page fetches the icon:
+Using the inspector in Google Chrome on [pageimg.html](pageimg.html), we can see that this page fetches the icon:
 
 <img src="network-traffic.png" width="600">
 
