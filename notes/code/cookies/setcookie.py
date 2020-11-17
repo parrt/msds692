@@ -12,6 +12,8 @@ def cookie_insertion():
 @app.route('/getcookie')
 def getcookie():
    name = request.cookies.get('ID')
+   if name is None:
+       return "<h1>You are a mysterious visitor</h1>"
    return '<h1>Welcome ID '+name+'</h1>'
 
 app.run()

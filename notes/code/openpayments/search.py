@@ -1,17 +1,11 @@
-# https://docs.python.org/2/howto/urllib2.html
 import requests
-import sys
 import json
+import sys
 
-URL = "http://openpayments.us/data?query=%s"
+name = sys.argv[1]
+URL = f"http://openpayments.us/data?query={name}"
 
-query = sys.argv[1]
-
-r = requests.get(URL % query)
-jsondata = r.text
-
-#print jsondata                          # raw json
-
-data = json.loads(jsondata)             # dictionary version
+r = requests.get(URL)
+data = json.loads(r.text)
 
 print(json.dumps(data, indent=4))

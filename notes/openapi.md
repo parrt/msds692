@@ -26,7 +26,7 @@ Now, let's look at a website that will give us JSON data: [www.openpayments.us](
 There is a REST data API available at URL template:
 
 ```
-URL = "http://openpayments.us/data?query=%s"
+URL = f"http://openpayments.us/data?query={q}" # for some q
 ```
 **Exercise**: Use `curl` to fetch data about a doctor.
 
@@ -43,10 +43,10 @@ import requests
 import json
 import sys
 
-URL = "http://openpayments.us/data?query=%s"
 name = sys.argv[1]
+URL = f"http://openpayments.us/data?query={name}"
 
-r = requests.get(URL % name)
+r = requests.get(URL)
 data = json.loads(r.text)
 
 print(json.dumps(data))
