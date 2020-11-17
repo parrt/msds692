@@ -206,6 +206,10 @@ The HTML asks the browser to display a simple image:
 
 Recall that your browser makes **two** web requests, one to xyz.com to get the HTML page and **another** to www.antlr.org for the image.  
 
+Using the inspector in Google Chrome on [pageimg.html](pageimg.html), we can see that this page fetches the icon:
+
+<img src="network-traffic.png" width="600">
+
 It not only notifies the `antlr.org` server but the image reference gives `antlr.org` the opportunity to send cookies to the browser, say, *X=Y*. Any page, literally anywhere on the Internet, that references *anything* at `antlr.org` will send that *X=Y* cookie back to the `antlr.org` server along with the image request. Now `antlr.org` knows whenever you access a webpage containing one of its images. It can use the *Y* value to uniquely identify users simply by creating a unique identifier as *Y* for every new `antlr.org` request (any request that does not come in with antlr cookies set).
 
 ## Using hidden images to track users
