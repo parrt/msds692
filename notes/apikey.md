@@ -94,8 +94,8 @@ Let's also learn a more convenient way to specify URL parameters (with a diction
 URL = "http://www.omdbapi.com/?"
 
 args = {
-	's' : 'cats',
-	'r' : 'json',
+   's' : 'cats',
+   'r' : 'json',
    'apikey' : YOUR_OMDB_API_KEY
 }
 
@@ -131,9 +131,9 @@ Look at `r.url` so you can see how it encodes the dictionary as GET arguments on
 
 ```python
 args = {
-	't' : movie_title,
-	'y' : movie_year,
-   'apikey' : YOUR_OMDB_API_KEY
+    't' : movie_title,
+    'y' : movie_year,
+    'apikey' : YOUR_OMDB_API_KEY
 }
 ```
 

@@ -12,9 +12,9 @@ term = sys.argv[2]
 URL = "http://www.omdbapi.com/?"
 
 args = {
-	's' : term,
-	'r' : 'json',
-        'apikey' : key
+    's' : term,
+    'r' : 'json',
+    'apikey' : key
 }
 
 r = requests.get(URL, params=args)
