@@ -7,11 +7,12 @@ import json
 import sys
 
 key = sys.argv[1]
+term = sys.argv[2]
 
 URL = "http://www.omdbapi.com/?"
 
 args = {
-	's' : 'cats',
+	's' : term,
 	'r' : 'json',
         'apikey' : key
 }
