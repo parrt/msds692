@@ -1,7 +1,5 @@
 # API home http://www.omdbapi.com/
 
-# no key required
-
 import requests
 import json
 import sys

@@ -1,8 +1,6 @@
 # API home http://www.omdbapi.com/
 # python lib https://github.com/dgilland/omdb.py
 
-# no key required
-
 # Derived from https://blog.n-der.net/?p=14
 import requests
 import json
