@@ -23,7 +23,7 @@ QuoteURL = "http://www.zillow.com/webservice/GetZestimate.htm?zws-id=%s&zpid=%s"
 
 You have to pass your ID and the property ID.
 
-**Exercise**: Enter the following code to verify that you can access their API. [Solutions](https://github.com/parrt/msds692/tree/master/notes/code/zillow)
+**Exercise**: Enter the following code into `zxml.py` to verify that you can access their API. [Solutions](https://github.com/parrt/msds692/tree/master/notes/code/zillow)
 
 ```python
 import sys
@@ -70,7 +70,7 @@ That will give us XML data back that looks like:
 BTW, the XML comes back with no new lines, but we can use `xmllint` (`brew install xmlstarlet`) to format the output nicely like that:
 
 ```bash
-$ python zestimate.py | xmllint --format -
+$ python zxml.py | xmllint --format -
 ...
 ```
 
@@ -98,22 +98,8 @@ SearchURL = "http://www.zillow.com/webservice/GetSearchResults.htm?zws-id=%s&add
 Where those arguments are passed into your script like this:
 
 ```bash
-$ python search.py yourzipid "190 7th St APT 4" "San Francisco, CA" | xmllint --format -
-<?xml version="1.0" encoding="utf-8"?>
-<SearchResults:searchresults ...>
-  <request>
-    <address>190 7th St APT 4</address>
-    <citystatezip>San Francisco, CA</citystatezip>
-  </request>
-  <message>
-    <text>Request successfully processed</text>
-    <code>0</code>
-  </message>
-  <response>
-    <results>
-      <result>
-        <zpid>80734051</zpid>
-...
+$ python search.py yourzipid "190 7th St APT 4" "San Francisco, CA"
+80734051
 ```
 
 **Exercise**: Using the code from your previous exercise as a base, create a new `search.py` file that searches for a property by address and prints out the `zpid` node (80734051, in this case). [Solutions](https://github.com/parrt/msds692/tree/master/notes/code/zillow)

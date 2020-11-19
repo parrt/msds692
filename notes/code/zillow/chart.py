@@ -19,7 +19,6 @@ SearchURL = "http://www.zillow.com/webservice/GetChart.htm?zws-id=%s&zpid=%s&uni
 URL = SearchURL % (KEY, '64969892')
 r = requests.get(URL)
 xmldata = r.text
-#print(xmldata)
 
 xml = untangle.parse(xmldata)
 code = xml.Chart_chart.message.code.cdata
