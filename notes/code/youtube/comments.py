@@ -8,7 +8,7 @@ YOUTUBE_API_SERVICE_NAME = "youtube"
 YOUTUBE_API_VERSION = "v3"
 
 def videoIDs(query):
-    youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, developerKey=DEVELOPER_KEY)
+#    youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, developerKey=DEVELOPER_KEY)
     search_response = youtube.search().list(
         q=query,            # search terms
         part="id,snippet",  # what we want back
@@ -23,9 +23,6 @@ def comments(query):
     ids = videoIDs(query)
     comments = {} # map video ID to list of comment strings
     for id in ids:
-        youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION,
-                        developerKey=DEVELOPER_KEY)
-
         results = youtube.commentThreads().list(
             part="snippet",
             videoId=id,
@@ -40,6 +37,7 @@ def comments(query):
             comments[id].append("Comment by %s: %s" % (author, text))
     return comments
 
+youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, developerKey=DEVELOPER_KEY)
 allcomments = comments(QUERY)
 for vid in allcomments.keys(): # just 5 videos
     comments = allcomments[vid]
