@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import csv
 
 URL = "https://www.amazon.com/gp/bestsellers/books"
-r = requests.get(URL)
+r = requests.get(URL, headers={'User-Agent': "Resistance is futile"})
 htmltext = r.text
 print(htmltext)
 
