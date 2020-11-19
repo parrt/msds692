@@ -31,6 +31,14 @@ for link in soup.findAll(f):
     ...
 ```
 
+If you don't like that approach, you can use the more explicit:
+
+```
+for link in soup.find_all("a"):
+    if 'data-bfa' not in link.attrs: continue
+    attr = link['data-bfa']
+```
+
 **Exercise**: Write a `parseBF` function that fetches `https://www.buzzfeed.com/`, parses with beautiful soup, and then uses the `for` loop above to find all of the appropriate tags. While debugging, you can print out `link['href']` to show the link, or of course you can print the whole `link`. Next, extract to the `post_category` from the `data-bfa` attribute.  Fill and return a dictionary that maps category/topic two a set of `href` links.  Using the following main script to print out the dictionary
 
 ```python
