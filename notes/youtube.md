@@ -143,7 +143,7 @@ for vid in allcomments.keys()[:5]: # just 5 videos
 Sample output:
 
 ```bash
-$ python comments.py SECRETKEY 'cats and dogs'
+$ python comments.py SECRETKEY 'star wards'
 ...
 Video zKoBk37EKG4
 	Comment by Jamie Carey: I want a pug
