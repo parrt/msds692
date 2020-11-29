@@ -123,6 +123,16 @@ You must update the `templates/following.html` HTML template to generate user re
 
 **Sort the users by how many followers they have**.
 
+### Warning about rate limits
+
+Twitter limits how many tweets and users you can look up every 15 minutes. If you exceed that it will either return an error about "rate limit exceeded" or simply give you fewer results. So, when you are testing, you are likely to repeatedly hit the server and break this limit.  Please add the following argument so that it waits until you can pull again:
+
+```python
+api = tweepy.API(auth, wait_on_rate_limit=True)
+```
+
+Unfortunately, it means your code might take 15 minutes to terminate. I will certainly wait 15 minutes until after the project is due before I start pulling data for testing.
+
 ## Getting started
 
 Download the [starterkit](https://github.com/parrt/msds692/tree/master/hw/code/sentiment), which has the following files and structure (from `tree` commandline tool):
