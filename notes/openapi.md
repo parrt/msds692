@@ -55,16 +55,16 @@ print(json.dumps(data))
 A **technical detail** related to valid strings you can include as part of a URL.  Spaces are not allowed so `John Chan` has to be encoded or "quoted".  Fortunately, `requests` does this automatically for us. If you ever need to quote URLs, you can do this:
 
 ```python
-from requests.utils import quote
-query = quote(query)
+from requests.utils import requote_uri
+query = requote_uri(query)
 ```
 
 Because `&` is the separator between parameters, it is also invalid in a parameter name or value. Here are some example conversions:
 
 ```python
->>> quote("john chan")
+>>> requote_uri("john chan")
 'john%20chan'
->>> quote("john&chan")
+>>> requote_uri("john&chan")
 'john%26chan'
 ```
 
