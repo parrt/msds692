@@ -60,8 +60,7 @@ def fetch_following(api,name):
        created: created date (no time info)
        image: the URL of the profile's image
 
-    To collect data: get a list of "friends IDs" then get
-    the list of users for each of those. Select the first 100
-    friend IDs returned by the API and *then* get the user info for
-    just those IDs to avoid chasing an endless list of users.
+    To collect data: get the list of User objects back from friends();
+    get a maximum of 100 results. Pull the appropriate values from
+    the User objects and put them into a dictionary for each friend.
     """
