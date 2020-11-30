@@ -26,13 +26,12 @@ def login_and_show_channel(channel):
 def parse_slack():
     "Return list of (user,messages)"
     time.sleep(5) # have to wait for slack app to pull data from server and render it.
-    msg_wrappers = driver.find_elements_by_class_name('c-message__content')
-    #msg_wrappers = driver.find_elements_by_xpath("//ts-message")
+    msg_wrappers = driver.find_elements_by_class_name('c-message_kit__message')
     data = []
     for wrapper in msg_wrappers:
         print(wrapper)
         try:
-            msg = wrapper.find_element_by_class_name("c-message__body")
+            msg = wrapper.find_element_by_class_name("p-rich_text_block")
         except:
             print("can't find message body")
             continue
