@@ -35,22 +35,28 @@ mv ~/Downloads/chromedriver /usr/local/bin
 (You might have to create `/usr/local/bin` dir.)
 <hr>
 
-I also noticed that the driver was sitting in my Anaconda directory: `/Users/parrt/anaconda3/chromedriver-Darwin` but don't use this one as it is out of date: the version numbers are different:
+I also noticed that the driver was sitting in my Anaconda directory: `~/opt/anaconda3/chromedriver-Darwin` but don't use this one as it is out of date: the version numbers are different:
 
 ```bash
-$ /Users/parrt/anaconda2/chromedriver-Darwin
+$ ~/opt/anaconda3/chromedriver-Darwin
 Starting ChromeDriver 2.24.417412 (ac882d3ce7c0d99292439bf3405780058fcca0a6) on port 9515
 Only local connections are allowed.
+```
+
+```bash
 $ /usr/local/bin/chromedriver 
-Starting ChromeDriver 2.42.591059 (0be2cd95f834e9ee7c46bcc7cf405b483f5ae83b) on port 9515
+Starting ChromeDriver 87.0.4280.20 (c99e81631faa0b2a448e658c0dbd8311fb04ddbd-refs/branch-heads/4280@{#355}) on port 9515
 Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+[1606765857.984][WARNING]: FromSockAddr failed on netmask
+ChromeDriver was started successfully.
 ```
 
 *On mac, make sure Chrome browser is installed in the usual spot:* `/Applications/Google Chrome.app/`.
 
 ## Launching a Chrome Browser
 
-Here is the boilerplate code that launches a chrome browser to the Google search page, waits for a keypress, and then closes the browser.
+Here is the boilerplate code that launches a chrome browser to the Google search page, waits for a keypress, and then closes the browser. Call it `launch_chrome.py`.
 
 (Do *not* call your program `selenium.py` or you won't be able to import selenium.)
 
