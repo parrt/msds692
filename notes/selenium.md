@@ -295,37 +295,28 @@ Once logged in, the message list URL for `general` is:
 
 The "inspect element" feature of the browser shows messages themselves to look like:
 
-```html
-<span class="c-message__body">blah blah</span>
-```
+<img src="figures/slack.png" width="750">
 
-But we need to associate these with a user.  To do that we notice that such `span`s are nested within an outer wrapper that also helps us identify the user:
+But we need to associate these with a user.  To do that we notice that messages are nested within an outer wrapper that also helps us identify the user:
 
 ```html
-<div class="c-message__content"
-     data-qa="message_content">
+<div class="c-message_kit__message ..." ...>
    ...
 ```
 
 Under that you'll find the sender like this:
 
 ```html
-<span class="c-message__sender"
-      data-qa="message_sender">
-      <a class="c-message__sender_link"
-               href="/team/UBL5G4TT6" target="_blank"
-               rel="noopener noreferrer"
-               data-stringify-suffix=" "
-               data-message-sender="UBL5G4TT6"
-               data-qa="message_sender_name">
-          Nicole Kacirek
+<span class="c-message__sender ..." ...>
+     <a ... href="/team/UBL5G4TT6" target="_blank" ...>
+          Person's name
       </a>
 </span>
 ```
 
 We can easily search for class `c-message__sender`.
 
-The links returned by selenium for the user look like `/team/UBL5G4TT6`.
+The links returned by selenium for the user look like `/team/foo`.
 
 **Exercise**: To get started, write a script to login to slack and jump to a specific channel like `general`. My outline looks like:
 
@@ -356,7 +347,7 @@ driver.quit() # close browser
 
 [Solutions](https://github.com/parrt/msds692/tree/master/notes/code/selenium)
 
-**Exercise**: Write a program to login to slack's website (not the API) using selenium and get messages from a channel with messages, such as our MSAN `general` channel.  Create a function `parse_slack` that returns list of tuples with (user,message) and then have your main code print the stuff out:
+**Exercise**: Write a program to login to slack's website (not the API) using selenium and get messages from a channel with messages, such as our MSDS `general` channel.  Create a function `parse_slack` that returns list of tuples with (user,message) and then have your main code print the stuff out:
 
 ```python
 from login import login
