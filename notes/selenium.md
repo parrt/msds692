@@ -157,32 +157,25 @@ In order to login to twitter, we can go directly to `https://twitter.com/login`,
 The input elements are:
 
 ```html
-<input class="js-username-field email-input js-initial-focus"
- type="text"
- name="session[username_or_email]"
- autocomplete="on" value="" placeholder="Phone, email or username">
+<input autocapitalize="none" autocomplete="on" autocorrect="off" name="session[username_or_email]" spellcheck="false" type="text" dir="auto" data-focusable="true" class="r-30o5oe r-1niwhzg r-17gur6a r-1yadl64 r-deolkf r-homxoj r-poiln3 r-7cikom r-1ny4l3l r-1inuy60 r-utggzx r-vmopo1 r-1w50u8q r-ny71av r-1dz5y72 r-fdjqy7 r-13qz1uu" value="">
 ```
 
 and
 
 ```html
-<input class="js-password-field"
- type="password" name="session[password]"
- placeholder="Password">
+<input autocapitalize="none" autocomplete="on" autocorrect="off" name="session[password]" spellcheck="false" type="password" dir="auto" data-focusable="true" class="r-30o5oe r-1niwhzg r-17gur6a r-1yadl64 r-deolkf r-homxoj r-poiln3 r-7cikom r-1ny4l3l r-1inuy60 r-utggzx r-vmopo1 r-1w50u8q r-ny71av r-1dz5y72 r-fdjqy7 r-13qz1uu" value="">
 ```
 
-That is where the user should enter their username and password. We need to launch a chrome browser at that URL and then inject characters into those two fields.  I tried selecting the input fields by `name` but it didn't work so I had to use the CSS `class` attribute. [Solutions](https://github.com/parrt/msds692/tree/master/notes/code/selenium)
-
-
-**Exercise**:  Write a script to login to twitter. You need these statements to select the input fields:
+That is where the user should enter their username and password. We need to launch a chrome browser at that URL and then inject characters into those two fields.  I tried selecting the input fields by `name` but it didn't work so I had to look for the `input` tags and check their type using XPath:
 
 ```python
-userfield = driver.find_element_by_class_name("js-username-field")
-userfield.send_keys(user)
-passwordfield = driver.find_element_by_class_name("js-password-field")
+driver.find_element_by_css_selector("input[type='text']")
 ```
 
-[Solutions](https://github.com/parrt/msds692/tree/master/notes/code/selenium)
+Also, I had to put in a time delay after the page fetch to allow JavaScript time to compute and populate the login page.
+
+
+**Exercise**:  Write a script to login to twitter. [Solutions](https://github.com/parrt/msds692/tree/master/notes/code/selenium)
 
 
 **Exercise**: Next, alter the script to view the list of users followed by our Data Institute. You can get this information starting here `https://twitter.com/DataInstituteSF`. From that page, have the browser click on the `Following` link. Nothing obvious presents itself to search for using the Chrome "inspect" feature so you'll have to find all `a` tags and look for the one with `following` on the end of the `href` attribute. Find the right one and then `click()` it.
