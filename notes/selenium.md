@@ -35,6 +35,12 @@ mv ~/Downloads/chromedriver /usr/local/bin
 (You might have to create `/usr/local/bin` dir.)
 <hr>
 
+If you get error, "*chromedriver cannot be opened because the developer cannot be verified. macOS cannot verify that this app is free from malware*" when you run `/usr/local/bin/chromedriver`, try:
+
+```bash
+xattr -d com.apple.quarantine /usr/local/bin/chromedriver
+```
+
 I also noticed that the driver was sitting in my Anaconda directory: `~/opt/anaconda3/chromedriver-Darwin` but don't use this one as it is out of date: the version numbers are different:
 
 ```bash
