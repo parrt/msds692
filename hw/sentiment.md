@@ -72,7 +72,7 @@ where each tweet is a dictionary containing:
 * `id`: tweet ID
 * `created`: tweet creation date
 * `retweeted`: number of retweets
-* `text`: text of the tweet
+* `text`: text of the tweet (use twitter tweet field `text` not `full_text` please)
 * `hashtags`: list of hashtags mentioned in the tweet
 * `urls`: list of URLs mentioned in the tweet
 * `mentions`: list of screen names mentioned in the tweet
