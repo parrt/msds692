@@ -4,9 +4,9 @@
 
 The goal of this project is to learn how hashtables work and to *feel* just how much slower a linear search is. Along the way, you'll learn the basic mechanics of implementing a search engine, including displaying search results in a browser window and being able to navigate to documents. You'll also learn a tiny bit of HTML.
 
-The functionality and the overall project itself often comes up in data science interviews:
+The functionality and the overall project itself often come up in data science interviews:
 
-<img src="figures/search-interview.png" width=300>
+<img src="figures/search-interview.png" width=350>
 
 ## Discussion
 
