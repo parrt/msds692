@@ -4,6 +4,10 @@
 
 The goal of this project is to learn how hashtables work and to *feel* just how much slower a linear search is. Along the way, you'll learn the basic mechanics of implementing a search engine, including displaying search results in a browser window and being able to navigate to documents. You'll also learn a tiny bit of HTML.
 
+The functionality and the overall project itself often comes up in data science interviews:
+
+<img src="figures/search-interview.png" width=300>
+
 ## Discussion
 
 A **search engine** accepts one or more **terms** and searches a corpus for files matching all of those terms.  A **corpus** is just a directory and possibly subdirectories full of text files. If you go to the [American National corpus](http://www.anc.org/data/oanc/contents/), you'll see lots of fun text data. I have extracted articles from [Slate](https://github.com/parrt/msds692/blob/master/data/slate.7z) magazine and also from [Berlitz travelogues](https://github.com/parrt/msds692/blob/master/data/berlitz1.7z).  These are your data sets.  Berlitz is smaller and so I use that in some of my [unit tests in the starterkit](https://github.com/parrt/msds692/tree/master/hw/code/search).  Here is a fragment of a sample search results page as displayed in Chrome (activated from Python); clicking on a link brings up the actual file.
