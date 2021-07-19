@@ -24,13 +24,9 @@ Terence is generally available on slack or email on-demand.
 
 **SPATIAL COORDINATES:**<br>
 
-All classes are remote but live online, courtesy of COVID-19.
+Downtown campus combined rooms 155-156 on main floor.
 
-**TEMPORAL COORDINATES.** Tue Oct 13, 2020 - Thur Dec 1, 2020 (No lecture Dec 3)
-
-There are lectures on Tuesday and Thursday each week from 10am - 12 noon California time. 
-
-* Live lecture: Tue and Thur 10:00AM - 12Noon
+**TEMPORAL COORDINATES.** Tue Aug 24, 2021 - Thur Oct 14, 2021 with 2 Sections of live lecture: 10am-11:50am and 1pm-2:50pm.  Morning lecture will be zoom recorded for any remaining remote students.
 
 Terence is generally available on-demand for help with exercises from the lecture or projects, even on weekends.
 
@@ -53,6 +49,7 @@ The following items are even more important because all of us will be remote thi
 
 ## Student evaluation
 
+<!--
 | Artifact | Grade Weight | Due date |
 |--------|--------|--------|
 |[Data pipeline](https://github.com/parrt/msds692/blob/master/hw/pipeline.md)| 5%| Thu, Oct 22 |
@@ -63,8 +60,8 @@ The following items are even more important because all of us will be remote thi
 | [Code reviews](hw/code-review.ipynb) for 5 projects | 5% | Due 11:59PM on day associated project is due |
 |Exam 1| 27%| 2-3:30PM Tue, Nov 10 and 12:01AM-1:31AM Nov 11 |
 |Exam 2| 27%| 2-3:30PM Mon, Dec 7 and 12:01AM-1:31AM Dec 8|
+-->
 
-<!--
 | Artifact | Grade Weight | Due date |
 |--------|--------|--------|
 |[Data pipeline](https://github.com/parrt/msds692/blob/master/hw/pipeline.md)| 4%| Fri, Aug 30 11:59pm |
@@ -74,7 +71,6 @@ The following items are even more important because all of us will be remote thi
 |[Tweet Sentiment Analysis](https://github.com/parrt/msds692/blob/master/hw/sentiment.md)| 8% | Tue, Oct 8 |
 |Exam 1| 25%| Thu, Sep 12 |
 |Exam 2| 35%| Thu, Oct 10 | must be dec 4 or 7-10
--->
 
 All projects will be graded with the specific input or tests given in the project description, so you understand precisely what is expected of your program. Consequently, projects will be graded in binary fashion: They either work or they do not. The only exception is when your program does not run on the grader's or my machine because of some cross-platform issue. This is typically because a student has hardcoded some file name or directory into their program. In that case, we will take off *a minimum* of 10% instead of giving you a 0, depending on the severity of the mistake.  Some projects will be tested with some hidden unit tests; e.g., see the [evaluation section](https://github.com/parrt/msds692/blob/master/hw/search.md) of the search project.
 
