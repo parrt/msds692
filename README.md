@@ -57,13 +57,13 @@ Terence is generally available on slack or email on-demand.
 
 | Artifact | Grade Weight | Due date |
 |--------|--------|--------|
-|[Data pipeline](https://github.com/parrt/msds692/blob/master/hw/pipeline.md)| 4%| Fri, Aug 30 11:59pm |
-|[Search Engine Implementation](https://github.com/parrt/msds692/blob/master/hw/search.md)| 12% | Tue, Sep 10 |
-|[TFIDF document summarization](https://github.com/parrt/msds692/blob/master/hw/tfidf.md)| 8%| Wed 11:59PM, Sep 18 |
+|[Data pipeline](https://github.com/parrt/msds692/blob/master/hw/pipeline.md)| 4%| Tue, Aug 31 1pm (start of section 2) |
+|[Search Engine Implementation](https://github.com/parrt/msds692/blob/master/hw/search.md)| 12% | Sun, Sep 12, 11:59pm |
+|[TFIDF document summarization](https://github.com/parrt/msds692/blob/master/hw/tfidf.md)| 8%| Tue, Sep 21, 4pm |
 |[Recommending Articles](https://github.com/parrt/msds692/blob/master/hw/recommender.md)| 8% | Tue, Sep 24 |
 |[Tweet Sentiment Analysis](https://github.com/parrt/msds692/blob/master/hw/sentiment.md)| 8% | Tue, Oct 8 |
-|Exam 1| 25%| Thu, Sep 12 |
-|Exam 2| 35%| Thu, Oct 10 | must be dec 4 or 7-10
+|Exam 1| 25%| Thu, Sep 16 |
+|Exam 2| 35%| Thu, Oct 14 |
 
 *I reserve the right to change projects until the day they are assigned.*
 
@@ -71,7 +71,7 @@ All projects are **individual** projects not group efforts! All projects will be
 
 Please go to github and verify that the website has the proper files for your solution. That is what I will download for testing.
 
-Each project has a hard deadline and only those projects working correctly before the deadline get credit.  My grading script pulls from github at the deadline.  *All projects are due at the start of class on the day indicated, unless otherwise specified.*
+Each project has a hard deadline and only those projects working correctly before the deadline get credit.  My grading script pulls from github at the deadline.
 
 **No partial credit**. Students are sometimes frustrated about not getting partial credit for solutions they labored on that do not actually work. Unfortunately, "almost working" just never counts in a job situation because nonfunctional solutions have no value.  We are not writing essays in English that have some value even if they are not superb.  When it comes to software, there is no fair way to assign such partial credit, other than a generic 30% or whatever for effort.  The only way to determine what is wrong with your project is for me to fix and/or complete the project. That is just not possible for 90 students. Even if that were possible, there is no way to fairly assign partial credit between students.  A few incorrect but critical characters can mean the difference between perfection and absolute failure. If it takes a student 20 hours to find that problem, is that worth more or less partial credit than another project that is half-complete but could be finished in five hours? To compensate, I try to test multiple pieces of the functionality in an effort to approximate partial credit.
 
