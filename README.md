@@ -24,28 +24,21 @@ Terence is generally available on slack or email on-demand.
 
 **SPATIAL COORDINATES:**<br>
 
-Downtown campus combined rooms 155-156 on main floor.
+* Downtown campus combined rooms 155-156 on main floor.
+
+* My office is room 525 @ 101 Howard
 
 **TEMPORAL COORDINATES.** Tue Aug 24, 2021 - Thur Oct 14, 2021 with 2 Sections of live lecture: 10am-11:50am and 1pm-2:50pm.  Morning lecture will be zoom recorded for any remaining remote students.
 
-Terence is generally available on-demand for help with exercises from the lecture or projects, even on weekends.
-
-Exams:
-
-* Exam 1: online, open-book and available for 24 hours
-* Exam 2: online, open-book and available for 24 hours
-
-**INSTRUCTION FORMAT**. Live class runs for 2 hours, 2 days/week. Instructor-student interaction during lecture is encouraged by speaking up in zoom. We'll often mix in mini-exercises / labs during class. All programming will be done in the Python 3 programming language, unless otherwise specified.
+**INSTRUCTION FORMAT**. Live class runs for ~2 hours, 2 days/week. Instructor-student interaction during lecture is encouraged by speaking up in zoom. We'll often mix in mini-exercises / labs during class. All programming will be done in the Python 3 programming language, unless otherwise specified.
 
 **PROFESSIONALISM**
 
-The following items are even more important because all of us will be remote this Fall:
- 
 * Showing respect for your classmates and your professor
 * Getting to class on time every time
 * No cellphones, email, social media, slack, texting during the class
-* Turn off all of your various notifications so you are not distracted
-* Turn on your webcam on zoom
+
+**LAPTOP POLICY.** My policy is that all student laptops must be closed during class unless we are doing a lab or I specifically ask you to follow along as I type into my computer. All materials for the course are available in this repository, which reduces your need to take notes considerably.
 
 ## Student evaluation
 
@@ -72,15 +65,35 @@ The following items are even more important because all of us will be remote thi
 |Exam 1| 25%| Thu, Sep 12 |
 |Exam 2| 35%| Thu, Oct 10 | must be dec 4 or 7-10
 
-All projects will be graded with the specific input or tests given in the project description, so you understand precisely what is expected of your program. Consequently, projects will be graded in binary fashion: They either work or they do not. The only exception is when your program does not run on the grader's or my machine because of some cross-platform issue. This is typically because a student has hardcoded some file name or directory into their program. In that case, we will take off *a minimum* of 10% instead of giving you a 0, depending on the severity of the mistake.  Some projects will be tested with some hidden unit tests; e.g., see the [evaluation section](https://github.com/parrt/msds692/blob/master/hw/search.md) of the search project.
+*I reserve the right to change projects until the day they are assigned.*
+
+All projects are **individual** projects not group efforts! All projects will be graded with the specific input or tests given in the project description, so you understand precisely what is expected of your program. Consequently, projects will be graded in binary fashion: They either work or they do not. The only exception is when your program does not run on the grader's or my machine because of some cross-platform issue. This is typically because a student has hardcoded some file name or directory into their program. In that case, we will take off *a minimum* of 10% instead of giving you a 0, depending on the severity of the mistake.  Some projects will be tested with some hidden unit tests; e.g., see the [evaluation section](https://github.com/parrt/msds692/blob/master/hw/search.md) of the search project.
 
 Please go to github and verify that the website has the proper files for your solution. That is what I will download for testing.
 
 Each project has a hard deadline and only those projects working correctly before the deadline get credit.  My grading script pulls from github at the deadline.  *All projects are due at the start of class on the day indicated, unless otherwise specified.*
 
-**Groups**. All projects are **individual** projects not group efforts! You will be assigned to a two or three person group for each project in order to encourage you to meet your fellow students and discuss the design of each project. You're not allowed to share code at any time before the project due date and time. After all projects are submitted to github, you will share zips of your code with your partner or partners. Then, you will provide a quick (less than 30 minute) code review for your partner using a [code review template](https://github.com/parrt/msds692/blob/master/hw/code-review.ipynb).  There is an assignment on canvas where you can submit a PDF of the notebook. If there are 3 people in your group, you can pick which person's work to review.  **These code reviews do not affect the reviewed persons' grades**; they are meant to help you and your partner become better programmers. Since students don't do anything unless you give them points, each review gives you 1% of your grade. You just have to make a decent effort to get credit, otherwise you lose that one percent. Naturally, you are free to discuss the design of your projects with any of your fellow students.
+**No partial credit**. Students are sometimes frustrated about not getting partial credit for solutions they labored on that do not actually work. Unfortunately, "almost working" just never counts in a job situation because nonfunctional solutions have no value.  We are not writing essays in English that have some value even if they are not superb.  When it comes to software, there is no fair way to assign such partial credit, other than a generic 30% or whatever for effort.  The only way to determine what is wrong with your project is for me to fix and/or complete the project. That is just not possible for 90 students. Even if that were possible, there is no way to fairly assign partial credit between students.  A few incorrect but critical characters can mean the difference between perfection and absolute failure. If it takes a student 20 hours to find that problem, is that worth more or less partial credit than another project that is half-complete but could be finished in five hours? To compensate, I try to test multiple pieces of the functionality in an effort to approximate partial credit.
 
 **Grading standards**. I consider an **A** grade to be above and beyond what most students have achieved. A **B** grade is an average grade for a student or what you could call "competence" in a business setting. A **C** grade means that you either did not or could not put forth the effort to achieve competence. Below **C** implies you did very little work or had great difficulty with the class compared to other students.
+
+### Honorlock
+
+All tests use **HonorLock** via Canvas and have strict time limits. You will be unable to do anything other than take the test; no access to the Internet etc.  A proctor will monitor you during exams to ensure you do not communicate with anyone else during the test. Generally speaking, HonorLock will record all your web, computer, and personal activities (e.g., looking at your phone) during the quiz. It will flag suspicious behavior for my review and will save the recordings for 6 months if I need to go back and check it.
+
+Please see the [How to use" page for students](https://honorlock.kb.help/-students-starting-exam/how-to-use-honorlock-student/). Either I or another instructor will launch a practice quiz on Canvas during the first week of class to ensure everything is set up properly.
+
+* Google Chrome and a webcam are required. At the beginning of the quiz, you will be able to add the Chrome extension for Honorlock, then follow the instructions to share your screen and record your quiz.
+* You might be asked to change settings on your computer while doing this. You can change the setting and come back to the quiz. This change should only be expected once.
+ 
+Side notes:
+
+* Start the quiz with a single Chrome window and single tab in that window.
+* When the "share screen button" is grey, you can still click it and it will work.
+* HonorLock flags activities other than the allowed ones: for example when you are accessing a website other than canvas or looking at your phone. I will evaluate these cases and make a judgment myself. I will reach out to you when necessary. If you have followed the guidelines, you don’t need to worry.
+* If you have an honorlock software issue during the test, you must take a screen picture with your phone or ipad and notify me immediately via private slack to timestamp the situation with the picture and reason why you cannot proceed. Please contact tech support on the screen to resolve (they are very quick). I will check the Honorlock recording and timestamp of your pictures to grade. 
+* [Privacy statement from HonorLock](https://honorlock.com/student-privacy-statement/) just in case you are worried about privacy. Since access to Honorlock is very limited, and you are expected to only work on the quiz during the proctoring time, the data that Honorlock records is very limited too. The data storage and sharing agreement don’t have a higher risk than your regular school actives (Zoom, email, Canvas, ...). 
+
 
 # Syllabus
 
@@ -168,40 +181,34 @@ With an understanding of how the Internet and web works, it's time to start pull
 
 ## Administrative details
 
-### ACADEMIC HONESTY
-
-You must abide by the copyright laws of the United States and academic honesty policies of USF. You may not copy code from other current or previous students. All suspicious activity will be investigated and, if warranted, passed to the Dean of Sciences for action.  Copying answers or code from other students or sources during a quiz, exam, or for a project is a violation of the university’s honor code and will be treated as such. Plagiarism consists of copying material from any source and passing off that material as your own original work. Plagiarism is plagiarism: it does not matter if the source being copied is on the Internet, from a book or textbook, or from quizzes or problem sets written up by other students. Giving code or showing code to another student is also considered a violation.
+**ACADEMIC HONESTY.** You must abide by the copyright laws of the United States and academic honesty policies of USF. You may not copy code from other current or previous students. All suspicious activity will be investigated and, if warranted, passed to the Dean of Sciences for action.  Copying answers or code from other students or sources during a test, exam, or for a project is a violation of the university’s honor code and will be treated as such. Plagiarism consists of copying material from any source and passing off that material as your own original work. Plagiarism is plagiarism: it does not matter if the source being copied is on the Internet, from a book or textbook, or from tests or problem sets written up by other students. Giving code or showing code to another student is also considered a violation.
 
 The golden rule: **You must never represent another person’s work as your own.**
 
 If you ever have questions about what constitutes plagiarism, cheating, or academic dishonesty in my course, please feel free to ask me.
 
-*All persons with common code are likely to be considered at fault.*
+All students are expected to know and adhere to the University's <a href="https://usfca.edu/academic-integrity/">Honor Code</a>.
 
-### USF policies and legal declarations
+**Note:** Leaving your laptop unattended is a common means for another student to take your work. It is your responsibility to guard your work. Do not leave your printouts laying around or in the trash. *All persons with common code are likely to be considered at fault.*
+
+**USF policies and legal declarations**
 
 *Students with Disabilities*
 
-If you are a student with a disability or disabling condition, or if you think you may have a disability, please contact [USF Student Disability Services](https://myusf.usfca.edu/sds) (SDS) for information about accommodations.
+If you are a student with a disability or disabling condition, or if you think you may have a disability, please contact <a href="https://www.usfca.edu/student-disability-services">USF Student Disability Services</a> (SDS) for information about accommodations.  Students should contact SDS at the beginning of the semester. **Accommodations are not retroactive.**
 
+*Illnesses and Emergencies*
+
+If you fall ill or have an emergency (personal or otherwise) that significantly affects your ability to complete a project or take an exam, you must notify the instructor before the task or artifact is due. Do not simply skip an exam or an assignment and say you were sick after the fact. Always make arrangements with the instructor beforehand, rather than declaring illness or emergency later. **Accommodations are not retroactive.**  Illness and emergency related situations must be disclosed to both the instructor and program director in writing. Illness-related issues must be accompanied by a doctor’s note.
+  
 *Behavioral Expectations*
 
-All students are expected to behave in accordance with the [Student Conduct Code](https://myusf.usfca.edu/fogcutter/student-conduct) and other University policies.
-
-*Academic Integrity*
-
-USF upholds the standards of honesty and integrity from all members of the academic community. All students are expected to know and adhere to the University's [Honor Code](https://myusf.usfca.edu/academic-integrity/honor-code)
+All students are expected to behave in accordance with the <a href="https://usfca.edu/fogcutter">Student Conduct Code</a> and other University policies.
 
 *Counseling and Psychological Services (CAPS)*
 
-CAPS provides confidential, free [counseling](https://myusf.usfca.edu/caps) to student members of our community.
+CAPS provides confidential, free <a href="https://usfca.edu/student-health-safety/caps">counseling</a> to student members of our community.
 
 *Confidentiality, Mandatory Reporting, and Sexual Assault*
 
-For information and resources regarding sexual misconduct or assault visit the <a href="https://myusf.usfca.edu/title-ix">Title IX</a> coordinator or USFs <a href="http://usfca.callistocampus.org">Callisto website</a>.
-
-## todo
-
-check out [fastapi for server 2021](https://fastapi.tiangolo.com/).
-
-
+For information and resources regarding sexual misconduct or assault visit the <a href="https://myusf.usfca.edu/title-ix">Title IX</a> coordinator or USFs <a href="http://usfca.callistocampus.org" target="_blank">Callisto website</a>.
