@@ -58,11 +58,11 @@ Terence is generally available on slack or email on-demand.
 | Artifact | Grade Weight | Due date |
 |--------|--------|--------|
 |[Data pipeline](https://github.com/parrt/msds692/blob/master/hw/pipeline.md)| 4%| Tue, Aug 31 1pm (start of section 2) |
-|[Search Engine Implementation](https://github.com/parrt/msds692/blob/master/hw/search.md)| 12% | Sun, Sep 12, 11:59pm |
-|[TFIDF document summarization](https://github.com/parrt/msds692/blob/master/hw/tfidf.md)| 8%| Tue, Sep 21, 1pm |
-|[Recommending Articles](https://github.com/parrt/msds692/blob/master/hw/recommender.md)| 8% | Thur, Sep 30 1pm |
-|[Tweet Sentiment Analysis](https://github.com/parrt/msds692/blob/master/hw/sentiment.md)| 8% | Sun, Oct 10 11:59pm |
-|Exam 1| 25%| Thu, Sep 16 |
+|[Search Engine Implementation](https://github.com/parrt/msds692/blob/master/hw/search.md)| 12% | Tue, Sep 14, 1pm |
+|[TFIDF document summarization](https://github.com/parrt/msds692/blob/master/hw/tfidf.md)| 8%| Thu, Sep 23, 1pm |
+|[Recommending Articles](https://github.com/parrt/msds692/blob/master/hw/recommender.md)| 8% | Sat, Oct 2 11:59pm |
+|[Tweet Sentiment Analysis](https://github.com/parrt/msds692/blob/master/hw/sentiment.md)| 8% | Tue, Oct 12 1pm |
+|Exam 1| 25%| Thu, Sep 21 |
 |Exam 2| 35%| Thu, Oct 14 |
 
 *I reserve the right to change projects until the day they are assigned.*
