@@ -22,7 +22,7 @@ pip install chromedriver
 Step 3. Install chrome driver binary executable (non-Python code):
 
 ```bash
-brew cask install chromedriver
+brew install chromedriver
 ```
 
 <hr>
@@ -37,13 +37,13 @@ mv ~/Downloads/chromedriver /usr/local/bin
 
 <hr>
 
-If you get error, "*chromedriver cannot be opened because the developer cannot be verified. macOS cannot verify that this app is free from malware*" when you run `/usr/local/bin/chromedriver`, try:
+If you get error, "*chromedriver cannot be opened because the developer cannot be verified. macOS cannot verify that this app is free from malware*" when you run `/usr/local/bin/chromedriver` from the commandline, try:
 
 ```bash
 xattr -d com.apple.quarantine /usr/local/bin/chromedriver
 ```
 
-I also noticed that the driver was sitting in my Anaconda directory: `~/opt/anaconda3/chromedriver-Darwin` but don't use this one as it is out of date: the version numbers are different:
+I also noticed that another version of the driver was sitting in my Anaconda directory: `~/opt/anaconda3/chromedriver-Darwin` but don't use this one as it is out of date: the version numbers are different:
 
 ```bash
 $ ~/opt/anaconda3/chromedriver-Darwin
@@ -53,14 +53,13 @@ Only local connections are allowed.
 
 ```bash
 $ /usr/local/bin/chromedriver 
-Starting ChromeDriver 87.0.4280.20 (c99e81631faa0b2a448e658c0dbd8311fb04ddbd-refs/branch-heads/4280@{#355}) on port 9515
+Starting ChromeDriver 91.0.4472.101 (af52a90bf87030dd1523486a1cd3ae25c5d76c9b-refs/branch-heads/4472@{#1462}) on port 9515
 Only local connections are allowed.
 Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
-[1606765857.984][WARNING]: FromSockAddr failed on netmask
 ChromeDriver was started successfully.
 ```
 
-*On mac, make sure Chrome browser is installed in the usual spot:* `/Applications/Google Chrome.app/`.
+*On mac, make sure Chrome browser is installed in the usual spot:* `/Applications/Google Chrome.app`.
 
 ## Launching a Chrome Browser
 
