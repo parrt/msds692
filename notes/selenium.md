@@ -26,6 +26,7 @@ brew cask install chromedriver
 ```
 
 <hr>
+
 If that `brew` doesn't work, manually download [Chrome driver binary](https://sites.google.com/a/chromium.org/chromedriver/downloads) using your browser. The pip stuff just makes the python packages but the real meat is in the binary download. Now, unzip the `chromedriver_mac64.zip` file (or whatever for your platform) and move the executable binary to the standard place:
 
 ```bash
@@ -33,6 +34,7 @@ mv ~/Downloads/chromedriver /usr/local/bin
 ```
 
 (You might have to create `/usr/local/bin` dir.)
+
 <hr>
 
 If you get error, "*chromedriver cannot be opened because the developer cannot be verified. macOS cannot verify that this app is free from malware*" when you run `/usr/local/bin/chromedriver`, try:

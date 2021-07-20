@@ -25,18 +25,11 @@ Terence is generally available on slack or email on-demand.
 **SPATIAL COORDINATES:**<br>
 
 * Downtown campus combined rooms 155-156 on main floor.
-
 * My office is room 525 @ 101 Howard
 
 **TEMPORAL COORDINATES.** Tue Aug 24, 2021 - Thur Oct 14, 2021 with 2 Sections of live lecture: 10am-11:50am and 1pm-2:50pm.  Morning lecture will be zoom recorded for any remaining remote students.
 
 **INSTRUCTION FORMAT**. Live class runs for ~2 hours, 2 days/week. Instructor-student interaction during lecture is encouraged by speaking up in zoom. We'll often mix in mini-exercises / labs during class. All programming will be done in the Python 3 programming language, unless otherwise specified.
-
-**PROFESSIONALISM**
-
-* Showing respect for your classmates and your professor
-* Getting to class on time every time
-* No cellphones, email, social media, slack, texting during the class
 
 **LAPTOP POLICY.** My policy is that all student laptops must be closed during class unless we are doing a lab or I specifically ask you to follow along as I type into my computer. All materials for the course are available in this repository, which reduces your need to take notes considerably.
 
@@ -103,8 +96,8 @@ We're going to start the class with a cool [lab to extract coronavirus data from
 
 Before we get to the meat of the course, we need to get familiar with some important tools: the commandline (`Terminal.app`) and `git`.
  
-* [Bash your way to victory](https://github.com/parrt/msds501/blob/master/notes/bash-intro.md) (From [MSDS501](https://github.com/parrt/msds501))
-* [Using git revision control](https://github.com/parrt/msds501/blob/master/notes/git.md) (From [MSDS501](https://github.com/parrt/msds501))
+* [The terminal command-line and python environments](https://github.com/parrt/msds501/blob/master/slides/terminal.pdf) (From [MSDS501](https://github.com/parrt/msds501))
+* [git and github version control](https://github.com/parrt/msds501/blob/master/slides/git.pdf) (From [MSDS501](https://github.com/parrt/msds501))
 
 ## Data formats
 
