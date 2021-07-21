@@ -78,7 +78,12 @@ Please see the [How to use" page for students](https://honorlock.kb.help/-studen
 
 * Google Chrome and a webcam are required. At the beginning of the quiz, you will be able to add the Chrome extension for Honorlock, then follow the instructions to share your screen and record your quiz.
 * You might be asked to change settings on your computer while doing this. You can change the setting and come back to the quiz. This change should only be expected once.
- 
+* If you are showing us the side view of your face we don’t know if you’ve got an earbud in your other ear. This is not allowed.  
+* Make sure you are facing into the camera as Honorlock will shut down the system and force you to restart.
+* Make sure that you are not looking down and to the right as if you are looking at notes or using your phone. Honorlock will flag this as cheating.
+* You must not start and stop your browser; Honorlock will flag this is cheating.
+* You must not use other applications during the exam.
+
 Side notes:
 
 * Start the quiz with a single Chrome window and single tab in that window.
