@@ -9,6 +9,8 @@ There are lots of exciting and interesting problems in data science, such as fig
 </tr>
 </table>
 
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">the first time you work with real data <a href="https://t.co/QjoonHNglV">pic.twitter.com/QjoonHNglV</a></p>&mdash; 🔥 Kareem Carr 🔥 (@kareem_carr) <a href="https://twitter.com/kareem_carr/status/1419685984636125186?ref_src=twsrc%5Etfw">July 26, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 The title of this course is "Data Acquisition" but of course, once we get the data, we have to organize it into handy data structures and typically have to extract information from the raw data. For example, we might need to boil down a Twitter stream into a single positive or negative sentiment score for a given user.  This course teaches you how to collect, organize, coalesce, and extract information from multiple sources in preparation for your analysis work. Along the way, you'll learn about the commandline, git, networks, the internet protocols, and building your own web servers.
 
 This course is part of the [MS in Data Science program at the University of San Francisco](https://www.usfca.edu/arts-sciences/graduate-programs/data-science).
