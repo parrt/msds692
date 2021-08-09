@@ -50,7 +50,7 @@ Terence is generally available on slack or email on-demand.
 
 | Artifact | Grade Weight | Due date |
 |--------|--------|--------|
-|[Data pipeline](https://github.com/parrt/msds692/blob/master/hw/pipeline.md)| 5%| Tue, Aug 31 1pm (start of section 2) |
+|[Data pipeline](https://github.com/parrt/msds692/blob/master/hw/pipeline.md)| 5%| Tue, Aug 31, 1pm (start of section 2) |
 |[Search Engine Implementation](https://github.com/parrt/msds692/blob/master/hw/search.md)| 12% | Tue, Sep 14, 1pm |
 |[TFIDF document summarization](https://github.com/parrt/msds692/blob/master/hw/tfidf.md)| 10%| Thu, Sep 23, 1pm |
 |[Recommending Articles](https://github.com/parrt/msds692/blob/master/hw/recommender.md)| 9% | Sat, Oct 2 11:59pm |
