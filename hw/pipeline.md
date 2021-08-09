@@ -6,6 +6,8 @@
 
 The goal of this  homework is to study the most common text-based data formats: `csv`, `xml`, `json`, and `html`.  Parsing data files can be tricky, but generating them is easy and teaches you to speak in those languages.  In this first homework, you will therefore be generating data in multiple formats but using standard Python libraries to read that data back in. The exception is that you will be parsing comma-separated value (CSV) files the hard way.  You will generate output using Python strings or a template engine like jinja2.
 
+*Please be aware that the point of this exercise is to teach you about generating structured text. There are plenty of libraries out there already that will generate data in any format we want. Please don't call them because, unless directed to in the notes below. Otherwise you are not actually solving the problem but rather simply calling somebody else's solution. Learning a language is a matter of learning to speak it and it defeats the purpose of this exercise if you call someone else's JSON or XML dumping routine.*
+
 You will be working with Python scripts rather than notebooks because we want a set of executable commands.
 
 The basic idea is that you will be able to read in some data in csv format and pass it  along a pipeline of data conversions, ultimately getting it back to the original format:

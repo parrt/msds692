@@ -5,7 +5,7 @@ There are lots of exciting and interesting problems in data science, such as fig
 
 <table border="0">
 <tr valign="top" border="0">
-<td border="0"><a href="https://twitter.com/kareem_carr/status/1419685984636125186"><img src="notes/figures/muddy-data.png" width="100%"></a></td><td border="0"><a href="https://mobile.twitter.com/kareem_carr/status/1157424261319069696?s=21"><img src="notes/figures/kareem.png" width="100%"></a></td>
+<td border="0"><a href="https://mobile.twitter.com/kareem_carr/status/1157424261319069696?s=21"><img src="notes/figures/kareem.png" width="100%"></a></td><td border="0"><a href="https://twitter.com/kareem_carr/status/1419685984636125186"><img src="notes/figures/muddy-data.png" width="100%"></a></td>			
 </tr>
 </table>
 
