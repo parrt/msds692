@@ -154,7 +154,7 @@ Now you know how to work with data files already sitting on your desk, we turn t
 
 With an understanding of how the Internet and web works, it's time to start pulling data from various web sources.  The difficulty of collecting data depends a great deal on the permissions and services available for a site or page.  A good analogy is: some doors are open, some doors are closed, some doors are locked, some "doors" are not doors but reinforced steel walls.
 
-* [Pulling data from (open) REST APIs](notes/openapi.md) (Day 12)
+* [Pulling data from (open) REST APIs](notes/openapi.ipynb) (Day 12)
   * openpayments.us (Day 12)
 * [Pull data from sites requiring an API key](notes/apikey.md)
   * Quandl stock data (Day 12)
