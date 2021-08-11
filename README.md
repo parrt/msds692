@@ -156,7 +156,7 @@ With an understanding of how the Internet and web works, it's time to start pull
 
 * [Pulling data from (open) REST APIs](notes/openapi.ipynb) (Day 12)
   * openpayments.us (Day 12)
-* [Pull data from sites requiring an API key](notes/apikey.md)
+* [Pull data from sites requiring an API key](notes/apikey.ipynb)
   * Quandl stock data (Day 12)
   * OMDb movie data (Day 12)
   * [Zillow](notes/zillow.md) (Day 13)
