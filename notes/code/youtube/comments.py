@@ -1,6 +1,7 @@
 import sys
 import urllib
 from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
 
 DEVELOPER_KEY = sys.argv[1]
 QUERY = sys.argv[2] # e.g., "cats and dogs"
@@ -23,11 +24,15 @@ def comments(query):
     ids = videoIDs(query)
     comments = {} # map video ID to list of comment strings
     for id in ids:
-        results = youtube.commentThreads().list(
-            part="snippet",
-            videoId=id,
-            textFormat="plainText"
-        ).execute()
+        print(f"Retrieving movie {id}")
+        try:
+            results = youtube.commentThreads().list(
+                part="snippet",
+                videoId=id,
+                textFormat="plainText"
+            ).execute()
+        except HttpError:
+            continue # ignore if comments turned off
 
         comments[id] = []
         for item in results["items"]:

@@ -82,24 +82,20 @@ Now that we know how to perform a video search, let's learn how to extract comme
 **Exercise**: We will extract comments by video ID, because that is what the [API](https://developers.google.com/youtube/v3/docs/commentThreads/list) requires. Here are two sample video IDs:
 
 ```python
-videoId = "gU_gYzwTbYQ"  # bonkers the cat
 videoId = "tntOCGkgt98"  # cat compilation
+videoId = "gU_gYzwTbYQ"  # bonkers the cat
 ```
 
-You need to call `youtube.commentThreads().list(...)` to get the comments. There is a bunch of sample code in the API documentation. Follow the code samples to extract the author and text of the top level comments. Here's a sample session:
+You need to call `youtube.commentThreads().list(...)` to get the comments. There is a bunch of sample code in the API documentation. Follow the code samples to extract the author and text of the top level comments. Here's a sample session for bonkers the cat vid:
 
 ```bash
 $ python comments_one_video.py MYSECRET KEY
-Comment by Humbly_Bumbly: STOP REPEATING THE SAME CLIPS﻿
-Comment by mad rix: cute 😀 Come to my YouTube chanel i have lovely videos of my cats! !!!﻿
-Comment by LuksterCOD1234: God this has got a lot of views﻿
-Comment by DIAMOND BRAIN: No,no and no﻿
-Comment by Lea Villanueva: 7:45 😂﻿
-Comment by Andre Jackson: old school﻿
-Comment by Chris Poerschke: "most see" ?﻿
-Comment by Animalsworlds: Awesome video, my sadness immediately disappear after watching this video 
-=)﻿
-Comment by Vanirvis: Whats with the boxes on the screen? Thumbs down.﻿
+Comment by Okeefe Niemann: The cutest kitty!!
+Comment by Charles Siu: Cute kitty
+Comment by Michael Schulze: Cute kitty. I <3 data science!
+Comment by Zachary Barnes: LOLZ Bonkerz is the best
+Comment by Daren Ma: Is this safe for class? LOL
+Comment by samandchloesmommy: Oh my goodness, that's the cutest thing ever! What a funny boy he is.
 ...
 ```
 
@@ -129,6 +125,8 @@ def comments(query):
     return comments
 ```
 
+Note: You'll need to wrap the call to get comment threads, `youtube.commentThreads().list()` in try/except on `HttpError` since it throws an exception if comments are disabled on a movie. See solution in comments.py.
+
 Then the main program can just print out a list of comments for each video, putting a tab in front of the comments so it's easier to see which video they are associated with.
 
 ```python
@@ -143,12 +141,15 @@ for vid in allcomments.keys()[:5]: # just 5 videos
 Sample output:
 
 ```bash
-$ python comments.py SECRETKEY 'star wards'
+$ python comments.py SECRETKEY 'star wars'
 ...
-Video zKoBk37EKG4
-	Comment by Jamie Carey: I want a pug
-	Comment by Arissa Williams: Like your videos and jokes can I please have a shout-out I subscribed and like 
-	Comment by sharonda scarboro: Did the superhero kids get to come to your house DP subscribe did they leave a comment if you did they ask
+Video O0SxVbK7Dmc	
+Comment by Josh R: Rex Gregor in Cody!?!?!?!? You mean Wolfe good sir
+	Comment by bini 28: We need a what if with Star Wars
+	Comment by Clayton Catlin: I think, they had to do it like that. Otherwise, the original trilogy would be moot.
+	Comment by Mando With a Plan: “Good Soldiers, Follow Orders..”
+	Comment by Jake Subers: It's Commander Wolffe not Cody and also technically they weren't the 501st anymore when they left with Ahsoka.
+	Comment by Austin Ryan: i feel like you forget order 66 is more than kill
 ...
 ```
 	
