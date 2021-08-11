@@ -56,7 +56,7 @@ $ curl --user-agent "" https://api.github.com/meta
 Request forbidden by administrative rules. Please make sure your request has a User-Agent header (http://developer.github.com/v3/#user-agent-required). Check https://developer.github.com for other possible causes.
 ```
 
-**Exercise**: Alter `fetch` so that it passes a `User-Agent` header so that the protocol going to the Web server will include:
+**Exercise**: Alter function `fetch` so that it passes a `User-Agent` header so that the protocol going to the Web server will include:
 
 ```
 User-Agent: Resistance is futile
@@ -64,79 +64,30 @@ User-Agent: Resistance is futile
 
 or some other header value. You will pass in a dictionary with that keyvalue pair as the `headers` argument of `requests.get()`.
 
-Verify that you can still get the hacker news page. [Solutions](https://github.com/parrt/msds692/tree/master/notes/code/scrape)
+The default headers are the following, which you can get with `requests.utils.default_headers()`:
 
-**Exercise**:  Create a function that extracts all of the news links and puts them into a list, rather than printing them out.
-
-```python
-def parseHN():
-    html,soup = fetch("https://news.ycombinator.com/")
-    links = []
-    link in html.find_all(...):
-        links.append(...)
-    return links
+```
+{
+    'User-Agent': 'python-requests/2.26.0',
+    'Accept-Encoding': 'gzip, deflate, br',
+    'Accept': '*/*',
+    'Connection': 'keep-alive'
+}
 ```
 
-[Solutions](https://github.com/parrt/msds692/tree/master/notes/code/scrape)
+For some reason, setting the user agent from Python does not prevent the requests library from fetching the data from github; not sure why, but it's good to learn how to set headers in this exercise.
 
 ## Reddit
 
-Ok, so Hacker News might shut us down. As a back up, you can scan [reddit news](https://www.reddit.com/r/all).
+Ok, so Hacker News might shut us down with all of us hitting their server the same time from the same network location. As a back up, you can scan [reddit news](https://www.reddit.com/r/all).  You will have to set the `User-Agent` header to something in your request or won't get any links.
 
-See [Scraping reddit](https://www.datacamp.com/community/tutorials/scraping-reddit-python-scrapy).
-
-### User agent
-
-*Grrrr...in 2019 reddit now works w/o a user-agent.*
-
-First, let's try to grab the page. If you don't set the "user agent" (browser), you'll see this in response:
-
-```bash
-$ curl https://www.reddit.com/r/all/
-...
-<p>we're sorry, but you appear to be a bot and we've seen too many requests
-from you lately. we enforce a hard speed limit on requests that appear to come
-from bots to prevent abuse.</p>
-
-<p>if you are not a bot but are spoofing one via your browser's user agent
-string: please change your user agent string to avoid seeing this message
-again.</p>
-```
-
-On the other hand, if you set the agent, you get real data back:
- 
-```bash
-$ curl --user-agent "Resistance is futile" https://www.reddit.com/r/all/
-...
-```
-
-The HTTP protocol from the client side looks then like:
-
-```
-> GET /r/all/ HTTP/1.1
-> Host: www.reddit.com
-> User-Agent: Resistance is futile
-> Accept: */*
-
-```
-
-### Parsing the data
-
-Ok, now that we know how to get the data, it's a good idea to create a small program to save that text or just use:
-
-```bash
-curl --user-agent "Resistance is futile" https://www.reddit.com/r/all > /tmp/t.html
-```
-
-Then we can parse / test that all we want without getting shut down by Reddit.
+See [Scraping reddit](https://www.datacamp.com/community/tutorials/scraping-reddit-python-scrapy). And the `reddit.py` script in the solutions for this lecture/lab.
 
 Let's say we want all the "Comments" links. By inspecting a comment link on that page with the browser (using developer tools), we can find its distinguishing characteristics:
 
 ```
-<a rel="nofollow" data-click-id="comments" data-test-id="comments-page-link-num-comments"
-  class="_1UoeAeSRhOKSNdY_h3iS1O _1Hw7tY9pMr-T1F4P1C-xNU _2qww3J5KKzsD7e5DO0BvvU"
-  href="/r/gifs/comments/9k69g3/out_fishingand_getting_some_unexpected_results/"
->
+<a rel="nofollow" data-click-id="comments" data-test-id="comments-page-link-num-comments" class="_1UoeAeSRhOKSNdY_h3iS1O _1Hw7tY9pMr-T1F4P1C-xNU _3U_7i38RDPV5eBv7m4M-9J _2qww3J5KKzsD7e5DO0BvvU" href="/r/Superstonk/comments/p2hjao/daily_reverse_repo_update_0811_1000460b/"><i class="icon icon-comment _3DVrpDrMM9NLT6TlsTUMxC" role="presentation"></i><span class="FHCV02u6Cp2zYL0fhQPsO">1.4k comments</span></a>
+...
 ```
 
 <img src="figures/reddit.png" width="80%">
@@ -145,7 +96,7 @@ After a lot of playing around, I decided to find all `a` tags and then filter fo
 
 To find all outgoing links we could just filter links for `http:` prefixes.
 
-**Exercise**:  Given `t.html` from Reddit, pull out all of the links to comments and print them.  It should look something like this:
+**Exercise**:  Pull out all of the comment links from reddit and print them.  It should look something like this:
 
 ```
 href: /r/funny/comments/9k83m9/when_it_rains/

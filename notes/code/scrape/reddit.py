@@ -7,8 +7,9 @@ with open("/tmp/t.html") as f:
 """
 
 response = requests.get("https://www.reddit.com/r/all", headers={'User-Agent': "Resistance is futile"})
+#response = requests.get("https://www.reddit.com/r/all") # doesn't work without the user agent
 html = response.text
-
+#print(html)
 
 soup = BeautifulSoup(html, "html.parser")
 
