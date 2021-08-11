@@ -16,7 +16,7 @@ Step 2. Install python packages we need.
 
 ```bash
 pip install -U selenium
-pip install chromedriver
+pip install -U chromedriver
 ```
 
 Step 3. Install chrome driver binary executable (non-Python code):
@@ -37,7 +37,15 @@ mv ~/Downloads/chromedriver /usr/local/bin
 
 <hr>
 
-If you get error, "*chromedriver cannot be opened because the developer cannot be verified. macOS cannot verify that this app is free from malware*" when you run `/usr/local/bin/chromedriver` from the commandline, try:
+You might get error, "*chromedriver cannot be opened because the developer cannot be verified. macOS cannot verify that this app is free from malware*" when you run `/usr/local/bin/chromedriver` from the commandline:
+
+<img src="figures/chromedriver-warning.png" width="150">
+
+If you go to system preferences then "Security & Privacy" general tab, you'll see:
+
+<img src="figures/chromedriver-allow.png" width="300">
+
+and you can click "Allow anyway". OR, you can try from terminal:
 
 ```bash
 xattr -d com.apple.quarantine /usr/local/bin/chromedriver
@@ -53,7 +61,7 @@ Only local connections are allowed.
 
 ```bash
 $ /usr/local/bin/chromedriver 
-Starting ChromeDriver 91.0.4472.101 (af52a90bf87030dd1523486a1cd3ae25c5d76c9b-refs/branch-heads/4472@{#1462}) on port 9515
+Starting ChromeDriver 92.0.4515.107 (87a818b10553a07434ea9e2b6dccf3cbe7895134-refs/branch-heads/4515@{#1634}) on port 9515
 Only local connections are allowed.
 Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
 ChromeDriver was started successfully.
