@@ -114,8 +114,6 @@ search_box.submit()
 
 ## Support code for logging in
 
-*This broke Fall 2019 with 10.14.6 OS X due to tkinter causing OS X to crash. Thanks to Srikar Murali we have a simpler solution for typing username/password from command line. Leaving this here as it's useful to know how to build a GUI in Python.*
-
 We don't ever want to store a username and password in our source code. Also, if we hardcoded info like that, we could not use software for different users. Instead, we should read the info each time the program runs via `login.py` script:
 
 ```
@@ -132,37 +130,6 @@ if __name__ == '__main__':
 
 **Exercise**: Run that program and verify that it prints out a sample (meaningless) username and password.
 
-### GUI version
-
-I built a little dialog box in `login_gui.py` that asks for a username and password from the user. The `login()` returns when the user clicks on the `Login` button:
-
-```python
-from tkinter import *
-
-def login():
-    master = Tk()
-    Label(master, text="Username").grid(row=0)
-    Label(master, text="Password").grid(row=1)
-
-    user = Entry(master)
-    password = Entry(master, show="*")
-
-    user.grid(row=0, column=1)
-    password.grid(row=1, column=1)
-
-    Button(master, text='Login', command=master.quit).grid(row=3, column=0, sticky=W, pady=4)
-    master.bind('<Return>', lambda x: master.quit())
-
-    mainloop()
-
-    u, p = user.get(), password.get()
-    master.destroy();
-    return u, p
-
-if __name__ == '__main__':
-    print(login())
-```
- 
 ## Log in to twitter, pull a following list
 
 In order to login to twitter, we can go directly to `https://twitter.com/login`, where we see `form` fields:
