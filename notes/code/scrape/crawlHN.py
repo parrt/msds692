@@ -11,8 +11,10 @@ def fetch(url,delay=(1,3)):
     """
     time.sleep(random.randint(delay[0],delay[1])) # wait random seconds
     try:
-        response = requests.get(url, headers={'User-Agent': "Resistance is futile"})
-    except ValueError as e:
+        response = requests.get(url,
+                                headers={'User-Agent': "Resistance is futile"},
+                                timeout=1)
+    except Exception as e:
         print(str(e))
         return '', BeautifulSoup('', "html.parser")
     html = response.text
