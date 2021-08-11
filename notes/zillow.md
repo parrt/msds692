@@ -124,6 +124,8 @@ If there is no error you get `<code>0</code>` in the message, whereas here you c
 
 ## Historical price chart
 
+As of 2021, this no longer works. The GetChart API returns HTTP code 410 which means *Gone*. :(
+
 **Exercise**: Using the [GetChart](http://www.zillow.com/howto/api/GetChart.htm) API, print out a link to a chart containing data for a specific property, such as property ID 64969892. The XML you get back looks like: [Solutions](https://github.com/parrt/msds692/tree/master/notes/code/zillow)
 
 ```xml

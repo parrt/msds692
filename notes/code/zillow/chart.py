@@ -12,13 +12,14 @@ import webbrowser
 
 
 KEY = sys.argv[1]                       # your zillow api key/id as argument to script
+ZPID = 64969892
 
 # Find a house
-SearchURL = "http://www.zillow.com/webservice/GetChart.htm?zws-id=%s&zpid=%s&unit-type=percent&width=500&height=250&chartDuration=10years"
+URL = f"http://www.zillow.com/webservice/GetChart.htm?zws-id={KEY}&zpid={ZPID}&unit-type=percent&width=500&height=250&chartDuration=10years"
 
-URL = SearchURL % (KEY, '64969892')
 r = requests.get(URL)
 xmldata = r.text
+print(xmldata)
 
 xml = untangle.parse(xmldata)
 code = xml.Chart_chart.message.code.cdata
