@@ -128,7 +128,7 @@ There are also plenty of nontext, binary formats. You can learn more from the ms
 
 ## Text feature extraction
 
-* [San Francisco police incidents word clouds](notes/sfpd.ipynb) (Day 4)
+* [San Francisco police incidents word clouds](notes/sfpd-wordcloud.ipynb) (Day 4)
 * (code review of sample jsontable functions, more htable discussion)
 * [CSV command-line kung fu](notes/bashcsv.ipynb) (Day 5)
 * [Intro to information extraction from text](notes/text.ipynb) (Day 5)
@@ -174,7 +174,8 @@ With an understanding of how the Internet and web works, it's time to start pull
 
 ## Misc
 
-* [San Francisco police activity heat map using google map API](notes/heatmap.md)
+* [Car breakins in San Franciscoy heat map using Folium](notes/code/sfpd/sfo-heatmap.ipynb)
+* [San Francisco police activity heat map using google map API](notes/heatmap-googleapi.md)
 * [Debugging with PyCharm](notes/debugger.md)
 
 ## Administrative details
