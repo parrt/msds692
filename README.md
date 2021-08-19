@@ -82,7 +82,8 @@ Please see the [How to use" page for students](https://honorlock.kb.help/-studen
 * Make sure you are facing into the camera as Honorlock will shut down the system and force you to restart.
 * Make sure that you are not looking down and to the right as if you are looking at notes or using your phone. Honorlock will flag this as cheating.
 * You must not start and stop your browser; Honorlock will flag this is cheating.
-* You must not use other applications or visit non-Canvas-quiz URLs during the exam.
+* You must not use other applications or visit non-Canvas-quiz URLs during the exam unless the exam indicates this is permitted.
+* Do not have your phone visible as the proctor will stop the quiz
 
 Side notes:
 
