@@ -102,7 +102,7 @@ We're going to start the class with a cool [lab to extract coronavirus data from
 
 Before we get to the meat of the course, we need to get familiar with some important tools: the commandline (`Terminal.app`) and `git`.
  
-* [The terminal command-line and python environments](https://github.com/parrt/msds692/blob/master/notes/terminal.pdf) (Adapted from [MSDS501](https://github.com/parrt/msds501))
+* [The terminal command-line and python environments](https://github.com/parrt/msds692/blob/master/notes/terminal.pdf)
 * [Streams/pipes/redirection in the terminal](https://github.com/parrt/msds692/blob/master/notes/streams.pdf)
 * [git and github version control](https://github.com/parrt/msds692/blob/master/notes/git.pdf)
 
