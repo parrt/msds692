@@ -323,7 +323,7 @@ $ diff /tmp/t.json /tmp/t2.json
 
 ## Deliverables
 
-In your repo root directory, please add:
+In your repo root directory (no subdirectories), please add:
 
 * mycsv.py
 * csv2html.py
