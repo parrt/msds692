@@ -102,21 +102,21 @@ We're going to start the class with a cool [lab to extract coronavirus data from
 
 Before we get to the meat of the course, we need to get familiar with some important tools: the commandline (`Terminal.app`) and `git`.
  
-* [The terminal command-line and python environments](https://github.com/parrt/msds692/blob/master/notes/terminal.pdf)
-* [Streams/pipes/redirection in the terminal](https://github.com/parrt/msds692/blob/master/notes/streams.pdf)
-* [git and github version control](https://github.com/parrt/msds692/blob/master/notes/git.pdf)
+* [The terminal command-line and python environments](https://github.com/parrt/msds692/blob/master/notes/terminal.pdf)  (Day 1)
+* [Streams/pipes/redirection in the terminal](https://github.com/parrt/msds692/blob/master/notes/streams.pdf) (Day 1)
+* [git and github version control](https://github.com/parrt/msds692/blob/master/notes/git.pdf) (Day 2)
 
 ## Data formats
 
 Most data you encounter will be in the form of human readable text, such as comma-separated value (CSV) files. We begin the course by studying how characters are stored in files and learning about the key data formats.
 
-* [Representing text in a computer](notes/chars.ipynb); see also [7-bit ascii codes](http://www.asciitable.com/), [unicode vs ascii in python](https://docs.python.org/3/howto/unicode.html) (Day 1)
 * [Data pipeline project](https://github.com/parrt/msds692/blob/master/hw/pipeline.md) (Converting stock history from Quandl to various formats) (**project**) (Day 1)
 	* reading delimited data; tsv, csv
 	* reading/generating XML (we'll load complicated XML in [TFIDF project](https://github.com/parrt/msds692/blob/master/hw/tfidf.md))
 	* reading/generating json
+* [Representing text in a computer](notes/chars.ipynb); see also [7-bit ascii codes](http://www.asciitable.com/), [unicode vs ascii in python](https://docs.python.org/3/howto/unicode.html) (Day 2)
 * [Excel and CSV data](notes/excel.ipynb) (Day 2)
-* [PDF using pdftotext](notes/pdf.ipynb) (Extracting text from Tesla's marketing brochure) (Day 2)
+* [PDF using pdftotext](notes/pdf.ipynb) (Extracting text from Tesla's marketing brochure) (Day 3)
 * [Manipulating text from the command line](notes/text-cmd-line.ipynb) 
 * [HTML](notes/html.ipynb) (Parsing Tesla's IPO prospectus) (Day 3)
 
