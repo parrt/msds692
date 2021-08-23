@@ -278,9 +278,8 @@ You must complete and add these to root of your `search-`*userid* repository:
 * linear_search.py
 * myhtable_search.py (**no `dict` objects allowed in this file!**)
 * words.py
-* search.py (copy this from starterkit unchanged)
-* test_htable.py (copy this from starterkit unchanged)
-* test_berlitz.py (copy this from starterkit unchanged)
+
+During testing, I will copy fresh versions of search.py, test_htable.py, and test_berlitz.py so please don't add these to the repository.
 
 **Please do not add the data to your repository!**
 
