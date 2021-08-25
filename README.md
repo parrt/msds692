@@ -114,7 +114,7 @@ Most data you encounter will be in the form of human readable text, such as comm
 	* reading delimited data; tsv, csv
 	* reading/generating XML (we'll load complicated XML in [TFIDF project](https://github.com/parrt/msds692/blob/master/hw/tfidf.md))
 	* reading/generating json
-* [Representing text in a computer](notes/chars.ipynb); see also [7-bit ascii codes](http://www.asciitable.com/), [unicode vs ascii in python](https://docs.python.org/3/howto/unicode.html) (Day 2)
+* [Representing text in a computer](https://github.com/parrt/msds692/raw/master/notes/chars.pdf); see also [7-bit ascii codes](http://www.asciitable.com/), [unicode vs ascii in python](https://docs.python.org/3/howto/unicode.html) (Day 2)
 * [Excel and CSV data](notes/excel.ipynb) (Day 2)
 * [PDF using pdftotext](notes/pdf.ipynb) (Extracting text from Tesla's marketing brochure) (Day 3)
 * [Manipulating text from the command line](notes/text-cmd-line.ipynb) 
