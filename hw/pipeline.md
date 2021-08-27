@@ -345,7 +345,7 @@ You will find some [sample input](https://github.com/parrt/msds692/blob/master/h
 I provide a [test shell script](https://github.com/parrt/msds692/blob/master/hw/code/pipeline/testdata.sh) that you can use to test your data format generation and conversion.  Your project will be graded by running the AAPL, TSLA, and simple t data files:
 
 ```bash
-$ ./testdata.sh data output
+$ bash ./testdata.sh data output # execute with bash not zsh!
 Test AAPL
    csv2html: output/AAPL.html and /tmp/AAPL.html same
    csv2xml: output/AAPL.xml and /tmp/AAPL.xml same
