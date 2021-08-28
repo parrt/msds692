@@ -372,6 +372,11 @@ Test t
    json2csv|csv2json: output/t.json and /tmp/t.json same
 ```
 
-When testing, the `data` dir should have files AAPL.csv, TSLA.csv, and t.csv. When testing, the `output` directory is some place where your program can write files. After testing, it should contain the [expected output](https://github.com/parrt/msds692/tree/master/hw/code/pipeline/output).
+When testing, the `data` dir should have files AAPL.csv, TSLA.csv, and t.csv. When testing, the `output` directory is the set of known good output downloaded from the starter kit: [expected output](https://github.com/parrt/msds692/tree/master/hw/code/pipeline/output). The script tests things in this manner:
+
+```bash
+python csv2html.py data/t.csv > /tmp/csv2html-t.html
+python htmlcompare.py output/t.html /tmp/csv2html-t.html
+```
 
 To get credit for the various deliverables, all related tests must pass, as shown here.
