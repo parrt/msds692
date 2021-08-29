@@ -106,6 +106,15 @@ Before we get to the meat of the course, we need to get familiar with some impor
 * [Streams/pipes/redirection in the terminal](https://github.com/parrt/msds692/blob/master/notes/streams.pdf) (Day 2)
 * [git and github version control](https://github.com/parrt/msds692/blob/master/notes/git.pdf) (Day 2)
 
+## Organizing data in memory into structures
+
+* [Hashtable implementations of sets and dictionaries](https://github.com/parrt/msds692/blob/master/notes/hasthable.pdf) (Day 3)
+* [Search Engine Implementation](https://github.com/parrt/msds692/blob/master/hw/search.md) (**project**) (Day 3)
+
+<!--
+* [Review object definition / usage](notes/OO.ipynb) (Day 4)
+-->
+
 ## Data formats
 
 Most data you encounter will be in the form of human readable text, such as comma-separated value (CSV) files. We begin the course by studying how characters are stored in files and learning about the key data formats.
@@ -121,12 +130,6 @@ Most data you encounter will be in the form of human readable text, such as comm
 * [HTML](notes/html.ipynb) (Parsing Tesla's IPO prospectus) (Day 3)
 
 There are also plenty of nontext, binary formats. You can learn more from the msds501 boot camp material for [audio processing](https://github.com/parrt/msds501/blob/master/notes/sound.ipynb) and [image processing](https://github.com/parrt/msds501/blob/master/projects/images.md).
-
-## Organizing data in memory into structures
-
-* [Associations and dictionaries](notes/dict.ipynb) (Day 3)
-* Introduction to hash table construction and discussion of [Search Engine Implementation](https://github.com/parrt/msds692/blob/master/hw/search.md) (**project**) (Day 3)
-* [Review object definition / usage](notes/OO.ipynb) (Day 4)
 
 ## Text feature extraction
 
