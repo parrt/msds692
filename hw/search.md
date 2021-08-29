@@ -130,7 +130,7 @@ These functions will use expressions like `index[w]`, where `index` is a `dict`,
 
 ### Creating an index using your own hashtable
 
-For more implementation details, see the [lecture notes](https://github.com/parrt/msds692/blob/master/notes/hasthable.pdf) and [notebook associated with hash tables](https://github.com/parrt/msds692/blob/master/notes/hashtable.ipynb).
+For more implementation details, see the [lecture notes](https://github.com/parrt/msds692/blob/master/notes/hashtable.pdf) and [notebook associated with hash tables](https://github.com/parrt/msds692/blob/master/notes/hashtable.ipynb).
 
 We know that a linear search of a list of associations is slow because it requires a search through all associations, in the worst case. But how can we find something without looking through all the items?
 

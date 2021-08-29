@@ -108,7 +108,7 @@ Before we get to the meat of the course, we need to get familiar with some impor
 
 ## Organizing data in memory into structures
 
-* [Hashtable implementations of sets and dictionaries](https://github.com/parrt/msds692/blob/master/notes/hasthable.pdf) (Day 3)
+* [Hashtable implementations of sets and dictionaries](https://github.com/parrt/msds692/blob/master/notes/hashtable.pdf) (Day 3)
 * [Search Engine Implementation](https://github.com/parrt/msds692/blob/master/hw/search.md) (**project**) (Day 3)
 
 <!--
