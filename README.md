@@ -123,17 +123,17 @@ Most data you encounter will be in the form of human readable text, such as comm
 	* reading delimited data; tsv, csv
 	* reading/generating XML (we'll load complicated XML in [TFIDF project](https://github.com/parrt/msds692/blob/master/hw/tfidf.md))
 	* reading/generating json
-* [Representing text in a computer](https://github.com/parrt/msds692/blob/master/notes/chars.pdf); see also [7-bit ascii codes](http://www.asciitable.com/), [unicode vs ascii in python](https://docs.python.org/3/howto/unicode.html) (Day 2)
-* [Excel and CSV data](notes/excel.ipynb) (Day 2)
-* [PDF using pdftotext](notes/pdf.ipynb) (Extracting text from Tesla's marketing brochure) (Day 3)
-* [Manipulating text from the command line](notes/text-cmd-line.ipynb) 
-* [HTML](notes/html.ipynb) (Parsing Tesla's IPO prospectus) (Day 3)
+* [Representing text in a computer](https://github.com/parrt/msds692/blob/master/notes/chars.pdf); see also [7-bit ascii codes](http://www.asciitable.com/), [unicode vs ascii in python](https://docs.python.org/3/howto/unicode.html) (Day 3)
+* [Excel and CSV data](notes/excel.ipynb) (Day 4)
+* [PDF using pdftotext](notes/pdf.ipynb) (Extracting text from Tesla's marketing brochure) (Day 4)
+* [Manipulating text from the command line](notes/text-cmd-line.ipynb) (Day 4)
+* [HTML](notes/html.ipynb) (Parsing Tesla's IPO prospectus) (Day 4)
 
 There are also plenty of nontext, binary formats. You can learn more from the msds501 boot camp material for [audio processing](https://github.com/parrt/msds501/blob/master/notes/sound.ipynb) and [image processing](https://github.com/parrt/msds501/blob/master/projects/images.md).
 
 ## Text feature extraction
 
-* [San Francisco police incidents word clouds](notes/sfpd-wordcloud.ipynb) (Day 4)
+* [San Francisco police incidents word clouds](notes/sfpd-wordcloud.ipynb) (Day 5)
 * (code review of sample jsontable functions, more htable discussion)
 * [CSV command-line kung fu](notes/bashcsv.ipynb) (Day 5)
 * [Intro to information extraction from text](notes/text.ipynb) (Day 5)

@@ -130,6 +130,8 @@ These functions will use expressions like `index[w]`, where `index` is a `dict`,
 
 ### Creating an index using your own hashtable
 
+For more implementation details, see the [lecture notes](https://github.com/parrt/msds692/blob/master/notes/hasthable.pdf) and [notebook associated with hash tables](https://github.com/parrt/msds692/blob/master/notes/hashtable.ipynb).
+
 We know that a linear search of a list of associations is slow because it requires a search through all associations, in the worst case. But how can we find something without looking through all the items?
 
 Imagine our goal is to find a particular person Eric Erickson in the United States. [Where would you look first](https://blogs.ancestry.com/cm/whats-the-most-popular-surname-in-your-state/)? Southern California or Minnesota? It turns out that people that immigrated to the United States tended to cluster in regions where they had family or friends from the old country. There were a lot of Scandinavians that moved to Minnesota and because of its proximity to Mexico, there are many people with Spanish last names in Southern California. That gives us a clue about how we might speed up the search.  Something about the key gives us a clue about how to restrict the region(s) where we need to look. Imagine that a person's name uniquely told you in which state they live. That would mean searching only roughly 300M / 50 people instead of all 300M given no knowledge about the keys.
