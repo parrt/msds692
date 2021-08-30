@@ -285,7 +285,7 @@ You must complete and add these to root of your `search-`*userid* repository:
 * index_search.py
 * linear_search.py
 * myhtable_search.py (**no `dict` objects allowed in this file!**)
-* words.py
+* words.py (make sure you are using [get_text()](https://github.com/parrt/msds692/blob/master/hw/code/search/words.py#L10) and words() functions in your code.)
 
 If you use jinja2 templates stored on the disk, make sure those are part of the repository as well.
 
