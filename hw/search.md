@@ -10,7 +10,7 @@ The functionality and the overall project itself often come up in data science i
 
 ## Discussion
 
-A **search engine** accepts one or more **terms** and searches a corpus for files matching all of those terms.  A **corpus** is just a directory and possibly subdirectories full of text files. If you go to the [American National corpus](http://www.anc.org/data/oanc/contents/), you'll see lots of fun text data. I have extracted articles from [Slate](https://github.com/parrt/msds692/blob/master/data/slate.7z) magazine and also from [Berlitz travelogues](https://github.com/parrt/msds692/blob/master/data/berlitz1.7z).  These are your data sets.  Berlitz is smaller and so I use that in some of my [unit tests in the starterkit](https://github.com/parrt/msds692/tree/master/hw/code/search).  Here is a fragment of a sample search results page as displayed in Chrome (activated from Python); clicking on a link brings up the actual file.
+A **search engine** accepts one or more **terms** and searches a corpus for files matching *all* of those terms.  A **corpus** is just a directory and possibly subdirectories full of text files. If you go to the [American National corpus](http://www.anc.org/data/oanc/contents/), you'll see lots of fun text data. I have extracted articles from [Slate](https://github.com/parrt/msds692/blob/master/data/slate.7z) magazine and also from [Berlitz travelogues](https://github.com/parrt/msds692/blob/master/data/berlitz1.7z).  These are your data sets.  Berlitz is smaller and so I use that in some of my [unit tests in the starterkit](https://github.com/parrt/msds692/tree/master/hw/code/search).  Here is a fragment of a sample search results page as displayed in Chrome (activated from Python); clicking on a link brings up the actual file.
 
 | HTML output        | File Content |
 | ---------- | -----
@@ -88,7 +88,7 @@ You can use the template engine [jinja2](http://jinja.pocoo.org/docs/2.9/), whic
 
 ### Creating an index using `dict`
 
-Rather than looking through each file for every search, it's better to create a fast lookup index that maps a word to all of the files that contain that word. To compute the search results for multiple words, find the intersection of documents among the document set (`index[w]`) for each word. The resulting set will be just the documents that have all words.  `index[w]` returns a set (or unique list) of integers representing document indexes into your document list, `files`. In this way we don't have to duplicate the string for filenames in all of the `index` values. You can then convert a set of file indexes to filenames using the `files` list created during index creation.
+<img src="figures/word-index.png" width="150" align="right">Rather than looking through each file for every search, it's better to create a fast lookup index that maps a word to all of the files that contain that word. To compute the search results for multiple words, find the intersection of documents among the document set (`index[w]`) for each word. The resulting set will be just the documents that have all words.  `index[w]` returns a set (or unique list) of integers representing document indexes into your document list, `files`. In this way we don't have to duplicate the string for filenames in all of the `index` values. You can then convert a set of file indexes to filenames using the `files` list created during index creation.
 
 It takes about the same time to create the index as it does to do one linear search because both are linearly walking through the list of files. The complexity of index creation is *O(n)* for *n* total words in all files. BUT, searching takes just *O(1)*, or constant time, once we have the index.  
 
@@ -280,6 +280,8 @@ You must complete and add these to root of your `search-`*userid* repository:
 * linear_search.py
 * myhtable_search.py (**no `dict` objects allowed in this file!**)
 * words.py
+
+If you use jinja2 templates stored on the disk, make sure those are part of the repository as well.
 
 During testing, I will copy fresh versions of search.py, test_htable.py, and test_berlitz.py so please don't add these to the repository.
 
