@@ -265,9 +265,7 @@ The confusing part is how you update the search index entries when it is your ow
 
 Now look at the example where we map `'ronald'` to set `{9,3}`.  That set is **mutable** so, if you want to update the set, you don't have to replace the `('ronald', {9,3})` association in the hash table. Just update the set that already exists.  You would need to initialize the search index with empty sets as part of your search index initialization but after that the hash table "get" will retrieve the existing set. You can then simply call set `add()` to add a document ID to that set. Recall the slide from lecture:
 
-<center>
-<img src="figures/mutable-values.png" width="500">
-</center>
+<img src="figures/mutable-values.png" width="500" align="center">
 
 ## Getting started
 
