@@ -267,6 +267,8 @@ Now look at the example where we map `'ronald'` to set `{9,3}`.  That set is **m
 
 <img src="figures/mutable-values.png" width="500" align="center">
 
+To create `mytable_search.py`, copy `index_search.py` and modify the code that uses `dict` objects to use your functions from `htable.py`. For example, replace `index[w]` expressions with `htable_get(index, w)`.
+
 ## Getting started
 
 Please go to the [Search starterkit](https://github.com/parrt/msds692/tree/master/hw/code/search) and grab all the python files.  Store these in your repo `search-`*userid*, wherever you store that directory.
