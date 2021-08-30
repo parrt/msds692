@@ -206,7 +206,7 @@ table[ord('f')%5].append( ('f','mary') ) # 'f'==102
  
 Ok, back to this specific project. The version of the search engine you create for this section should look and perform just like the version using `dict`. The difference is **you cannot use the built-in dictionary operations** like `index[k]` for `dict` `index` and key `k`. You will build your own hashtable and call your own `get` and `put` functions explicitly to manipulate the index.
 
-Each element in a bucket is an association `(key,value)` where `value` is a set or unique list of document indexes. The buckets are themselves lists; do not confuse the buckets with the set of document indexes in each association. For example, `htable_put(index,'parrt', [99])` should add tuple `('parrt',[99])` to the bucket associated with key string `parrt`. The following method embodies the put operation:
+Each element in a bucket is an association `(key,value)` where `value` is a set or unique list of document indexes. The buckets are themselves lists; do not confuse the buckets with the set of document indexes in each association. For example, `htable_put(index, 'parrt', [99])` should add tuple `('parrt',[99])` to the bucket associated with key string `parrt`. The following method embodies the put operation:
 
 ```python
 def htable_put(table, key, value):
@@ -263,7 +263,9 @@ It computes the bucket where `key` lives and then linearly searches that (hopefu
 
 The confusing part is how you update the search index entries when it is your own hash table implementation. If you look at the example from above, where `'a'` maps to `tom`, we can see that changing `tom` to `jane` requires that we replace that mapping. Tuples are immutable and so is `99`. So, we replace the entire tuple `('a',tom)` with `('a',jane)`. 
 
-Now look at the example where we map `'ronald'` to set `{9,3}`.  That set is **mutable** so, if you want to update the set, you don't have to replace the `('ronald', {9,3})` association in the hash table. Just update the set that already exists.  You would need to initialize the search index with empty sets as part of your search index initialization but after that the hash table "get" will retrieve the existing set. You can then simply call set `add()` to add a document ID to that set.
+Now look at the example where we map `'ronald'` to set `{9,3}`.  That set is **mutable** so, if you want to update the set, you don't have to replace the `('ronald', {9,3})` association in the hash table. Just update the set that already exists.  You would need to initialize the search index with empty sets as part of your search index initialization but after that the hash table "get" will retrieve the existing set. You can then simply call set `add()` to add a document ID to that set. Recall the slide from lecture:
+
+<img src="figures/mutable-values.png" width="500">
 
 ## Getting started
 
