@@ -88,7 +88,9 @@ You can use the template engine [jinja2](http://jinja.pocoo.org/docs/2.9/), whic
 
 ### Creating an index using `dict`
 
-<img src="figures/word-index.png" width="150" align="right">Rather than looking through each file for every search, it's better to create a fast lookup index that maps a word to all of the files that contain that word. To compute the search results for multiple words, find the intersection of documents among the document set (`index[w]`) for each word. The resulting set will be just the documents that have all words.  `index[w]` returns a set (or unique list) of integers representing document indexes into your document list, `files`. In this way we don't have to duplicate the string for filenames in all of the `index` values. You can then convert a set of file indexes to filenames using the `files` list created during index creation.
+<img src="figures/word-index.png" width="150" align="right">Rather than looking through each file for every search, it's better to create a fast lookup index that maps a word to all of the files that contain that word. To compute the search results for multiple words, find the intersection of documents among the document set (`index[w]`) for each word. The resulting set will be just the documents that have all words.  `index[w]` returns a set (or unique list) of integers representing document indexes into your document list, `files`. In this way we don't have to duplicate the string for filenames in all of the `index` values. You can then convert a set of file indexes to filenames using the `files` list created during index creation, which might look something like:
+
+<img src="figures/file-index.png" width="200">
 
 It takes about the same time to create the index as it does to do one linear search because both are linearly walking through the list of files. The complexity of index creation is *O(n)* for *n* total words in all files. BUT, searching takes just *O(1)*, or constant time, once we have the index.  
 
