@@ -137,7 +137,7 @@ There are also plenty of nontext, binary formats. You can learn more from the ms
 
 * [San Francisco police incidents word clouds](notes/sfpd-wordcloud.ipynb) (Day 5)
 * [CSV command-line kung fu](notes/bashcsv.ipynb) (Day 5)
-* [Intro to information extraction from text](notes/text.ipynb) (Day 5)
+* [Intro to information extraction from text](notes/text.ipynb) (Day 6)
 * [Spacy NLP library](notes/spacy.ipynb) (Day 6)
 * [Computing TFIDF](notes/tfidf.pdf) (Day 6)
 * [TFIDF notebook](notes/tfidf.ipynb)
