@@ -55,7 +55,7 @@ Terence is generally available on slack or email on-demand.
 |[TFIDF document summarization](https://github.com/parrt/msds692/blob/master/hw/tfidf.md)| 10%| Thu, Sep 23, 1pm |
 |[Recommending Articles](https://github.com/parrt/msds692/blob/master/hw/recommender.md)| 9% | Sat, Oct 2 11:59pm |
 |[Tweet Sentiment Analysis](https://github.com/parrt/msds692/blob/master/hw/sentiment.md)| 9% | Tue, Oct 12 1pm |
-|Exam 1| 25%| Thu, Sep 21 |
+|Exam 1| 25%| Tue, Sep 21 |
 |Exam 2| 30%| Thu, Oct 14 |
 
 *I reserve the right to change projects until the day they are assigned.*
