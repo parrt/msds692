@@ -24,7 +24,7 @@ Another important detail: bank service employees do not waste time, running in p
 
 ### Creating a server program
 
-**Exercise**. Pair up with someone in class for this exercise. You will both switch off being the server and the client. The following script creates a server that listens at port 8000. One student should run this program while the other uses `telnet` from the commandline to contact the server from a different laptop. You can put this code into `server.py`:
+**Exercise**. Pair up with someone in class for this exercise. You will both switch off being the server and the client. The following script creates a server that listens at port 8000. One student should run this program while the other uses `telnet` from the commandline to contact the server from a different laptop. You can put this code into `server.py` (you'll probably need to `pip install netifaces`):
 
 ```python
 import socket

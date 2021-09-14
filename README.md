@@ -141,13 +141,13 @@ There are also plenty of nontext, binary formats. You can learn more from the ms
 * [Spacy NLP library](notes/spacy.ipynb) (Day 6)
 * [Computing TFIDF](notes/tfidf.pdf) (Day 6)
 * [TFIDF notebook](notes/tfidf.ipynb)
-* [TFIDF document summarization](https://github.com/parrt/msds692/blob/master/hw/tfidf.md) (**project**) (Day 6)
+* [TFIDF document summarization](https://github.com/parrt/msds692/blob/master/hw/tfidf.md) (**project**) (Day 7)
 
 ## How the web works
 
 Now you know how to work with data files already sitting on your desk, we turn towards a study of computer networking and web infrastructure.
 
-* [Network sockets](notes/sockets.md), DNS, email (Day 7)
+* [Network sockets](notes/sockets.pdf), DNS, email (Day 7)
 * [client/server architecture](notes/client-server.md) (Day 7)
 * [HTTP](notes/http.md) (Day 7)
 * [flask](notes/flask.md) (Day 8)

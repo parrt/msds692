@@ -12,15 +12,16 @@ Host: www.cnn.com
 
 ```
 
-The first line tells the server what page we are interested in (the root `/`). The `Host:` line indicates what server we think we are talking to. Then, we have to have a blank line which indicates we are done talking/handshaking. Please try out this sample session:
+The first line tells the server what page we are interested in (the root `/`). The `Host:` line indicates what server we think we are talking to. Then, we have to have a blank line which indicates we are done talking/handshaking. Please try out this sample session (this URL still uses http not https so we can still use `telnet`):
 
 ```
-$ telnet www.openpayments.us 80
-Trying 138.202.168.24...
-Connected to sunshine.cs.usfca.edu.
+$ telnet http://checkip.dyndns.org/ 80
+$ telnet checkip.dyndns.org 80
+Trying 216.146.43.71...
+Connected to checkip.dyndns.com.
 Escape character is '^]'.
 GET / HTTP/1.1
-Host: www.openpayments.us
+HOST: checkip.dyndns.org
 
 ```
 
@@ -30,22 +31,24 @@ The server responds to you with:
 
 ```
 HTTP/1.1 200 OK
-Date: Mon, 09 Sep 2019 18:49:36 GMT
-Last-Modified: Thu, 15 Jun 2017 17:55:26 GMT
 Content-Type: text/html
-Accept-Ranges: bytes
-Content-Length: 9129
-Server: Jetty(9.4.z-SNAPSHOT)
+Server: DynDNS-CheckIP/1.0.1
+Connection: close
+Cache-Control: no-cache
+Pragma: no-cache
+Content-Length: 102
 
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-...
+<html>
+<head>
+<title>Current IP Check</title>
+</head>
+<body>
+Current IP Address: 4.78.240.2
+</body>
 </html>
 ```
 
-It sends us back some headers, such as `Content-Type` and `Date`. Also, please note that *cookies* come back from the server to your web browser using these headers.
+It sends us back some headers, such as `Content-Type` and the content length. Also, please note that *cookies* come back from the server to your web browser using these headers.
 
 ## Using python to get webpages
 
