@@ -149,7 +149,7 @@ Now you know how to work with data files already sitting on your desk, we turn t
 
 * [Network sockets](notes/sockets.pdf), DNS, email (Day 7)
 * [client/server architecture](notes/client-server.md) (Day 7)
-* [HTTP](notes/http.md) (Day 7)
+* [HTTP](notes/http.md) (Day 8)
 * [flask](notes/flask.md) (Day 8)
 * [Launch AWS box (MSDS501 notes)](https://github.com/parrt/msds501/blob/master/notes/aws.md), AWS launch notes from [Recommending Articles Project](https://github.com/parrt/msds692/blob/master/hw/recommender.md) (Day 9)
 * [Building web servers](https://github.com/parrt/msds692/blob/master/hw/server.md) (**optional project**)

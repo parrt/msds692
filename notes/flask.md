@@ -45,6 +45,10 @@ print("I'm at IP "+ip)
 app.run('0.0.0.0')  # NEEDED SO ANY IP ADDRESS CAN CONNECT TO YOU
 ```
 
+**Exercise**: Keep your server running and give your IP address to someone next to you in the class and ask if their web browser can get to your server.  For example, if your server prints out "I'm at IP 172.16.198.184" then have a friend in the class go to `http://172.16.198.184:5000` in their browser and see if they get `Hello MSDS692!`.
+
+### Watch the conversation
+
 Ok, so that little Web server actually spits out lots of stuff that you don't see.  Using the `-v` option, you can see the entire conversation between the client, `curl`, and the server:
 
 ```bash
@@ -69,6 +73,8 @@ Hello MSDS692!
 ```
 
 Lines that start with `*`s look like informational notes to the user. Lines that start with `>` are the lines sent from the client to the server. Lines that start with `<` are the lines sent from the server back to the client.
+
+### Changing the URL
 
 Now, alter the URL that your server listens to by making this change:
 
