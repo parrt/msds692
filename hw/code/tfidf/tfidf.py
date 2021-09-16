@@ -54,7 +54,7 @@ def compute_tfidf(corpus):
     """
 
 
-def summarize(tfidf, text, n):
+def compute_tfidf(corpus:dict) -> TfidfVectorizer:
     """
     Given a trained TfidfVectorizer object and some XML text, return
     up to n (word,score) pairs in a list. Discard any terms with
@@ -62,7 +62,7 @@ def summarize(tfidf, text, n):
     """
 
 
-def load_corpus(zipfilename):
+def load_corpus(zipfilename:str) -> dict:
     """
     Given a zip file containing root directory reuters-vol1-disk1-subset
     and a bunch of *.xml files, read them from the zip file into
