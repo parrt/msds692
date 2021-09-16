@@ -12,20 +12,33 @@ Host: www.cnn.com
 
 ```
 
-The first line tells the server what page we are interested in (the root `/`). The `Host:` line indicates what server we think we are talking to. Then, we have to have a blank line which indicates we are done talking/handshaking. Please try out this sample session (this URL still uses http not https so we can still use `telnet`):
+The first line tells the server what page we are interested in (the root `/`). The `Host:` line indicates what server we think we are talking to.  Depending on the server, we may or may not need the `Host:` line and the `HTTP/1.1`. Then, we have to have a blank line that indicates we are done talking/handshaking. 
+
+**Exercise**: Please try out this sample session (this URL still uses http not https so we can still use `telnet`):
 
 ```
-$ telnet http://checkip.dyndns.org/ 80
 $ telnet checkip.dyndns.org 80
 Trying 216.146.43.71...
 Connected to checkip.dyndns.com.
 Escape character is '^]'.
 GET / HTTP/1.1
-HOST: checkip.dyndns.org
+Host: checkip.dyndns.org
 
 ```
 
 (blank line on the end.)
+
+OR using the earlier simpler protocol:
+
+```
+$ telnet checkip.dyndns.org 80
+Trying 216.146.43.71...
+Connected to checkip.dyndns.com.
+Escape character is '^]'.
+GET /
+```
+
+(No blank line on the end)
 
 The server responds to you with:
 
