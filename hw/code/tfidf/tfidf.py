@@ -12,14 +12,14 @@ import os
 
 PARTIALS = False
 
-def gettext(xmltext):
+def gettext(xmltext) -> str:
     """
     Parse xmltext and return the text from <title> and <text> tags
     """
     xmltext = xmltext.encode('ascii', 'ignore') # ensure there are no weird char
 
 
-def tokenize(text):
+def tokenize(text) -> list:
     """
     Tokenize text and return a non-unique list of tokenized words
     found in the text. Normalize to lowercase, strip punctuation,
@@ -32,33 +32,33 @@ def tokenize(text):
     ...
 
 
-def stemwords(words):
+def stemwords(words) -> list:
     """
     Given a list of tokens/words, return a new list with each word
     stemmed using a PorterStemmer.
     """
 
 
-def tokenizer(text):
+def tokenizer(text) -> list:
     return stemwords(tokenize(text))
 
 
-def compute_tfidf(corpus):
+def compute_tfidf(corpus:dict) -> TfidfVectorizer:
     """
     Create and return a TfidfVectorizer object after training it on
     the list of articles pulled from the corpus dictionary. Meaning,
     call fit() on the list of document strings, which figures out
     all the inverse document frequencies (IDF) for use later by
-    the transform() function. The corpus argument is a dictionary 
+    the transform() function. The corpus argument is a dictionary
     mapping file name to xml text.
     """
 
 
-def compute_tfidf(corpus:dict) -> TfidfVectorizer:
+def summarize(tfidf:TfidfVectorizer, text:str, n:int):
     """
     Given a trained TfidfVectorizer object and some XML text, return
     up to n (word,score) pairs in a list. Discard any terms with
-    scores < 0.09.
+    scores < 0.09. Sort the (word,score) pairs by TFIDF score in reverse order.
     """
 
 
