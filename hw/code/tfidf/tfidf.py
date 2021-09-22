@@ -10,8 +10,6 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 import zipfile
 import os
 
-PARTIALS = False
-
 def gettext(xmltext) -> str:
     """
     Parse xmltext and return the text from <title> and <text> tags
