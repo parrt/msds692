@@ -249,6 +249,7 @@ $ ssh -i "parrt.pem" ubuntu@somemachineIPorname
 Then from that remote machine:
 
 ```bash
+export PATH="/home/ubuntu/anaconda3/bin:$PATH"  # use anaconda python
 pip install --upgrade pip
 pip install numpy Flask
 conda update -n base conda
