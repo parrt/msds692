@@ -338,7 +338,7 @@ def homepage():
     return "<h1>Home page</h1>"
 ```
 
-Go to the browser at http://127.0.0.1:5000/ and you will see the server get to request, one for the initial fetch and one for the fetch after redirection because of the 302 result code:
+Go to the browser at http://127.0.0.1:5000/ and you will see the server get two requests, one for the initial fetch and one for the fetch after redirection because of the 302 result code:
   
 ```
 127.0.0.1 - - [09/Sep/2016 11:52:08] "GET / HTTP/1.1" 302 -
