@@ -75,15 +75,15 @@ def load_glove(filename):
 ```python
 def load_articles(articles_dirname, gloves):
     """
-    Load all .txt files under articles_dirname and return a table (list of tuples)
+    Load all .txt files under articles_dirname and return a table (list of lists/tuples)
     where each record is a list of:
 
-      (filename, title, article-text-minus-title, wordvec-centroid-for-article-text)
+      [filename, title, article-text-minus-title, wordvec-centroid-for-article-text]
 
     We use gloves parameter to compute the word vectors and centroid.
 
-    The filename is stripped of the prefix of the articles_dirname pulled in as
-    script parameter sys.argv[2]. E.g., filename will be "business/223.txt"
+    The filename is fully-qualified name of the text file including
+    the path to the root of the corpus passed in on the command line.
     """
     ...
 ```
