@@ -249,10 +249,12 @@ $ ssh -i "parrt.pem" ubuntu@somemachineIPorname
 Then from that remote machine:
 
 ```bash
-export PATH="/home/ubuntu/anaconda3/bin:$PATH"  # use anaconda python
+# in progress
+#export PATH="/home/ubuntu/anaconda3/bin:$PATH"  # use anaconda python
+source activate python3
 pip install --upgrade pip
 pip install numpy Flask
-conda update -n base conda
+# conda update -n base conda  # too slow and not critical
 conda install gunicorn # regular pip install won't work it seems
 ```
 
