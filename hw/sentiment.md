@@ -14,7 +14,7 @@ As another example URL `/fchollet` (the Keras guy) yields:
 
 Next you will create a page responding to URLs, such as `/following/the_antlr_guy`, that displays up to 100 users followed by a given user:
 
-<img src=figures/parrt-follows.png width=320>
+<img src=figures/parrt-follows.png width=150>
 
 Note that the users should be sorted in reverse order by their number of followers. Just to be clear, `/following/the_antlr_guy` shows the list of users that I follow sorted by how many followers those users have. Clearly, Guido has the most followers and so he is shown first in my list of people I follow. 
 
