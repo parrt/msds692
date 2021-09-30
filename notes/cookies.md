@@ -329,6 +329,8 @@ It's very common for a server to redirect the browser. The user goes to a specif
 **Exercise**: Using the following code, create a flask server that redirects URL `/` to `/homepage`:
  
 ```python
+from flask import Flask, redirect
+
 @app.route('/')
 def root():
     return redirect('/homepage')
