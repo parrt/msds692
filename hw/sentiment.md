@@ -210,7 +210,7 @@ In your github repository, you should submit the following:
 
 ## Evaluation
 
-To evaluate your projects, the grader and I will go to your AWS server and test the current output for the two pages using Twitter users `the_antlr_guy` and `realdonaldtrump`. We will also launch your server locally to make sure that the software runs correctly and that its output matches what we see at your Amazon server.
+To evaluate your projects, the grader and I will go to your AWS server and test the current output for the two pages using Twitter users `the_antlr_guy` and `fchollet`. We will also launch your server locally to make sure that the software runs correctly and that its output matches what we see at your Amazon server.
 
 **Without the IP.txt file at the root of your repository, we cannot test your server and you get a zero!**
 
@@ -219,8 +219,8 @@ Here is an automated bash script, I've put in `pulltwitter.sh`, that we will use
 ```bash
 curl "http://"$(cat IP.txt)"/the_antlr_guy" > parrt-tweets.html
 curl "http://"$(cat IP.txt)"/following/the_antlr_guy" > parrt-following.html
-curl "http://"$(cat IP.txt)"/realdonaldtrump" > trump-tweets.html
-curl "http://"$(cat IP.txt)"/following/realdonaldtrump" > trump-following.html
+curl "http://"$(cat IP.txt)"/fchollet" > fchollet-tweets.html
+curl "http://"$(cat IP.txt)"/following/fchollet" > fchollet-following.html
 ```
 
 We will run this script in all of your directories and then open up a browser on those files.
