@@ -8,17 +8,13 @@ As you did in the recommendation engine project, you will also produce a web ser
 
 <img src=figures/parrt-tweets.png width=800>
 
-As another example URL `/realdonaldtrump` yields:
+As another example URL `/fchollet` (the Keras guy) yields:
 
-<img src=figures/trump-tweets.png width=750>
+<img src="figures/fchollet.png" width=750>
 
 Next you will create a page responding to URLs, such as `/following/the_antlr_guy`, that displays up to 100 users followed by a given user:
 
 <img src=figures/parrt-follows.png width=320>
-
-Or:
-
-<img src=figures/trump-follows.png width=350>
 
 Note that the users should be sorted in reverse order by their number of followers. Just to be clear, `/following/the_antlr_guy` shows the list of users that I follow sorted by how many followers those users have. Clearly, Guido has the most followers and so he is shown first in my list of people I follow. 
 
