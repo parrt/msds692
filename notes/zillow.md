@@ -7,7 +7,7 @@ In order to pull data from the real estate website [Zillow](http://www.zillow.co
 1. [Create an account](https://www.zillow.com/user/Register.htm)
 2. [Get a ZWSID (Zillow web services ID)](https://www.zillow.com/webservice/Registration.htm)
 
-(*Warning, I'm having trouble with their website redirecting me back to the homepage instead of navigating around or even letting me login. ugh*)
+(*Warning, I'm having trouble with their website redirecting me back to the homepage instead of navigating around or even letting me login. ugh*  I found that I can request my [ZWSID](https://www.zillow.com/webservice/APIReminder.htm).)
 
 You are limited to 1000 queries per day per API; be careful not to put a request in a loop and then let it run like crazy.
 
