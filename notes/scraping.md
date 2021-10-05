@@ -14,7 +14,7 @@ Notice that the link has a CSS class: `class="storylink"`. Fantastic, now that i
 
 ```python
 for link in soup.find_all(...):
-    print link['href'], link.text
+    print(link['href'], link.text)
 ```
 
 *Hint:* Search for "beautifulsoup find all class."
