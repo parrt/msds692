@@ -5,7 +5,7 @@ import csv
 URL = "https://www.amazon.com/gp/bestsellers/books"
 r = requests.get(URL, headers={'User-Agent': "Resistance is futile"})
 htmltext = r.text
-print(htmltext)
+#print(htmltext)
 
 """ Test with this:
 with open("/tmp/t.html") as f:
