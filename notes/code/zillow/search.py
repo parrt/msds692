@@ -17,7 +17,7 @@ URL = f"http://www.zillow.com/webservice/GetSearchResults.htm?zws-id={KEY}&addre
 
 r = requests.get(URL)
 xmldata = r.text
-#print(xmldata)
+print(xmldata)
 
 xml = untangle.parse(xmldata)
 code = xml.SearchResults_searchresults.message.code.cdata

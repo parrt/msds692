@@ -24,6 +24,7 @@ search_response = youtube.search().list(
     maxResults=20,      # how many results we want back
     type="video"        # only tell me about videos
 ).execute()
+#print(type(search_response))
 
 # search_response is a dict
 items = search_response['items']
