@@ -238,7 +238,7 @@ There are predefined functions with comments indicating the required functionali
 
 Creating a server that has all the appropriate software can be tricky so I have recorded a sequence that works for me.
 
-The first thing is to launch a server with different software than the simple  Amazon linux we have been using in class. We need one that has, for example, `numpy` and friends so let's use an *image* (snapshot of a disk with a bunch of stuff installed) that already has machine learning software installed.  As of October 2020, the following sequence works. Select image  "*Deep Learning AMI (Ubuntu 18.04) Version 49.0*".  Create a `t2.medium` size computer (in Oregon; it's cheaper)!  The cost is 0.0464 dollars per Hour, which is only 1.12 dollars per day.
+The first thing is to launch a server with different software than the simple  Amazon linux we have been using in class. We need one that has, for example, `numpy` and friends so let's use an *image* (snapshot of a disk with a bunch of stuff installed) that already has machine learning software installed.  As of October 2021, the following sequence works. Select image  "*Deep Learning AMI (Ubuntu 18.04) Version 49.0*".  Create a `t2.medium` size computer (in Oregon; it's cheaper)!  The cost is 0.0464 dollars per Hour, which is only 1.12 dollars per day.
 
 Here's how I login:
  
@@ -249,12 +249,9 @@ $ ssh -i "parrt.pem" ubuntu@somemachineIPorname
 Then from that remote machine:
 
 ```bash
-# in progress
-#export PATH="/home/ubuntu/anaconda3/bin:$PATH"  # use anaconda python
 source activate python3
 pip install --upgrade pip
 pip install numpy Flask
-# conda update -n base conda  # too slow and not critical
 conda install gunicorn # regular pip install won't work it seems
 ```
 
