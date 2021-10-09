@@ -168,7 +168,7 @@ Then from that remote machine do this:
 ```bash
 source activate python3
 pip install --upgrade pip
-pip install numpy Flask
+pip install numpy Flask vaderSentiment tweepy
 conda install gunicorn # regular pip install won't work it seems
 ```
 
