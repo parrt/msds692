@@ -147,13 +147,14 @@ r-7cikom r-1ny4l3l r-t60dpp r-1dz5y72 r-fdjqy7 r-13qz1uu"
 value="">
 ```
 
-We  need to insert our username there and then click the "NEXT" button, which we has this HTML:
+We need to insert our username there and then click the "NEXT" button, which we has this HTML:
 
 ```html
 <div role="button" tabindex="0" class="css-18t94o4 css-1dbjc4n r-42olwf
 r-sdzlij r-1phboty r-rs99b7 r-peo1c r-1ps3wis r-1ny4l3l r-1guathk r-o7ynqc
 r-6416eg r-lrvibr" style="background-color: rgb(29, 155, 240);">
-<div dir="auto" class="css-901oao r-1awozwy r-jwli3a r-6koalj r-18u37iz r-16y2uox r-37j5jr r-a023e6 r-b88u0q r-1777fci
+<div dir="auto" class="css-901oao r-1awozwy r-jwli3a r-6koalj r-18u37iz r-16y2uox
+r-37j5jr r-a023e6 r-b88u0q r-1777fci
 r-rjixqe r-bcqeeo r-q4m81j r-qvutc0">
 <span class="css-901oao css-16my406 css-bfa6kz r-poiln3
 r-a023e6 r-rjixqe r-bcqeeo r-qvutc0">
@@ -163,11 +164,19 @@ r-a023e6 r-rjixqe r-bcqeeo r-qvutc0">
 </div>
 ```
 
+This will take us to the next dialog box which asks for the password:
+
 <img src="figures/twitter-password.png" width="750">
 
 
+We can identify the appropriate text box like this:
+
 ```html
-<input autocapitalize="sentences" autocomplete="current-password" autocorrect="on" name="password" spellcheck="true" type="password" dir="auto" class="r-30o5oe r-1niwhzg r-17gur6a r-1yadl64 r-deolkf r-homxoj r-poiln3 r-7cikom r-1ny4l3l r-t60dpp r-1dz5y72 r-fdjqy7 r-13qz1uu" value="">
+<input autocapitalize="sentences" autocomplete="current-password"
+autocorrect="on" name="password" spellcheck="true" type="password" 
+dir="auto" class="r-30o5oe r-1niwhzg r-17gur6a r-1yadl64 r-deolkf
+r-homxoj r-poiln3 r-7cikom r-1ny4l3l r-t60dpp r-1dz5y72 r-fdjqy7
+r-13qz1uu" value="">
 ```
 
 If you play around long enough and screw up logging in enough, twitter will figure out that something strange is going on and ask you to verify yourself by entering your email address.  That means we need to identify this element as well as the next in the sequence:
