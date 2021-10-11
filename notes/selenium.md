@@ -147,7 +147,7 @@ r-7cikom r-1ny4l3l r-t60dpp r-1dz5y72 r-fdjqy7 r-13qz1uu"
 value="">
 ```
 
-We need to insert our username there and then click the "NEXT" button, which we has this HTML:
+We need to insert our username there and then click the "NEXT" button (using `click()` function), which we has this HTML:
 
 ```html
 <div role="button" tabindex="0" class="css-18t94o4 css-1dbjc4n r-42olwf
@@ -195,7 +195,15 @@ and then here's how I found the "NEXT" button:
 next = driver.find_element_by_xpath("//*[contains(text(),'Next')]")
 ```
 
-Basically the `//*` says find any tag. The `text()` indicates we want the text in between the begin and end of the tag and `contains` is an xpath function that tests conditions.  In a nutshell, this finds any tag that contains text `Next`. Similarly, here's how to find the password text box and the next "Log in" button once that pops up:
+Basically the `//*` says find any tag. The `text()` indicates we want the text in between the begin and end of the tag and `contains` is an xpath function that tests conditions.  In a nutshell, this finds any tag that contains text `Next`.
+
+To click, do this:
+
+```python
+next.click()
+```
+
+Similarly, here's how to find the password text box and the next "Log in" button once that pops up:
 
 ```python
 passwordfield = driver.find_element_by_name("password")
