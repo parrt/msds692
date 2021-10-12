@@ -227,7 +227,11 @@ time.sleep(4.0) # wait for JavaScript to execute
 **Exercise**:  Write a script to login to twitter. [Solutions](https://github.com/parrt/msds692/tree/master/notes/code/selenium)
 
 
-**Exercise**: Next, alter the script to view the list of users followed by our Data Institute. You can get this information starting here `https://twitter.com/DataInstituteSF`. From that page, have the browser click on the `Following` link. Nothing obvious presents itself to search for using the Chrome "inspect" feature so you'll have to find all `a` tags and look for the one with `following` on the end of the `href` attribute. Find the right one and then `click()` it.
+**Exercise**: Next, alter the script to view the list of users followed by our Data Institute. You can get this information starting here `https://twitter.com/DataInstituteSF`. From that page, have the browser click on the `Following` link. Nothing obvious presents itself to search for using the Chrome "inspect" feature so you'll have to find all `a` tags and look for `role="link"` attribute/value. Find the right one and then `click()` it.  Here is how to find it:
+
+```python
+links = driver.find_elements_by_xpath('//a[@role="link"]')
+```
 
 [Solutions](https://github.com/parrt/msds692/tree/master/notes/code/selenium)
 
